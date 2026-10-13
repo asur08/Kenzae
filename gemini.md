@@ -139,19 +139,26 @@
 
 This Standard Operating Procedure guides Kenzae Boutique staff in Mulanthuruthy on updating catalog inventory, adjusting prices, or adding new festive arrivals without developer assistance.
 
-### Method A: Via In-Catalog Staff Portal (Recommended for Daily Store Operations)
-1. Open the Kenzae Boutique catalog in any desktop or mobile browser.
-2. In the top announcement ribbon, click the **"Staff Portal"** icon.
-3. **To Toggle Stock Availability:**
-   - Find the piece in the Inventory list.
-   - Click the green **"In Stock"** or red **"Out of Stock"** pill. Changes take effect instantly in the boutique catalog.
-4. **To Add a New Arrival:**
+### Method A: Via Secured Staff Portal at `/staff` (Recommended for Daily Store Operations)
+1. In your browser (desktop or store mobile device), go directly to **`/staff`** (e.g. `https://your-domain.com/staff` or `http://localhost:3000/staff`), or click the discreet **"Staff Access"** link at the bottom of the footer.
+2. Enter the Boutique Staff Passcode (Default: **`kenzae2026`**). Check *"Remember on this boutique device"* to stay logged in on the store device.
+3. **To Quick-Edit Product Prices:**
+   - In the **Inventory & Pricing** list, click directly on any price figure (e.g., ₹12,850).
+   - Enter the updated numeric price in ₹ and press Enter or the checkmark icon. The price is saved immediately.
+4. **To Toggle Stock Availability:**
+   - Click the green **"In Stock"** or red **"Out of Stock"** button next to any piece. Changes take effect instantly in the boutique catalog.
+5. **To Edit Any Product Specifications:**
+   - Click the pencil icon next to any piece to open the **Full Product Editor**.
+   - Modify title, SKU, price, category, weave tag, fabric details, color, or photos, then tap **"Save Changes"**.
+6. **To Add a New Arrival:**
    - Tap **"Add Piece"** in the top tabs.
-   - Enter Title, SKU (e.g. `KZ-SR-045`), Category, Fabric Weave, and Price in ₹.
-   - Paste the high-resolution photo URL.
+   - The SKU is auto-suggested based on the chosen category (e.g. `KZ-SR-013`).
+   - Enter Title, Weave Tag, Fabric Details, Price, and Photo URL.
    - Click **"Save Piece to Catalog"**.
-5. **To Export Changes Permanently:**
-   - Tap **"Export JSON"** to download the latest `products.json` file.
+7. **To Manage Weave Tags:**
+   - Tap **"Fabric Tags & Weaves"** to inspect count per weave or batch-rename tags across the entire catalog.
+8. **To Export Changes Permanently:**
+   - Tap **"Export JSON"** in the top bar to download the updated `products.json` file.
    - Commit or copy this file to `/data/products.json` in your repository or hosting provider.
 
 ---
