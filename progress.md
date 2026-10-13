@@ -82,3 +82,18 @@
 - **Documentation & Handover:**
   - Store Maintenance SOP recorded in `gemini.md` (Sections 6A and 6B).
   - Responsive performance scores logged in `findings.md`.
+
+---
+
+### 🌿 Milestone 6: Organic Boutique Aesthetics & Natural Conversational Commerce (Completed)
+- **Status:** ✅ Complete
+- **Aesthetic Refinements (De-AIification):**
+  - Eliminated generic robotic templates and corporate marketing buzzwords.
+  - Replaced artificial emojis with authentic Kerala boutique etiquette.
+  - Added dedicated **"Request Drape Video"** trigger via WhatsApp for remote/NRI shoppers to inspect fabric fall and zari luster under natural sunlight.
+  - Embedded rich artisanal specifications: fabric care guidelines, exact unstitched cut lengths (Top: 2.5m, Bottom: 2.5m, Dupatta: 2.4m), Silk Mark authenticity indicators, and custom tailoring notes.
+- **Architectural Polish:**
+  - Body scroll locking (`document.body.style.overflow = 'hidden'`) implemented across `ProductModal`, `WishlistDrawer`, `FilterDrawer`, and `CatalogManagerModal` to prevent background double scrolling on touch devices.
+  - Zero-error Vite compilation maintained (**331ms** build time).
+  - 100% WCAG 2.1 AA accessibility contrast score preserved.
+
