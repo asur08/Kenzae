@@ -27,7 +27,7 @@ export const CategoryTabs: React.FC = () => {
   };
 
   return (
-    <div className="w-full border-b border-canvas-dark/60 bg-canvas/70 backdrop-blur-sm sticky top-[69px] md:top-[81px] z-30 py-2.5">
+    <div className="w-full border-b border-canvas-dark/60 bg-canvas/90 backdrop-blur-sm py-2.5 mb-2">
       <div className="container mx-auto px-4">
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
           {CATEGORIES.map((tab) => {

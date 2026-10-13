@@ -25,15 +25,22 @@
 
 ---
 
-### 🟠 Milestone 2: Schema Implementation & Inventory Link (Completed)
+### 🟠 Milestone 2: Schema Implementation & Inventory Link (Phase 2 Linkage Handshakes)
 - **Status:** ✅ Complete
-- **Actions Completed:**
-  - Authored `/data/products.json` containing 12 high-fashion ethnic items (Banarasi Katan Silk, Kasavu Organza, Raw Tussar, Kanjivaram Korvai, Chanderi Anarkali, Mulmul Ajrakh, Raw Silk, Chanderi Material, Linen Chikankari, Maheshwari Silk, Festive Kurthis).
-  - Created TypeScript types in `src/types/catalog.ts` strictly matching the schema in `gemini.md`.
-  - Created runtime validator in `src/data/catalogValidator.ts`.
-  - Created WhatsApp URL builder in `src/utils/whatsapp.ts`.
-  - Created Indian Rupee formatter in `src/utils/formatters.ts`.
-  - Created store configuration in `src/data/storeConfig.ts` with Mulanthuruthy Google Maps URL (`https://share.google/m6bQuE0vYpoVkI6oL`).
+- **Verification Passes (tools/):**
+  1. `tools/verify_whatsapp_integration.py`:
+     - Phone normalization (+91, leading 0, dashes, spaces) -> PASS
+     - Universal `wa.me` URL payload encoding -> PASS
+     - Desktop `web.whatsapp.com` and native app deep links -> PASS
+  2. `tools/validate_catalog_data.py`:
+     - Ingestion of `/data/products.json` -> 12 items verified
+     - All required fields (`id`, `sku`, `title`, `category`, `price`, `images`, `in_stock`) present -> PASS
+     - SKU pattern `^KZ-[A-Z]{2}-[0-9]{3,}$` -> 12/12 PASS
+     - Category enums matching `gemini.md` -> 12/12 PASS
+  3. `tools/verify_maps_integration.py`:
+     - Primary Google Maps Shortlink (`https://share.google/m6bQuE0vYpoVkI6oL`) -> PASS
+     - Universal Directions API endpoint (`google.com/maps/dir`) -> PASS
+     - iOS Apple Maps fallback (`maps.apple.com`) -> PASS
 
 ---
 

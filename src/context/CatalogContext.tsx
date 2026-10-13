@@ -2,6 +2,8 @@ import React, { createContext, useContext, useState, useEffect, useMemo } from '
 import { KenzaeProduct, CatalogFilterState } from '../types/catalog';
 import defaultProducts from '../../data/products.json';
 import { validateCatalog, validateProduct } from '../data/catalogValidator';
+import { useDebounce } from '../hooks/useDebounce';
+import { useFilteredCatalog } from '../hooks/useFilteredCatalog';
 
 interface CatalogContextType {
   products: KenzaeProduct[];
@@ -84,10 +86,52 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
   });
 
   const [filterState, setFilterState] = useState<CatalogFilterState>(initialFilterState);
-  const [selectedProduct, setSelectedProduct] = useState<KenzaeProduct | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<KenzaeProduct | null>(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const itemParam = params.get('item');
+      if (itemParam) {
+        const found = defaultProducts.find(
+          (p) =>
+            p.sku.toLowerCase() === itemParam.toLowerCase() ||
+            p.id.toLowerCase() === itemParam.toLowerCase()
+        );
+        if (found) return found as KenzaeProduct;
+      }
+    } catch {
+      // Fallback
+    }
+    return null;
+  });
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
   const [isManagerOpen, setIsManagerOpen] = useState(false);
+
+  // Debounced search query for smooth real-time input (implements Layer 2 hooks requirement)
+  const debouncedSearchQuery = useDebounce(filterState.searchQuery, 250);
+
+  // Deterministic filtered catalog using useFilteredCatalog hook (implements sop_catalog_filtering.md)
+  const filteredProducts = useFilteredCatalog(products, filterState, debouncedSearchQuery);
+
+  // Deep linking initial state sync (implements sop_deep_linking.md)
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const itemParam = params.get('item');
+      if (itemParam) {
+        const found = products.find(
+          (p) =>
+            p.sku.toLowerCase() === itemParam.toLowerCase() ||
+            p.id.toLowerCase() === itemParam.toLowerCase()
+        );
+        if (found) {
+          setSelectedProduct(found);
+        }
+      }
+    } catch (e) {
+      console.error('Failed to parse URL deep link', e);
+    }
+  }, [products]);
 
   // Sync wishlist to LocalStorage
   useEffect(() => {
@@ -147,64 +191,6 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const wishlistProducts = useMemo(() => {
     return products.filter((p) => wishlistIds.includes(p.id));
   }, [products, wishlistIds]);
-
-  // Filtered & Sorted products
-  const filteredProducts = useMemo(() => {
-    return products
-      .filter((p) => {
-        // Category filter
-        if (filterState.category !== 'All' && p.category !== filterState.category) {
-          return false;
-        }
-
-        // Subcategory filter
-        if (filterState.subCategory !== 'All' && p.subCategory !== filterState.subCategory) {
-          return false;
-        }
-
-        // Price filter
-        if (p.price > filterState.maxPrice) {
-          return false;
-        }
-
-        // In-stock only filter
-        if (filterState.inStockOnly && !p.in_stock) {
-          return false;
-        }
-
-        // Search query filter (search across title, sku, fabric, description, color)
-        if (filterState.searchQuery.trim()) {
-          const q = filterState.searchQuery.toLowerCase();
-          const matchTitle = p.title.toLowerCase().includes(q);
-          const matchSku = p.sku.toLowerCase().includes(q);
-          const matchFabric = (p.fabricDetails || '').toLowerCase().includes(q);
-          const matchDesc = (p.description || '').toLowerCase().includes(q);
-          const matchColor = (p.color || '').toLowerCase().includes(q);
-          const matchSub = (p.subCategory || '').toLowerCase().includes(q);
-
-          if (!matchTitle && !matchSku && !matchFabric && !matchDesc && !matchColor && !matchSub) {
-            return false;
-          }
-        }
-
-        return true;
-      })
-      .sort((a, b) => {
-        switch (filterState.sortBy) {
-          case 'price-asc':
-            return a.price - b.price;
-          case 'price-desc':
-            return b.price - a.price;
-          case 'newest':
-            return b.id.localeCompare(a.id);
-          case 'featured':
-          default:
-            if (a.isFeatured && !b.isFeatured) return -1;
-            if (!a.isFeatured && b.isFeatured) return 1;
-            return 0;
-        }
-      });
-  }, [products, filterState]);
 
   // Catalog Manager actions
   const addProduct = (newProduct: KenzaeProduct) => {
@@ -311,3 +297,5 @@ export const useCatalog = () => {
   }
   return context;
 };
+
+export default CatalogContext;
