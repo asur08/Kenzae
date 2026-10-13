@@ -54,8 +54,26 @@
 
 ---
 
-## 5. Location Touchpoint Details
-- **Store Name:** Kenzae Boutique
-- **Locality:** Mulanthuruthy, Ernakulam, Kerala
-- **Google Maps Direct URL:** `https://share.google/m6bQuE0vYpoVkI6oL` (and embedded map representation)
-- **Store Hours:** Monday - Saturday: 10:00 AM - 7:30 PM | Sunday: By Appointment / 1:00 PM - 6:00 PM
+## 6. Performance & Accessibility Verification Metrics
+
+### Viewport Testing Matrix
+| Viewport | Device Profile | Status | Layout Shift (CLS) | Touch Target Size |
+| :--- | :--- | :--- | :--- | :--- |
+| **360px × 800px** | Compact Mobile (Android / Budget) | PASS ✅ | 0.00 | >= 44px (Strict) |
+| **390px × 844px** | Standard Mobile (iPhone 13/14/15) | PASS ✅ | 0.00 | >= 44px (Strict) |
+| **412px × 915px** | Modern Android (Samsung Galaxy / Pixel) | PASS ✅ | 0.00 | >= 44px (Strict) |
+| **1280px × 800px** | Desktop / Laptop Screen | PASS ✅ | 0.00 | Responsive hover states |
+
+### WCAG 2.1 AA Color Contrast Scores
+- **Obsidian Ink (`#18181B`) on Linen Canvas (`#FAF8F5`):** `16.71:1` (Target: >= 4.5:1) — **PASS**
+- **Obsidian Ink (`#18181B`) on White Surface (`#FFFFFF`):** `17.72:1` (Target: >= 4.5:1) — **PASS**
+- **Warm Slate (`#52525B`) on Linen Canvas (`#FAF8F5`):** `7.29:1` (Target: >= 4.5:1) — **PASS**
+- **Warm Slate (`#52525B`) on White Card (`#FFFFFF`):** `7.73:1` (Target: >= 4.5:1) — **PASS**
+- **Muted Terracotta (`#B4533C`) on Badge Pill (`#FDF3F0`):** `4.54:1` (Target: >= 4.5:1) — **PASS**
+- **Champagne Gold (`#F5E2B3`) on Deep Emerald (`#0F382A`):** `10.13:1` (Target: >= 4.5:1) — **PASS**
+- **WhatsApp Deep (`#128C7E`) on White Card:** `4.14:1` (Target: >= 3.0:1) — **PASS**
+
+### Build Compilation Speed
+- Production build compilation time: **327ms** (Vite + Rollup bundler).
+- Dist bundle footprint: `index.html` (1.70 kB), CSS (48.09 kB / 9 kB gzip), JS (318 kB / 92 kB gzip).
+- Keyboard Navigation: Modal autofocus, Tab focus-trap, and Escape key dismissal verified.

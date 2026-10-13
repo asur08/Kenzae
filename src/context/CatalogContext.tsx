@@ -113,25 +113,25 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
   // Deterministic filtered catalog using useFilteredCatalog hook (implements sop_catalog_filtering.md)
   const filteredProducts = useFilteredCatalog(products, filterState, debouncedSearchQuery);
 
-  // Deep linking initial state sync (implements sop_deep_linking.md)
+  // Deep linking URL state synchronization (implements sop_deep_linking.md)
   useEffect(() => {
     try {
-      const params = new URLSearchParams(window.location.search);
-      const itemParam = params.get('item');
-      if (itemParam) {
-        const found = products.find(
-          (p) =>
-            p.sku.toLowerCase() === itemParam.toLowerCase() ||
-            p.id.toLowerCase() === itemParam.toLowerCase()
-        );
-        if (found) {
-          setSelectedProduct(found);
+      const currentUrl = new URL(window.location.href);
+      if (selectedProduct) {
+        currentUrl.searchParams.set('item', selectedProduct.sku);
+        window.history.replaceState({}, '', currentUrl.toString());
+        document.title = `${selectedProduct.title} | Kenzae Boutique`;
+      } else {
+        if (currentUrl.searchParams.has('item')) {
+          currentUrl.searchParams.delete('item');
+          window.history.replaceState({}, '', currentUrl.pathname + (currentUrl.search ? currentUrl.search : ''));
+          document.title = 'Kenzae Boutique | Designer Ethnic Wear & Couture (Mulanthuruthy)';
         }
       }
     } catch (e) {
-      console.error('Failed to parse URL deep link', e);
+      console.error('Failed to sync URL state', e);
     }
-  }, [products]);
+  }, [selectedProduct]);
 
   // Sync wishlist to LocalStorage
   useEffect(() => {

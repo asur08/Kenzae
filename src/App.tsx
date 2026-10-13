@@ -2,7 +2,6 @@ import React from 'react';
 import { CatalogProvider, useCatalog } from './context/CatalogContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { CategoryTabs } from './components/catalog/CategoryTabs';
 import { FilterBar } from './components/catalog/FilterBar';
 import { ProductGrid } from './components/ProductGrid';
 import { ProductModal } from './components/ProductModal';
@@ -22,34 +21,31 @@ const CatalogContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-canvas text-obsidian">
-      {/* Navigation Bar */}
+    <div className="min-h-screen flex flex-col bg-[#FAF8F5] text-obsidian">
+      {/* Sticky Header with Frosted Glass & Centered Luxury Wordmark */}
       <Navbar />
 
-      {/* Hero Showcase */}
+      {/* Editorial Hero with Raw Mango/Sabyasachi inspired aesthetic */}
       <Hero />
 
       {/* Main Catalog Section */}
       <main id="catalog-section" className="flex-1 py-6 sm:py-10">
-        {/* Sticky Category Tabs */}
-        <CategoryTabs />
-
-        <div className="container mx-auto px-4 mt-4">
-          {/* Search, Filter Bar & Sort Controls */}
+        <div className="container mx-auto px-4">
+          {/* Unified Sticky Filter Bar: Category Pills, Price Chips, Search & Results */}
           <FilterBar />
 
-          {/* Product Grid with Empty-State Handling */}
+          {/* 3:4 Crop Product Grid with Empty-State Handling */}
           <ProductGrid products={filteredProducts} />
         </div>
       </main>
 
-      {/* Flagship Boutique Location in Mulanthuruthy */}
+      {/* Store Visit & Responsive Google Map centered on Mulanthuruthy */}
       <StoreLocator />
 
-      {/* Footer */}
+      {/* Boutique Footer */}
       <Footer />
 
-      {/* Overlays, Drawers & Deep-Linked Modal */}
+      {/* Overlays: Quick-View Modal (Deep-Linked), Wishlist, Filters, Staff CMS */}
       <ProductModal />
       <WishlistDrawer />
       <FilterDrawer />

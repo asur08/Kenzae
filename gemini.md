@@ -135,6 +135,58 @@
   - Display / Headlines: Serif with high elegance (e.g., *Cormorant Garamond* / *Cinzel* / *Playfair Display*).
   - Body & UI: Clean, legible geometric sans-serif (e.g., *Plus Jakarta Sans* / *Inter*).
 - **Behavioral Constraints:**
-  - No complex checkout or cart barriers — boutique customers in Kerala prefer direct personal consultation and instant WhatsApp booking.
-  - Instant tactile feedback on filters, bookmarking, and image galleries.
-  - Zero layout shift with aspect-ratio enforced responsive image holders.
+## 6. Boutique Owner Store Maintenance SOP (No Developer Required)
+
+This Standard Operating Procedure guides Kenzae Boutique staff in Mulanthuruthy on updating catalog inventory, adjusting prices, or adding new festive arrivals without developer assistance.
+
+### Method A: Via In-Catalog Staff Portal (Recommended for Daily Store Operations)
+1. Open the Kenzae Boutique catalog in any desktop or mobile browser.
+2. In the top announcement ribbon, click the **"Staff Portal"** icon.
+3. **To Toggle Stock Availability:**
+   - Find the piece in the Inventory list.
+   - Click the green **"In Stock"** or red **"Out of Stock"** pill. Changes take effect instantly in the boutique catalog.
+4. **To Add a New Arrival:**
+   - Tap **"Add Piece"** in the top tabs.
+   - Enter Title, SKU (e.g. `KZ-SR-045`), Category, Fabric Weave, and Price in ₹.
+   - Paste the high-resolution photo URL.
+   - Click **"Save Piece to Catalog"**.
+5. **To Export Changes Permanently:**
+   - Tap **"Export JSON"** to download the latest `products.json` file.
+   - Commit or copy this file to `/data/products.json` in your repository or hosting provider.
+
+---
+
+### Method B: Directly Editing `/data/products.json`
+If editing the file directly in a text editor or GitHub:
+
+```json
+{
+  "id": "kz-sr-015",
+  "sku": "KZ-SR-015",
+  "title": "Pure Tissue Kanjivaram Silk Sari in Champagne Gold",
+  "category": "Saris",
+  "subCategory": "Kanjivaram Silk",
+  "price": 16800,
+  "currency": "INR",
+  "description": "Lustrous metallic tissue silk body with traditional peacock pallu.",
+  "fabricDetails": "100% Pure Mulberry Silk with metallic zari warp, 5.5m + 0.8m blouse piece",
+  "color": "Champagne Gold & Coral",
+  "images": [
+    "https://your-photo-cdn.com/sari-front.jpg",
+    "https://your-photo-cdn.com/sari-pallu.jpg"
+  ],
+  "in_stock": true,
+  "isFeatured": true,
+  "whatsappMessage": "Namaste Kenzae! Inquiring about Pure Tissue Kanjivaram (KZ-SR-015) at ₹16,800."
+}
+```
+
+#### Strict Rules to Prevent Breakages:
+1. **SKU Format:** Must follow `KZ-XX-XXX` (e.g., `KZ-SR-005` for Saris, `KZ-CH-015` for Churidars, `KZ-DM-025` for Dress Materials, `KZ-KT-035` for Kurthis).
+2. **Category Enum:** Must exactly match one of:
+   - `"Saris"`
+   - `"Churidars & Salwar Sets"`
+   - `"Unstitched Dress Materials"`
+   - `"Kurthis & Ready-to-Wear"`
+3. **Prices:** Numerical integer only, without commas or currency symbols (e.g., `12850`, NOT `"₹12,850"`).
+4. **Validation Check:** Run `python3 tools/validate_catalog_data.py` to verify 100% compliance before committing.

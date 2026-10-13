@@ -8,10 +8,27 @@ export default {
     extend: {
       colors: {
         canvas: {
-          DEFAULT: '#FAF8F5',
-          subtle: '#F3EFE6',
-          muted: '#EBE5D8',
-          dark: '#E2D9C8',
+          DEFAULT: '#FAF8F5',     // Linen / Warm Alabaster
+          surface: '#FFFFFF',     // Pure White Card Surface
+          subtle: '#F5F2EB',
+          border: '#EFECE6',
+        },
+        obsidian: {
+          DEFAULT: '#18181B',     // Deep Charcoal Obsidian (Headings)
+          slate: '#52525B',       // Warm Slate (Descriptions/Body)
+          muted: '#71717A',
+        },
+        brass: {
+          DEFAULT: '#C5A880',     // Muted Kerala Temple Brass
+          dark: '#8C6D37',
+          light: '#DFCFB7',
+          50: '#F9F6F0',
+        },
+        terracotta: {
+          DEFAULT: '#B4533C',     // Warm Terracotta (Status Pills)
+          dark: '#933E2B',
+          light: '#E48873',
+          50: '#FDF3F0',
         },
         emerald: {
           950: '#071B14',
@@ -19,27 +36,7 @@ export default {
           850: '#0F382A',
           800: '#134635',
           700: '#1D604A',
-          600: '#288063',
-          100: '#E2F3EC',
           50: '#F1F9F5',
-        },
-        gold: {
-          300: '#F2DDA4',
-          400: '#E5C768',
-          500: '#D4AF37',
-          600: '#B89324',
-          700: '#967417',
-          50: '#FAF6E9',
-        },
-        obsidian: {
-          DEFAULT: '#1A1A1A',
-          light: '#2D2D2D',
-          muted: '#5A564F',
-        },
-        terracotta: {
-          500: '#9B3D3D',
-          600: '#832E2E',
-          50: '#FDF3F3',
         },
         whatsapp: {
           DEFAULT: '#25D366',
@@ -48,13 +45,13 @@ export default {
         }
       },
       fontFamily: {
-        serif: ['"Cormorant Garamond"', 'Cinzel', 'Playfair Display', 'Georgia', 'serif'],
+        serif: ['"Cormorant Garamond"', '"Playfair Display"', 'Cinzel', 'Georgia', 'serif'],
         sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
       boxShadow: {
-        'luxury': '0 10px 30px -10px rgba(11, 40, 30, 0.08), 0 4px 6px -2px rgba(11, 40, 30, 0.04)',
-        'luxury-hover': '0 20px 40px -15px rgba(11, 40, 30, 0.16), 0 8px 12px -4px rgba(11, 40, 30, 0.06)',
-        'gold-glow': '0 0 25px -5px rgba(212, 175, 55, 0.25)',
+        'luxury': '0 10px 30px -10px rgba(24, 24, 27, 0.06), 0 4px 6px -2px rgba(24, 24, 27, 0.03)',
+        'luxury-hover': '0 20px 40px -15px rgba(24, 24, 27, 0.12), 0 8px 12px -4px rgba(24, 24, 27, 0.05)',
+        'brass-glow': '0 0 20px -5px rgba(197, 168, 128, 0.35)',
       }
     },
   },

@@ -9,12 +9,16 @@
   
   body {
     background-color: #FAF8F5;
-    color: #1A1A1A;
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    color: #18181B;
+    font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
   }
 
   h1, h2, h3, .font-serif {
-    font-family: 'Cormorant Garamond', 'Cinzel', serif;
+    font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
   }
 }
 
