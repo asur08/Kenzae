@@ -8,42 +8,58 @@ export function getCleanWhatsAppNumber(rawNumber?: string): string {
 }
 
 /**
- * Generates direct WhatsApp Click-to-Chat URL for a single product inquiry/reservation
+ * Generates direct WhatsApp Click-to-Chat URL for product reservation/inquiry.
+ * Natural, polite conversational tone reflecting authentic Kerala boutique etiquette.
  */
 export function generateProductWhatsAppUrl(
   product: KenzaeProduct,
-  customMessage?: string,
+  customNote?: string,
   phoneNumber?: string
 ): string {
   const phone = getCleanWhatsAppNumber(phoneNumber);
-  
-  if (product.whatsappMessage && !customMessage) {
-    const text = encodeURIComponent(product.whatsappMessage);
-    return `https://wa.me/${phone}?text=${text}`;
-  }
 
-  const message = [
-    `Namaste Kenzae Boutique! ✨`,
+  const lines = [
+    `Hello Kenzae Boutique,`,
     ``,
-    `I would like to inquire about reserving this piece from your catalog:`,
-    `👗 *Item:* ${product.title}`,
-    `🏷️ *SKU:* ${product.sku}`,
-    `💰 *Price:* ${formatCurrencyINR(product.price)}`,
-    product.fabricDetails ? `🧵 *Fabric:* ${product.fabricDetails}` : '',
+    `I saw this piece on your digital catalog and would like to check availability:`,
+    `• *${product.title}*`,
+    `• SKU: ${product.sku}`,
+    `• Price: ${formatCurrencyINR(product.price)}`,
+    product.fabricDetails ? `• Fabric: ${product.fabricDetails}` : '',
     ``,
-    `📍 *Store Pickup:* Mulanthuruthy Boutique / Home Courier`,
-    ``,
-    `Could you please confirm availability and provide details for reservation?`,
-    customMessage ? `\nNote: ${customMessage}` : ''
-  ]
-    .filter(Boolean)
-    .join('\n');
+    `Could you please let me know if this is currently available at your Mulanthuruthy store?`,
+    customNote ? `\nNote: ${customNote}` : '',
+    `\nThank you!`
+  ].filter(Boolean);
 
-  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${phone}?text=${encodeURIComponent(lines.join('\n'))}`;
 }
 
 /**
- * Generates WhatsApp Click-to-Chat URL for inquiring about multiple shortlisted items
+ * Generates WhatsApp Click-to-Chat URL specifically requesting a fabric drape video.
+ * Highly requested by NRI and distant shoppers in Kerala wanting to see sari fall and zari luster.
+ */
+export function generateFabricVideoWhatsAppUrl(
+  product: KenzaeProduct,
+  phoneNumber?: string
+): string {
+  const phone = getCleanWhatsAppNumber(phoneNumber);
+
+  const lines = [
+    `Hello Kenzae,`,
+    ``,
+    `Could you please share a quick fabric video showing the drape and border work for:`,
+    `• *${product.title}* (${product.sku})`,
+    `• Listed Price: ${formatCurrencyINR(product.price)}`,
+    ``,
+    `I would love to see how the fabric falls in natural light. Thank you!`
+  ];
+
+  return `https://wa.me/${phone}?text=${encodeURIComponent(lines.join('\n'))}`;
+}
+
+/**
+ * Generates WhatsApp Click-to-Chat URL for inquiring about shortlisted items.
  */
 export function generateWishlistWhatsAppUrl(
   products: KenzaeProduct[],
@@ -60,36 +76,40 @@ export function generateWishlistWhatsAppUrl(
   const productList = products
     .map(
       (item, idx) =>
-        `${idx + 1}. *${item.title}* (SKU: ${item.sku}) — ${formatCurrencyINR(item.price)}`
+        `${idx + 1}. *${item.title}* (${item.sku}) — ${formatCurrencyINR(item.price)}`
     )
     .join('\n');
 
-  const message = [
-    `Namaste Kenzae Boutique! ✨`,
+  const lines = [
+    `Hello Kenzae Boutique,`,
     ``,
-    `I have shortlisted the following ${products.length} piece(s) from your digital catalog:`,
+    `I have shortlisted these ${products.length} piece(s) from your catalog:`,
     ``,
     productList,
     ``,
-    `🏷️ *Total Estimated Value:* ${formatCurrencyINR(totalPrice)}`,
+    `• *Total Estimated Value:* ${formatCurrencyINR(totalPrice)}`,
     ``,
-    `Could you please check availability for these items at your Mulanthuruthy boutique? I would like to schedule a trial / reserve them.`
-  ].join('\n');
+    `Could you please let me know which of these are available for trial or reservation at your Mulanthuruthy boutique?`,
+    ``,
+    `Thank you!`
+  ];
 
-  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${phone}?text=${encodeURIComponent(lines.join('\n'))}`;
 }
 
 /**
- * Generates WhatsApp Click-to-Chat URL for booking a trial / boutique consultation
+ * Generates WhatsApp Click-to-Chat URL for booking a trial / bridal consultation.
  */
 export function generateStoreVisitWhatsAppUrl(phoneNumber?: string): string {
   const phone = getCleanWhatsAppNumber(phoneNumber);
-  const message = [
-    `Namaste Kenzae Boutique! ✨`,
+  const lines = [
+    `Hello Kenzae Boutique,`,
     ``,
-    `I would like to schedule a boutique visit / bridal consultation at your Mulanthuruthy store.`,
-    `Could you please confirm your available slots and boutique timings?`
-  ].join('\n');
+    `I would like to visit your boutique in Mulanthuruthy for a trial / bridal consultation.`,
+    `Could you please share convenient timings and available slots this week?`,
+    ``,
+    `Thank you!`
+  ];
 
-  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${phone}?text=${encodeURIComponent(lines.join('\n'))}`;
 }

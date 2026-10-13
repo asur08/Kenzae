@@ -45,6 +45,17 @@ export const CatalogManagerModal: React.FC = () => {
 
   const [importJsonText, setImportJsonText] = useState('');
 
+  React.useEffect(() => {
+    if (isManagerOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isManagerOpen]);
+
   if (!isManagerOpen) return null;
 
   const showNotice = (text: string, isError = false) => {

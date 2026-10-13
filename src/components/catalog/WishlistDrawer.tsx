@@ -14,6 +14,17 @@ export const WishlistDrawer: React.FC = () => {
     setSelectedProduct,
   } = useCatalog();
 
+  React.useEffect(() => {
+    if (isWishlistOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isWishlistOpen]);
+
   if (!isWishlistOpen) return null;
 
   const totalValue = wishlistProducts.reduce((sum, item) => sum + item.price, 0);

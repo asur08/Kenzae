@@ -7,15 +7,16 @@ import {
   Copy, 
   Check, 
   MapPin, 
-  ShieldCheck, 
   Sparkles,
   ChevronLeft,
   ChevronRight,
-  ZoomIn
+  ZoomIn,
+  Video,
+  Scissors
 } from 'lucide-react';
 import { useCatalog } from '../context/CatalogContext';
 import { formatCurrencyINR } from '../utils/formatters';
-import { generateProductWhatsAppUrl } from '../utils/whatsapp';
+import { generateProductWhatsAppUrl, generateFabricVideoWhatsAppUrl } from '../utils/whatsapp';
 import { KENZAE_STORE_CONFIG } from '../data/storeConfig';
 import { FabricBadge } from './FabricBadge';
 
@@ -29,6 +30,18 @@ export const ProductModal: React.FC = () => {
 
   const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Lock background scroll when modal is active
+  useEffect(() => {
+    if (selectedProduct) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedProduct]);
 
   // Reset state and trap focus on modal open
   useEffect(() => {
@@ -114,7 +127,6 @@ export const ProductModal: React.FC = () => {
       try {
         await navigator.share(shareData);
       } catch {
-        // Fallback to clipboard
         handleCopyLink();
       }
     } else {
@@ -128,6 +140,11 @@ export const ProductModal: React.FC = () => {
       selectedProduct,
       customNote.trim() ? customNote.trim() : undefined
     );
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleRequestVideo = () => {
+    const url = generateFabricVideoWhatsAppUrl(selectedProduct);
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
@@ -147,11 +164,10 @@ export const ProductModal: React.FC = () => {
     );
   };
 
-  // Derive specification grid details
   const isUnstitched = selectedProduct.category === 'Unstitched Dress Materials';
   const careInstructions = selectedProduct.category === 'Saris' 
-    ? 'Dry clean only. Store wrapped in pure cotton or muslin cloth.'
-    : 'Gentle hand wash in cold water or mild dry clean.';
+    ? 'Dry clean only. Store folded in soft muslin cloth.'
+    : 'Gentle hand wash in cold water with mild detergent or dry clean.';
 
   return (
     <div 
@@ -184,7 +200,7 @@ export const ProductModal: React.FC = () => {
         {/* Modal Scrollable Body */}
         <div className="overflow-y-auto flex-1 grid grid-cols-1 md:grid-cols-12 gap-0">
           
-          {/* Left Column: Image Carousel with Weave Close-up Zoom (md:col-span-6) */}
+          {/* Left Column: Image Carousel with Drape Zoom (md:col-span-6) */}
           <div className="md:col-span-6 bg-canvas-subtle p-4 sm:p-6 flex flex-col justify-between border-b md:border-b-0 md:border-r border-canvas-border">
             
             {/* Primary Main Image Frame */}
@@ -196,6 +212,10 @@ export const ProductModal: React.FC = () => {
               <img
                 src={selectedProduct.images[activeImageIndex] || selectedProduct.images[0]}
                 alt={selectedProduct.title}
+                onError={(e) => {
+                  // Fallback to primary image if thumbnail fails
+                  (e.target as HTMLImageElement).src = selectedProduct.images[0];
+                }}
                 className={`w-full h-full object-cover object-top transition-transform duration-700 ease-out ${
                   isZoomed ? 'scale-150' : 'group-hover:scale-105'
                 }`}
@@ -204,7 +224,7 @@ export const ProductModal: React.FC = () => {
               {/* Zoom Indicator Pill */}
               <div className="absolute bottom-3 right-3 px-2 py-1 rounded bg-black/60 backdrop-blur-md text-white text-[10px] font-medium flex items-center gap-1 pointer-events-none">
                 <ZoomIn className="w-3 h-3" />
-                <span>{isZoomed ? 'Zoomed 1.5x' : 'Click to Zoom Drape'}</span>
+                <span>{isZoomed ? 'Zoomed 1.5x' : 'Click to Inspect Drape'}</span>
               </div>
 
               {/* Prev/Next arrows if multiple images */}
@@ -270,10 +290,15 @@ export const ProductModal: React.FC = () => {
               </div>
             )}
 
-            {/* Authenticity Guarantee Note */}
-            <div className="mt-4 p-3 rounded-lg bg-emerald-950/5 border border-emerald-900/10 text-[11px] text-obsidian-slate flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-900 shrink-0" />
-              <span>Certified Handloom Silk & Authentic Weaves • Kenzae Assurance</span>
+            {/* Tailoring & Assurance Note */}
+            <div className="mt-4 p-3 rounded-lg bg-emerald-950/5 border border-emerald-900/10 text-[11px] text-obsidian-slate space-y-1.5">
+              <div className="flex items-center gap-1.5 font-medium text-emerald-950">
+                <Scissors className="w-3.5 h-3.5 text-brass-dark" />
+                <span>Boutique Tailoring Available</span>
+              </div>
+              <p className="text-[10px] text-obsidian-muted">
+                Custom blouse stitching, lining attachment, and fall-pico edging can be arranged directly with our Mulanthuruthy studio.
+              </p>
             </div>
           </div>
 
@@ -368,7 +393,7 @@ export const ProductModal: React.FC = () => {
               {selectedProduct.description && (
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-obsidian-slate mb-1">
-                    Description & Drape
+                    Curator Notes
                   </h4>
                   <p className="text-xs sm:text-sm text-obsidian-slate leading-relaxed font-light">
                     {selectedProduct.description}
@@ -416,7 +441,7 @@ export const ProductModal: React.FC = () => {
               {selectedProduct.in_stock && (
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-obsidian-slate mb-1">
-                    Add custom note for boutique (optional):
+                    Add specific question or stitching request:
                   </label>
                   <input
                     type="text"
@@ -448,14 +473,26 @@ export const ProductModal: React.FC = () => {
                 </span>
               </button>
 
-              {/* Store Directions Button */}
-              <button
-                onClick={handleOpenDirections}
-                className="w-full py-2.5 px-4 rounded-full bg-canvas-subtle hover:bg-canvas-border text-obsidian font-medium text-xs tracking-wider uppercase transition-colors flex items-center justify-center gap-1.5 border border-canvas-border"
-              >
-                <MapPin className="w-4 h-4 text-brass-dark" />
-                <span>Directions to Kenzae (Mulanthuruthy)</span>
-              </button>
+              <div className="grid grid-cols-2 gap-2">
+                {/* Secondary Button: Request Fabric Video */}
+                <button
+                  onClick={handleRequestVideo}
+                  className="py-2.5 px-3 rounded-full bg-canvas-subtle hover:bg-canvas-border text-obsidian font-medium text-xs tracking-wider uppercase transition-colors flex items-center justify-center gap-1.5 border border-canvas-border truncate"
+                  title="Request a WhatsApp video showing the fabric fall and zari"
+                >
+                  <Video className="w-3.5 h-3.5 text-brass-dark shrink-0" />
+                  <span className="truncate">Request Drape Video</span>
+                </button>
+
+                {/* Secondary Button: Store Directions */}
+                <button
+                  onClick={handleOpenDirections}
+                  className="py-2.5 px-3 rounded-full bg-canvas-subtle hover:bg-canvas-border text-obsidian font-medium text-xs tracking-wider uppercase transition-colors flex items-center justify-center gap-1.5 border border-canvas-border truncate"
+                >
+                  <MapPin className="w-3.5 h-3.5 text-brass-dark shrink-0" />
+                  <span className="truncate">Directions</span>
+                </button>
+              </div>
             </div>
 
           </div>

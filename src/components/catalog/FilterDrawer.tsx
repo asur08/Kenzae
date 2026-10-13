@@ -22,6 +22,17 @@ export const FilterDrawer: React.FC = () => {
     resetFilters,
   } = useCatalog();
 
+  React.useEffect(() => {
+    if (isFilterDrawerOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isFilterDrawerOpen]);
+
   if (!isFilterDrawerOpen) return null;
 
   return (
