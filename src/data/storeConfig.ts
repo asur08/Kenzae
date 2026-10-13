@@ -13,5 +13,6 @@ export const KENZAE_STORE_CONFIG: StoreContactInfo = {
   whatsappNumber: "919447000000", // Boutique WhatsApp business line (country code 91)
   phoneDisplay: "+91 94470 00000",
   timings: "Mon – Sat: 10:00 AM – 7:30 PM | Sun: 1:00 PM – 6:00 PM",
-  instagramHandle: "@kenzaeboutique"
+  instagramHandle: "@kenzaeboutique",
+  staffPasscode: "kenzae2026"
 };

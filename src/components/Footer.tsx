@@ -138,10 +138,25 @@ export const Footer: React.FC = () => {
           <div>
             © {new Date().getFullYear()} {KENZAE_STORE_CONFIG.storeName}, Mulanthuruthy. All rights reserved.
           </div>
-          <div className="flex items-center gap-1 text-[11px]">
-            <span>Crafted with</span>
-            <Heart className="w-3 h-3 text-gold-400 fill-current inline" />
-            <span>for Kerala Fashion & Couture</span>
+          <div className="flex items-center gap-4 text-[11px]">
+            <a
+              href="/staff"
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState({}, '', '/staff');
+                window.dispatchEvent(new PopStateEvent('popstate'));
+              }}
+              className="text-canvas/30 hover:text-canvas/70 transition-colors tracking-wider"
+              title="Kenzae Boutique Staff Portal"
+            >
+              Staff Access
+            </a>
+            <span className="text-canvas/20">•</span>
+            <div className="flex items-center gap-1">
+              <span>Crafted with</span>
+              <Heart className="w-3 h-3 text-gold-400 fill-current inline" />
+              <span>for Kerala Fashion & Couture</span>
+            </div>
           </div>
         </div>
 

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { CatalogProvider, useCatalog } from './context/CatalogContext';
+import { StaffAuthProvider } from './context/StaffAuthContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { FilterBar } from './components/catalog/FilterBar';
@@ -8,12 +9,12 @@ import { ProductModal } from './components/ProductModal';
 import { WishlistDrawer } from './components/catalog/WishlistDrawer';
 import { FilterDrawer } from './components/catalog/FilterDrawer';
 import { StoreLocator } from './components/StoreLocator';
-import { CatalogManagerModal } from './components/admin/CatalogManagerModal';
 import { Footer } from './components/Footer';
+import { StaffPortalPage } from './components/staff/StaffPortalPage';
 import { MessageCircle } from 'lucide-react';
 import { generateStoreVisitWhatsAppUrl } from './utils/whatsapp';
 
-const CatalogContent: React.FC = () => {
+const CustomerStorefront: React.FC = () => {
   const { filteredProducts } = useCatalog();
 
   const handleFloatingWhatsApp = () => {
@@ -42,14 +43,13 @@ const CatalogContent: React.FC = () => {
       {/* Store Visit & Responsive Google Map centered on Mulanthuruthy */}
       <StoreLocator />
 
-      {/* Boutique Footer */}
+      {/* Boutique Footer with subtle Staff Access link */}
       <Footer />
 
-      {/* Overlays: Quick-View Modal (Deep-Linked), Wishlist, Filters, Staff CMS */}
+      {/* Overlays: Quick-View Modal (Deep-Linked), Wishlist, Filters */}
       <ProductModal />
       <WishlistDrawer />
       <FilterDrawer />
-      <CatalogManagerModal />
 
       {/* Floating Mobile WhatsApp Quick Button */}
       <div className="fixed bottom-5 right-5 z-30 sm:hidden">
@@ -65,10 +65,45 @@ const CatalogContent: React.FC = () => {
   );
 };
 
+const MainRouter: React.FC = () => {
+  const [currentPath, setCurrentPath] = useState<string>(() => {
+    return window.location.pathname;
+  });
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const navigateTo = (path: string) => {
+    window.history.pushState({}, '', path);
+    setCurrentPath(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Route: /staff or #staff
+  const isStaffRoute = 
+    currentPath === '/staff' || 
+    currentPath.startsWith('/staff/') || 
+    window.location.hash === '#staff';
+
+  if (isStaffRoute) {
+    return <StaffPortalPage onReturnToStore={() => navigateTo('/')} />;
+  }
+
+  return <CustomerStorefront />;
+};
+
 export function App() {
   return (
     <CatalogProvider>
-      <CatalogContent />
+      <StaffAuthProvider>
+        <MainRouter />
+      </StaffAuthProvider>
     </CatalogProvider>
   );
 }

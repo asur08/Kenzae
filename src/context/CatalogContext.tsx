@@ -34,6 +34,8 @@ interface CatalogContextType {
   setIsManagerOpen: (isOpen: boolean) => void;
   addProduct: (product: KenzaeProduct) => { success: boolean; error?: string };
   updateProduct: (product: KenzaeProduct) => { success: boolean; error?: string };
+  updateProductPrice: (id: string, newPrice: number) => { success: boolean; error?: string };
+  renameTag: (oldTag: string, newTag: string) => { success: boolean; count: number };
   deleteProduct: (id: string) => void;
   resetToDefaultCatalog: () => void;
   exportCatalogJSON: () => void;
@@ -219,6 +221,41 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
     return { success: true };
   };
 
+  const updateProductPrice = (id: string, newPrice: number) => {
+    if (typeof newPrice !== 'number' || isNaN(newPrice) || newPrice <= 0) {
+      return { success: false, error: 'Price must be a valid positive number.' };
+    }
+    const target = products.find((p) => p.id === id);
+    if (!target) {
+      return { success: false, error: 'Product not found.' };
+    }
+    const updatedProd: KenzaeProduct = {
+      ...target,
+      price: Math.round(newPrice),
+    };
+    return updateProduct(updatedProd);
+  };
+
+  const renameTag = (oldTag: string, newTag: string) => {
+    if (!oldTag || !newTag || oldTag.trim() === newTag.trim()) {
+      return { success: false, count: 0 };
+    }
+    const trimmedOld = oldTag.trim().toLowerCase();
+    const trimmedNew = newTag.trim();
+    let count = 0;
+    const updated = products.map((p) => {
+      if (p.subCategory && p.subCategory.trim().toLowerCase() === trimmedOld) {
+        count++;
+        return { ...p, subCategory: trimmedNew };
+      }
+      return p;
+    });
+    if (count > 0) {
+      saveProducts(updated);
+    }
+    return { success: true, count };
+  };
+
   const deleteProduct = (id: string) => {
     const updated = products.filter((p) => p.id !== id);
     saveProducts(updated);
@@ -278,6 +315,8 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
         setIsManagerOpen,
         addProduct,
         updateProduct,
+        updateProductPrice,
+        renameTag,
         deleteProduct,
         resetToDefaultCatalog,
         exportCatalogJSON,

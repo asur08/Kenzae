@@ -42,4 +42,5 @@ export interface StoreContactInfo {
   phoneDisplay: string;
   timings: string;
   instagramHandle: string;
+  staffPasscode?: string;
 }

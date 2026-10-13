@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, MapPin, MessageCircle, SlidersHorizontal, Settings } from 'lucide-react';
+import { Heart, MapPin, MessageCircle, SlidersHorizontal } from 'lucide-react';
 import { useCatalog } from '../context/CatalogContext';
 import { KENZAE_STORE_CONFIG } from '../data/storeConfig';
 import { generateStoreVisitWhatsAppUrl } from '../utils/whatsapp';
@@ -9,7 +9,6 @@ export const Navbar: React.FC = () => {
     wishlistIds, 
     setIsWishlistOpen, 
     setIsFilterDrawerOpen, 
-    setIsManagerOpen 
   } = useCatalog();
 
   const handleWhatsAppConsult = () => {
@@ -42,18 +41,10 @@ export const Navbar: React.FC = () => {
             <button 
               onClick={handleDirections}
               className="flex items-center gap-1 text-brass-light hover:text-white transition-colors"
+              title="Locate Kenzae Boutique in Mulanthuruthy"
             >
               <MapPin className="w-3 h-3 text-brass" />
               <span>Location Pin</span>
-            </button>
-            <span className="text-brass/40">•</span>
-            <button
-              onClick={() => setIsManagerOpen(true)}
-              className="flex items-center gap-1 text-brass-light/80 hover:text-white transition-colors"
-              title="Catalog Manager (Staff CMS Mode)"
-            >
-              <Settings className="w-3 h-3" />
-              <span className="hidden md:inline">Staff Portal</span>
             </button>
           </div>
         </div>
