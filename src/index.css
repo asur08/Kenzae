@@ -1,0 +1,60 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    background-color: #FAF8F5;
+    color: #1A1A1A;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: 'Cormorant Garamond', 'Cinzel', serif;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for clean horizontal swipe on mobile */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #D4AF37 0%, #F2DDA4 50%, #B89324 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gold-gradient-bg {
+    background: linear-gradient(135deg, #D4AF37 0%, #C5A059 100%);
+  }
+
+  .emerald-gradient-bg {
+    background: linear-gradient(145deg, #0B281E 0%, #0F382A 60%, #1A4C3B 100%);
+  }
+}
+
+/* Image shimmer loading effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-placeholder {
+  background: linear-gradient(90deg, #F3EFE6 25%, #FAF8F5 50%, #F3EFE6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}

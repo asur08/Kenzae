@@ -1,0 +1,231 @@
+[
+  {
+    "id": "kz-sr-001",
+    "sku": "KZ-SR-001",
+    "title": "Royal Katan Banarasi Silk Sari in Emerald & Antique Gold Zari",
+    "category": "Saris",
+    "subCategory": "Banarasi Katan Silk",
+    "price": 12850,
+    "currency": "INR",
+    "description": "Exquisite handwoven Banarasi Katan silk sari featuring intricate kadhwa floral jaal work in rich antique gold zari. Accented with a heavy pallu and contrasting designer blouse piece.",
+    "fabricDetails": "100% Pure Katan Silk, Handwoven Kadwa Zari, 5.5m Sari with 0.8m Blouse Piece",
+    "color": "Regal Emerald Green",
+    "images": [
+      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "in_stock": true,
+    "isFeatured": true,
+    "whatsappMessage": "Namaste Kenzae! I would like to reserve the Royal Katan Banarasi Silk Sari (KZ-SR-001) priced at ₹12,850. Please confirm availability."
+  },
+  {
+    "id": "kz-sr-002",
+    "sku": "KZ-SR-002",
+    "title": "Kerala Kasavu Organza Sari with Handcrafted Temple Border",
+    "category": "Saris",
+    "subCategory": "Organza & Handloom",
+    "price": 6450,
+    "currency": "INR",
+    "description": "A contemporary tribute to Kerala's timeless tradition. Lightweight sheer organza drape adorned with fine hand-woven kasavu borders and delicate floral thread motifs.",
+    "fabricDetails": "Fine Silk Organza with Pure Zari Border, Includes unstitched brocade blouse piece",
+    "color": "Ivory Gold & Muted Sandal",
+    "images": [
+      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "in_stock": true,
+    "isFeatured": true,
+    "whatsappMessage": "Namaste Kenzae! I am inquiring about the Kerala Kasavu Organza Sari (KZ-SR-002) at ₹6,450. Is this available for store pickup in Mulanthuruthy?"
+  },
+  {
+    "id": "kz-sr-003",
+    "sku": "KZ-SR-003",
+    "title": "Raw Tussar Silk Sari with Madhubani Hand-Painted Motifs",
+    "category": "Saris",
+    "subCategory": "Tussar Silk",
+    "price": 8900,
+    "currency": "INR",
+    "description": "Organic textured Tussar silk in natural honey hue, adorned with hand-painted Madhubani floral vines and geometric temple pallu. Rich organic drape.",
+    "fabricDetails": "Authentic Ghicha Tussar Silk, Natural Vegetable Dyes, Silk Mark Certified",
+    "color": "Honey Ochre & Burnt Terracotta",
+    "images": [
+      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "in_stock": true,
+    "isFeatured": false,
+    "whatsappMessage": "Namaste Kenzae! I love the Raw Tussar Silk Sari (KZ-SR-003) for ₹8,900. Could you share a quick fabric drape video?"
+  },
+  {
+    "id": "kz-sr-004",
+    "sku": "KZ-SR-004",
+    "title": "Kanjivaram Korvai Silk Sari in Crimson Red & Sunset Gold",
+    "category": "Saris",
+    "subCategory": "Kanjivaram Silk",
+    "price": 18500,
+    "currency": "INR",
+    "description": "Bridal heirloom bridal sari crafted with traditional interlocking Korvai technique. Heavy gold zari thazhambu temple borders and rich peacock butta body.",
+    "fabricDetails": "Pure Mulberry Silk, Heavy Gold Zari, 3-ply twisted silk warp, 5.5m + 0.85m blouse",
+    "color": "Deep Crimson & Sunset Gold",
+    "images": [
+      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "in_stock": true,
+    "isFeatured": true,
+    "whatsappMessage": "Namaste Kenzae! I want to inquire about the Bridal Kanjivaram Korvai Silk (KZ-SR-004) at ₹18,500. Can I view it at the Mulanthuruthy boutique?"
+  },
+  {
+    "id": "kz-ch-011",
+    "sku": "KZ-CH-011",
+    "title": "Chanderi Silk Anarkali Set with Zardozi Neckline & Organza Dupatta",
+    "category": "Churidars & Salwar Sets",
+    "subCategory": "Anarkali Couture",
+    "price": 7200,
+    "currency": "INR",
+    "description": "Floor-flair Chanderi silk Anarkali in dusty rose with hand-worked zardozi and cut-dana yoke embroidery. Paired with tonal churidar and scalloped embroidered organza dupatta.",
+    "fabricDetails": "Top: Chanderi Silk with Cotton Lining | Bottom: Shantoon | Dupatta: Cut-work Organza",
+    "color": "Dusty Rose Quartz",
+    "images": [
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "in_stock": true,
+    "isFeatured": true,
+    "whatsappMessage": "Hello Kenzae Boutique! Inquiring about the Chanderi Silk Anarkali Set (KZ-CH-011) priced at ₹7,200. What sizes are currently in stock?"
+  },
+  {
+    "id": "kz-ch-012",
+    "sku": "KZ-CH-012",
+    "title": "Mulmul Cotton Straight Cut Salwar Suit with Hand Block Ajrakh",
+    "category": "Churidars & Salwar Sets",
+    "subCategory": "Handloom Cotton Salwar",
+    "price": 3850,
+    "currency": "INR",
+    "description": "Breathable 100% fine mulmul cotton straight cut kurta with natural indigo and madder red Ajrakh hand block prints. Paired with comfort cigarette pants and kota doria dupatta.",
+    "fabricDetails": "Pure Mulmul Cotton, Natural Vegetable Dyes, Machine Washable",
+    "color": "Indigo & Madder Red",
+    "images": [
+      "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "in_stock": true,
+    "isFeatured": false,
+    "whatsappMessage": "Hi Kenzae! I would like to buy the Mulmul Cotton Salwar Suit (KZ-CH-012) priced at ₹3,850. Please share payment and pickup options."
+  },
+  {
+    "id": "kz-ch-013",
+    "sku": "KZ-CH-013",
+    "title": "Raw Silk Festive Kurta Set with Gota Patti & Zari Highlights",
+    "category": "Churidars & Salwar Sets",
+    "subCategory": "Festive Raw Silk",
+    "price": 8450,
+    "currency": "INR",
+    "description": "Deep wine colored pure raw silk kurta featuring handcrafted Rajasthani gota patti borders, mirror accents, and matching straight trousers with gold piping.",
+    "fabricDetails": "Pure Raw Silk with butter crepe inner lining, Silk tissue dupatta with kiran lace",
+    "color": "Burgundy Wine & Gold",
+    "images": [
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "in_stock": true,
+    "isFeatured": true,
+    "whatsappMessage": "Namaste Kenzae! Checking if the Raw Silk Festive Kurta Set (KZ-CH-013) at ₹8,450 is available for immediate boutique pickup."
+  },
+  {
+    "id": "kz-dm-021",
+    "sku": "KZ-DM-021",
+    "title": "Unstitched Chanderi Silk Dress Material with Hand Embroidered Yoke",
+    "category": "Unstitched Dress Materials",
+    "subCategory": "Chanderi Silk Material",
+    "price": 4250,
+    "currency": "INR",
+    "description": "Premium 3-piece unstitched designer suit material. Kurta fabric features delicate Kashmiri aari floral embroidery across the neckline. Perfect for custom tailoring at Kenzae.",
+    "fabricDetails": "Top: 2.5m Chanderi Silk | Bottom: 2.5m Shantoon | Dupatta: 2.4m Digital Floral Organza",
+    "color": "Sage Olive Green",
+    "images": [
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "in_stock": true,
+    "isFeatured": true,
+    "whatsappMessage": "Namaste Kenzae! I am interested in the Unstitched Chanderi Material (KZ-DM-021) at ₹4,250. Do you provide in-house tailoring at your Mulanthuruthy boutique?"
+  },
+  {
+    "id": "kz-dm-022",
+    "sku": "KZ-DM-022",
+    "title": "Pure Linen Unstitched Salwar Material with Chikankari Motifs",
+    "category": "Unstitched Dress Materials",
+    "subCategory": "Linen & Chikankari",
+    "price": 3600,
+    "currency": "INR",
+    "description": "Breathable 80-lea pure European flax linen fabric with shadow-work Chikankari florals and pearl bead embellishments. Hand-dyed matching linen dupatta.",
+    "fabricDetails": "Top: 2.5m Pure 80s Linen | Bottom: 2.25m Cotton Satin | Dupatta: 2.4m Linen Slub",
+    "color": "Powder Sky Blue & White",
+    "images": [
+      "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "in_stock": true,
+    "isFeatured": false,
+    "whatsappMessage": "Hello Kenzae Boutique! Please let me know if Pure Linen Material (KZ-DM-022) for ₹3,600 is in stock."
+  },
+  {
+    "id": "kz-dm-023",
+    "sku": "KZ-DM-023",
+    "title": "Maheshwari Silk-Cotton Unstitched Fabric with Zari Kinari",
+    "category": "Unstitched Dress Materials",
+    "subCategory": "Maheshwari Handloom",
+    "price": 4900,
+    "currency": "INR",
+    "description": "Authentic Maheshwari weave woven by traditional artisans. Features a glossy silk-cotton body with authentic reversible bugdi zari borders and stripes dupatta.",
+    "fabricDetails": "Top: 2.5m Maheshwari Silk Cotton | Bottom: 2.5m Cambric Cotton | Dupatta: 2.4m Handloom Zari",
+    "color": "Marigold Mustard & Rust",
+    "images": [
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "in_stock": true,
+    "isFeatured": false,
+    "whatsappMessage": "Namaste Kenzae! Inquiring about Maheshwari Silk-Cotton Material (KZ-DM-023) at ₹4,900. Is reservation available?"
+  },
+  {
+    "id": "kz-kt-031",
+    "sku": "KZ-KT-031",
+    "title": "A-Line Georgette Festive Kurthi with Mirror Work & Flared Sleeves",
+    "category": "Kurthis & Ready-to-Wear",
+    "subCategory": "Designer Festive Kurthi",
+    "price": 2750,
+    "currency": "INR",
+    "description": "Ready-to-wear party kurthi crafted in flowing micro-georgette with authentic mirror embellishments on the yoke and bell sleeves. Pre-stitched with soft breathable lining.",
+    "fabricDetails": "Faux Georgette with Butter Crepe Lining, Length: 46 inches, Calf-length flare",
+    "color": "Royal Teal Blue",
+    "images": [
+      "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "in_stock": true,
+    "isFeatured": true,
+    "whatsappMessage": "Hi Kenzae! I want to check available sizes for the Festive Kurthi (KZ-KT-031) priced at ₹2,750."
+  },
+  {
+    "id": "kz-kt-032",
+    "sku": "KZ-KT-032",
+    "title": "Handloom Kalamkari Short Tunic with Wooden Button Accents",
+    "category": "Kurthis & Ready-to-Wear",
+    "subCategory": "Handloom Everyday Wear",
+    "price": 1850,
+    "currency": "INR",
+    "description": "Everyday elegance tunic made from authentic vegetable-dyed Kalamkari handloom cotton. Designed with mandarin collar, rolled-up 3/4 sleeves, and carved coconut shell buttons.",
+    "fabricDetails": "100% Handloom Cotton, Natural Dyes, Pre-shrunk",
+    "color": "Earthy Ochre & Charcoal",
+    "images": [
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80"
+    ],
+    "in_stock": true,
+    "isFeatured": false,
+    "whatsappMessage": "Namaste Kenzae! Can I reserve the Kalamkari Short Tunic (KZ-KT-032) for ₹1,850 via WhatsApp?"
+  }
+]
