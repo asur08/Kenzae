@@ -5,16 +5,15 @@ import {
   Trash2,
   Plus,
   Minus,
-  MessageCircle,
   Truck,
   ArrowRight,
   ShieldCheck,
   MapPin,
+  Lock,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../../context/CartContext';
 import { formatCurrencyINR } from '../../utils/formatters';
-import { generateCartOrderWhatsAppUrl } from '../../utils/whatsapp';
 
 interface CartDrawerProps {
   onOpenCheckout?: () => void;
@@ -42,16 +41,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
     }));
   };
 
-  const handleWhatsAppCheckout = () => {
-    const url = generateCartOrderWhatsAppUrl(cartItems, totals, shippingAddress);
-    window.open(url, '_blank', 'noopener,noreferrer');
-  };
-
   const handleProceedCheckout = () => {
     if (onOpenCheckout) {
       onOpenCheckout();
-    } else {
-      handleWhatsAppCheckout();
     }
   };
 
@@ -302,27 +294,21 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
                   </div>
                 </div>
 
-                {/* Dual Conversion Actions */}
+                {/* Primary Secure Checkout Action */}
                 <div className="space-y-2 pt-1">
-                  {/* Primary 1-Tap WhatsApp Checkout */}
                   <button
-                    onClick={handleWhatsAppCheckout}
-                    className="w-full py-3 px-4 rounded-xl bg-maroon-900 hover:bg-maroon-850 active:scale-[0.98] text-brass-light hover:text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all border border-maroon-900"
+                    onClick={handleProceedCheckout}
+                    className="w-full py-3.5 px-4 rounded-xl bg-maroon-900 hover:bg-maroon-850 active:scale-[0.98] text-brass-light hover:text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all border border-maroon-900 cursor-pointer"
                   >
-                    <MessageCircle className="w-4 h-4 text-whatsapp" />
-                    <span>Order via WhatsApp ({formatCurrencyINR(totals.grandTotal)})</span>
+                    <Lock className="w-4 h-4 text-brass" />
+                    <span>Proceed to Secure Checkout • {formatCurrencyINR(totals.grandTotal)}</span>
+                    <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
                   </button>
 
-                  {/* Secondary Instant Checkout / Modal trigger */}
-                  {onOpenCheckout && (
-                    <button
-                      onClick={handleProceedCheckout}
-                      className="w-full py-2.5 px-4 rounded-xl bg-canvas-subtle hover:bg-white active:scale-[0.98] text-obsidian font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 border border-canvas-border transition-all"
-                    >
-                      <span>Proceed with Shipping Details</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-obsidian-muted" />
-                    </button>
-                  )}
+                  <div className="flex items-center justify-center gap-2 text-[10px] text-obsidian-muted pt-1">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
+                    <span>Instant UPI (GPay/PhonePe) • Cards • NetBanking • EMI</span>
+                  </div>
                 </div>
 
                 <div className="flex items-center justify-center gap-1.5 text-[10px] text-obsidian-muted pt-1">

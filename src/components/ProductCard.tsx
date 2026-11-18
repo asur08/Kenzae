@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Heart, MessageCircle, Eye, ShoppingBag } from 'lucide-react';
+import { Heart, Eye, ShoppingBag } from 'lucide-react';
 import { KenzaeProduct } from '../types/catalog';
 import { formatCurrencyINR } from '../utils/formatters';
 import { useCatalog } from '../context/CatalogContext';
-import { generateProductWhatsAppUrl } from '../utils/whatsapp';
 
 interface ProductCardProps {
   product: KenzaeProduct;
@@ -20,13 +19,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const isAvailable = product.in_stock && qty > 0;
   const hasMultipleImages = product.images && product.images.length > 1;
 
-  const handleWhatsAppClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!isAvailable) return;
-    const url = generateProductWhatsAppUrl(product);
-    window.open(url, '_blank', 'noopener,noreferrer');
-  };
-
   const handleWishlistToggle = (e: React.MouseEvent) => {
     e.stopPropagation();
     toggleWishlist(product);
@@ -39,8 +31,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const renderStockBadge = () => {
     if (!isAvailable) {
       return (
-        <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-[0.12em] uppercase backdrop-blur-md bg-[#FAF8F5]/95 text-terracotta border border-terracotta/30 shadow-xs">
-          Reserved / Sold Out
+        <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-[0.12em] uppercase backdrop-blur-md bg-[#FAF8F5]/95 text-obsidian-slate border border-canvas-border shadow-xs">
+          Sold Out
         </span>
       );
     }
@@ -60,7 +52,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     }
     return (
       <span className="px-2.5 py-1 rounded-full text-[10px] font-medium tracking-[0.1em] uppercase backdrop-blur-md bg-[#FAF8F5]/90 text-maroon-950 border border-maroon-900/15 shadow-xs">
-        {qty} in Boutique
+        {qty} in Atelier
       </span>
     );
   };
@@ -170,25 +162,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               disabled={!isAvailable}
               className={`flex-1 py-2 px-3 rounded-lg text-[11px] font-semibold tracking-[0.12em] uppercase transition-all flex items-center justify-center gap-1.5 border active:scale-[0.98] min-w-0 ${
                 isAvailable
-                  ? 'bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white border-maroon-900 shadow-xs'
+                  ? 'bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white border-maroon-900 shadow-xs cursor-pointer'
                   : 'bg-canvas-subtle text-obsidian-muted border-canvas-border cursor-not-allowed opacity-60'
               }`}
-              title={isAvailable ? 'Select options & Add to Bag' : 'Piece currently reserved'}
+              title={isAvailable ? 'Select options & Add to Bag' : 'Piece is currently sold out'}
             >
               <ShoppingBag className="w-3.5 h-3.5 text-brass-light shrink-0" />
               <span className="truncate">
-                {isAvailable ? 'Add to Bag' : 'Reserved'}
+                {isAvailable ? 'Add to Bag' : 'Sold Out'}
               </span>
-            </button>
-
-            <button
-              onClick={handleWhatsAppClick}
-              disabled={!isAvailable}
-              className="p-2 rounded-lg bg-canvas-subtle hover:bg-emerald-50 text-obsidian hover:text-emerald-800 border border-canvas-border transition-colors shrink-0"
-              title="Enquire on WhatsApp"
-              aria-label="Enquire on WhatsApp"
-            >
-              <MessageCircle className="w-4 h-4 text-whatsapp" />
             </button>
 
             <button

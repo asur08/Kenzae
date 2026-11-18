@@ -16,7 +16,8 @@ interface OrdersContextType {
     customer: ShippingAddress,
     items: CartItem[],
     paymentMethod?: PaymentMethod,
-    paymentStatus?: PaymentStatus
+    paymentStatus?: PaymentStatus,
+    razorpayPaymentId?: string
   ) => BoutiqueOrder;
   updateOrderStatus: (orderId: string, status: FulfillmentStatus) => void;
   updatePaymentStatus: (orderId: string, status: PaymentStatus) => void;
@@ -241,7 +242,8 @@ export const OrdersProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     customer: ShippingAddress,
     items: CartItem[],
     paymentMethod: PaymentMethod = 'whatsapp_upi',
-    paymentStatus: PaymentStatus = 'pending'
+    paymentStatus: PaymentStatus = 'pending',
+    razorpayPaymentId?: string
   ): BoutiqueOrder => {
     const timestamp = Date.now();
     const randomSuffix = Math.floor(1000 + Math.random() * 9000);
@@ -275,6 +277,7 @@ export const OrdersProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       paymentMethod,
       paymentStatus,
       fulfillmentStatus: 'new',
+      razorpayPaymentId,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };

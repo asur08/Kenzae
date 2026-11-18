@@ -46,6 +46,7 @@ export interface BoutiqueOrder {
   paymentMethod: PaymentMethod;
   paymentStatus: PaymentStatus;
   fulfillmentStatus: FulfillmentStatus;
+  razorpayPaymentId?: string;
   courierPartner?: CourierPartner;
   trackingAwb?: string;
   trackingUrl?: string;

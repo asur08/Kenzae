@@ -2,14 +2,20 @@ import React, { useState } from 'react';
 import {
   X,
   MapPin,
-  MessageCircle,
   CheckCircle,
+  Lock,
+  ShieldCheck,
+  FileText,
+  Loader2,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../../context/CartContext';
 import { useOrders } from '../../context/OrdersContext';
+import { useCatalog } from '../../context/CatalogContext';
 import { formatCurrencyINR } from '../../utils/formatters';
-import { generateCartOrderWhatsAppUrl } from '../../utils/whatsapp';
+import { initiateRazorpayPayment } from '../../utils/razorpay';
+import { generateGSTTaxInvoicePDF } from '../../utils/invoiceGenerator';
+import { BoutiqueOrder } from '../../types/orders';
 
 interface MobileCheckoutModalProps {
   isOpen: boolean;
@@ -19,22 +25,24 @@ interface MobileCheckoutModalProps {
 export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen, onClose }) => {
   const { cartItems, totals, shippingAddress, setShippingAddress, clearCart } = useCart();
   const { createOrder } = useOrders();
+  const { products, updateProductStock } = useCatalog();
 
   const [form, setForm] = useState(shippingAddress);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [createdOrderNumber, setCreatedOrderNumber] = useState<string>('');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [completedOrder, setCompletedOrder] = useState<BoutiqueOrder | null>(null);
+  const [paymentError, setPaymentError] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
   const validate = () => {
     const errs: { [key: string]: string } = {};
-    if (!form.fullName.trim()) errs.fullName = 'Please enter your name';
+    if (!form.fullName.trim()) errs.fullName = 'Please enter your full name';
     if (!form.phoneNumber.trim() || form.phoneNumber.trim().length < 10) {
       errs.phoneNumber = 'Please enter a valid 10-digit mobile number';
     }
-    if (!form.streetAddress.trim()) errs.streetAddress = 'Please enter your delivery address';
-    if (!form.city.trim()) errs.city = 'Please enter your city/town';
+    if (!form.streetAddress.trim()) errs.streetAddress = 'Please enter your delivery street address';
+    if (!form.city.trim()) errs.city = 'Please enter your city / town';
     if (!form.pincode.trim() || form.pincode.trim().length < 6) {
       errs.pincode = 'Please enter a 6-digit postal code';
     }
@@ -51,19 +59,61 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleRazorpayPayment = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
+    if (cartItems.length === 0) return;
 
-    // Record order in boutique database/order pipeline
-    const order = createOrder(form, cartItems, 'whatsapp_upi', 'pending');
-    setCreatedOrderNumber(order.orderNumber);
+    setIsProcessing(true);
+    setPaymentError(null);
 
-    // Trigger WhatsApp Checkout with the confirmed address
-    const url = generateCartOrderWhatsAppUrl(cartItems, totals, form);
-    window.open(url, '_blank', 'noopener,noreferrer');
-    setIsSubmitted(true);
-    clearCart();
+    const itemsSummary = cartItems
+      .map((it) => `${it.title} (${it.sku}) x${it.quantity}`)
+      .join(', ');
+
+    await initiateRazorpayPayment({
+      totals,
+      customer: form,
+      itemsSummary,
+      onSuccess: (paymentResp) => {
+        // 1. Create order as PAID in Boutique Orders Pipeline with Razorpay reference
+        const newOrder = createOrder(
+          form,
+          cartItems,
+          'razorpay_online',
+          'paid',
+          paymentResp.razorpay_payment_id
+        );
+
+        // 2. Atomically deduct purchased quantities from catalog inventory
+        cartItems.forEach((cartItem) => {
+          const match = products.find((p) => p.id === cartItem.productId);
+          if (match) {
+            const currentQty = match.stockQuantity ?? (match.in_stock ? 1 : 0);
+            const remaining = Math.max(0, currentQty - cartItem.quantity);
+            updateProductStock(cartItem.productId, remaining);
+          }
+        });
+
+        // 3. Clear Bag
+        clearCart();
+        setCompletedOrder(newOrder);
+        setIsProcessing(false);
+      },
+      onDismiss: () => {
+        setIsProcessing(false);
+      },
+      onError: (err) => {
+        setIsProcessing(false);
+        setPaymentError(err?.description || 'Payment authorization was cancelled or failed. Please retry.');
+      },
+    });
+  };
+
+  const handleDownloadInvoice = () => {
+    if (completedOrder) {
+      generateGSTTaxInvoicePDF(completedOrder, { autoDownload: true });
+    }
   };
 
   return (
@@ -94,10 +144,10 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
               </div>
               <div>
                 <h3 className="font-serif text-base font-semibold text-maroon-950">
-                  Delivery & Order Booking
+                  {completedOrder ? 'Order Confirmed' : 'Delivery & Secure Checkout'}
                 </h3>
                 <span className="text-[10px] text-obsidian-muted uppercase tracking-wider">
-                  Kenzae Mulanthuruthy Dispatch
+                  Kenzae Designer Boutique • Mulanthuruthy
                 </span>
               </div>
             </div>
@@ -112,44 +162,80 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
 
           {/* Form / Content */}
           <div className="flex-1 overflow-y-auto p-5 space-y-4">
-            {isSubmitted ? (
-              <div className="py-8 text-center space-y-4">
-                <div className="w-14 h-14 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center mx-auto border border-emerald-200">
-                  <CheckCircle className="w-8 h-8 stroke-[1.5]" />
+            {completedOrder ? (
+              <div className="py-6 text-center space-y-4">
+                <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center mx-auto border border-emerald-200 shadow-xs">
+                  <CheckCircle className="w-9 h-9 stroke-[1.75]" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-xl font-medium text-maroon-950">
-                    Order Recorded at Atelier
+                  <span className="text-[10px] uppercase font-bold tracking-[0.2em] text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                    Payment Successful • Confirmed
+                  </span>
+                  <h4 className="font-serif text-2xl font-bold text-maroon-950 mt-2">
+                    Thank You, {completedOrder.customer.fullName}!
                   </h4>
-                  {createdOrderNumber && (
-                    <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-maroon-100 text-maroon-950 mt-1">
-                      Order #{createdOrderNumber}
+                  <div className="mt-1 flex items-center justify-center gap-2">
+                    <span className="font-mono text-xs font-bold text-obsidian px-2.5 py-0.5 rounded-md bg-canvas-subtle border border-canvas-border">
+                      Order #{completedOrder.orderNumber}
                     </span>
-                  )}
-                  <p className="text-xs text-obsidian-slate mt-1 max-w-sm mx-auto leading-relaxed">
-                    Thank you, <span className="font-semibold text-obsidian">{form.fullName}</span>! Your pieces, tailoring preferences, and delivery address have been transmitted to our boutique team.
-                  </p>
-                </div>
-                <div className="p-3 bg-white rounded-xl border border-canvas-border max-w-xs mx-auto text-xs text-left space-y-1">
-                  <div className="text-[10px] uppercase font-bold text-maroon-900 tracking-wider">
-                    Next Step
+                    <span className="font-mono text-xs text-obsidian-muted">
+                      {completedOrder.invoiceNumber}
+                    </span>
                   </div>
-                  <p className="text-obsidian-slate leading-snug">
-                    Our master draper is reviewing your fabric specifications and will share direct payment details and dispatch timings with you on WhatsApp.
+                  <p className="text-xs text-obsidian-slate mt-2 max-w-sm mx-auto leading-relaxed">
+                    Your bespoke ensemble is being prepared at our Mulanthuruthy atelier. A confirmation copy and courier tracking details will be dispatched to your mobile.
                   </p>
                 </div>
+
+                {/* Download GST Tax Invoice Box */}
+                <div className="p-4 bg-white rounded-xl border border-canvas-border text-left text-xs space-y-3 shadow-xs">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-[11px] font-bold text-maroon-950 uppercase tracking-wider block">
+                        Official Tax Invoice
+                      </span>
+                      <span className="text-[10px] text-obsidian-muted">
+                        GSTIN: 32AAACK1234F1ZX • Original for Recipient
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={handleDownloadInvoice}
+                      className="px-3 py-1.5 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-brass-light font-semibold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs"
+                    >
+                      <FileText className="w-3.5 h-3.5" />
+                      <span>Download PDF</span>
+                    </button>
+                  </div>
+
+                  <div className="pt-2 border-t border-canvas-border grid grid-cols-2 gap-2 text-[11px] text-obsidian-slate">
+                    <div>
+                      <span className="block text-obsidian-muted text-[10px]">Delivering To:</span>
+                      <span className="font-semibold text-obsidian">{completedOrder.customer.city}, {completedOrder.customer.state}</span>
+                    </div>
+                    <div className="text-right">
+                      <span className="block text-obsidian-muted text-[10px]">Total Paid:</span>
+                      <span className="font-bold text-maroon-950 font-sans text-xs">{formatCurrencyINR(completedOrder.grandTotal)}</span>
+                    </div>
+                  </div>
+                </div>
+
                 <button
-                  onClick={() => {
-                    setIsSubmitted(false);
-                    onClose();
-                  }}
-                  className="py-2.5 px-6 rounded-lg bg-maroon-900 text-brass-light text-xs font-semibold uppercase tracking-wider hover:bg-maroon-850 transition-all"
+                  type="button"
+                  onClick={onClose}
+                  className="w-full py-3 px-4 rounded-xl bg-canvas-subtle hover:bg-white text-obsidian font-semibold text-xs uppercase tracking-wider transition-colors border border-canvas-border"
                 >
-                  Return to Store
+                  Return to Storefront
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleRazorpayPayment} className="space-y-4">
+                {paymentError && (
+                  <div className="p-3 bg-red-50 text-red-900 border border-red-200 rounded-xl text-xs flex items-center gap-2">
+                    <span className="font-bold">Error:</span> {paymentError}
+                  </div>
+                )}
+
                 {/* Contact Fields */}
                 <div className="space-y-3 bg-white p-4 rounded-xl border border-canvas-border shadow-luxury">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-maroon-950 block">
@@ -165,7 +251,7 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                       value={form.fullName}
                       onChange={(e) => handleChange('fullName', e.target.value)}
                       placeholder="e.g. Parvathy Menon"
-                      className="w-full px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50"
+                      className="w-full px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50 font-medium"
                     />
                     {errors.fullName && (
                       <span className="text-[10px] text-terracotta mt-0.5 block">{errors.fullName}</span>
@@ -174,14 +260,14 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
 
                   <div>
                     <label className="text-xs text-obsidian-slate block mb-1">
-                      Mobile Number (WhatsApp) <span className="text-terracotta">*</span>
+                      Mobile Number (for Courier &amp; Invoice) <span className="text-terracotta">*</span>
                     </label>
                     <input
                       type="tel"
                       value={form.phoneNumber}
                       onChange={(e) => handleChange('phoneNumber', e.target.value)}
                       placeholder="e.g. 9447012345"
-                      className="w-full px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50"
+                      className="w-full px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50 font-medium"
                     />
                     {errors.phoneNumber && (
                       <span className="text-[10px] text-terracotta mt-0.5 block">{errors.phoneNumber}</span>
@@ -192,7 +278,7 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                 {/* Delivery Address Fields */}
                 <div className="space-y-3 bg-white p-4 rounded-xl border border-canvas-border shadow-luxury">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-maroon-950 block">
-                    2. Delivery Address
+                    2. Shipping Address
                   </span>
 
                   <div>
@@ -203,7 +289,7 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                       type="text"
                       value={form.streetAddress}
                       onChange={(e) => handleChange('streetAddress', e.target.value)}
-                      placeholder="House / Flat / Villa name & street"
+                      placeholder="House / Apartment name, landmark, and street"
                       className="w-full px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50"
                     />
                     {errors.streetAddress && (
@@ -220,8 +306,8 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                         type="text"
                         value={form.city}
                         onChange={(e) => handleChange('city', e.target.value)}
-                        placeholder="e.g. Ernakulam"
-                        className="w-full px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50"
+                        placeholder="e.g. Kochi"
+                        className="w-full px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50 font-medium"
                       />
                       {errors.city && (
                         <span className="text-[10px] text-terracotta mt-0.5 block">{errors.city}</span>
@@ -238,7 +324,7 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                         value={form.pincode}
                         onChange={(e) => handleChange('pincode', e.target.value.replace(/\D/g, ''))}
                         placeholder="682314"
-                        className="w-full px-3 py-2 text-xs font-mono border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50"
+                        className="w-full px-3 py-2 text-xs font-mono font-bold tracking-wider border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50"
                       />
                       {errors.pincode && (
                         <span className="text-[10px] text-terracotta mt-0.5 block">{errors.pincode}</span>
@@ -254,7 +340,7 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                       rows={2}
                       value={form.specialDeliveryNote || ''}
                       onChange={(e) => handleChange('specialDeliveryNote', e.target.value)}
-                      placeholder="e.g. Deliver before Friday, or custom blouse neckline request"
+                      placeholder="e.g. Desired blouse neckline, delivery before specific festival..."
                       className="w-full px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50"
                     />
                   </div>
@@ -269,7 +355,7 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
 
                   {totals.tailoringTotal > 0 && (
                     <div className="flex justify-between text-obsidian-slate">
-                      <span>Tailoring & Finishing</span>
+                      <span>Tailoring &amp; Finishing</span>
                       <span>+{formatCurrencyINR(totals.tailoringTotal)}</span>
                     </div>
                   )}
@@ -286,23 +372,44 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                   </div>
 
                   <div className="flex justify-between font-bold text-maroon-950 pt-2 border-t border-canvas-border text-sm">
-                    <span>Total Amount</span>
+                    <span>Total Amount Payable</span>
                     <span className="font-sans text-base">{formatCurrencyINR(totals.grandTotal)}</span>
                   </div>
                 </div>
 
-                {/* Submit Action */}
+                {/* Primary Payment Action: Razorpay Standard Checkout */}
                 <button
                   type="submit"
-                  className="w-full py-3.5 px-4 rounded-xl bg-maroon-900 hover:bg-maroon-850 active:scale-[0.98] text-brass-light hover:text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all border border-maroon-900"
+                  disabled={isProcessing}
+                  className={`w-full py-3.5 px-4 rounded-xl font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all border active:scale-[0.98] ${
+                    isProcessing
+                      ? 'bg-canvas-subtle text-obsidian-muted border-canvas-border cursor-wait'
+                      : 'bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white border-maroon-900 cursor-pointer'
+                  }`}
                 >
-                  <MessageCircle className="w-4 h-4 text-whatsapp" />
-                  <span>Confirm Order on WhatsApp ({formatCurrencyINR(totals.grandTotal)})</span>
+                  {isProcessing ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin text-brass" />
+                      <span>Opening Secure Razorpay Gateway...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Lock className="w-4 h-4 text-brass" />
+                      <span>Pay {formatCurrencyINR(totals.grandTotal)} via Razorpay</span>
+                    </>
+                  )}
                 </button>
 
-                <p className="text-[10px] text-center text-obsidian-muted">
-                  Your pieces will be reserved by our Mulanthuruthy atelier immediately.
-                </p>
+                {/* Supported Payment Logos & Trust Signals */}
+                <div className="text-center space-y-1.5 pt-1">
+                  <div className="flex items-center justify-center gap-2 text-[10px] text-obsidian-muted">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
+                    <span>Instant UPI (GPay/PhonePe/Paytm) • Cards • NetBanking • EMI</span>
+                  </div>
+                  <p className="text-[9px] text-obsidian-muted font-light">
+                    256-bit encrypted checkout • Zero card details stored on boutique servers
+                  </p>
+                </div>
               </form>
             )}
           </div>

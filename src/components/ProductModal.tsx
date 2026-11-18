@@ -13,8 +13,6 @@ import {
   ZoomIn,
   Layers,
   Scissors,
-  BookmarkCheck,
-  RotateCcw,
   ShoppingBag,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -34,8 +32,6 @@ export const ProductModal: React.FC = () => {
     setSelectedProduct,
     isWishlisted,
     toggleWishlist,
-    recordPurchase,
-    updateProductStock,
   } = useCatalog();
 
   const { addToCart } = useCart();
@@ -50,11 +46,6 @@ export const ProductModal: React.FC = () => {
   const [copiedLink, setCopiedLink] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomOrigin, setZoomOrigin] = useState({ x: 50, y: 35 });
-  const [claimReceipt, setClaimReceipt] = useState<{
-    productId: string;
-    previousStock: number;
-    remainingStock: number;
-  } | null>(null);
 
   const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -78,7 +69,6 @@ export const ProductModal: React.FC = () => {
       setCopiedLink(false);
       setIsZoomed(false);
       setZoomOrigin({ x: 50, y: 35 });
-      setClaimReceipt(null);
 
       const isSaree = selectedProduct.category === 'Saris';
       const isStitchedSuit =
@@ -183,35 +173,11 @@ export const ProductModal: React.FC = () => {
     }
   };
 
-  // Safe WhatsApp Inquiry (does NOT decrement inventory)
+  // VIP Bridal / Custom Styling Consultation via WhatsApp
   const handleWhatsAppEnquiry = () => {
     const note = customNote.trim() ? customNote.trim() : undefined;
     const url = generateProductWhatsAppUrl(selectedProduct, note);
     window.open(url, '_blank', 'noopener,noreferrer');
-  };
-
-  // Explicit Reserve & Hold 1 Piece (decrements stock by 1 with Undo support)
-  const handleReservePiece = () => {
-    if (!isAvailable) return;
-    const previousStock = qty;
-    const res = recordPurchase(selectedProduct.id, 1);
-    if (res.success) {
-      setClaimReceipt({
-        productId: selectedProduct.id,
-        previousStock,
-        remainingStock: res.remainingStock,
-      });
-      const noteAddon = customNote.trim() ? ` Stitching / Note: ${customNote.trim()}` : '';
-      const note = `I have reserved 1 piece of this item (${res.remainingStock} remaining in boutique).${noteAddon} Please confirm boutique pickup or delivery details.`;
-      const url = generateProductWhatsAppUrl(selectedProduct, note);
-      window.open(url, '_blank', 'noopener,noreferrer');
-    }
-  };
-
-  const handleUndoReserve = () => {
-    if (!claimReceipt) return;
-    updateProductStock(claimReceipt.productId, claimReceipt.previousStock);
-    setClaimReceipt(null);
   };
 
   const handleOpenDirections = () => {
@@ -558,8 +524,8 @@ export const ProductModal: React.FC = () => {
                         </span>
                         <span className="font-semibold text-maroon-950 tabular-nums">
                           {isAvailable
-                            ? `${qty} handcrafted piece${qty > 1 ? 's' : ''} ready`
-                            : 'Currently Sold Out / Reserved'}
+                            ? `${qty} handcrafted piece${qty > 1 ? 's' : ''} in atelier`
+                            : 'Sold Out'}
                         </span>
                       </div>
 
@@ -604,24 +570,6 @@ export const ProductModal: React.FC = () => {
 
                 {/* Action CTAs */}
                 <div className="pt-4 border-t border-canvas-border space-y-2.5">
-                  {claimReceipt && (
-                    <div className="p-3 rounded-xl bg-maroon-900 text-brass-light text-xs font-medium border border-brass/40 flex items-center justify-between gap-2 shadow-sm">
-                      <div className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-brass shrink-0" />
-                        <span>
-                          Held 1 piece! {claimReceipt.remainingStock} remaining in boutique.
-                        </span>
-                      </div>
-                      <button
-                        onClick={handleUndoReserve}
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/15 hover:bg-white/25 text-white text-[11px] font-semibold shrink-0 transition-colors"
-                      >
-                        <RotateCcw className="w-3 h-3" />
-                        <span>Undo</span>
-                      </button>
-                    </div>
-                  )}
-
                   {/* Primary Action: Add to Bag */}
                   <button
                     onClick={handleAddToCart}
@@ -636,32 +584,36 @@ export const ProductModal: React.FC = () => {
                     <span>
                       {isAvailable
                         ? `Add to Bag • ${formatCurrencyINR(selectedProduct.price + (tailoring.additionalCost || 0))}`
-                        : 'Piece is Currently Reserved'}
+                        : 'Sold Out'}
                     </span>
                   </button>
 
-                  {/* Secondary Safe Action: Enquire on WhatsApp */}
-                  <button
-                    onClick={handleWhatsAppEnquiry}
-                    disabled={!isAvailable}
-                    className="w-full py-2.5 px-4 rounded-full bg-white hover:bg-canvas-subtle text-obsidian font-semibold text-xs tracking-[0.1em] uppercase transition-colors flex items-center justify-center gap-2 border border-canvas-border"
-                  >
-                    <MessageCircle className="w-4 h-4 text-whatsapp" />
-                    <span>Enquire on WhatsApp</span>
-                  </button>
-
-                  {/* Explicit Reserve & Hold 1 Piece (-1 Stock) */}
-                  {isAvailable && (
+                  {/* If Sold Out: Made-to-Order Re-weaving Consultation */}
+                  {!isAvailable && (
                     <button
-                      onClick={handleReservePiece}
-                      className="w-full py-2.5 px-4 rounded-full bg-maroon-50 hover:bg-maroon-100 text-maroon-950 font-semibold text-xs tracking-[0.1em] uppercase transition-colors flex items-center justify-center gap-2 border border-maroon-200"
+                      onClick={handleWhatsAppEnquiry}
+                      className="w-full py-3 px-4 rounded-full bg-white hover:bg-canvas-subtle text-obsidian font-semibold text-xs tracking-wider uppercase transition-colors flex items-center justify-center gap-2 border border-canvas-border"
                     >
-                      <BookmarkCheck className="w-4 h-4 text-maroon-900" />
-                      <span>Reserve &amp; Hold 1 Piece ({qty} left)</span>
+                      <MessageCircle className="w-4 h-4 text-whatsapp" />
+                      <span>Enquire for Made-to-Order Re-weaving</span>
                     </button>
                   )}
 
-                  <div className={`grid gap-2 ${selectedProduct.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                  {/* If Available: Subtle VIP Stylist Concierge Link */}
+                  {isAvailable && (
+                    <div className="pt-1 text-center">
+                      <button
+                        type="button"
+                        onClick={handleWhatsAppEnquiry}
+                        className="text-[11px] text-obsidian-muted hover:text-maroon-900 transition-colors inline-flex items-center gap-1.5 underline underline-offset-4 cursor-pointer"
+                      >
+                        <MessageCircle className="w-3.5 h-3.5 text-whatsapp" />
+                        <span>Bespoke bridal styling or custom tailoring query? Ask Master Draper</span>
+                      </button>
+                    </div>
+                  )}
+
+                  <div className={`grid gap-2 pt-2 ${selectedProduct.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
                     {selectedProduct.images.length > 1 && (
                       <button
                         onClick={nextImage}
