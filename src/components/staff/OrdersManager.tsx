@@ -28,6 +28,7 @@ export const OrdersManager: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<FulfillmentStatus | 'all'>('all');
   const [selectedOrderForDispatch, setSelectedOrderForDispatch] = useState<BoutiqueOrder | null>(null);
+  const [downloadingInvoiceId, setDownloadingInvoiceId] = useState<string | null>(null);
 
   // Compute Metrics
   const metrics = useMemo(() => {
@@ -77,8 +78,15 @@ export const OrdersManager: React.FC = () => {
     });
   }, [orders, statusFilter, searchQuery]);
 
-  const handleDownloadInvoice = (order: BoutiqueOrder) => {
-    generateGSTTaxInvoicePDF(order, { autoDownload: true });
+  const handleDownloadInvoice = async (order: BoutiqueOrder) => {
+    try {
+      setDownloadingInvoiceId(order.id);
+      await generateGSTTaxInvoicePDF(order, { autoDownload: true });
+    } catch (err) {
+      console.error('Invoice generation failed:', err);
+    } finally {
+      setDownloadingInvoiceId(null);
+    }
   };
 
   const handleDownloadShippingLabel = (order: BoutiqueOrder) => {
@@ -505,11 +513,12 @@ export const OrdersManager: React.FC = () => {
                     <div className="grid grid-cols-2 gap-2 pt-2">
                       <button
                         onClick={() => handleDownloadInvoice(order)}
-                        className="py-2 px-3 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white font-semibold text-[11px] uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-xs transition-all border border-maroon-900"
+                        disabled={downloadingInvoiceId === order.id}
+                        className="py-2 px-3 rounded-lg bg-maroon-900 hover:bg-maroon-850 disabled:opacity-60 text-brass-light hover:text-white font-semibold text-[11px] uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-xs transition-all border border-maroon-900 cursor-pointer"
                         title="Download GST-compliant PDF invoice"
                       >
-                        <FileText className="w-3.5 h-3.5" />
-                        <span>GST Invoice</span>
+                        <FileText className={`w-3.5 h-3.5 ${downloadingInvoiceId === order.id ? 'animate-spin' : ''}`} />
+                        <span>{downloadingInvoiceId === order.id ? 'Generating...' : 'GST Invoice'}</span>
                       </button>
 
                       <button

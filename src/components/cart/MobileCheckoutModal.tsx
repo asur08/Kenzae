@@ -32,6 +32,7 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
   const [isProcessing, setIsProcessing] = useState(false);
   const [completedOrder, setCompletedOrder] = useState<BoutiqueOrder | null>(null);
   const [paymentError, setPaymentError] = useState<string | null>(null);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
   if (!isOpen) return null;
 
@@ -110,9 +111,15 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
     });
   };
 
-  const handleDownloadInvoice = () => {
-    if (completedOrder) {
-      generateGSTTaxInvoicePDF(completedOrder, { autoDownload: true });
+  const handleDownloadInvoice = async () => {
+    if (!completedOrder || isGeneratingPdf) return;
+    try {
+      setIsGeneratingPdf(true);
+      await generateGSTTaxInvoicePDF(completedOrder, { autoDownload: true });
+    } catch (err) {
+      console.error('Invoice generation failed:', err);
+    } finally {
+      setIsGeneratingPdf(false);
     }
   };
 
@@ -200,11 +207,12 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                     </div>
                     <button
                       type="button"
+                      disabled={isGeneratingPdf}
                       onClick={handleDownloadInvoice}
-                      className="px-3 py-1.5 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-brass-light font-semibold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs"
+                      className="px-3 py-1.5 rounded-lg bg-maroon-900 hover:bg-maroon-850 disabled:opacity-60 text-brass-light font-semibold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
                     >
-                      <FileText className="w-3.5 h-3.5" />
-                      <span>Download PDF</span>
+                      <FileText className={`w-3.5 h-3.5 ${isGeneratingPdf ? 'animate-spin' : ''}`} />
+                      <span>{isGeneratingPdf ? 'Generating...' : 'Download PDF'}</span>
                     </button>
                   </div>
 
