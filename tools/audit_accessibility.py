@@ -39,8 +39,9 @@ def audit_palette():
         "Temple Brass (Accent)": "#8C6D37",      # Accessible text variant of temple brass
         "Terracotta (Badges)": "#B4533C",
         "Terracotta Pill Background": "#FDF3F0",
-        "Deep Emerald (Hero)": "#0F382A",
-        "Gold Foil (Hero Text)": "#F5E2B3",
+        "Royal Maroon (Hero)": "#5E1325",
+        "Royal Maroon (Primary)": "#4B0E1D",
+        "Gold Foil (Hero Text)": "#EDE0C8",
         "WhatsApp Deep (CTA)": "#128C7E",
         "White": "#FFFFFF",
     }
@@ -53,8 +54,9 @@ def audit_palette():
         ("Warm Slate (Body/Desc)", "Pure White Card", "Descriptions on White Card", 4.5),
         ("Terracotta (Badges)", "Terracotta Pill Background", "Muted Terracotta on Badge Pill", 4.5),
         ("White", "Terracotta (Badges)", "White Text on Terracotta Badge", 3.0),
-        ("Gold Foil (Hero Text)", "Deep Emerald (Hero)", "Champagne Gold on Deep Emerald Hero", 4.5),
-        ("White", "Deep Emerald (Hero)", "White Headings on Deep Emerald Hero", 4.5),
+        ("Gold Foil (Hero Text)", "Royal Maroon (Hero)", "Champagne Gold on Royal Maroon Hero", 4.5),
+        ("White", "Royal Maroon (Hero)", "White Headings on Royal Maroon Hero", 4.5),
+        ("White", "Royal Maroon (Primary)", "White Text on Maroon CTA", 4.5),
         ("White", "WhatsApp Deep (CTA)", "White Text on WhatsApp CTA", 3.0),
     ]
 

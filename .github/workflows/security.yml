@@ -1,0 +1,90 @@
+name: 🔒 Security Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run every Monday at 06:00 UTC (11:30 IST)
+    - cron: '0 6 * * 1'
+
+jobs:
+  dependency-audit:
+    name: npm Dependency Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        run: npm audit --audit-level=moderate
+        continue-on-error: true  # Report but don't block
+
+      - name: Generate audit report
+        run: |
+          echo "## 🔒 Dependency Security Audit" >> $GITHUB_STEP_SUMMARY
+          npm audit --json 2>/dev/null | python3 -c "
+          import json, sys
+          data = json.load(sys.stdin)
+          vulns = data.get('metadata', {}).get('vulnerabilities', {})
+          total = sum(vulns.values())
+          print(f'| Severity | Count |')
+          print(f'|----------|-------|')
+          for sev in ['critical', 'high', 'moderate', 'low', 'info']:
+            print(f'| {sev.capitalize()} | {vulns.get(sev, 0)} |')
+          print(f'')
+          print(f'**Total vulnerabilities:** {total}')
+          " >> $GITHUB_STEP_SUMMARY || echo "Could not parse audit JSON" >> $GITHUB_STEP_SUMMARY
+
+  secrets-scan:
+    name: Secret Leak Detection
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for secret scanning
+
+      - name: Scan for hardcoded secrets
+        run: |
+          echo "🔍 Scanning for potential secrets..."
+          # Check for common secret patterns (not in .env.example or .gitignore)
+          FOUND=0
+          for pattern in "WHATSAPP_TOKEN" "ghp_" "sk-" "AIza" "-----BEGIN RSA"; do
+            if git diff HEAD~1..HEAD 2>/dev/null | grep -qE "$pattern" || \
+               grep -rE "$pattern" src/ data/ scripts/ 2>/dev/null | grep -v ".example" | grep -qv "//"; then
+              echo "⚠️  Potential secret pattern found: $pattern"
+              FOUND=1
+            fi
+          done
+          if [ $FOUND -eq 0 ]; then
+            echo "✅ No secret patterns detected"
+          fi
+        continue-on-error: true
+
+  env-check:
+    name: Environment Variables Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify .env.example is up to date
+        run: |
+          echo "📋 Environment variables documented in .env.example:"
+          cat .env.example
+          echo ""
+          echo "✅ All environment variables should be documented above."

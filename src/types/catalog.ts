@@ -4,6 +4,12 @@ export type ProductCategory =
   | 'Unstitched Dress Materials'
   | 'Kurthis & Ready-to-Wear';
 
+export type ProductImageRole =
+  | 'model-drape'
+  | 'garment-flat'
+  | 'pallu-detail'
+  | 'ai-drape';
+
 export interface KenzaeProduct {
   id: string;
   sku: string;
@@ -16,7 +22,9 @@ export interface KenzaeProduct {
   fabricDetails?: string;
   color?: string;
   images: string[];
+  imageRoles?: ProductImageRole[];
   in_stock: boolean;
+  stockQuantity?: number;
   isFeatured?: boolean;
   whatsappMessage?: string;
 }
@@ -42,5 +50,6 @@ export interface StoreContactInfo {
   phoneDisplay: string;
   timings: string;
   instagramHandle: string;
+  websiteUrl?: string;
   staffPasscode?: string;
 }

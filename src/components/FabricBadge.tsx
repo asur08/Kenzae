@@ -2,7 +2,7 @@ import React from 'react';
 
 interface FabricBadgeProps {
   label: string;
-  variant?: 'emerald' | 'gold' | 'canvas' | 'stock';
+  variant?: 'maroon' | 'emerald' | 'gold' | 'canvas' | 'stock';
   className?: string;
 }
 
@@ -12,10 +12,11 @@ export const FabricBadge: React.FC<FabricBadgeProps> = ({
   className = '',
 }) => {
   const variantStyles = {
-    emerald: 'bg-emerald-950/90 text-gold-300 border-gold-500/30',
-    gold: 'bg-gold-500/20 text-gold-700 border-gold-500/40 font-semibold',
-    canvas: 'bg-canvas-subtle text-obsidian border-canvas-dark/60 font-medium',
-    stock: 'bg-emerald-100 text-emerald-900 border-emerald-300 font-semibold',
+    maroon: 'bg-maroon-950/90 text-brass-light border-brass/30',
+    emerald: 'bg-maroon-950/90 text-brass-light border-brass/30',
+    gold: 'bg-brass/20 text-brass-dark border-brass/40 font-semibold',
+    canvas: 'bg-canvas-subtle text-obsidian border-canvas-border font-medium',
+    stock: 'bg-maroon-100 text-maroon-900 border-maroon-200 font-semibold',
   };
 
   return (

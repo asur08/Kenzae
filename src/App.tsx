@@ -1,66 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
+import { MotionConfig } from 'framer-motion';
 import { CatalogProvider, useCatalog } from './context/CatalogContext';
+import { CartProvider } from './context/CartContext';
+import { OrdersProvider } from './context/OrdersContext';
 import { StaffAuthProvider } from './context/StaffAuthContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { CollectionShowcase } from './components/CollectionShowcase';
 import { FilterBar } from './components/catalog/FilterBar';
 import { ProductGrid } from './components/ProductGrid';
+import { AtelierStory } from './components/AtelierStory';
 import { ProductModal } from './components/ProductModal';
 import { WishlistDrawer } from './components/catalog/WishlistDrawer';
 import { FilterDrawer } from './components/catalog/FilterDrawer';
+import { CartDrawer } from './components/cart/CartDrawer';
+import { MobileCheckoutModal } from './components/cart/MobileCheckoutModal';
+import { MobileBottomBar } from './components/mobile/MobileBottomBar';
 import { StoreLocator } from './components/StoreLocator';
 import { Footer } from './components/Footer';
-import { StaffPortalPage } from './components/staff/StaffPortalPage';
-import { MessageCircle } from 'lucide-react';
-import { generateStoreVisitWhatsAppUrl } from './utils/whatsapp';
+
+const StaffPortalPage = lazy(() => import('./components/staff/StaffPortalPage'));
 
 const CustomerStorefront: React.FC = () => {
   const { filteredProducts } = useCatalog();
-
-  const handleFloatingWhatsApp = () => {
-    window.open(generateStoreVisitWhatsAppUrl(), '_blank', 'noopener,noreferrer');
-  };
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF8F5] text-obsidian">
-      {/* Sticky Header with Frosted Glass & Centered Luxury Wordmark */}
+    <div className="min-h-screen flex flex-col bg-[#FAF8F5] text-obsidian pb-16 sm:pb-0">
+      {/* Sticky Header with Architectural Centered Wordmark */}
       <Navbar />
 
-      {/* Editorial Hero with Raw Mango/Sabyasachi inspired aesthetic */}
+      {/* Royal Maroon Editorial Hero with Live Featured Piece */}
       <Hero />
+
+      {/* 4-Category Visual Collection Entry */}
+      <CollectionShowcase />
 
       {/* Main Catalog Section */}
       <main id="catalog-section" className="flex-1 py-6 sm:py-10">
         <div className="container mx-auto px-4">
-          {/* Unified Sticky Filter Bar: Category Pills, Price Chips, Search & Results */}
           <FilterBar />
-
-          {/* 3:4 Crop Product Grid with Empty-State Handling */}
           <ProductGrid products={filteredProducts} />
         </div>
       </main>
 
-      {/* Store Visit & Responsive Google Map centered on Mulanthuruthy */}
+      {/* Craftsmanship, Tailoring & Video Drape Story */}
+      <AtelierStory />
+
+      {/* Store Visit & Map */}
       <StoreLocator />
 
-      {/* Boutique Footer with subtle Staff Access link */}
+      {/* Boutique Footer */}
       <Footer />
 
-      {/* Overlays: Quick-View Modal (Deep-Linked), Wishlist, Filters */}
+      {/* Overlays: Quick-View Modal (Deep-Linked), Wishlist, Bag, Filters, Checkout */}
       <ProductModal />
       <WishlistDrawer />
       <FilterDrawer />
+      <CartDrawer onOpenCheckout={() => setIsCheckoutOpen(true)} />
+      <MobileCheckoutModal
+        isOpen={isCheckoutOpen}
+        onClose={() => setIsCheckoutOpen(false)}
+      />
 
-      {/* Floating Mobile WhatsApp Quick Button */}
-      <div className="fixed bottom-5 right-5 z-30 sm:hidden">
-        <button
-          onClick={handleFloatingWhatsApp}
-          className="p-3.5 rounded-full bg-whatsapp text-white shadow-xl flex items-center justify-center border-2 border-white active:scale-95 transition-transform"
-          aria-label="Direct WhatsApp Inquiry"
-        >
-          <MessageCircle className="w-6 h-6" />
-        </button>
-      </div>
+      {/* Mobile-First Sticky Bottom Ergonomic Navigation Bar */}
+      <MobileBottomBar />
     </div>
   );
 };
@@ -85,14 +89,23 @@ const MainRouter: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Route: /staff or #staff
-  const isStaffRoute = 
-    currentPath === '/staff' || 
-    currentPath.startsWith('/staff/') || 
+  const isStaffRoute =
+    currentPath === '/staff' ||
+    currentPath.startsWith('/staff/') ||
     window.location.hash === '#staff';
 
   if (isStaffRoute) {
-    return <StaffPortalPage onReturnToStore={() => navigateTo('/')} />;
+    return (
+      <Suspense
+        fallback={
+          <div className="min-h-screen bg-[#FAF8F5] flex items-center justify-center text-maroon-950 font-serif text-lg tracking-widest uppercase">
+            Loading Kenzae Staff Portal...
+          </div>
+        }
+      >
+        <StaffPortalPage onReturnToStore={() => navigateTo('/')} />
+      </Suspense>
+    );
   }
 
   return <CustomerStorefront />;
@@ -100,11 +113,17 @@ const MainRouter: React.FC = () => {
 
 export function App() {
   return (
-    <CatalogProvider>
-      <StaffAuthProvider>
-        <MainRouter />
-      </StaffAuthProvider>
-    </CatalogProvider>
+    <MotionConfig reducedMotion="user">
+      <CatalogProvider>
+        <CartProvider>
+          <OrdersProvider>
+            <StaffAuthProvider>
+              <MainRouter />
+            </StaffAuthProvider>
+          </OrdersProvider>
+        </CartProvider>
+      </CatalogProvider>
+    </MotionConfig>
   );
 }
 

@@ -49,13 +49,29 @@ export function validateProduct(item: unknown, index?: number): { isValid: boole
   }
 
   for (let i = 0; i < p.images.length; i++) {
-    if (typeof p.images[i] !== 'string' || !p.images[i].trim()) {
-      return { isValid: false, error: `${prefix} (${p.id}): image at index ${i} is not a valid string URL.` };
+    const img = p.images[i];
+    if (
+      typeof img !== 'string' ||
+      (!img.startsWith('http://') &&
+        !img.startsWith('https://') &&
+        !img.startsWith('/images/') &&
+        !img.startsWith('data:image/'))
+    ) {
+      return {
+        isValid: false,
+        error: `${prefix} (${p.id}): image at index ${i} must be an HTTPS URL, /images/ path, or compressed data URI.`,
+      };
     }
   }
 
   if (typeof p.in_stock !== 'boolean') {
     return { isValid: false, error: `${prefix} (${p.id}): missing or invalid boolean property 'in_stock'.` };
+  }
+
+  if (p.stockQuantity !== undefined) {
+    if (typeof p.stockQuantity !== 'number' || isNaN(p.stockQuantity) || p.stockQuantity < 0) {
+      return { isValid: false, error: `${prefix} (${p.id}): 'stockQuantity' must be a non-negative integer.` };
+    }
   }
 
   return { isValid: true };

@@ -5,12 +5,14 @@
   html {
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
   }
   
   body {
     background-color: #FAF8F5;
     color: #18181B;
     font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+    overflow-x: clip;
   }
 
   h1, h2, h3, .font-serif {
@@ -33,17 +35,17 @@
   }
 
   .gold-gradient-text {
-    background: linear-gradient(135deg, #D4AF37 0%, #F2DDA4 50%, #B89324 100%);
+    background: linear-gradient(135deg, #EDE0C8 0%, #F7EFE0 50%, #C8A46B 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .gold-gradient-bg {
-    background: linear-gradient(135deg, #D4AF37 0%, #C5A059 100%);
+    background: linear-gradient(135deg, #F3E7D3 0%, #DFC394 100%);
   }
 
-  .emerald-gradient-bg {
-    background: linear-gradient(145deg, #0B281E 0%, #0F382A 60%, #1A4C3B 100%);
+  .maroon-gradient-bg {
+    background: linear-gradient(135deg, #3A0A16 0%, #5B1224 55%, #460D1B 100%);
   }
 }
 

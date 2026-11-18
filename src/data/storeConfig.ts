@@ -1,7 +1,7 @@
 import { StoreContactInfo } from '../types/catalog';
 
 export const KENZAE_STORE_CONFIG: StoreContactInfo = {
-  storeName: "Kenzae Designer Boutique",
+  storeName: "Kenzae",
   locality: "Mulanthuruthy",
   district: "Ernakulam",
   state: "Kerala",
@@ -14,5 +14,6 @@ export const KENZAE_STORE_CONFIG: StoreContactInfo = {
   phoneDisplay: "+91 94470 00000",
   timings: "Mon – Sat: 10:00 AM – 7:30 PM | Sun: 1:00 PM – 6:00 PM",
   instagramHandle: "@kenzaeboutique",
+  websiteUrl: "https://kenzae.com",
   staffPasscode: "kenzae2026"
 };

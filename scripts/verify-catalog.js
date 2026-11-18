@@ -90,8 +90,13 @@ catalog.forEach((item, index) => {
     failed = true;
   } else {
     item.images.forEach((img, i) => {
-      if (!img.startsWith('http://') && !img.startsWith('https://')) {
-        console.error(`❌ ${pName} image [${i}] is not a valid HTTP/HTTPS URL: ${img}`);
+      if (
+        !img.startsWith('http://') &&
+        !img.startsWith('https://') &&
+        !img.startsWith('/images/') &&
+        !img.startsWith('data:image/')
+      ) {
+        console.error(`❌ ${pName} image [${i}] is not a valid image URL or asset path: ${img}`);
         failed = true;
       }
     });

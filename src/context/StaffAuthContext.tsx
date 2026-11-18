@@ -55,7 +55,7 @@ export const StaffAuthProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       setFailedAttempts((prev) => prev + 1);
       return { 
         success: false, 
-        error: 'Incorrect staff passcode. Please verify with Mulanthuruthy boutique management.' 
+        error: 'Incorrect staff passcode. Please verify with boutique management.' 
       };
     }
   };

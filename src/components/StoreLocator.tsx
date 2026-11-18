@@ -20,15 +20,15 @@ export const StoreLocator: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/10 text-emerald-900 text-xs font-semibold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-maroon-950/10 text-maroon-900 text-xs font-semibold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5 text-brass-dark" />
             <span>Store Visit & Consultations</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-obsidian">
-            Experience Kenzae in Mulanthuruthy
+            Experience Kenzae
           </h2>
           <p className="text-xs sm:text-sm text-obsidian-slate font-light leading-relaxed">
-            Feel the pure silk weaves, inspect intricate embroidery, and enjoy personalized drape consultations at our flagship boutique in Ernakulam, Kerala.
+            Feel the pure silk weaves, inspect intricate embroidery, and enjoy personalized drape consultations at our boutique.
           </p>
         </div>
 
@@ -41,7 +41,7 @@ export const StoreLocator: React.FC = () => {
               
               {/* Address Block */}
               <div className="flex items-start gap-3.5">
-                <div className="p-2.5 rounded-full bg-emerald-950 text-brass-light shrink-0 mt-0.5 shadow-sm">
+                <div className="p-2.5 rounded-full bg-maroon-950 text-brass-light shrink-0 mt-0.5 shadow-sm">
                   <MapPin className="w-5 h-5 text-brass" />
                 </div>
                 <div>
@@ -60,7 +60,7 @@ export const StoreLocator: React.FC = () => {
 
               {/* Operating Hours */}
               <div className="flex items-start gap-3.5">
-                <div className="p-2.5 rounded-full bg-canvas-subtle text-emerald-900 shrink-0 mt-0.5">
+                <div className="p-2.5 rounded-full bg-canvas-subtle text-maroon-900 shrink-0 mt-0.5">
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
@@ -78,7 +78,7 @@ export const StoreLocator: React.FC = () => {
 
               {/* Phone & Inquiries */}
               <div className="flex items-start gap-3.5">
-                <div className="p-2.5 rounded-full bg-canvas-subtle text-emerald-900 shrink-0 mt-0.5">
+                <div className="p-2.5 rounded-full bg-canvas-subtle text-maroon-900 shrink-0 mt-0.5">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
@@ -100,7 +100,7 @@ export const StoreLocator: React.FC = () => {
             <div className="pt-4 border-t border-canvas-border flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleOpenDirections}
-                className="flex-1 py-3 px-5 rounded-full bg-emerald-950 hover:bg-emerald-900 text-brass-light hover:text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2 border border-brass/40 active:scale-95"
+                className="flex-1 py-3 px-5 rounded-full bg-maroon-950 hover:bg-maroon-900 text-brass-light hover:text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2 border border-brass/40 active:scale-95"
               >
                 <Navigation className="w-4 h-4 text-brass" />
                 <span>Get Directions</span>
@@ -119,7 +119,7 @@ export const StoreLocator: React.FC = () => {
           {/* Right Column: Responsive Embedded Google Map (lg:col-span-6) */}
           <div className="lg:col-span-6 min-h-[300px] lg:min-h-full relative bg-canvas-subtle border-t lg:border-t-0 lg:border-l border-canvas-border flex flex-col">
             <iframe
-              title="Kenzae Boutique Mulanthuruthy Location"
+              title="Kenzae Store Location"
               src="https://maps.google.com/maps?q=Mulanthuruthy,Ernakulam,Kerala&t=&z=15&ie=UTF8&iwloc=&output=embed"
               className="w-full h-full min-h-[320px] border-0"
               loading="lazy"
@@ -133,7 +133,7 @@ export const StoreLocator: React.FC = () => {
                 href={KENZAE_STORE_CONFIG.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-brass-dark hover:text-emerald-950 font-semibold"
+                className="inline-flex items-center gap-1 text-brass-dark hover:text-maroon-950 font-semibold"
               >
                 <span>View Full Map</span>
                 <ExternalLink className="w-3.5 h-3.5" />

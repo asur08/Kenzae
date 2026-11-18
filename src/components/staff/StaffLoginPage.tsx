@@ -43,17 +43,17 @@ export const StaffLoginPage: React.FC<StaffLoginPageProps> = ({ onReturnToStore 
       {/* Login Card */}
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl border border-canvas-border overflow-hidden">
         {/* Brand Header */}
-        <div className="bg-emerald-950 text-white p-6 sm:p-8 text-center border-b border-brass/30">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-900 border border-brass/40 text-brass-light mb-3">
+        <div className="bg-maroon-950 text-white p-6 sm:p-8 text-center border-b border-brass/30">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-maroon-900 border border-brass/40 text-brass-light mb-3">
             <Lock className="w-5 h-5 text-brass" />
           </div>
           <h1 className="font-serif text-2xl font-normal tracking-[0.25em] text-brass-light uppercase">
             KENZAE
           </h1>
           <p className="text-[10px] tracking-[0.3em] uppercase text-white/70 font-medium mt-1">
-            Mulanthuruthy Boutique • Staff Portal
+            Staff Portal
           </p>
-          <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-900/60 border border-brass/20 text-[11px] text-brass-light/90">
+          <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-maroon-900/60 border border-brass/20 text-[11px] text-brass-light/90">
             <ShieldCheck className="w-3.5 h-3.5 text-brass" />
             <span>Authorized Personnel Only</span>
           </div>
@@ -79,7 +79,7 @@ export const StaffLoginPage: React.FC<StaffLoginPageProps> = ({ onReturnToStore 
                   placeholder="Enter staff PIN..."
                   autoFocus
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-canvas-subtle border border-canvas-border text-obsidian text-sm focus:outline-none focus:border-emerald-850 focus:bg-white transition-all font-mono tracking-wider pr-11"
+                  className="w-full px-4 py-3 rounded-xl bg-canvas-subtle border border-canvas-border text-obsidian text-sm focus:outline-none focus:border-maroon-850 focus:bg-white transition-all font-mono tracking-wider pr-11"
                 />
                 <button
                   type="button"
@@ -99,7 +99,7 @@ export const StaffLoginPage: React.FC<StaffLoginPageProps> = ({ onReturnToStore 
                   type="checkbox"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="w-4 h-4 accent-emerald-900 rounded border-canvas-border"
+                  className="w-4 h-4 accent-maroon-900 rounded border-canvas-border"
                 />
                 <span>Remember on this boutique device</span>
               </label>
@@ -124,7 +124,7 @@ export const StaffLoginPage: React.FC<StaffLoginPageProps> = ({ onReturnToStore 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 px-4 rounded-xl bg-emerald-900 hover:bg-emerald-850 text-white font-semibold text-xs tracking-wider uppercase shadow-md transition-all border border-brass/40 flex items-center justify-center gap-2 active:scale-[0.99]"
+              className="w-full py-3.5 px-4 rounded-xl bg-maroon-900 hover:bg-maroon-850 text-white font-semibold text-xs tracking-wider uppercase shadow-md transition-all border border-brass/40 flex items-center justify-center gap-2 active:scale-[0.99]"
             >
               <Lock className="w-4 h-4 text-brass" />
               <span>Sign In to Staff Console</span>
@@ -137,7 +137,7 @@ export const StaffLoginPage: React.FC<StaffLoginPageProps> = ({ onReturnToStore 
               {KENZAE_STORE_CONFIG.storeName}
             </p>
             <p className="text-[11px]">
-              Mulanthuruthy, Ernakulam District, Kerala
+              Designer Ethnic Wear & Couture
             </p>
           </div>
         </div>

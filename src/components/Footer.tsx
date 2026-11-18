@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-emerald-950 text-canvas border-t border-gold-500/30 pt-16 pb-12">
+    <footer className="bg-maroon-950 text-canvas border-t border-brass/30 pt-16 pb-12">
       <div className="container mx-auto px-4">
         
         {/* Main Grid */}
@@ -34,13 +34,13 @@ export const Footer: React.FC = () => {
           {/* Brand & Story (lg:col-span-5) */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-2">
-              <span className="font-serif text-2xl font-bold tracking-[0.25em] text-gold-300 uppercase">
+              <span className="font-serif text-2xl font-bold tracking-[0.25em] text-brass-light uppercase">
                 KENZAE
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-brass"></span>
             </div>
-            <p className="text-xs uppercase tracking-widest text-gold-200/80 font-medium">
-              Designer Boutique • Mulanthuruthy, Kerala
+            <p className="text-xs uppercase tracking-widest text-brass-light/80 font-medium">
+              Designer Ethnic Wear & Couture
             </p>
             <p className="text-xs text-canvas/70 leading-relaxed max-w-sm font-light">
               Celebrating India's finest handloom traditions. Kenzae curates bespoke Banarasi silks, Kasavu organza, artisanal salwar suits, and unstitched dress materials for celebrations, weddings, and everyday grace.
@@ -49,7 +49,7 @@ export const Footer: React.FC = () => {
             <div className="pt-2 flex items-center gap-3">
               <button
                 onClick={handleWhatsAppConsult}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-900 hover:bg-emerald-850 text-gold-300 text-xs font-semibold tracking-wider uppercase border border-gold-500/30 transition-all"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-maroon-900 hover:bg-maroon-850 text-brass-light text-xs font-semibold tracking-wider uppercase border border-brass/30 transition-all"
               >
                 <MessageCircle className="w-3.5 h-3.5 text-whatsapp" />
                 <span>WhatsApp Boutique</span>
@@ -59,14 +59,14 @@ export const Footer: React.FC = () => {
 
           {/* Quick Category Navigation (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-gold-300">
+            <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-brass-light">
               Collections
             </h4>
             <ul className="space-y-2 text-xs text-canvas/80 font-light">
               <li>
                 <button
                   onClick={() => handleCategoryClick('Saris')}
-                  className="hover:text-gold-300 transition-colors"
+                  className="hover:text-brass-light transition-colors"
                 >
                   Pure Silk & Handwoven Saris
                 </button>
@@ -74,7 +74,7 @@ export const Footer: React.FC = () => {
               <li>
                 <button
                   onClick={() => handleCategoryClick('Churidars & Salwar Sets')}
-                  className="hover:text-gold-300 transition-colors"
+                  className="hover:text-brass-light transition-colors"
                 >
                   Churidars & Anarkali Suits
                 </button>
@@ -82,7 +82,7 @@ export const Footer: React.FC = () => {
               <li>
                 <button
                   onClick={() => handleCategoryClick('Unstitched Dress Materials')}
-                  className="hover:text-gold-300 transition-colors"
+                  className="hover:text-brass-light transition-colors"
                 >
                   Unstitched Dress Materials
                 </button>
@@ -90,7 +90,7 @@ export const Footer: React.FC = () => {
               <li>
                 <button
                   onClick={() => handleCategoryClick('Kurthis & Ready-to-Wear')}
-                  className="hover:text-gold-300 transition-colors"
+                  className="hover:text-brass-light transition-colors"
                 >
                   Festive Kurthis & Tunics
                 </button>
@@ -100,18 +100,18 @@ export const Footer: React.FC = () => {
 
           {/* Store Location & Timings (lg:col-span-4) */}
           <div className="lg:col-span-4 space-y-3">
-            <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-gold-300">
+            <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-brass-light">
               Boutique Location
             </h4>
             <div className="space-y-2 text-xs text-canvas/80 font-light">
               <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-gold-400 shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-brass shrink-0 mt-0.5" />
                 <span>
                   {KENZAE_STORE_CONFIG.storeName}, Main Road, {KENZAE_STORE_CONFIG.locality}, Ernakulam District, Kerala — {KENZAE_STORE_CONFIG.pincode}
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-gold-400 shrink-0" />
+                <Phone className="w-4 h-4 text-brass shrink-0" />
                 <span>{KENZAE_STORE_CONFIG.phoneDisplay}</span>
               </div>
               <p className="text-[11px] text-canvas/60 pt-1">
@@ -122,7 +122,7 @@ export const Footer: React.FC = () => {
                   href={KENZAE_STORE_CONFIG.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs text-gold-300 hover:text-white underline underline-offset-4 font-medium"
+                  className="inline-flex items-center gap-1.5 text-xs text-brass-light hover:text-white underline underline-offset-4 font-medium"
                 >
                   <span>Open Directions on Google Maps</span>
                   <ExternalLink className="w-3.5 h-3.5" />
@@ -136,7 +136,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Credits & Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-canvas/60 font-light">
           <div>
-            © {new Date().getFullYear()} {KENZAE_STORE_CONFIG.storeName}, Mulanthuruthy. All rights reserved.
+            © {new Date().getFullYear()} {KENZAE_STORE_CONFIG.storeName}. All rights reserved.
           </div>
           <div className="flex items-center gap-4 text-[11px]">
             <a
@@ -147,14 +147,14 @@ export const Footer: React.FC = () => {
                 window.dispatchEvent(new PopStateEvent('popstate'));
               }}
               className="text-canvas/30 hover:text-canvas/70 transition-colors tracking-wider"
-              title="Kenzae Boutique Staff Portal"
+              title="Kenzae Staff Portal"
             >
               Staff Access
             </a>
             <span className="text-canvas/20">•</span>
             <div className="flex items-center gap-1">
               <span>Crafted with</span>
-              <Heart className="w-3 h-3 text-gold-400 fill-current inline" />
+              <Heart className="w-3 h-3 text-brass fill-current inline" />
               <span>for Kerala Fashion & Couture</span>
             </div>
           </div>

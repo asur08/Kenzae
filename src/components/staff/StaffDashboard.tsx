@@ -1,6 +1,9 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { 
   Plus, 
+  Minus,
+  ShoppingBag,
+  RotateCcw,
   Search, 
   Edit3, 
   Check, 
@@ -22,9 +25,13 @@ import {
 } from 'lucide-react';
 import { useCatalog } from '../../context/CatalogContext';
 import { useStaffAuth } from '../../context/StaffAuthContext';
-import { KenzaeProduct, ProductCategory } from '../../types/catalog';
+import { useOrders } from '../../context/OrdersContext';
+import { KenzaeProduct, ProductCategory, ProductImageRole } from '../../types/catalog';
 import { formatCurrencyINR } from '../../utils/formatters';
 import { ProductEditModal } from './ProductEditModal';
+import { ImageUploadStudio } from './ImageUploadStudio';
+import { OrdersManager } from './OrdersManager';
+import { downloadDataUrlAsFile } from '../../utils/imageProcessor';
 
 interface StaffDashboardProps {
   onReturnToStore: () => void;
@@ -43,6 +50,8 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
     addProduct,
     updateProduct,
     updateProductPrice,
+    updateProductStock,
+    recordPurchase,
     deleteProduct,
     renameTag,
     resetToDefaultCatalog,
@@ -51,25 +60,35 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
   } = useCatalog();
 
   const { logout } = useStaffAuth();
+  const { orders } = useOrders();
 
   // Active top-level tab
-  const [activeTab, setActiveTab] = useState<'inventory' | 'add' | 'tags' | 'backup'>('inventory');
+  const [activeTab, setActiveTab] = useState<'orders' | 'inventory' | 'add' | 'tags' | 'backup'>('orders');
 
   // Search & Filters inside staff dashboard
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const [stockFilter, setStockFilter] = useState<'all' | 'in_stock' | 'out_of_stock'>('all');
+  const [stockFilter, setStockFilter] = useState<'all' | 'in_stock' | 'low_stock' | 'out_of_stock'>('all');
 
   // Inline price editing state: maps productId -> current numeric input string
   const [editingPriceId, setEditingPriceId] = useState<string | null>(null);
   const [tempPriceValue, setTempPriceValue] = useState<string>('');
 
+  // Inline stock quantity editing state: maps productId -> current numeric input string
+  const [editingStockId, setEditingStockId] = useState<string | null>(null);
+  const [tempStockValue, setTempStockValue] = useState<string>('');
+
   // Full product editing modal state
   const [modalProduct, setModalProduct] = useState<KenzaeProduct | null>(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-  // Status notification notice
-  const [notice, setNotice] = useState<{ message: string; isError?: boolean } | null>(null);
+  // Status notification notice with optional undo callback
+  const [notice, setNotice] = useState<{
+    message: string;
+    isError?: boolean;
+    undoAction?: () => void;
+  } | null>(null);
+  const noticeTimerRef = useRef<number | null>(null);
 
   // New product form state
   const [formData, setFormData] = useState({
@@ -78,11 +97,12 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
     category: 'Saris' as ProductCategory,
     subCategory: '',
     price: 3500,
+    stockQuantity: 2,
     fabricDetails: '',
     color: '',
     description: '',
-    image1: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=80',
-    image2: '',
+    images: [] as string[],
+    imageRoles: [] as ProductImageRole[],
     in_stock: true,
     isFeatured: false,
   });
@@ -94,9 +114,12 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
   // Import JSON state
   const [importJsonText, setImportJsonText] = useState('');
 
-  const showNotice = (message: string, isError = false) => {
-    setNotice({ message, isError });
-    setTimeout(() => setNotice(null), 4000);
+  const showNotice = (message: string, isError = false, undoAction?: () => void) => {
+    if (noticeTimerRef.current) {
+      window.clearTimeout(noticeTimerRef.current);
+    }
+    setNotice({ message, isError, undoAction });
+    noticeTimerRef.current = window.setTimeout(() => setNotice(null), 5000);
   };
 
   // KPIs
@@ -106,6 +129,10 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
 
   const inStockCount = useMemo(() => {
     return products.filter((p) => p.in_stock).length;
+  }, [products]);
+
+  const totalStockUnits = useMemo(() => {
+    return products.reduce((acc, p) => acc + (p.stockQuantity ?? (p.in_stock ? 1 : 0)), 0);
   }, [products]);
 
   const outOfStockCount = products.length - inStockCount;
@@ -129,6 +156,10 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
         return false;
       }
       if (stockFilter === 'in_stock' && !p.in_stock) return false;
+      if (stockFilter === 'low_stock') {
+        const qty = p.stockQuantity ?? (p.in_stock ? 1 : 0);
+        if (qty <= 0 || qty > 2) return false;
+      }
       if (stockFilter === 'out_of_stock' && p.in_stock) return false;
       if (searchQuery.trim()) {
         const query = searchQuery.toLowerCase().trim();
@@ -190,13 +221,69 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
     setTempPriceValue('');
   };
 
+  // Inline Stock Edit & Adjust Handlers
+  const handleAdjustStock = (productId: string, delta: number, currentStock: number) => {
+    const nextStock = Math.max(0, currentStock + delta);
+    const res = updateProductStock(productId, nextStock);
+    if (res.success) {
+      showNotice(`Updated stock to ${nextStock} unit${nextStock === 1 ? '' : 's'}`);
+    } else {
+      showNotice(res.error || 'Failed to update stock', true);
+    }
+  };
+
+  const handleRecordSale = (productId: string, sku: string) => {
+    const target = products.find((p) => p.id === productId);
+    const prevStock = target?.stockQuantity ?? (target?.in_stock ? 1 : 0);
+    const res = recordPurchase(productId, 1);
+    if (res.success) {
+      showNotice(
+        `Recorded 1 sale for ${sku}. Remaining: ${res.remainingStock} unit(s)`,
+        false,
+        () => {
+          updateProductStock(productId, prevStock);
+          showNotice(`Restored ${sku} stock to ${prevStock} unit(s)`);
+        }
+      );
+    } else {
+      showNotice(res.error || 'Failed to record sale', true);
+    }
+  };
+
+  const handleStartStockEdit = (product: KenzaeProduct) => {
+    setEditingStockId(product.id);
+    setTempStockValue(String(product.stockQuantity ?? (product.in_stock ? 1 : 0)));
+  };
+
+  const handleSaveStockEdit = (productId: string) => {
+    const numStock = parseInt(tempStockValue, 10);
+    if (isNaN(numStock) || numStock < 0) {
+      showNotice('Please enter a valid stock quantity (0 or greater)', true);
+      return;
+    }
+    const res = updateProductStock(productId, numStock);
+    if (res.success) {
+      showNotice(`Updated stock count to ${numStock}`);
+      setEditingStockId(null);
+    } else {
+      showNotice(res.error || 'Failed to update stock', true);
+    }
+  };
+
+  const handleCancelStockEdit = () => {
+    setEditingStockId(null);
+    setTempStockValue('');
+  };
+
   // Create Product Submit
   const handleCreateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const images: string[] = [formData.image1.trim()];
-    if (formData.image2.trim()) {
-      images.push(formData.image2.trim());
+    if (formData.images.length === 0) {
+      showNotice('Please upload or add at least 1 garment photograph.', true);
+      return;
     }
+
+    const stockQty = Math.max(0, Number(formData.stockQuantity) || 0);
 
     const newProd: KenzaeProduct = {
       id: formData.sku.toLowerCase().replace(/[^a-z0-9]/g, '-'),
@@ -205,14 +292,16 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
       category: formData.category,
       subCategory: formData.subCategory.trim() || undefined,
       price: Math.round(Number(formData.price)),
+      stockQuantity: stockQty,
       currency: 'INR',
       description: formData.description.trim() || undefined,
       fabricDetails: formData.fabricDetails.trim() || undefined,
       color: formData.color.trim() || undefined,
-      images,
-      in_stock: formData.in_stock,
+      images: formData.images,
+      imageRoles: formData.imageRoles.length ? formData.imageRoles : undefined,
+      in_stock: stockQty > 0 && formData.in_stock,
       isFeatured: formData.isFeatured,
-      whatsappMessage: `Hello Kenzae Boutique, I am inquiring about ${formData.title} (${formData.sku}) at ₹${formData.price}.`,
+      whatsappMessage: `Hello Kenzae, I am inquiring about ${formData.title} (${formData.sku}) at ₹${formData.price}.`,
     };
 
     const res = addProduct(newProd);
@@ -225,17 +314,46 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
         category: 'Saris',
         subCategory: '',
         price: 3500,
+        stockQuantity: 2,
         fabricDetails: '',
         color: '',
         description: '',
-        image1: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=80',
-        image2: '',
+        images: [],
+        imageRoles: [],
         in_stock: true,
         isFeatured: false,
       });
     } else {
       showNotice(res.error || 'Failed to add piece', true);
     }
+  };
+
+  // Export all uploaded/generated data:image WebPs + clean products.json referencing /images/catalog/
+  const handleExportStaticWebPBundle = () => {
+    let downloadedCount = 0;
+    const mappedProducts = products.map((p) => {
+      const slug = p.sku.toLowerCase().replace(/[^a-z0-9-]/g, '-');
+      const mappedImages = p.images.map((img, idx) => {
+        if (img.startsWith('data:image/')) {
+          const filename = `${slug}-${idx + 1}.webp`;
+          downloadDataUrlAsFile(img, filename);
+          downloadedCount++;
+          return `/images/catalog/${filename}`;
+        }
+        return img;
+      });
+      return { ...p, images: mappedImages };
+    });
+
+    const dataStr =
+      'data:text/json;charset=utf-8,' +
+      encodeURIComponent(JSON.stringify(mappedProducts, null, 2));
+    downloadDataUrlAsFile(dataStr, 'products.json');
+    showNotice(
+      downloadedCount > 0
+        ? `Exported products.json + ${downloadedCount} WebP file(s) for /public/images/catalog/`
+        : 'Exported products.json'
+    );
   };
 
   // Tag rename submit
@@ -269,7 +387,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
   return (
     <div className="min-h-screen bg-[#F5F2EB] flex flex-col text-obsidian">
       {/* Top Staff Navigation Header */}
-      <header className="sticky top-0 z-30 bg-emerald-950 text-white border-b border-brass/30 shadow-md">
+      <header className="sticky top-0 z-30 bg-maroon-950 text-white border-b border-brass/30 shadow-md">
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="flex flex-col">
@@ -277,12 +395,12 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                 <span className="font-serif text-lg sm:text-xl font-normal tracking-[0.25em] text-brass uppercase">
                   KENZAE
                 </span>
-                <span className="text-[10px] uppercase font-mono tracking-widest px-2 py-0.5 rounded bg-emerald-900 text-brass-light border border-brass/30">
+                <span className="text-[10px] uppercase font-mono tracking-widest px-2 py-0.5 rounded bg-maroon-900 text-brass-light border border-brass/30">
                   Staff Console
                 </span>
               </div>
               <span className="text-[10px] text-white/70 tracking-wider">
-                Mulanthuruthy Boutique Management
+                Boutique Inventory & Pricing
               </span>
             </div>
           </div>
@@ -290,7 +408,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
           <div className="flex items-center gap-2 sm:gap-4 text-xs">
             <button
               onClick={onReturnToStore}
-              className="px-3 py-1.5 rounded-lg bg-emerald-900 hover:bg-emerald-850 text-brass-light hover:text-white transition-colors flex items-center gap-1.5 border border-brass/20"
+              className="px-3 py-1.5 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white transition-colors flex items-center gap-1.5 border border-brass/20"
               title="Return to Customer Storefront"
             >
               <ExternalLink className="w-3.5 h-3.5" />
@@ -299,7 +417,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
 
             <button
               onClick={exportCatalogJSON}
-              className="px-3 py-1.5 rounded-lg bg-brass-dark hover:bg-brass text-emerald-950 font-bold transition-colors flex items-center gap-1.5 shadow-sm"
+              className="px-3 py-1.5 rounded-lg bg-brass-dark hover:bg-brass text-maroon-950 font-bold transition-colors flex items-center gap-1.5 shadow-sm"
               title="Download products.json for Git or Backup"
             >
               <Download className="w-3.5 h-3.5" />
@@ -321,24 +439,34 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
       {/* KPI Ribbon */}
       <section className="bg-white border-b border-canvas-border py-4">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             <div className="p-3 rounded-xl bg-canvas-subtle border border-canvas-border">
               <span className="text-[10px] uppercase tracking-wider text-obsidian-slate font-bold flex items-center gap-1">
                 <Package className="w-3.5 h-3.5 text-brass-dark" />
-                <span>Total Catalog Pieces</span>
+                <span>Catalog Pieces</span>
               </span>
               <p className="font-serif text-xl sm:text-2xl font-bold text-obsidian mt-1">
                 {products.length}
               </p>
             </div>
 
-            <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200">
-              <span className="text-[10px] uppercase tracking-wider text-emerald-800 font-bold flex items-center gap-1">
-                <Check className="w-3.5 h-3.5 text-emerald-700" />
-                <span>In Stock at Boutique</span>
+            <div className="p-3 rounded-xl bg-maroon-50 border border-maroon-200">
+              <span className="text-[10px] uppercase tracking-wider text-maroon-900 font-bold flex items-center gap-1">
+                <Check className="w-3.5 h-3.5 text-maroon-800" />
+                <span>In Stock Pieces</span>
               </span>
-              <p className="font-serif text-xl sm:text-2xl font-bold text-emerald-900 mt-1">
+              <p className="font-serif text-xl sm:text-2xl font-bold text-maroon-950 mt-1">
                 {inStockCount}
+              </p>
+            </div>
+
+            <div className="p-3 rounded-xl bg-amber-50 border border-amber-200">
+              <span className="text-[10px] uppercase tracking-wider text-amber-900 font-bold flex items-center gap-1">
+                <ShoppingBag className="w-3.5 h-3.5 text-amber-700" />
+                <span>Total Stock Units</span>
+              </span>
+              <p className="font-serif text-xl sm:text-2xl font-bold text-amber-950 mt-1">
+                {totalStockUnits}
               </p>
             </div>
 
@@ -355,17 +483,17 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
             <div className="p-3 rounded-xl bg-canvas-subtle border border-canvas-border">
               <span className="text-[10px] uppercase tracking-wider text-obsidian-slate font-bold flex items-center gap-1">
                 <DollarSign className="w-3.5 h-3.5 text-brass-dark" />
-                <span>Total Inventory Value</span>
+                <span>Inventory Value</span>
               </span>
-              <p className="font-serif text-lg sm:text-2xl font-bold text-emerald-950 mt-1 font-mono">
+              <p className="font-serif text-lg sm:text-2xl font-bold text-maroon-950 mt-1 font-mono">
                 {formatCurrencyINR(totalValuation)}
               </p>
             </div>
 
-            <div className="hidden lg:block p-3 rounded-xl bg-canvas-subtle border border-canvas-border">
+            <div className="p-3 rounded-xl bg-canvas-subtle border border-canvas-border">
               <span className="text-[10px] uppercase tracking-wider text-obsidian-slate font-bold flex items-center gap-1">
                 <Tag className="w-3.5 h-3.5 text-brass-dark" />
-                <span>Active Fabric Weaves</span>
+                <span>Fabric Weaves</span>
               </span>
               <p className="font-serif text-xl sm:text-2xl font-bold text-obsidian mt-1">
                 {tagBreakdown.length}
@@ -380,10 +508,27 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
         <div className="container mx-auto px-4 flex items-center justify-between gap-3 overflow-x-auto py-2">
           <div className="flex items-center gap-2">
             <button
+              onClick={() => setActiveTab('orders')}
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-1.5 transition-all ${
+                activeTab === 'orders'
+                  ? 'bg-maroon-900 text-brass-light shadow-sm'
+                  : 'bg-white text-obsidian hover:bg-canvas-border'
+              }`}
+            >
+              <Package className="w-3.5 h-3.5" />
+              <span>Orders &amp; Dispatch</span>
+              {orders.filter((o) => o.fulfillmentStatus === 'new' || o.fulfillmentStatus === 'tailoring').length > 0 && (
+                <span className="px-1.5 py-0.2 rounded-full bg-brass text-maroon-950 font-bold text-[10px]">
+                  {orders.filter((o) => o.fulfillmentStatus === 'new' || o.fulfillmentStatus === 'tailoring').length}
+                </span>
+              )}
+            </button>
+
+            <button
               onClick={() => setActiveTab('inventory')}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all ${
                 activeTab === 'inventory'
-                  ? 'bg-emerald-900 text-brass-light shadow-sm'
+                  ? 'bg-maroon-900 text-brass-light shadow-sm'
                   : 'bg-white text-obsidian hover:bg-canvas-border'
               }`}
             >
@@ -394,7 +539,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
               onClick={handleStartAdd}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-1.5 transition-all ${
                 activeTab === 'add'
-                  ? 'bg-emerald-900 text-brass-light shadow-sm'
+                  ? 'bg-maroon-900 text-brass-light shadow-sm'
                   : 'bg-white text-obsidian hover:bg-canvas-border'
               }`}
             >
@@ -406,7 +551,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
               onClick={() => setActiveTab('tags')}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-1.5 transition-all ${
                 activeTab === 'tags'
-                  ? 'bg-emerald-900 text-brass-light shadow-sm'
+                  ? 'bg-maroon-900 text-brass-light shadow-sm'
                   : 'bg-white text-obsidian hover:bg-canvas-border'
               }`}
             >
@@ -418,7 +563,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
               onClick={() => setActiveTab('backup')}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-1.5 transition-all ${
                 activeTab === 'backup'
-                  ? 'bg-emerald-900 text-brass-light shadow-sm'
+                  ? 'bg-maroon-900 text-brass-light shadow-sm'
                   : 'bg-white text-obsidian hover:bg-canvas-border'
               }`}
             >
@@ -445,12 +590,12 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
 
       {/* Floating Notice Alert */}
       {notice && (
-        <div className="fixed bottom-6 right-6 z-50 animate-bounce">
+        <div className="fixed bottom-5 right-5 z-50">
           <div
-            className={`px-4 py-3 rounded-xl shadow-xl text-xs font-semibold flex items-center gap-2 border ${
+            className={`px-4 py-3 rounded-xl shadow-xl text-xs font-semibold flex items-center gap-3 border ${
               notice.isError
                 ? 'bg-rose-900 text-white border-rose-700'
-                : 'bg-emerald-950 text-brass-light border-brass/40'
+                : 'bg-maroon-950 text-brass-light border-brass/40'
             }`}
           >
             {notice.isError ? (
@@ -459,6 +604,15 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
               <CheckCircle2 className="w-4 h-4 text-brass shrink-0" />
             )}
             <span>{notice.message}</span>
+            {notice.undoAction && (
+              <button
+                onClick={notice.undoAction}
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/15 hover:bg-white/25 text-white text-[11px] font-semibold transition-colors shrink-0"
+              >
+                <RotateCcw className="w-3 h-3" />
+                <span>Undo</span>
+              </button>
+            )}
           </div>
         </div>
       )}
@@ -466,6 +620,11 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
       {/* Tab Contents */}
       <main className="container mx-auto px-4 py-6 flex-1">
         
+        {/* TAB 0: Orders & Dispatch Management (Phase 2 OMS) */}
+        {activeTab === 'orders' && (
+          <OrdersManager />
+        )}
+
         {/* TAB 1: Inventory & Quick Price Editing */}
         {activeTab === 'inventory' && (
           <div className="space-y-4">
@@ -478,7 +637,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                   placeholder="Search by SKU, title, fabric tag, or weave..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2 rounded-lg bg-canvas-subtle border border-canvas-border text-xs focus:outline-none focus:border-emerald-850 focus:bg-white"
+                  className="w-full pl-9 pr-4 py-2 rounded-lg bg-canvas-subtle border border-canvas-border text-xs focus:outline-none focus:border-maroon-850 focus:bg-white"
                 />
                 {searchQuery && (
                   <button
@@ -511,6 +670,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                 >
                   <option value="all">All Availability</option>
                   <option value="in_stock">In Stock Only</option>
+                  <option value="low_stock">Low Stock (≤ 2 pcs)</option>
                   <option value="out_of_stock">Out of Stock Only</option>
                 </select>
               </div>
@@ -527,11 +687,13 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
               ) : (
                 filteredProducts.map((p) => {
                   const isEditingPrice = editingPriceId === p.id;
+                  const isEditingStock = editingStockId === p.id;
+                  const currentStockQty = p.stockQuantity ?? (p.in_stock ? 1 : 0);
 
                   return (
                     <div
                       key={p.id}
-                      className="p-3 sm:p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 hover:bg-canvas-subtle/50 transition-colors"
+                      className="p-3 sm:p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-3 hover:bg-canvas-subtle/50 transition-colors"
                     >
                       {/* Product Overview */}
                       <div className="flex items-center gap-3.5 min-w-0 flex-1">
@@ -543,7 +705,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
 
                         <div className="min-w-0 flex-1">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="font-mono text-xs font-bold text-emerald-950 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">
+                            <span className="font-mono text-xs font-bold text-maroon-950 bg-maroon-50 border border-maroon-200 px-2 py-0.5 rounded">
                               {p.sku}
                             </span>
                             <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-canvas-subtle text-obsidian-slate border border-canvas-border">
@@ -573,11 +735,11 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                       </div>
 
                       {/* Pricing, Stock & Actions */}
-                      <div className="flex items-center justify-between md:justify-end gap-3 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-canvas-border">
+                      <div className="flex flex-wrap items-center justify-between lg:justify-end gap-2.5 shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-canvas-border">
                         {/* Inline Price Editor */}
                         <div className="flex items-center gap-1.5">
                           {isEditingPrice ? (
-                            <div className="flex items-center gap-1 bg-white border-2 border-emerald-800 rounded-lg p-1 shadow-sm">
+                            <div className="flex items-center gap-1 bg-white border-2 border-maroon-800 rounded-lg p-1 shadow-sm">
                               <span className="text-xs font-bold text-obsidian pl-1">₹</span>
                               <input
                                 type="number"
@@ -593,7 +755,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                               />
                               <button
                                 onClick={() => handleSavePriceEdit(p.id)}
-                                className="p-1 rounded bg-emerald-800 text-white hover:bg-emerald-700"
+                                className="p-1 rounded bg-maroon-800 text-white hover:bg-maroon-700"
                                 title="Save Price"
                               >
                                 <Check className="w-3.5 h-3.5" />
@@ -612,7 +774,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                               className="group cursor-pointer flex items-center gap-1 px-2.5 py-1 rounded-lg border border-transparent hover:border-canvas-border hover:bg-canvas-subtle transition-all"
                               title="Click to edit price"
                             >
-                              <span className="font-mono text-sm font-bold text-emerald-950">
+                              <span className="font-mono text-sm font-bold text-maroon-950">
                                 {formatCurrencyINR(p.price)}
                               </span>
                               <Edit3 className="w-3 h-3 text-obsidian-slate opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -620,20 +782,104 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                           )}
                         </div>
 
+                        {/* Discrete Stock Quantity Stepper & Inline Edit */}
+                        <div className="flex items-center gap-1">
+                          {isEditingStock ? (
+                            <div className="flex items-center gap-1 bg-white border-2 border-maroon-800 rounded-lg p-1 shadow-sm">
+                              <span className="text-[10px] text-obsidian-slate pl-1 font-bold">Qty:</span>
+                              <input
+                                type="number"
+                                min="0"
+                                value={tempStockValue}
+                                onChange={(e) => setTempStockValue(e.target.value)}
+                                onKeyDown={(e) => {
+                                  if (e.key === 'Enter') handleSaveStockEdit(p.id);
+                                  if (e.key === 'Escape') handleCancelStockEdit();
+                                }}
+                                autoFocus
+                                className="w-14 px-1 text-xs font-mono font-bold focus:outline-none"
+                              />
+                              <button
+                                onClick={() => handleSaveStockEdit(p.id)}
+                                className="p-1 rounded bg-maroon-800 text-white hover:bg-maroon-700"
+                                title="Save Stock Count"
+                              >
+                                <Check className="w-3.5 h-3.5" />
+                              </button>
+                              <button
+                                onClick={handleCancelStockEdit}
+                                className="p-1 rounded bg-canvas-border text-obsidian hover:bg-canvas-dark"
+                                title="Cancel"
+                              >
+                                <X className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
+                          ) : (
+                            <div className="flex items-center gap-1 bg-canvas-subtle border border-canvas-border rounded-lg p-0.5">
+                              <button
+                                onClick={() => handleAdjustStock(p.id, -1, currentStockQty)}
+                                disabled={currentStockQty <= 0}
+                                className="p-1 rounded hover:bg-white text-obsidian-slate hover:text-obsidian disabled:opacity-25 disabled:cursor-not-allowed transition-colors"
+                                title="Decrease boutique stock by 1"
+                              >
+                                <Minus className="w-3 h-3" />
+                              </button>
+                              
+                              <div
+                                onClick={() => handleStartStockEdit(p)}
+                                className="group cursor-pointer px-1.5 py-0.5 rounded hover:bg-white flex items-center gap-1"
+                                title="Click to directly edit stock quantity"
+                              >
+                                <span className={`font-mono text-xs font-bold ${
+                                  currentStockQty === 0 
+                                    ? 'text-rose-700' 
+                                    : currentStockQty === 1 
+                                    ? 'text-amber-800' 
+                                    : 'text-maroon-900'
+                                }`}>
+                                  {currentStockQty} {currentStockQty === 1 ? 'pc' : 'pcs'}
+                                </span>
+                                <Edit3 className="w-2.5 h-2.5 text-obsidian-slate opacity-0 group-hover:opacity-100 transition-opacity" />
+                              </div>
+
+                              <button
+                                onClick={() => handleAdjustStock(p.id, 1, currentStockQty)}
+                                className="p-1 rounded hover:bg-white text-obsidian-slate hover:text-obsidian transition-colors"
+                                title="Increase boutique stock by 1"
+                              >
+                                <Plus className="w-3 h-3" />
+                              </button>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Quick 1-Tap Record Sale (-1) */}
+                        <button
+                          onClick={() => handleRecordSale(p.id, p.sku)}
+                          disabled={currentStockQty <= 0}
+                          className="px-2.5 py-1 rounded-lg bg-maroon-950 hover:bg-maroon-900 text-brass-light hover:text-white font-medium text-xs flex items-center gap-1.5 disabled:opacity-30 disabled:cursor-not-allowed shadow-xs transition-colors shrink-0"
+                          title={currentStockQty > 0 ? "Record in-store customer purchase (-1 unit)" : "Out of stock - cannot record sale"}
+                        >
+                          <ShoppingBag className="w-3 h-3 text-brass" />
+                          <span>Sale (-1)</span>
+                        </button>
+
                         {/* Stock Availability Toggle Button */}
                         <button
                           onClick={() => {
-                            updateProduct({
-                              ...p,
-                              in_stock: !p.in_stock,
-                            });
+                            const nextInStock = !p.in_stock;
+                            if (!nextInStock) {
+                              updateProductStock(p.id, 0);
+                            } else {
+                              updateProductStock(p.id, Math.max(1, p.stockQuantity || 1));
+                            }
                             showNotice(
-                              `${p.sku} marked as ${!p.in_stock ? 'In Stock' : 'Out of Stock'}`
+                              `${p.sku} marked as ${nextInStock ? 'In Stock' : 'Out of Stock'}`
                             );
                           }}
                           className={`text-[10px] px-2.5 py-1 rounded-full font-bold uppercase transition-all ${
                             p.in_stock
-                              ? 'bg-emerald-100 text-emerald-800 border border-emerald-300 hover:bg-emerald-200'
+                              ? 'bg-green-100 text-green-800 border border-green-300 hover:bg-green-200'
                               : 'bg-rose-100 text-rose-800 border border-rose-300 hover:bg-rose-200'
                           }`}
                           title="Click to toggle stock status"
@@ -668,7 +914,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                             setModalProduct(p);
                             setIsEditModalOpen(true);
                           }}
-                          className="p-1.5 rounded-lg text-obsidian hover:text-emerald-900 hover:bg-emerald-50 transition-colors"
+                          className="p-1.5 rounded-lg text-obsidian hover:text-maroon-900 hover:bg-maroon-50 transition-colors"
                           title="Edit full piece specifications"
                         >
                           <Edit3 className="w-4 h-4" />
@@ -700,7 +946,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
         {activeTab === 'add' && (
           <div className="max-w-2xl mx-auto bg-white p-6 sm:p-8 rounded-2xl border border-canvas-border shadow-sm">
             <div className="mb-6 pb-4 border-b border-canvas-border">
-              <h3 className="font-serif text-xl font-bold text-emerald-950">
+              <h3 className="font-serif text-xl font-bold text-maroon-950">
                 Add New Boutique Piece
               </h3>
               <p className="text-xs text-obsidian-slate mt-1">
@@ -760,7 +1006,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
                   <label className="block text-[11px] font-bold uppercase tracking-wider text-obsidian-slate mb-1">
                     Price in INR (₹) *
@@ -771,7 +1017,28 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                     min="1"
                     value={formData.price}
                     onChange={(e) => setFormData({ ...formData, price: Number(e.target.value) })}
-                    className="w-full px-3 py-2 rounded-lg bg-canvas-subtle border border-canvas-border text-xs font-mono font-bold text-emerald-950"
+                    className="w-full px-3 py-2 rounded-lg bg-canvas-subtle border border-canvas-border text-xs font-mono font-bold text-maroon-950"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-obsidian-slate mb-1">
+                    Stock Units *
+                  </label>
+                  <input
+                    type="number"
+                    required
+                    min="0"
+                    value={formData.stockQuantity}
+                    onChange={(e) => {
+                      const qty = Math.max(0, parseInt(e.target.value, 10) || 0);
+                      setFormData({ 
+                        ...formData, 
+                        stockQuantity: qty,
+                        in_stock: qty > 0 
+                      });
+                    }}
+                    className="w-full px-3 py-2 rounded-lg bg-canvas-subtle border border-canvas-border text-xs font-mono font-bold text-maroon-950"
                   />
                 </div>
 
@@ -817,31 +1084,24 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                 </div>
               </div>
 
-              <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-obsidian-slate mb-1">
-                  Primary Photo URL *
-                </label>
-                <input
-                  type="url"
-                  required
-                  value={formData.image1}
-                  onChange={(e) => setFormData({ ...formData, image1: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg bg-canvas-subtle border border-canvas-border text-xs"
-                />
-              </div>
-
-              <div>
-                <label className="block text-[11px] font-bold uppercase tracking-wider text-obsidian-slate mb-1">
-                  Secondary Drape Photo URL (Optional)
-                </label>
-                <input
-                  type="url"
-                  placeholder="https://..."
-                  value={formData.image2}
-                  onChange={(e) => setFormData({ ...formData, image2: e.target.value })}
-                  className="w-full px-3 py-2 rounded-lg bg-canvas-subtle border border-canvas-border text-xs"
-                />
-              </div>
+              <ImageUploadStudio
+                images={formData.images}
+                imageRoles={formData.imageRoles}
+                onChange={(nextImgs, nextRoles) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    images: nextImgs,
+                    imageRoles: nextRoles,
+                  }))
+                }
+                productMeta={{
+                  sku: formData.sku,
+                  category: formData.category,
+                  title: formData.title,
+                  color: formData.color,
+                  fabricDetails: formData.fabricDetails,
+                }}
+              />
 
               <div>
                 <label className="block text-[11px] font-bold uppercase tracking-wider text-obsidian-slate mb-1">
@@ -862,7 +1122,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                     type="checkbox"
                     checked={formData.in_stock}
                     onChange={(e) => setFormData({ ...formData, in_stock: e.target.checked })}
-                    className="w-4 h-4 accent-emerald-900 rounded"
+                    className="w-4 h-4 accent-maroon-900 rounded"
                   />
                   <span>In Stock at Boutique</span>
                 </label>
@@ -888,7 +1148,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-lg bg-emerald-900 hover:bg-emerald-850 text-white font-bold text-xs uppercase tracking-wider shadow-sm flex items-center gap-1.5 transition-all"
+                  className="px-5 py-2.5 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-white font-bold text-xs uppercase tracking-wider shadow-sm flex items-center gap-1.5 transition-all"
                 >
                   <Plus className="w-3.5 h-3.5 text-brass" />
                   <span>Save Piece to Catalog</span>
@@ -903,7 +1163,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
           <div className="space-y-6 max-w-4xl mx-auto">
             {/* Category Summary */}
             <div className="bg-white p-5 rounded-2xl border border-canvas-border shadow-sm">
-              <h3 className="font-serif text-lg font-bold text-emerald-950 mb-3">
+              <h3 className="font-serif text-lg font-bold text-maroon-950 mb-3">
                 Core Catalog Categories
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -914,7 +1174,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                       <span className="text-[10px] uppercase font-bold text-obsidian-slate tracking-wider block">
                         {cat}
                       </span>
-                      <p className="font-serif text-xl font-bold text-emerald-950 mt-1">
+                      <p className="font-serif text-xl font-bold text-maroon-950 mt-1">
                         {count} piece{count !== 1 ? 's' : ''}
                       </p>
                     </div>
@@ -927,7 +1187,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
             <div className="bg-white p-5 rounded-2xl border border-canvas-border shadow-sm space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="font-serif text-lg font-bold text-emerald-950">
+                  <h3 className="font-serif text-lg font-bold text-maroon-950">
                     Active Fabric Weaves & SubCategory Tags
                   </h3>
                   <p className="text-xs text-obsidian-slate mt-0.5">
@@ -947,7 +1207,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                   >
                     <Tag className="w-3 h-3 text-brass-dark" />
                     <span className="font-medium text-obsidian">{tag}</span>
-                    <span className="px-1.5 py-0.2 rounded-full bg-emerald-100 text-emerald-900 font-bold text-[10px]">
+                    <span className="px-1.5 py-0.2 rounded-full bg-maroon-100 text-maroon-900 font-bold text-[10px]">
                       {count}
                     </span>
                   </div>
@@ -983,7 +1243,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
 
                   <button
                     type="submit"
-                    className="px-4 py-2 rounded-lg bg-emerald-900 hover:bg-emerald-850 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all shrink-0"
+                    className="px-4 py-2 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all shrink-0"
                   >
                     Rename Tag
                   </button>
@@ -998,25 +1258,35 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
           <div className="max-w-2xl mx-auto space-y-6">
             {/* Export Section */}
             <div className="bg-white p-6 rounded-2xl border border-canvas-border shadow-sm space-y-3">
-              <h3 className="font-serif text-lg font-bold text-emerald-950 flex items-center gap-2">
+              <h3 className="font-serif text-lg font-bold text-maroon-950 flex items-center gap-2">
                 <Download className="w-5 h-5 text-brass-dark" />
-                <span>Export Catalog Data</span>
+                <span>Export Catalog Data &amp; WebP Images</span>
               </h3>
               <p className="text-xs text-obsidian-slate leading-relaxed">
-                Download the latest updated <code className="font-mono bg-canvas-subtle px-1">products.json</code> file. You can commit this file to GitHub or replace <code className="font-mono bg-canvas-subtle px-1">data/products.json</code> in your repository for permanent hosting sync.
+                Download <code className="font-mono bg-canvas-subtle px-1">products.json</code> directly, or use <strong>Export Static WebP Bundle</strong> to download uploaded/AI-draped <code className="font-mono bg-canvas-subtle px-1">.webp</code> photos alongside a clean <code className="font-mono bg-canvas-subtle px-1">products.json</code> mapped to <code className="font-mono bg-canvas-subtle px-1">/images/catalog/</code> for Hostinger or GitHub.
               </p>
-              <button
-                onClick={exportCatalogJSON}
-                className="px-5 py-2.5 rounded-lg bg-brass-dark hover:bg-brass text-emerald-950 font-bold text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 transition-all"
-              >
-                <Download className="w-4 h-4" />
-                <span>Download products.json ({products.length} pieces)</span>
-              </button>
+              <div className="flex flex-wrap items-center gap-3">
+                <button
+                  onClick={exportCatalogJSON}
+                  className="px-4 py-2.5 rounded-lg bg-brass-dark hover:bg-brass text-maroon-950 font-bold text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 transition-all"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Download products.json ({products.length})</span>
+                </button>
+
+                <button
+                  onClick={handleExportStaticWebPBundle}
+                  className="px-4 py-2.5 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-brass-light font-bold text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 transition-all"
+                >
+                  <Sparkles className="w-4 h-4 text-brass" />
+                  <span>Export Static WebP Bundle</span>
+                </button>
+              </div>
             </div>
 
             {/* Import Section */}
             <div className="bg-white p-6 rounded-2xl border border-canvas-border shadow-sm space-y-3">
-              <h3 className="font-serif text-lg font-bold text-emerald-950 flex items-center gap-2">
+              <h3 className="font-serif text-lg font-bold text-maroon-950 flex items-center gap-2">
                 <Upload className="w-5 h-5 text-brass-dark" />
                 <span>Bulk Import / Replace Catalog</span>
               </h3>
@@ -1028,12 +1298,12 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                 value={importJsonText}
                 onChange={(e) => setImportJsonText(e.target.value)}
                 placeholder='[ { "id": "kz-001", "sku": "KZ-SR-001", "title": "...", "price": 4500, ... } ]'
-                className="w-full p-3 font-mono text-xs rounded-xl bg-canvas-subtle border border-canvas-border focus:outline-none focus:border-emerald-850"
+                className="w-full p-3 font-mono text-xs rounded-xl bg-canvas-subtle border border-canvas-border focus:outline-none focus:border-maroon-850"
               />
               <div className="flex justify-end">
                 <button
                   onClick={handleImportSubmit}
-                  className="px-5 py-2.5 rounded-lg bg-emerald-900 hover:bg-emerald-850 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all"
+                  className="px-5 py-2.5 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all"
                 >
                   Validate & Import Catalog
                 </button>

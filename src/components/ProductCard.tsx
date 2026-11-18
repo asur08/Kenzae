@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart, MessageCircle, Eye, Sparkles } from 'lucide-react';
+import { Heart, MessageCircle, Eye, ShoppingBag } from 'lucide-react';
 import { KenzaeProduct } from '../types/catalog';
 import { formatCurrencyINR } from '../utils/formatters';
 import { useCatalog } from '../context/CatalogContext';
@@ -13,12 +13,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { isWishlisted, toggleWishlist, setSelectedProduct } = useCatalog();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   const isSaved = isWishlisted(product.id);
+  const qty = product.stockQuantity ?? (product.in_stock ? 1 : 0);
+  const isAvailable = product.in_stock && qty > 0;
+  const hasMultipleImages = product.images && product.images.length > 1;
 
   const handleWhatsAppClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (!product.in_stock) return;
+    if (!isAvailable) return;
     const url = generateProductWhatsAppUrl(product);
     window.open(url, '_blank', 'noopener,noreferrer');
   };
@@ -32,15 +36,42 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     setSelectedProduct(product);
   };
 
-  const hasMultipleImages = product.images && product.images.length > 1;
+  const renderStockBadge = () => {
+    if (!isAvailable) {
+      return (
+        <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-[0.12em] uppercase backdrop-blur-md bg-[#FAF8F5]/95 text-terracotta border border-terracotta/30 shadow-xs">
+          Reserved / Sold Out
+        </span>
+      );
+    }
+    if (qty === 1) {
+      return (
+        <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-[0.12em] uppercase backdrop-blur-md bg-maroon-950/90 text-brass-light border border-brass/50 shadow-xs">
+          Only 1 Left
+        </span>
+      );
+    }
+    if (qty <= 3) {
+      return (
+        <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-[0.12em] uppercase backdrop-blur-md bg-maroon-900/85 text-white border border-brass/35 shadow-xs">
+          Only {qty} Left
+        </span>
+      );
+    }
+    return (
+      <span className="px-2.5 py-1 rounded-full text-[10px] font-medium tracking-[0.1em] uppercase backdrop-blur-md bg-[#FAF8F5]/90 text-maroon-950 border border-maroon-900/15 shadow-xs">
+        {qty} in Boutique
+      </span>
+    );
+  };
 
   return (
-    <div
+    <article
       onClick={handleCardClick}
-      className="group relative bg-canvas-surface rounded-xl overflow-hidden border border-canvas-border hover:border-brass/60 shadow-luxury hover:shadow-luxury-hover transition-all duration-300 flex flex-col cursor-pointer"
+      className="group relative bg-white rounded-xl overflow-hidden border border-canvas-border hover:border-maroon-900/25 shadow-luxury hover:shadow-luxury-hover transition-all duration-300 flex flex-col cursor-pointer min-w-0"
     >
-      {/* 3:4 Portrait Aspect Ratio Image Holder */}
-      <div 
+      {/* Clean 3:4 Portrait Drape Showcase */}
+      <div
         className="relative aspect-[3/4] w-full overflow-hidden bg-canvas-subtle"
         onMouseEnter={() => {
           if (hasMultipleImages) setCurrentImageIndex(1);
@@ -49,120 +80,115 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           if (hasMultipleImages) setCurrentImageIndex(0);
         }}
       >
-        {/* Low-saturation shimmer placeholder to prevent layout shifts */}
-        {!imageLoaded && (
+        {!imageLoaded && !imageError && (
           <div className="absolute inset-0 shimmer-placeholder" />
         )}
 
-        <img
-          src={product.images[currentImageIndex] || product.images[0]}
-          alt={product.title}
-          loading="lazy"
-          onLoad={() => setImageLoaded(true)}
-          className={`w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 ${
-            imageLoaded ? 'opacity-100' : 'opacity-0'
+        {imageError ? (
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-maroon-50 text-maroon-900/70">
+            <span className="font-serif text-lg tracking-[0.25em] uppercase">KENZAE</span>
+            <span className="text-[11px] mt-1 font-light">{product.subCategory || product.category}</span>
+          </div>
+        ) : (
+          <img
+            src={product.images[currentImageIndex] || product.images[0]}
+            alt={product.title}
+            loading="lazy"
+            onLoad={() => setImageLoaded(true)}
+            onError={() => {
+              if (currentImageIndex !== 0 && product.images[0]) {
+                setCurrentImageIndex(0);
+              } else {
+                setImageError(true);
+              }
+            }}
+            className={`w-full h-full object-cover object-top transition-all duration-700 ease-out group-hover:scale-[1.04] ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+        )}
+
+        {/* Top-Right Minimal Wishlist Control */}
+        <button
+          onClick={handleWishlistToggle}
+          className={`absolute top-3 right-3 p-2 rounded-full backdrop-blur-md transition-all active:scale-90 ${
+            isSaved
+              ? 'bg-maroon-900 text-brass-light shadow-md scale-105'
+              : 'bg-white/85 hover:bg-white text-obsidian shadow-xs opacity-95'
           }`}
-        />
+          aria-label={isSaved ? 'Remove from shortlist' : 'Save to shortlist'}
+        >
+          <Heart className={`w-4 h-4 ${isSaved ? 'fill-current' : ''}`} />
+        </button>
 
-        {/* Soft Vignette Gradient for Badges */}
-        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/45 via-black/15 to-transparent pointer-events-none" />
+        {/* Bottom-Left Single Availability Pill */}
+        <div className="absolute bottom-3 left-3 pointer-events-none">
+          {renderStockBadge()}
+        </div>
+      </div>
 
-        {/* Top Floating Badges: SKU & Wishlist */}
-        <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-auto">
-          <div className="flex flex-col gap-1">
-            {product.isFeatured && (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-950/90 backdrop-blur-md text-brass-light text-[10px] font-semibold tracking-wider uppercase border border-brass/40">
-                <Sparkles className="w-2.5 h-2.5 text-brass" />
-                <span>Featured</span>
-              </span>
-            )}
-            <span className="px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] tracking-wider uppercase font-mono">
+      {/* Card Editorial Metadata */}
+      <div className="p-4 flex-1 flex flex-col justify-between gap-3 bg-white min-w-0">
+        <div className="space-y-1 min-w-0">
+          <div className="flex items-center justify-between gap-2 text-[10px]">
+            <span className="uppercase tracking-[0.16em] font-semibold text-brass-dark truncate">
+              {product.subCategory || product.category}
+            </span>
+            <span className="font-mono text-obsidian-muted shrink-0">
               {product.sku}
             </span>
           </div>
 
-          {/* Wishlist Button */}
-          <button
-            onClick={handleWishlistToggle}
-            className={`p-2 rounded-full backdrop-blur-md transition-all active:scale-90 ${
-              isSaved
-                ? 'bg-rose-50 text-terracotta shadow-md scale-105'
-                : 'bg-white/85 hover:bg-white text-obsidian shadow-sm'
-            }`}
-            aria-label={isSaved ? 'Remove from wishlist' : 'Save to wishlist'}
-          >
-            <Heart className={`w-4 h-4 ${isSaved ? 'fill-current' : ''}`} />
-          </button>
-        </div>
-
-        {/* Bottom Overlay Badges: Stock Status & Photos Count */}
-        <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none">
-          {product.in_stock ? (
-            <span className="px-2 py-0.5 rounded text-[10px] font-semibold tracking-wide uppercase backdrop-blur-md bg-emerald-900/85 text-emerald-100 border border-emerald-500/30">
-              In Boutique
-            </span>
-          ) : (
-            <span className="px-2 py-0.5 rounded text-[10px] font-semibold tracking-wide uppercase backdrop-blur-md bg-terracotta-50 text-terracotta border border-terracotta/40">
-              Reserved / Sold Out
-            </span>
-          )}
-
-          {hasMultipleImages && (
-            <span className="px-1.5 py-0.5 rounded bg-black/60 text-white text-[9px] font-medium backdrop-blur-md">
-              {product.images.length} photos
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* Product Content Details */}
-      <div className="p-4 flex-1 flex flex-col justify-between space-y-3 bg-white">
-        <div>
-          {/* Fabric Type & SubCategory Tag */}
-          <div className="flex items-center justify-between text-[11px] text-obsidian-slate mb-1">
-            <span className="uppercase tracking-wider font-medium text-brass-dark truncate max-w-[180px]">
-              {product.subCategory || product.category}
-            </span>
-            {product.color && (
-              <span className="truncate max-w-[100px] text-right font-light text-[10px]">
-                {product.color}
-              </span>
-            )}
-          </div>
-
-          {/* Title */}
-          <h3 className="font-serif text-base font-semibold text-obsidian line-clamp-2 leading-snug group-hover:text-emerald-950 transition-colors">
+          <h3 className="font-serif text-[17px] font-medium text-obsidian line-clamp-2 leading-[1.3] group-hover:text-maroon-900 transition-colors">
             {product.title}
           </h3>
+
+          {product.color && (
+            <p className="text-[11px] text-obsidian-slate font-light truncate">
+              {product.color}
+            </p>
+          )}
         </div>
 
-        {/* Meta: Price with tabular-nums & Enquire on WhatsApp CTA */}
-        <div className="pt-2 border-t border-canvas-border flex flex-col gap-2.5">
-          <div className="flex items-baseline justify-between">
-            <span className="text-[10px] uppercase tracking-wider text-obsidian-slate leading-none">
-              Catalog Price
+        {/* Pricing & Dual Actions */}
+        <div className="pt-2.5 border-t border-canvas-border flex flex-col gap-2.5">
+          <div className="flex items-baseline justify-between gap-2">
+            <span className="text-[10px] uppercase tracking-[0.14em] text-obsidian-muted">
+              Boutique Price
             </span>
-            <span className="text-base font-bold text-obsidian tabular-nums font-sans">
+            <span className="text-base font-semibold text-maroon-950 tabular-nums font-sans">
               {formatCurrencyINR(product.price)}
             </span>
           </div>
 
-          {/* Full-width tactile WhatsApp Enquiry button */}
           <div className="flex items-center gap-2">
             <button
-              onClick={handleWhatsAppClick}
-              disabled={!product.in_stock}
-              className={`flex-1 py-2 px-3 rounded-lg text-xs font-semibold tracking-wide uppercase transition-all shadow-sm flex items-center justify-center gap-1.5 border active:scale-95 ${
-                product.in_stock
-                  ? 'bg-emerald-950 hover:bg-emerald-900 text-brass-light hover:text-white border-brass/30'
+              onClick={(e) => {
+                e.stopPropagation();
+                handleCardClick();
+              }}
+              disabled={!isAvailable}
+              className={`flex-1 py-2 px-3 rounded-lg text-[11px] font-semibold tracking-[0.12em] uppercase transition-all flex items-center justify-center gap-1.5 border active:scale-[0.98] min-w-0 ${
+                isAvailable
+                  ? 'bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white border-maroon-900 shadow-xs'
                   : 'bg-canvas-subtle text-obsidian-muted border-canvas-border cursor-not-allowed opacity-60'
               }`}
-              title={product.in_stock ? 'Enquire on WhatsApp' : 'Item is currently reserved'}
+              title={isAvailable ? 'Select options & Add to Bag' : 'Piece currently reserved'}
             >
-              <MessageCircle className="w-3.5 h-3.5 text-whatsapp shrink-0" />
+              <ShoppingBag className="w-3.5 h-3.5 text-brass-light shrink-0" />
               <span className="truncate">
-                {product.in_stock ? 'Enquire on WhatsApp' : 'Reserved / Sold Out'}
+                {isAvailable ? 'Add to Bag' : 'Reserved'}
               </span>
+            </button>
+
+            <button
+              onClick={handleWhatsAppClick}
+              disabled={!isAvailable}
+              className="p-2 rounded-lg bg-canvas-subtle hover:bg-emerald-50 text-obsidian hover:text-emerald-800 border border-canvas-border transition-colors shrink-0"
+              title="Enquire on WhatsApp"
+              aria-label="Enquire on WhatsApp"
+            >
+              <MessageCircle className="w-4 h-4 text-whatsapp" />
             </button>
 
             <button
@@ -170,17 +196,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 e.stopPropagation();
                 handleCardClick();
               }}
-              className="p-2 rounded-lg bg-canvas-subtle hover:bg-canvas-border text-obsidian transition-colors shrink-0"
-              title="Inspect specifications & fabric weave"
-              aria-label="Quick View"
+              className="p-2 rounded-lg bg-canvas-subtle hover:bg-maroon-50 text-obsidian hover:text-maroon-900 border border-canvas-border transition-colors shrink-0"
+              title="Inspect specifications & fabric zoom"
+              aria-label="Inspect piece"
             >
               <Eye className="w-4 h-4" />
             </button>
           </div>
         </div>
-
       </div>
-    </div>
+    </article>
   );
 };
 

@@ -90,13 +90,23 @@ def validate_catalog(filepath: str):
             errors.append(f"[{identifier}] 'images' must be a non-empty list of URI strings.")
         else:
             for img_idx, img in enumerate(images):
-                if not isinstance(img, str) or not (img.startswith("http://") or img.startswith("https://")):
-                    errors.append(f"[{identifier}] Image [{img_idx}] is not a valid HTTP/HTTPS URL: '{img}'")
+                if not isinstance(img, str) or not (
+                    img.startswith("http://")
+                    or img.startswith("https://")
+                    or img.startswith("/images/")
+                    or img.startswith("data:image/")
+                ):
+                    errors.append(f"[{identifier}] Image [{img_idx}] is not a valid URL, /images/ asset path, or data URI: '{str(img)[:60]}'")
 
-        # 6. In-stock validation
+        # 6. In-stock & Stock Quantity validation
         in_stock = item.get("in_stock")
         if not isinstance(in_stock, bool):
             errors.append(f"[{identifier}] 'in_stock' must be a boolean.")
+
+        stock_qty = item.get("stockQuantity")
+        if stock_qty is not None:
+            if not isinstance(stock_qty, int) or stock_qty < 0:
+                errors.append(f"[{identifier}] 'stockQuantity' must be a non-negative integer.")
 
     if errors:
         print(f"❌ VALIDATION FAILED WITH {len(errors)} ERROR(S):")

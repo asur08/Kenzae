@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { X, Check, Trash2, Image as ImageIcon } from 'lucide-react';
-import { KenzaeProduct, ProductCategory } from '../../types/catalog';
+import { X, Check, Trash2 } from 'lucide-react';
+import { KenzaeProduct, ProductCategory, ProductImageRole } from '../../types/catalog';
+import { ImageUploadStudio } from './ImageUploadStudio';
 
 interface ProductEditModalProps {
   product: KenzaeProduct | null;
@@ -25,15 +26,18 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({
   onDelete,
 }) => {
   const [formData, setFormData] = useState<KenzaeProduct | null>(null);
-  const [image1, setImage1] = useState('');
-  const [image2, setImage2] = useState('');
+  const [images, setImages] = useState<string[]>([]);
+  const [imageRoles, setImageRoles] = useState<ProductImageRole[]>([]);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   useEffect(() => {
     if (product) {
       setFormData({ ...product });
-      setImage1(product.images[0] || '');
-      setImage2(product.images[1] || '');
+      setImages(product.images || []);
+      setImageRoles(
+        product.imageRoles ||
+          (product.images || []).map((_, idx) => (idx === 0 ? 'model-drape' : 'garment-flat'))
+      );
       setErrorMsg(null);
     }
   }, [product]);
@@ -55,15 +59,19 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({
     e.preventDefault();
     setErrorMsg(null);
 
-    const images: string[] = [image1.trim()];
-    if (image2.trim()) {
-      images.push(image2.trim());
+    if (images.length === 0) {
+      setErrorMsg('Please upload or add at least 1 garment photograph.');
+      return;
     }
 
+    const qty = Math.max(0, Number(formData.stockQuantity ?? (formData.in_stock ? 1 : 0)));
     const payload: KenzaeProduct = {
       ...formData,
       price: Math.round(Number(formData.price)),
+      stockQuantity: qty,
+      in_stock: qty > 0,
       images,
+      imageRoles,
     };
 
     const res = onSave(payload);
@@ -85,10 +93,10 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({
       {/* Modal Container */}
       <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-canvas-border overflow-hidden z-10 flex flex-col max-h-[92vh]">
         {/* Header */}
-        <div className="p-4 sm:p-5 bg-emerald-950 text-white flex items-center justify-between border-b border-brass/30">
+        <div className="p-4 sm:p-5 bg-maroon-950 text-white flex items-center justify-between border-b border-brass/30">
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-mono text-xs font-bold text-brass px-2 py-0.5 rounded bg-emerald-900 border border-brass/30">
+              <span className="font-mono text-xs font-bold text-brass px-2 py-0.5 rounded bg-maroon-900 border border-brass/30">
                 {formData.sku}
               </span>
               <h3 className="font-serif text-lg font-bold text-white">
@@ -101,7 +109,7 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full text-white/70 hover:text-white hover:bg-emerald-900 transition-colors"
+            className="p-2 rounded-full text-white/70 hover:text-white hover:bg-maroon-900 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -115,7 +123,7 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({
             </div>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
             <div>
               <label className="block text-[11px] font-bold uppercase tracking-wider text-obsidian-slate mb-1">
                 SKU Code *
@@ -154,7 +162,28 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({
                 min="1"
                 value={formData.price}
                 onChange={(e) => setFormData({ ...formData, price: Number(e.target.value) })}
-                className="w-full px-3 py-2 rounded-lg bg-canvas-subtle border border-canvas-border text-xs font-bold text-emerald-900 font-mono"
+                className="w-full px-3 py-2 rounded-lg bg-canvas-subtle border border-canvas-border text-xs font-bold text-maroon-900 font-mono"
+              />
+            </div>
+
+            <div>
+              <label className="block text-[11px] font-bold uppercase tracking-wider text-obsidian-slate mb-1">
+                Stock Count *
+              </label>
+              <input
+                type="number"
+                required
+                min="0"
+                value={formData.stockQuantity ?? (formData.in_stock ? 1 : 0)}
+                onChange={(e) => {
+                  const qty = Math.max(0, parseInt(e.target.value, 10) || 0);
+                  setFormData({ 
+                    ...formData, 
+                    stockQuantity: qty,
+                    in_stock: qty > 0 
+                  });
+                }}
+                className="w-full px-3 py-2 rounded-lg bg-canvas-subtle border border-canvas-border text-xs font-bold text-obsidian font-mono"
               />
             </div>
           </div>
@@ -194,7 +223,7 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({
                 type="text"
                 value={formData.color || ''}
                 onChange={(e) => setFormData({ ...formData, color: e.target.value })}
-                placeholder="e.g. Regal Emerald & Antique Gold"
+                placeholder="e.g. Royal Maroon & Antique Gold"
                 className="w-full px-3 py-2 rounded-lg bg-canvas-subtle border border-canvas-border text-xs"
               />
             </div>
@@ -213,39 +242,21 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-obsidian-slate mb-1">
-                Primary Image URL *
-              </label>
-              <div className="relative">
-                <input
-                  type="url"
-                  required
-                  value={image1}
-                  onChange={(e) => setImage1(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-canvas-subtle border border-canvas-border text-xs pr-8"
-                />
-                <ImageIcon className="w-3.5 h-3.5 text-obsidian-slate absolute right-2.5 top-1/2 -translate-y-1/2" />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-obsidian-slate mb-1">
-                Secondary Image URL (Drape/Weave)
-              </label>
-              <div className="relative">
-                <input
-                  type="url"
-                  value={image2}
-                  onChange={(e) => setImage2(e.target.value)}
-                  placeholder="https://..."
-                  className="w-full px-3 py-2 rounded-lg bg-canvas-subtle border border-canvas-border text-xs pr-8"
-                />
-                <ImageIcon className="w-3.5 h-3.5 text-obsidian-slate absolute right-2.5 top-1/2 -translate-y-1/2" />
-              </div>
-            </div>
-          </div>
+          <ImageUploadStudio
+            images={images}
+            imageRoles={imageRoles}
+            onChange={(nextImgs, nextRoles) => {
+              setImages(nextImgs);
+              setImageRoles(nextRoles);
+            }}
+            productMeta={{
+              sku: formData.sku,
+              category: formData.category,
+              title: formData.title,
+              color: formData.color,
+              fabricDetails: formData.fabricDetails,
+            }}
+          />
 
           <div>
             <label className="block text-[11px] font-bold uppercase tracking-wider text-obsidian-slate mb-1">
@@ -266,9 +277,9 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({
                 type="checkbox"
                 checked={formData.in_stock}
                 onChange={(e) => setFormData({ ...formData, in_stock: e.target.checked })}
-                className="w-4 h-4 accent-emerald-900 rounded"
+                className="w-4 h-4 accent-maroon-900 rounded"
               />
-              <span className={formData.in_stock ? 'text-emerald-900' : 'text-rose-700'}>
+              <span className={formData.in_stock ? 'text-maroon-900' : 'text-rose-700'}>
                 {formData.in_stock ? '● In Stock at Boutique' : '○ Out of Stock / Reserved'}
               </span>
             </label>
@@ -312,7 +323,7 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 rounded-lg bg-emerald-900 hover:bg-emerald-850 text-white text-xs font-bold uppercase tracking-wider shadow-sm flex items-center gap-1.5 transition-all"
+                className="px-5 py-2 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-white text-xs font-bold uppercase tracking-wider shadow-sm flex items-center gap-1.5 transition-all"
               >
                 <Check className="w-3.5 h-3.5 text-brass" />
                 <span>Save Changes</span>

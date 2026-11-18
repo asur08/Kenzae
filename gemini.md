@@ -88,8 +88,20 @@
           "format": "uri" 
         }
       },
+      "imageRoles": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": ["model-drape", "garment-flat", "pallu-detail", "ai-drape"]
+        }
+      },
       "in_stock": { 
         "type": "boolean" 
+      },
+      "stockQuantity": {
+        "type": "integer",
+        "minimum": 0,
+        "description": "Available stock count in Mulanthuruthy boutique inventory"
       },
       "isFeatured": { 
         "type": "boolean" 

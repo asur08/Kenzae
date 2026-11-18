@@ -35,6 +35,8 @@ interface CatalogContextType {
   addProduct: (product: KenzaeProduct) => { success: boolean; error?: string };
   updateProduct: (product: KenzaeProduct) => { success: boolean; error?: string };
   updateProductPrice: (id: string, newPrice: number) => { success: boolean; error?: string };
+  updateProductStock: (id: string, newStock: number) => { success: boolean; error?: string };
+  recordPurchase: (id: string, count?: number) => { success: boolean; remainingStock: number; error?: string };
   renameTag: (oldTag: string, newTag: string) => { success: boolean; count: number };
   deleteProduct: (id: string) => void;
   resetToDefaultCatalog: () => void;
@@ -68,7 +70,17 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
         const parsed = JSON.parse(stored);
         const validation = validateCatalog(parsed);
         if (validation.isValid) {
-          return parsed as KenzaeProduct[];
+          return parsed.map((p: KenzaeProduct) => {
+            const match = (defaultProducts as KenzaeProduct[]).find((dp) => dp.id === p.id);
+            const stockQty = p.stockQuantity !== undefined 
+              ? p.stockQuantity 
+              : (match?.stockQuantity ?? (p.in_stock ? 3 : 0));
+            return {
+              ...p,
+              stockQuantity: stockQty,
+              in_stock: stockQty > 0,
+            };
+          }) as KenzaeProduct[];
         }
       }
     } catch {
@@ -122,12 +134,12 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
       if (selectedProduct) {
         currentUrl.searchParams.set('item', selectedProduct.sku);
         window.history.replaceState({}, '', currentUrl.toString());
-        document.title = `${selectedProduct.title} | Kenzae Boutique`;
+        document.title = `${selectedProduct.title} | Kenzae`;
       } else {
         if (currentUrl.searchParams.has('item')) {
           currentUrl.searchParams.delete('item');
           window.history.replaceState({}, '', currentUrl.pathname + (currentUrl.search ? currentUrl.search : ''));
-          document.title = 'Kenzae Boutique | Designer Ethnic Wear & Couture (Mulanthuruthy)';
+          document.title = 'Kenzae | Designer Ethnic Wear & Couture';
         }
       }
     } catch (e) {
@@ -150,7 +162,7 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
     try {
       localStorage.setItem(STORAGE_KEY_PRODUCTS, JSON.stringify(newProducts));
     } catch (e) {
-      console.error('Failed to save products to localStorage', e);
+      console.warn('Browser localStorage quota reached; keeping edits in live memory. Export WebP assets & products.json from Data Sync.', e);
     }
   };
 
@@ -213,12 +225,59 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
     if (!val.isValid) {
       return { success: false, error: val.error };
     }
-    const updated = products.map((p) => (p.id === updatedProduct.id ? updatedProduct : p));
+    const finalProduct: KenzaeProduct = {
+      ...updatedProduct,
+      in_stock: updatedProduct.stockQuantity !== undefined 
+        ? updatedProduct.stockQuantity > 0 
+        : updatedProduct.in_stock,
+    };
+    const updated = products.map((p) => (p.id === finalProduct.id ? finalProduct : p));
     saveProducts(updated);
-    if (selectedProduct && selectedProduct.id === updatedProduct.id) {
-      setSelectedProduct(updatedProduct);
+    if (selectedProduct && selectedProduct.id === finalProduct.id) {
+      setSelectedProduct(finalProduct);
     }
     return { success: true };
+  };
+
+  const updateProductStock = (id: string, newStock: number) => {
+    if (typeof newStock !== 'number' || isNaN(newStock) || newStock < 0) {
+      return { success: false, error: 'Stock quantity must be a non-negative integer.' };
+    }
+    const target = products.find((p) => p.id === id);
+    if (!target) {
+      return { success: false, error: 'Product not found.' };
+    }
+    const roundedQty = Math.round(newStock);
+    const updatedProd: KenzaeProduct = {
+      ...target,
+      stockQuantity: roundedQty,
+      in_stock: roundedQty > 0,
+    };
+    return updateProduct(updatedProd);
+  };
+
+  const recordPurchase = (id: string, count = 1) => {
+    const target = products.find((p) => p.id === id);
+    if (!target) {
+      return { success: false, remainingStock: 0, error: 'Product not found.' };
+    }
+    const currentQty = target.stockQuantity ?? (target.in_stock ? 1 : 0);
+    if (currentQty <= 0 || !target.in_stock) {
+      return { success: false, remainingStock: 0, error: 'Piece is currently reserved or sold out.' };
+    }
+    const deduction = Math.max(1, count);
+    const remainingStock = Math.max(0, currentQty - deduction);
+    const updatedProd: KenzaeProduct = {
+      ...target,
+      stockQuantity: remainingStock,
+      in_stock: remainingStock > 0,
+    };
+    const updated = products.map((p) => (p.id === id ? updatedProd : p));
+    saveProducts(updated);
+    if (selectedProduct && selectedProduct.id === id) {
+      setSelectedProduct(updatedProd);
+    }
+    return { success: true, remainingStock };
   };
 
   const updateProductPrice = (id: string, newPrice: number) => {
@@ -316,6 +375,8 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
         addProduct,
         updateProduct,
         updateProductPrice,
+        updateProductStock,
+        recordPurchase,
         renameTag,
         deleteProduct,
         resetToDefaultCatalog,
