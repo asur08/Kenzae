@@ -15,14 +15,19 @@ export const StaffLoginPage: React.FC<StaffLoginPageProps> = ({ onReturnToStore 
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg(null);
     setIsSubmitting(true);
 
-    const result = login(passcode, rememberMe);
-    if (!result.success) {
-      setErrorMsg(result.error || 'Authentication failed');
+    try {
+      const result = await login(passcode, rememberMe);
+      if (!result.success) {
+        setErrorMsg(result.error || 'Authentication failed');
+      }
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : 'Login failed');
+    } finally {
       setIsSubmitting(false);
     }
   };

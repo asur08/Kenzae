@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { KenzaeProduct } from '../types/catalog';
-import { CartItem, TailoringSelection, ShippingAddress, CartTotals } from '../types/cart';
+import { CartItem, TailoringSelection, ShippingAddress, CartTotals, ShippingTier } from '../types/cart';
+import { INTERNATIONAL_EXPRESS_SHIPPING_INR } from '../data/countries';
 
 interface CartContextType {
   cartItems: CartItem[];
@@ -25,10 +26,13 @@ const INTERSTATE_SHIPPING = 200;
 const defaultAddress: ShippingAddress = {
   fullName: '',
   phoneNumber: '',
+  countryCode: '+91',
+  country: 'India',
   streetAddress: '',
   city: '',
   state: 'Kerala',
   pincode: '',
+  shippingTier: 'domestic_standard',
   specialDeliveryNote: '',
 };
 
@@ -170,14 +174,25 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       0
     );
 
+    const isInternational =
+      shippingAddress.country !== 'India' ||
+      shippingAddress.shippingTier === 'international_express';
+
     const isKerala =
-      shippingAddress.pincode.trim().length >= 2
+      !isInternational &&
+      (shippingAddress.pincode.trim().length >= 2
         ? isPincodeInKerala(shippingAddress.pincode)
-        : shippingAddress.state.trim().toLowerCase() === 'kerala';
+        : shippingAddress.state.trim().toLowerCase() === 'kerala');
 
     let shippingFee = 0;
+    const shippingTier: ShippingTier = isInternational
+      ? 'international_express'
+      : 'domestic_standard';
+
     if (itemCount > 0) {
-      if (isKerala) {
+      if (isInternational) {
+        shippingFee = INTERNATIONAL_EXPRESS_SHIPPING_INR;
+      } else if (isKerala) {
         shippingFee = subtotal >= KERALA_FREE_SHIPPING_THRESHOLD ? 0 : KERALA_STANDARD_SHIPPING;
       } else {
         shippingFee = INTERSTATE_SHIPPING;
@@ -185,17 +200,20 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
 
     const grandTotal = subtotal + tailoringTotal + shippingFee;
-    const amountNeededForFreeShipping = isKerala
-      ? Math.max(0, KERALA_FREE_SHIPPING_THRESHOLD - subtotal)
-      : 0;
+    const amountNeededForFreeShipping =
+      !isInternational && isKerala
+        ? Math.max(0, KERALA_FREE_SHIPPING_THRESHOLD - subtotal)
+        : 0;
 
     return {
       itemCount,
       subtotal,
       tailoringTotal,
       shippingFee,
+      shippingTier,
       grandTotal,
       isKeralaDelivery: isKerala,
+      isInternationalDelivery: isInternational,
       freeShippingThreshold: KERALA_FREE_SHIPPING_THRESHOLD,
       amountNeededForFreeShipping,
     };

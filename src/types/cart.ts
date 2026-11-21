@@ -33,13 +33,18 @@ export interface CartItem {
   itemTotal: number;
 }
 
+export type ShippingTier = 'domestic_standard' | 'international_express';
+
 export interface ShippingAddress {
   fullName: string;
   phoneNumber: string;
+  countryCode?: string; // e.g. "+91", "+971", "+1", "+44"
+  country?: string; // e.g. "India", "United Arab Emirates", etc.
   streetAddress: string;
   city: string;
-  state: string; // Defaults to "Kerala"
+  state: string; // Defaults to "Kerala" (or Emirate / Province)
   pincode: string;
+  shippingTier?: ShippingTier;
   specialDeliveryNote?: string;
 }
 
@@ -48,8 +53,10 @@ export interface CartTotals {
   subtotal: number;
   tailoringTotal: number;
   shippingFee: number;
+  shippingTier: ShippingTier;
   grandTotal: number;
   isKeralaDelivery: boolean;
+  isInternationalDelivery: boolean;
   freeShippingThreshold: number;
   amountNeededForFreeShipping: number;
 }

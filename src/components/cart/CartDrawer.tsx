@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../../context/CartContext';
+import { useCurrency } from '../../context/CurrencyContext';
 import { formatCurrencyINR } from '../../utils/formatters';
 
 interface CartDrawerProps {
@@ -30,6 +31,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
     shippingAddress,
     setShippingAddress,
   } = useCart();
+  const { currentCurrency, formatPrice } = useCurrency();
 
   const [pincodeInput, setPincodeInput] = useState(shippingAddress.pincode);
 
@@ -200,7 +202,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
                       {/* Pricing and Quantity */}
                       <div className="flex items-center justify-between pt-2 border-t border-canvas-border mt-2">
                         <span className="text-xs font-semibold text-maroon-950 font-sans">
-                          {formatCurrencyINR(item.itemTotal)}
+                          {formatPrice(item.itemTotal)}
                         </span>
 
                         <div className="flex items-center border border-canvas-border rounded-lg bg-canvas-subtle overflow-hidden">
@@ -262,7 +264,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
                   <div className="flex justify-between">
                     <span>Items Subtotal</span>
                     <span className="font-sans font-medium text-obsidian">
-                      {formatCurrencyINR(totals.subtotal)}
+                      {formatPrice(totals.subtotal)}
                     </span>
                   </div>
 
@@ -270,26 +272,35 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
                     <div className="flex justify-between">
                       <span>Tailoring & Finishing</span>
                       <span className="font-sans font-medium text-obsidian">
-                        +{formatCurrencyINR(totals.tailoringTotal)}
+                        +{formatPrice(totals.tailoringTotal)}
                       </span>
                     </div>
                   )}
 
                   <div className="flex justify-between">
-                    <span>Courier Delivery</span>
+                    <span>
+                      {totals.isInternationalDelivery ? 'DHL / Aramex Express' : 'Courier Delivery'}
+                    </span>
                     <span className="font-sans font-medium text-obsidian">
                       {totals.shippingFee === 0 ? (
                         <span className="text-emerald-700 font-semibold">FREE</span>
                       ) : (
-                        `+${formatCurrencyINR(totals.shippingFee)}`
+                        `+${formatPrice(totals.shippingFee)}`
                       )}
                     </span>
                   </div>
 
                   <div className="flex justify-between text-sm font-bold text-maroon-950 pt-2 border-t border-canvas-border">
-                    <span>Total Amount</span>
+                    <div>
+                      <span>Total Amount</span>
+                      {currentCurrency !== 'INR' && (
+                        <span className="block text-[10px] font-normal text-obsidian-muted">
+                          Billed as ₹{totals.grandTotal.toLocaleString('en-IN')}
+                        </span>
+                      )}
+                    </div>
                     <span className="text-base font-sans">
-                      {formatCurrencyINR(totals.grandTotal)}
+                      {formatPrice(totals.grandTotal)}
                     </span>
                   </div>
                 </div>
@@ -301,7 +312,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
                     className="w-full py-3.5 px-4 rounded-xl bg-maroon-900 hover:bg-maroon-850 active:scale-[0.98] text-brass-light hover:text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all border border-maroon-900 cursor-pointer"
                   >
                     <Lock className="w-4 h-4 text-brass" />
-                    <span>Proceed to Secure Checkout • {formatCurrencyINR(totals.grandTotal)}</span>
+                    <span>Proceed to Secure Checkout • {formatPrice(totals.grandTotal)}</span>
                     <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
                   </button>
 

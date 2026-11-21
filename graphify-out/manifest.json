@@ -1,0 +1,318 @@
+{
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/tailwind.config.js": {
+    "mtime": 1794494998.8630104,
+    "hash": "b667169f8ca82f721d0b590a98584516"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/vite.config.ts": {
+    "mtime": 1794496165.783383,
+    "hash": "8d50d4a1a68648669fb8410542fc0379"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/postcss.config.js": {
+    "mtime": 1791857004.2236037,
+    "hash": "9a944fbda06979be39571bd9bd00b0d9"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/tools/audit_accessibility.py": {
+    "mtime": 1794495005.3241818,
+    "hash": "46e41cf9fbfa5d3b6f3c6085b05ee86f"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/tools/validate_catalog_data.py": {
+    "mtime": 1794495928.321585,
+    "hash": "d961e4b444ff049c2e44d3ab932ceca3"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/tools/verify_maps_integration.py": {
+    "mtime": 1791857481.218396,
+    "hash": "528cd85c2129e50d3b12adf34df13dd0"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/tools/verify_whatsapp_integration.py": {
+    "mtime": 1791857447.7307808,
+    "hash": "1b36c21d7070cebb28f890b507bed1a1"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/tools/build_catalog_sitemap.py": {
+    "mtime": 1791858241.843689,
+    "hash": "a216bd13de512c859960409c8ced56e3"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/supabase/migrations/20261121_init_kenzae_schema.sql": {
+    "mtime": 1795242991.770554,
+    "hash": "ff6a29ce9c25628828c13c79eacfc9e3"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/scripts/verify-phase2.js": {
+    "mtime": 1795247115.6157324,
+    "hash": "c1bae2e2001b2ad0636490414a41fe3f"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/scripts/verify-catalog.js": {
+    "mtime": 1794495930.1379974,
+    "hash": "dc13531e82aae64478d383c721b41ee1"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/scripts/verify-drape-api.js": {
+    "mtime": 1795246551.199731,
+    "hash": "854270a0b7548336416b4aebddb18dac"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/scripts/verify-sprint1.js": {
+    "mtime": 1795243017.6558232,
+    "hash": "74dbfb006fb3ac354a82814f9c48d39a"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/api/generate-drape.ts": {
+    "mtime": 1795246764.4039552,
+    "hash": "dc52b8c70b25a239bc1ca16c736e3200"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/api/upload-image.ts": {
+    "mtime": 1795242629.9353013,
+    "hash": "5e5040fdab82a335fe478641e3daf64e"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/api/og-preview.ts": {
+    "mtime": 1795247126.8359933,
+    "hash": "cd23b2c289271b4c97ff7579a756daf7"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/api/auth/check-session.ts": {
+    "mtime": 1795242664.8461096,
+    "hash": "4fff3df1fcdd262530ceafb1ade3f0db"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/api/auth/verify-staff.ts": {
+    "mtime": 1795242656.7930584,
+    "hash": "3714b7b7ffa9e0905db00d604c1157c0"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/App.tsx": {
+    "mtime": 1794922867.8999794,
+    "hash": "4477ada93ef58cc34d0c091255926cee"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/main.tsx": {
+    "mtime": 1791856903.720186,
+    "hash": "aa122bdcf833a2c00fdf9ca8e5348675"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/vite-env.d.ts": {
+    "mtime": 1791856969.3838184,
+    "hash": "0352474ba2918efe13895edbc3780d94"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/types/orders.ts": {
+    "mtime": 1794969944.016079,
+    "hash": "e1488cfa56573daabfe2fa1d54f088a5"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/types/drape.ts": {
+    "mtime": 1795246714.9971845,
+    "hash": "a0e1e6607c5b3872df9dfedd2e29f555"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/types/cart.ts": {
+    "mtime": 1794883345.2122116,
+    "hash": "4d472ece5553d1d013ce545b6e23eed7"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/types/catalog.ts": {
+    "mtime": 1795246472.4843965,
+    "hash": "6c021cd2c214ff6b4d14badaa6d9712c"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/context/StaffAuthContext.tsx": {
+    "mtime": 1795242701.2098346,
+    "hash": "11b2b80f79de473628f7c7f36236dcce"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/context/CartContext.tsx": {
+    "mtime": 1794882930.3852465,
+    "hash": "e8acb99ff0f1029b3ca86ed9a53ce781"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/context/OrdersContext.tsx": {
+    "mtime": 1795242958.724135,
+    "hash": "094c04fd58dd140f2e8d8e2014b4a0bc"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/context/CatalogContext.tsx": {
+    "mtime": 1795242809.1175435,
+    "hash": "41a54c44d004d72e202edee8c40220f8"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/utils/invoiceGenerator.tsx": {
+    "mtime": 1795019333.6700377,
+    "hash": "614b1fdc09f5e6fb61682077e7e372f3"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/utils/courierTracking.ts": {
+    "mtime": 1794968288.5420694,
+    "hash": "c6bb26682df908509f1aad9126e27dbd"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/utils/shippingLabelGenerator.ts": {
+    "mtime": 1794887790.4090798,
+    "hash": "4a154d990c9d4c4b95836e0805b9b9d2"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/utils/whatsapp.ts": {
+    "mtime": 1794882912.6199162,
+    "hash": "f4e26d8dc713ea37fa42c0db7b0e914e"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/utils/formatters.ts": {
+    "mtime": 1791856643.8014562,
+    "hash": "febc5af8cef4887df79034243a4a7d59"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/utils/numberToWords.ts": {
+    "mtime": 1794887730.4223197,
+    "hash": "1d9efdfcf2a992978f353910b88cbd5f"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/utils/razorpay.ts": {
+    "mtime": 1794969631.6881068,
+    "hash": "4867c2d1843cb4597d7b20a5859c9177"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/utils/imageProcessor.ts": {
+    "mtime": 1794496005.4959302,
+    "hash": "e92b439e3b130a6ef94c9398e1a6a45d"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/ProductGrid.tsx": {
+    "mtime": 1794495114.0468967,
+    "hash": "b57b8a08f3984b606c08e14fd94ae6eb"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/Hero.tsx": {
+    "mtime": 1794495063.154597,
+    "hash": "f12dcd960d11aad95789b83cd58e451a"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/Navbar.tsx": {
+    "mtime": 1794883054.7050831,
+    "hash": "52057811d3820da12033714dba1b6979"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/FabricBadge.tsx": {
+    "mtime": 1794493986.971076,
+    "hash": "14d365457a016890e3f3552a24285bd5"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/StoreLocator.tsx": {
+    "mtime": 1794494045.9332967,
+    "hash": "a63866c33e939f269b61435a27940469"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/CollectionShowcase.tsx": {
+    "mtime": 1794495066.2119045,
+    "hash": "029c8555603646f9bf280f707d43f3de"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/ProductModal.tsx": {
+    "mtime": 1795247035.159044,
+    "hash": "ee92616a17c122439a973c67e2aeb35c"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/ProductCard.tsx": {
+    "mtime": 1795247057.3988616,
+    "hash": "a0df07dc9813f17e981a75dd7428a866"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/Footer.tsx": {
+    "mtime": 1794494048.3860002,
+    "hash": "cb36bddb488299aaed020ae274db4b66"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/AtelierStory.tsx": {
+    "mtime": 1794495937.7360332,
+    "hash": "a4935132479e8b22e0992619b2c6fcdb"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/catalog/FilterBar.tsx": {
+    "mtime": 1794495116.608994,
+    "hash": "f4624d55d99eea20c13c67231be3081a"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/catalog/FilterDrawer.tsx": {
+    "mtime": 1794495118.9840968,
+    "hash": "ee422d9f15a14c0a0407e475cc333dfc"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/catalog/WishlistDrawer.tsx": {
+    "mtime": 1794495121.9539154,
+    "hash": "81b23d7ce1b5aebb23d32c3b3f9ab593"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/mobile/MobileBottomBar.tsx": {
+    "mtime": 1794882994.8795469,
+    "hash": "c42fd1f1a7ea13cfc329ead1d3742c2c"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/cart/MobileCheckoutModal.tsx": {
+    "mtime": 1795019459.627807,
+    "hash": "94cce49b63d81cf9d27436d6fa8e05e3"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/cart/CartDrawer.tsx": {
+    "mtime": 1794969928.8102987,
+    "hash": "28058e81dfb7f3c6d7bcc17a9ebd89f0"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/cart/TailoringSelector.tsx": {
+    "mtime": 1794882953.4549873,
+    "hash": "69459eb78853c81c2fb012a3f36f4c08"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/staff/ProductEditModal.tsx": {
+    "mtime": 1794496092.5828938,
+    "hash": "be99e87974cd4650e768aed394538d79"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/staff/OrdersManager.tsx": {
+    "mtime": 1795019505.154672,
+    "hash": "ccc7c0158ecb9c3354814801081f28bd"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/staff/ImageUploadStudio.tsx": {
+    "mtime": 1795246734.5130208,
+    "hash": "d387e484ede3dee639ca2119527b4192"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/staff/StaffLoginPage.tsx": {
+    "mtime": 1795242710.1140382,
+    "hash": "b9f127a24d9c4ab34b5060895620fb73"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/staff/StaffPortalPage.tsx": {
+    "mtime": 1791860497.981397,
+    "hash": "57b4c023941297338c57e118cb5fe706"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/staff/DispatchModal.tsx": {
+    "mtime": 1794922877.860323,
+    "hash": "4daacd87e74d6a80f12e0f32f62482e0"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/staff/StaffDashboard.tsx": {
+    "mtime": 1794887975.5017033,
+    "hash": "2ba3dbb308575c903acea91493e47dbd"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/hooks/useFilteredCatalog.ts": {
+    "mtime": 1791857549.38187,
+    "hash": "590ae9f0e74c1ae7a9aed28041e4b3a3"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/hooks/useDebounce.ts": {
+    "mtime": 1791857536.4126542,
+    "hash": "207cde497778440a9ff2a3d069802715"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/data/storeConfig.ts": {
+    "mtime": 1795242719.4339867,
+    "hash": "9d0830f767966961fa21a8bd0dceea37"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/data/catalogValidator.ts": {
+    "mtime": 1794495924.9514225,
+    "hash": "0a7fb50c34a9e51b48bd1586709ba854"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/services/supabaseClient.ts": {
+    "mtime": 1795246499.0884178,
+    "hash": "64000aa30dd38d3cdda0ab7995c814bb"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/services/ordersService.ts": {
+    "mtime": 1795242930.6161816,
+    "hash": "917b4b92eed29d43532e068ad38b6a80"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/services/catalogService.ts": {
+    "mtime": 1795242595.1329327,
+    "hash": "77c513e84f73cc6f470340a8e1d22748"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/src/services/imageStorage.ts": {
+    "mtime": 1795242641.8689451,
+    "hash": "1d0136b4b88276cf74fed3ff4acdcc7f"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/index.html": {
+    "mtime": 1794968269.496615,
+    "hash": "d328c48132fec626d7c3a424ad45ce64"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/progress.md": {
+    "mtime": 1791859455.6907942,
+    "hash": "21cd27f2212ae45faf9647ce128c5fd6"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/task_plan.md": {
+    "mtime": 1791857067.991006,
+    "hash": "b12a8ac096bef123b11c433c779d4575"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/README.md": {
+    "mtime": 1794969580.7740293,
+    "hash": "022242c82ef1dcff0556633325ea8089"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/findings.md": {
+    "mtime": 1791858892.025569,
+    "hash": "cbd3c852ecdf693d783f37675d8bf9de"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/gemini.md": {
+    "mtime": 1794495922.7158778,
+    "hash": "12a4345074f23a5a86eeec1749d4d68d"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/architecture/sop_catalog_filtering.md": {
+    "mtime": 1791857510.5096593,
+    "hash": "3e9e479ac4a976718e36b81f3db2b8ea"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/architecture/sop_deep_linking.md": {
+    "mtime": 1791857519.9001043,
+    "hash": "786841ba53652b5535aa6472626f8c00"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/architecture/sop_whatsapp_inquiry.md": {
+    "mtime": 1791857528.861031,
+    "hash": "72e0e7c82c214bb1535e409f3f0e3d1e"
+  },
+  "/Users/anandsuresh/Documents/GitHub/Kenzae/public/robots.txt": {
+    "mtime": 1794968245.6160862,
+    "hash": "b424aa3364e4c671cc4356a4b52d8ca3"
+  }
+}

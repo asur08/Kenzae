@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { MotionConfig } from 'framer-motion';
+import { CurrencyProvider } from './context/CurrencyContext';
 import { CatalogProvider, useCatalog } from './context/CatalogContext';
 import { CartProvider } from './context/CartContext';
 import { OrdersProvider } from './context/OrdersContext';
@@ -114,15 +115,17 @@ const MainRouter: React.FC = () => {
 export function App() {
   return (
     <MotionConfig reducedMotion="user">
-      <CatalogProvider>
-        <CartProvider>
-          <OrdersProvider>
-            <StaffAuthProvider>
-              <MainRouter />
-            </StaffAuthProvider>
-          </OrdersProvider>
-        </CartProvider>
-      </CatalogProvider>
+      <CurrencyProvider>
+        <CatalogProvider>
+          <CartProvider>
+            <OrdersProvider>
+              <StaffAuthProvider>
+                <MainRouter />
+              </StaffAuthProvider>
+            </OrdersProvider>
+          </CartProvider>
+        </CatalogProvider>
+      </CurrencyProvider>
     </MotionConfig>
   );
 }

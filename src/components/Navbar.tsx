@@ -3,6 +3,7 @@ import { Heart, MapPin, MessageCircle, Menu, X, SlidersHorizontal, ShoppingBag }
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCatalog } from '../context/CatalogContext';
 import { useCart } from '../context/CartContext';
+import { CurrencySwitcher } from './CurrencySwitcher';
 import { KENZAE_STORE_CONFIG } from '../data/storeConfig';
 import { generateStoreVisitWhatsAppUrl } from '../utils/whatsapp';
 import { ProductCategory } from '../types/catalog';
@@ -127,8 +128,10 @@ export const Navbar: React.FC = () => {
           </a>
         </div>
 
-        {/* Right: Filter (mobile) + Shortlist + Consult Concierge */}
-        <div className="flex items-center gap-2 shrink-0">
+        {/* Right: Currency + Filter (mobile) + Shortlist + Bag + Consult Concierge */}
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <CurrencySwitcher />
+
           <button
             onClick={() => setIsFilterDrawerOpen(true)}
             className="md:hidden p-2 rounded-full border border-canvas-border bg-white/80 text-maroon-950 hover:bg-white transition-colors"

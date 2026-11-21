@@ -25,6 +25,10 @@ export function generateTrackingUrl(partner: CourierPartner, awb: string): strin
       return `https://www.tpcindia.com/`;
     case 'Kerala Express':
       return `https://keralaexpress.in/track?awb=${cleanAwb}`;
+    case 'DHL Express':
+      return `https://www.dhl.com/en-in/home/tracking.html?tracking-id=${cleanAwb}`;
+    case 'Aramex Worldwide':
+      return `https://www.aramex.com/track/results?shipmentNumber=${cleanAwb}`;
     default:
       return '';
   }

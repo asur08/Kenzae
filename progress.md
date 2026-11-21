@@ -97,3 +97,26 @@
   - Zero-error Vite compilation maintained (**331ms** build time).
   - 100% WCAG 2.1 AA accessibility contrast score preserved.
 
+
+
+---
+
+### 🌍 Milestone 7: Sprint 3 (NRI & Diaspora Globalization) (Completed)
+- **Status:** ✅ Complete
+- **Deliverables:**
+  - Multi-Currency Conversion Engine (`src/services/currencyService.ts`) with runtime rate caching.
+  - Global `CurrencyProvider` (`src/context/CurrencyContext.tsx`) and `CurrencySwitcher` in `Navbar.tsx`.
+  - Country profile dataset (`src/data/countries.ts`) covering key NRI hubs (UAE, USA, UK, Canada, Australia, Singapore, GCC).
+  - Contextual checkout validation: UAE Emirate selector with optional postal code; UK Postcode; US ZIP; India PIN.
+  - Dual shipping calculation: Domestic (Free Kerala over ₹2,500 / ₹100 flat) vs DHL Express / Aramex Worldwide (₹2,450).
+  - Tested with `node scripts/verify-sprint3-phase5.mjs` -> PASS ✅
+
+---
+
+### ⚡ Milestone 8: Phase 5 (Operations, Telemetry & Performance) (Completed)
+- **Status:** ✅ Complete
+- **Deliverables:**
+  - Progressive Web App manifest (`public/manifest.json`) and service worker (`public/sw.js`) with image caching.
+  - GA4 & Meta Pixel E-commerce event bus (`src/services/telemetryService.ts`) covering the entire shopper journey.
+  - International logistics telemetry (`src/utils/courierTracking.ts`) supporting DHL Express & Aramex Worldwide.
+  - Zero-error production build (`npm run build`) in **484ms**.

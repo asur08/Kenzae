@@ -83,3 +83,22 @@
 - [x] Execute production build (`npm run build` - compiled dist bundle in 287ms)
 - [x] Configure `.gitignore` and verify clean working tree
 - [x] Update `progress.md` with final verification records
+
+
+---
+
+## 🌍 Sprint 3: NRI & Diaspora Globalization (High Basket Value)
+- [x] Multi-Currency Display & Converter (`INR`, `AED`, `USD`, `GBP`, `EUR`, `CAD`, `AUD`, `SGD`)
+- [x] Interactive `CurrencySwitcher` in Navbar with live country flags and retail psychological rounding
+- [x] International E.164 phone formatting and country selector with dial codes (`+971`, `+1`, `+44`, `+91`, etc.)
+- [x] Contextual postal validation (UAE Emirate dropdown with optional/NA postal code; UK Postcode; US ZIP; India PIN)
+- [x] Dual shipping tier engine: Domestic Kerala / India vs DHL Express / Aramex Worldwide (₹2,450 / 3-5 days delivery)
+
+---
+
+## ⚡ Phase 5 (Operations, Telemetry & Performance - Scaling Milestone)
+- [x] GA4 & Meta Pixel E-Commerce Event Bus (`view_item_list`, `view_item`, `add_to_wishlist`, `add_to_cart`, `begin_checkout`, `whatsapp_inquiry`, `purchase`)
+- [x] Progressive Web App (PWA) manifest with luxury brand theme (`#0F382A`) and standalone configuration
+- [x] Service Worker (`sw.js`) implementing Stale-While-Revalidate for drapes and cache-first for app shell
+- [x] International logistics telemetry with direct live tracking URL resolution for DHL Express & Aramex
+- [x] Preconnect optimizations for Google Fonts and photography CDNs (sub-second LCP & zero layout shifts)

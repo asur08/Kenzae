@@ -9,6 +9,14 @@ import {
 } from '../types/orders';
 import { CartItem, ShippingAddress } from '../types/cart';
 import { generateTrackingUrl } from '../utils/courierTracking';
+import {
+  fetchRemoteOrders,
+  saveRemoteOrder,
+  updateRemoteOrderStatus,
+  updateRemotePaymentStatus,
+  dispatchRemoteOrder,
+  subscribeToOrdersRealtime,
+} from '../services/ordersService';
 
 interface OrdersContextType {
   orders: BoutiqueOrder[];
@@ -238,6 +246,47 @@ export const OrdersProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     }
   }, [orders]);
 
+  // Cloud Orders Sync: Load live orders from Supabase & subscribe to realtime order pipeline
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadRemoteOrders() {
+      const remote = await fetchRemoteOrders();
+      if (remote && remote.length > 0 && isMounted) {
+        setOrders(remote);
+        try {
+          localStorage.setItem(STORAGE_KEY_ORDERS, JSON.stringify(remote));
+        } catch {
+          // Ignore
+        }
+      }
+    }
+
+    loadRemoteOrders();
+
+    const unsubscribe = subscribeToOrdersRealtime((event) => {
+      if (!isMounted) return;
+      if (event.eventType === 'DELETE' && event.id) {
+        setOrders((prev) => prev.filter((o) => o.id !== event.id));
+      } else if (event.order) {
+        const updated = event.order;
+        setOrders((prev) => {
+          const exists = prev.some((o) => o.id === updated.id);
+          if (exists) {
+            return prev.map((o) => (o.id === updated.id ? updated : o));
+          } else {
+            return [updated, ...prev];
+          }
+        });
+      }
+    });
+
+    return () => {
+      isMounted = false;
+      if (unsubscribe) unsubscribe();
+    };
+  }, []);
+
   const createOrder = (
     customer: ShippingAddress,
     items: CartItem[],
@@ -283,6 +332,7 @@ export const OrdersProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     };
 
     setOrders((prev) => [newOrder, ...prev]);
+    saveRemoteOrder(newOrder).catch((err) => console.warn('[Supabase] Save order warning:', err));
     return newOrder;
   };
 
@@ -294,6 +344,7 @@ export const OrdersProvider: React.FC<{ children: React.ReactNode }> = ({ childr
           : ord
       )
     );
+    updateRemoteOrderStatus(orderId, status).catch((err) => console.warn('[Supabase] Order status sync error:', err));
   };
 
   const updatePaymentStatus = (orderId: string, status: PaymentStatus) => {
@@ -304,6 +355,7 @@ export const OrdersProvider: React.FC<{ children: React.ReactNode }> = ({ childr
           : ord
       )
     );
+    updateRemotePaymentStatus(orderId, status).catch((err) => console.warn('[Supabase] Payment status sync error:', err));
   };
 
   const dispatchOrder = (
@@ -311,28 +363,36 @@ export const OrdersProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     courierPartner: CourierPartner,
     trackingAwb: string
   ): BoutiqueOrder | null => {
-    let updatedOrder: BoutiqueOrder | null = null;
+    let dispatchedOrderResult: BoutiqueOrder | null = null;
 
     setOrders((prev) =>
       prev.map((ord) => {
         if (ord.id === orderId) {
           const trackingUrl = generateTrackingUrl(courierPartner, trackingAwb);
-          updatedOrder = {
+          const dispatchedAt = new Date().toISOString();
+          const targetOrder: BoutiqueOrder = {
             ...ord,
             fulfillmentStatus: 'shipped',
             courierPartner,
             trackingAwb: trackingAwb.trim(),
             trackingUrl,
-            dispatchedAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
+            dispatchedAt,
+            updatedAt: dispatchedAt,
           };
-          return updatedOrder;
+          dispatchedOrderResult = targetOrder;
+          dispatchRemoteOrder(orderId, {
+            courierPartner,
+            trackingAwb: trackingAwb.trim(),
+            trackingUrl,
+            dispatchedAt,
+          }).catch((err) => console.warn('[Supabase] Dispatch sync error:', err));
+          return targetOrder;
         }
         return ord;
       })
     );
 
-    return updatedOrder;
+    return dispatchedOrderResult;
   };
 
   const deleteOrder = (orderId: string) => {

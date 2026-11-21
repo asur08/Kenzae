@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   X,
   MapPin,
@@ -7,15 +7,20 @@ import {
   ShieldCheck,
   FileText,
   Loader2,
+  Globe,
+  Plane,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../../context/CartContext';
 import { useOrders } from '../../context/OrdersContext';
 import { useCatalog } from '../../context/CatalogContext';
+import { useCurrency } from '../../context/CurrencyContext';
 import { formatCurrencyINR } from '../../utils/formatters';
 import { initiateRazorpayPayment } from '../../utils/razorpay';
 import { generateGSTTaxInvoicePDF } from '../../utils/invoiceGenerator';
 import { BoutiqueOrder } from '../../types/orders';
+import { SUPPORTED_COUNTRIES, CountryProfile } from '../../data/countries';
+import { trackBeginCheckout, trackPurchase } from '../../services/telemetryService';
 
 interface MobileCheckoutModalProps {
   isOpen: boolean;
@@ -26,27 +31,64 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
   const { cartItems, totals, shippingAddress, setShippingAddress, clearCart } = useCart();
   const { createOrder } = useOrders();
   const { products, updateProductStock } = useCatalog();
+  const { currentCurrency, formatPrice } = useCurrency();
 
   const [form, setForm] = useState(shippingAddress);
+  const [selectedCountry, setSelectedCountry] = useState<CountryProfile>(() => {
+    const match = SUPPORTED_COUNTRIES.find((c) => c.name === shippingAddress.country);
+    return match || SUPPORTED_COUNTRIES[0];
+  });
+
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isProcessing, setIsProcessing] = useState(false);
   const [completedOrder, setCompletedOrder] = useState<BoutiqueOrder | null>(null);
   const [paymentError, setPaymentError] = useState<string | null>(null);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
+  // Track begin checkout event on open
+  useEffect(() => {
+    if (isOpen && cartItems.length > 0) {
+      trackBeginCheckout(cartItems, totals, currentCurrency);
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
+
+  const handleCountryChange = (countryName: string) => {
+    const profile = SUPPORTED_COUNTRIES.find((c) => c.name === countryName) || SUPPORTED_COUNTRIES[0];
+    setSelectedCountry(profile);
+
+    const isIntl = profile.name !== 'India';
+    const updated = {
+      ...form,
+      country: profile.name,
+      countryCode: profile.dialCode,
+      state: profile.regions ? profile.regions[0] : (isIntl ? 'International' : 'Kerala'),
+      shippingTier: isIntl ? ('international_express' as const) : ('domestic_standard' as const),
+    };
+    setForm(updated);
+    setShippingAddress(updated);
+    setErrors({});
+  };
 
   const validate = () => {
     const errs: { [key: string]: string } = {};
-    if (!form.fullName.trim()) errs.fullName = 'Please enter your full name';
-    if (!form.phoneNumber.trim() || form.phoneNumber.trim().length < 10) {
-      errs.phoneNumber = 'Please enter a valid 10-digit mobile number';
+    if (!form.fullName.trim()) errs.fullName = 'Please enter your full recipient name';
+
+    const cleanPhone = form.phoneNumber.trim().replace(/\D/g, '');
+    if (!cleanPhone || cleanPhone.length < selectedCountry.phoneDigitsMin) {
+      errs.phoneNumber = `Enter a valid mobile number (${selectedCountry.phoneDigitsMin} digits for ${selectedCountry.name})`;
     }
+
     if (!form.streetAddress.trim()) errs.streetAddress = 'Please enter your delivery street address';
     if (!form.city.trim()) errs.city = 'Please enter your city / town';
-    if (!form.pincode.trim() || form.pincode.trim().length < 6) {
-      errs.pincode = 'Please enter a 6-digit postal code';
+
+    if (selectedCountry.isPostalRequired) {
+      if (!form.pincode.trim() || (selectedCountry.code === 'IN' && form.pincode.trim().length < 6)) {
+        errs.pincode = `Please enter a valid ${selectedCountry.postalLabel}`;
+      }
     }
+
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -77,7 +119,7 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
       customer: form,
       itemsSummary,
       onSuccess: (paymentResp) => {
-        // 1. Create order as PAID in Boutique Orders Pipeline with Razorpay reference
+        // 1. Create order as PAID in Boutique Orders Pipeline
         const newOrder = createOrder(
           form,
           cartItems,
@@ -86,7 +128,10 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
           paymentResp.razorpay_payment_id
         );
 
-        // 2. Atomically deduct purchased quantities from catalog inventory
+        // 2. Track purchase telemetry
+        trackPurchase(newOrder, currentCurrency);
+
+        // 3. Atomically deduct purchased quantities from catalog inventory
         cartItems.forEach((cartItem) => {
           const match = products.find((p) => p.id === cartItem.productId);
           if (match) {
@@ -96,7 +141,7 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
           }
         });
 
-        // 3. Clear Bag
+        // 4. Clear Bag
         clearCart();
         setCompletedOrder(newOrder);
         setIsProcessing(false);
@@ -122,6 +167,8 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
       setIsGeneratingPdf(false);
     }
   };
+
+  const isInternational = selectedCountry.name !== 'India';
 
   return (
     <AnimatePresence>
@@ -151,10 +198,12 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
               </div>
               <div>
                 <h3 className="font-serif text-base font-semibold text-maroon-950">
-                  {completedOrder ? 'Order Confirmed' : 'Delivery & Secure Checkout'}
+                  {completedOrder ? 'Order Confirmed' : 'Delivery & Global Checkout'}
                 </h3>
-                <span className="text-[10px] text-obsidian-muted uppercase tracking-wider">
-                  Kenzae Designer Boutique • Mulanthuruthy
+                <span className="text-[10px] text-obsidian-muted uppercase tracking-wider flex items-center gap-1">
+                  <span>Kenzae Mulanthuruthy</span>
+                  <span>•</span>
+                  <span>{isInternational ? 'Worldwide Express' : 'Pan-India Delivery'}</span>
                 </span>
               </div>
             </div>
@@ -162,6 +211,7 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
             <button
               onClick={onClose}
               className="p-1.5 rounded-full hover:bg-canvas-subtle text-obsidian-slate hover:text-obsidian transition-colors"
+              aria-label="Close checkout"
             >
               <X className="w-5 h-5" />
             </button>
@@ -190,7 +240,8 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                     </span>
                   </div>
                   <p className="text-xs text-obsidian-slate mt-2 max-w-sm mx-auto leading-relaxed">
-                    Your bespoke ensemble is being prepared at our Mulanthuruthy atelier. A confirmation copy and courier tracking details will be dispatched to your mobile.
+                    Your bespoke creation is being prepared at our Mulanthuruthy atelier. A confirmation copy and{' '}
+                    {isInternational ? 'DHL/Aramex Worldwide' : 'courier'} tracking will be dispatched to your mobile.
                   </p>
                 </div>
 
@@ -219,11 +270,15 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                   <div className="pt-2 border-t border-canvas-border grid grid-cols-2 gap-2 text-[11px] text-obsidian-slate">
                     <div>
                       <span className="block text-obsidian-muted text-[10px]">Delivering To:</span>
-                      <span className="font-semibold text-obsidian">{completedOrder.customer.city}, {completedOrder.customer.state}</span>
+                      <span className="font-semibold text-obsidian">
+                        {completedOrder.customer.city}, {completedOrder.customer.state} ({completedOrder.customer.country || 'India'})
+                      </span>
                     </div>
                     <div className="text-right">
                       <span className="block text-obsidian-muted text-[10px]">Total Paid:</span>
-                      <span className="font-bold text-maroon-950 font-sans text-xs">{formatCurrencyINR(completedOrder.grandTotal)}</span>
+                      <span className="font-bold text-maroon-950 font-sans text-xs">
+                        {formatCurrencyINR(completedOrder.grandTotal)}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -244,10 +299,48 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                   </div>
                 )}
 
-                {/* Contact Fields */}
+                {/* Country Selection for NRI / Diaspora */}
+                <div className="bg-white p-4 rounded-xl border border-canvas-border shadow-luxury space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-maroon-950 flex items-center gap-1.5">
+                      <Globe className="w-3.5 h-3.5 text-brass" />
+                      Destination Country
+                    </span>
+                    <span className="text-[10px] text-obsidian-muted">
+                      {isInternational ? 'International Express' : 'Domestic India'}
+                    </span>
+                  </div>
+
+                  <select
+                    value={selectedCountry.name}
+                    onChange={(e) => handleCountryChange(e.target.value)}
+                    className="w-full px-3 py-2 text-xs border border-canvas-border rounded-lg bg-canvas-subtle/60 text-obsidian font-medium focus:outline-none focus:border-maroon-900"
+                  >
+                    {SUPPORTED_COUNTRIES.map((c) => (
+                      <option key={c.code + c.name} value={c.name}>
+                        {c.flag} {c.name} ({c.dialCode})
+                      </option>
+                    ))}
+                  </select>
+
+                  {/* International Dispatch Badge */}
+                  {isInternational && (
+                    <div className="p-2.5 rounded-lg bg-maroon-950 text-brass-light text-[11px] flex items-center gap-2 border border-brass/30">
+                      <Plane className="w-4 h-4 text-brass shrink-0" />
+                      <div className="leading-tight">
+                        <span className="font-semibold block">DHL Express / Aramex Worldwide</span>
+                        <span className="text-[10px] text-white/80">
+                          Dispatched in tamper-proof silk bag • Delivered in 3-5 business days
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* 1. Contact Information */}
                 <div className="space-y-3 bg-white p-4 rounded-xl border border-canvas-border shadow-luxury">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-maroon-950 block">
-                    1. Contact Information
+                    1. Recipient Details
                   </span>
 
                   <div>
@@ -270,34 +363,40 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                     <label className="text-xs text-obsidian-slate block mb-1">
                       Mobile Number (for Courier &amp; Invoice) <span className="text-terracotta">*</span>
                     </label>
-                    <input
-                      type="tel"
-                      value={form.phoneNumber}
-                      onChange={(e) => handleChange('phoneNumber', e.target.value)}
-                      placeholder="e.g. 9447012345"
-                      className="w-full px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50 font-medium"
-                    />
+                    <div className="flex gap-2">
+                      <span className="px-3 py-2 rounded-lg bg-canvas-subtle border border-canvas-border text-xs font-mono font-medium text-obsidian shrink-0 flex items-center gap-1">
+                        <span>{selectedCountry.flag}</span>
+                        <span>{selectedCountry.dialCode}</span>
+                      </span>
+                      <input
+                        type="tel"
+                        value={form.phoneNumber}
+                        onChange={(e) => handleChange('phoneNumber', e.target.value)}
+                        placeholder={selectedCountry.phonePlaceholder}
+                        className="flex-1 px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50 font-medium"
+                      />
+                    </div>
                     {errors.phoneNumber && (
                       <span className="text-[10px] text-terracotta mt-0.5 block">{errors.phoneNumber}</span>
                     )}
                   </div>
                 </div>
 
-                {/* Delivery Address Fields */}
+                {/* 2. Delivery Address */}
                 <div className="space-y-3 bg-white p-4 rounded-xl border border-canvas-border shadow-luxury">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-maroon-950 block">
-                    2. Shipping Address
+                    2. Delivery Address
                   </span>
 
                   <div>
                     <label className="text-xs text-obsidian-slate block mb-1">
-                      Street Address / House Name <span className="text-terracotta">*</span>
+                      Street Address / Villa / Apartment <span className="text-terracotta">*</span>
                     </label>
                     <input
                       type="text"
                       value={form.streetAddress}
                       onChange={(e) => handleChange('streetAddress', e.target.value)}
-                      placeholder="House / Apartment name, landmark, and street"
+                      placeholder="House / Flat name, street, and landmark"
                       className="w-full px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50"
                     />
                     {errors.streetAddress && (
@@ -308,13 +407,13 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="text-xs text-obsidian-slate block mb-1">
-                        City / Town <span className="text-terracotta">*</span>
+                        City / Area <span className="text-terracotta">*</span>
                       </label>
                       <input
                         type="text"
                         value={form.city}
                         onChange={(e) => handleChange('city', e.target.value)}
-                        placeholder="e.g. Kochi"
+                        placeholder="e.g. Dubai / Kochi"
                         className="w-full px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50 font-medium"
                       />
                       {errors.city && (
@@ -324,14 +423,14 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
 
                     <div>
                       <label className="text-xs text-obsidian-slate block mb-1">
-                        Pincode <span className="text-terracotta">*</span>
+                        {selectedCountry.postalLabel}{' '}
+                        {selectedCountry.isPostalRequired && <span className="text-terracotta">*</span>}
                       </label>
                       <input
                         type="text"
-                        maxLength={6}
                         value={form.pincode}
-                        onChange={(e) => handleChange('pincode', e.target.value.replace(/\D/g, ''))}
-                        placeholder="682314"
+                        onChange={(e) => handleChange('pincode', e.target.value)}
+                        placeholder={selectedCountry.postalPlaceholder}
                         className="w-full px-3 py-2 text-xs font-mono font-bold tracking-wider border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50"
                       />
                       {errors.pincode && (
@@ -339,6 +438,25 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                       )}
                     </div>
                   </div>
+
+                  {selectedCountry.regions && (
+                    <div>
+                      <label className="text-xs text-obsidian-slate block mb-1">
+                        State / Emirate / Region
+                      </label>
+                      <select
+                        value={form.state}
+                        onChange={(e) => handleChange('state', e.target.value)}
+                        className="w-full px-3 py-2 text-xs border border-canvas-border rounded-lg bg-canvas-subtle/60 text-obsidian font-medium focus:outline-none focus:border-maroon-900"
+                      >
+                        {selectedCountry.regions.map((reg) => (
+                          <option key={reg} value={reg}>
+                            {reg}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
 
                   <div>
                     <label className="text-xs text-obsidian-slate block mb-1">
@@ -348,7 +466,7 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                       rows={2}
                       value={form.specialDeliveryNote || ''}
                       onChange={(e) => handleChange('specialDeliveryNote', e.target.value)}
-                      placeholder="e.g. Desired blouse neckline, delivery before specific festival..."
+                      placeholder="e.g. Blouse neckline depth, specific delivery date..."
                       className="w-full px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50"
                     />
                   </div>
@@ -358,30 +476,39 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                 <div className="p-3.5 rounded-xl bg-canvas-subtle border border-canvas-border space-y-2 text-xs">
                   <div className="flex justify-between text-obsidian-slate">
                     <span>{totals.itemCount} piece(s) in bag</span>
-                    <span>{formatCurrencyINR(totals.subtotal)}</span>
+                    <span>{formatPrice(totals.subtotal)}</span>
                   </div>
 
                   {totals.tailoringTotal > 0 && (
                     <div className="flex justify-between text-obsidian-slate">
                       <span>Tailoring &amp; Finishing</span>
-                      <span>+{formatCurrencyINR(totals.tailoringTotal)}</span>
+                      <span>+{formatPrice(totals.tailoringTotal)}</span>
                     </div>
                   )}
 
                   <div className="flex justify-between text-obsidian-slate">
-                    <span>Courier Delivery</span>
+                    <span>
+                      {isInternational ? 'DHL / Aramex Worldwide Express' : 'Courier Delivery'}
+                    </span>
                     <span>
                       {totals.shippingFee === 0 ? (
                         <span className="text-emerald-700 font-semibold">FREE (Kerala)</span>
                       ) : (
-                        formatCurrencyINR(totals.shippingFee)
+                        `+${formatPrice(totals.shippingFee)}`
                       )}
                     </span>
                   </div>
 
                   <div className="flex justify-between font-bold text-maroon-950 pt-2 border-t border-canvas-border text-sm">
-                    <span>Total Amount Payable</span>
-                    <span className="font-sans text-base">{formatCurrencyINR(totals.grandTotal)}</span>
+                    <div>
+                      <span>Total Amount Payable</span>
+                      {currentCurrency !== 'INR' && (
+                        <span className="block text-[10px] font-normal text-obsidian-muted">
+                          Billed as ₹{totals.grandTotal.toLocaleString('en-IN')}
+                        </span>
+                      )}
+                    </div>
+                    <span className="font-sans text-base">{formatPrice(totals.grandTotal)}</span>
                   </div>
                 </div>
 
@@ -398,12 +525,12 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                   {isProcessing ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin text-brass" />
-                      <span>Opening Secure Razorpay Gateway...</span>
+                      <span>Connecting to Razorpay Secure Gateway...</span>
                     </>
                   ) : (
                     <>
                       <Lock className="w-4 h-4 text-brass" />
-                      <span>Pay {formatCurrencyINR(totals.grandTotal)} via Razorpay</span>
+                      <span>Pay {formatPrice(totals.grandTotal)} via Razorpay</span>
                     </>
                   )}
                 </button>
@@ -412,7 +539,7 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                 <div className="text-center space-y-1.5 pt-1">
                   <div className="flex items-center justify-center gap-2 text-[10px] text-obsidian-muted">
                     <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
-                    <span>Instant UPI (GPay/PhonePe/Paytm) • Cards • NetBanking • EMI</span>
+                    <span>International &amp; Domestic Cards • UPI • NetBanking</span>
                   </div>
                   <p className="text-[9px] text-obsidian-muted font-light">
                     256-bit encrypted checkout • Zero card details stored on boutique servers

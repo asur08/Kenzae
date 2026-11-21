@@ -31,6 +31,10 @@
   ],
   "rewrites": [
     {
+      "source": "/p/:sku",
+      "destination": "/api/og-preview?item=:sku"
+    },
+    {
       "source": "/((?!api/).*)",
       "destination": "/index.html"
     }

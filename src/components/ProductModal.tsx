@@ -14,16 +14,21 @@ import {
   Layers,
   Scissors,
   ShoppingBag,
+  Play,
+  Volume2,
+  VolumeX,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCatalog } from '../context/CatalogContext';
 import { useCart } from '../context/CartContext';
+import { useCurrency } from '../context/CurrencyContext';
 import { TailoringSelection } from '../types/cart';
 import { TailoringSelector } from './cart/TailoringSelector';
 import { formatCurrencyINR } from '../utils/formatters';
 import { generateProductWhatsAppUrl } from '../utils/whatsapp';
 import { KENZAE_STORE_CONFIG } from '../data/storeConfig';
 import { FabricBadge } from './FabricBadge';
+import { trackAddToCart, trackWhatsAppInquiry } from '../services/telemetryService';
 
 export const ProductModal: React.FC = () => {
   const {
@@ -35,12 +40,15 @@ export const ProductModal: React.FC = () => {
   } = useCatalog();
 
   const { addToCart } = useCart();
+  const { currentCurrency, formatPrice } = useCurrency();
   const [tailoring, setTailoring] = useState<TailoringSelection>({
     type: 'standard',
     additionalCost: 0,
   });
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [activeMediaTab, setActiveMediaTab] = useState<'photos' | 'video'>('photos');
+  const [isVideoMuted, setIsVideoMuted] = useState(true);
   const [customNote, setCustomNote] = useState('');
   const [copiedSku, setCopiedSku] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
@@ -64,6 +72,8 @@ export const ProductModal: React.FC = () => {
   useEffect(() => {
     if (selectedProduct) {
       setActiveImageIndex(0);
+      setActiveMediaTab('photos');
+      setIsVideoMuted(true);
       setCustomNote('');
       setCopiedSku(false);
       setCopiedLink(false);
@@ -91,6 +101,22 @@ export const ProductModal: React.FC = () => {
   const handleAddToCart = () => {
     if (!selectedProduct || !isAvailable) return;
     addToCart(selectedProduct, tailoring, 1);
+    trackAddToCart(
+      {
+        id: `${selectedProduct.id}__${tailoring.type}`,
+        productId: selectedProduct.id,
+        sku: selectedProduct.sku,
+        title: selectedProduct.title,
+        category: selectedProduct.category,
+        subCategory: selectedProduct.subCategory,
+        price: selectedProduct.price,
+        image: selectedProduct.images[0] || '',
+        quantity: 1,
+        tailoring,
+        itemTotal: selectedProduct.price + (tailoring.additionalCost || 0),
+      },
+      currentCurrency
+    );
     setSelectedProduct(null);
   };
 
@@ -146,7 +172,7 @@ export const ProductModal: React.FC = () => {
   };
 
   const handleCopyLink = async () => {
-    const shareUrl = `${window.location.origin}/?item=${encodeURIComponent(selectedProduct.sku)}`;
+    const shareUrl = `${window.location.origin}/p/${encodeURIComponent(selectedProduct.sku)}`;
     if (navigator.clipboard) {
       await navigator.clipboard.writeText(shareUrl);
       setCopiedLink(true);
@@ -155,7 +181,7 @@ export const ProductModal: React.FC = () => {
   };
 
   const handleShare = async () => {
-    const shareUrl = `${window.location.origin}/?item=${encodeURIComponent(selectedProduct.sku)}`;
+    const shareUrl = `${window.location.origin}/p/${encodeURIComponent(selectedProduct.sku)}`;
     const shareData = {
       title: `${selectedProduct.title} | Kenzae`,
       text: `Inquire about ${selectedProduct.title} (${selectedProduct.sku}) at Kenzae for ${formatCurrencyINR(selectedProduct.price)}.`,
@@ -175,6 +201,7 @@ export const ProductModal: React.FC = () => {
 
   // VIP Bridal / Custom Styling Consultation via WhatsApp
   const handleWhatsAppEnquiry = () => {
+    trackWhatsAppInquiry(selectedProduct, 'bridal_consult');
     const note = customNote.trim() ? customNote.trim() : undefined;
     const url = generateProductWhatsAppUrl(selectedProduct, note);
     window.open(url, '_blank', 'noopener,noreferrer');
@@ -250,106 +277,184 @@ export const ProductModal: React.FC = () => {
           {/* Modal Scrollable Body */}
           <div className="overflow-y-auto flex-1">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-0">
-              {/* Left Column: Drape Gallery & Cursor-Tracking Loupe */}
+              {/* Left Column: Drape Gallery, HD Texture Loupe & Drape Video Reel */}
               <div className="md:col-span-6 bg-canvas-subtle p-4 sm:p-6 flex flex-col justify-between border-b md:border-b-0 md:border-r border-canvas-border">
-                <div
-                  className={`relative aspect-[3/4] w-full rounded-xl overflow-hidden bg-white shadow-inner group ${
-                    isZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'
-                  }`}
-                  onClick={() => setIsZoomed((z) => !z)}
-                  onMouseMove={handleImageMouseMove}
-                  onMouseLeave={() => {
-                    if (isZoomed) setZoomOrigin({ x: 50, y: 35 });
-                  }}
-                  title="Click to toggle weave loupe; move pointer to inspect details"
-                >
-                  <img
-                    src={selectedProduct.images[activeImageIndex] || selectedProduct.images[0]}
-                    alt={selectedProduct.title}
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = selectedProduct.images[0];
-                    }}
-                    style={{
-                      transformOrigin: `${zoomOrigin.x}% ${zoomOrigin.y}%`,
-                    }}
-                    className={`w-full h-full object-cover object-top transition-transform duration-300 ease-out ${
-                      isZoomed ? 'scale-[1.8]' : 'group-hover:scale-[1.03]'
-                    }`}
-                  />
+                <div>
+                  {/* Media Switcher Tab (if product has video) */}
+                  {selectedProduct.videoUrl && (
+                    <div className="flex items-center gap-1.5 mb-3 bg-white/80 p-1 rounded-xl border border-canvas-border shadow-xs">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setActiveMediaTab('photos');
+                          setIsZoomed(false);
+                        }}
+                        className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all ${
+                          activeMediaTab === 'photos'
+                            ? 'bg-maroon-900 text-white shadow-xs'
+                            : 'text-obsidian-slate hover:text-obsidian'
+                        }`}
+                      >
+                        <Layers className="w-3.5 h-3.5" />
+                        <span>Photos ({selectedProduct.images.length})</span>
+                      </button>
 
-                  <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-maroon-950/75 backdrop-blur-md text-white text-[10px] font-medium flex items-center gap-1.5 pointer-events-none">
-                    <ZoomIn className="w-3 h-3 text-brass-light" />
-                    <span>{isZoomed ? 'Move pointer to inspect · Tap to exit' : 'Click to Inspect Weave'}</span>
-                  </div>
-
-                  {selectedProduct.imageRoles?.[activeImageIndex] === 'ai-drape' && (
-                    <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-[#FAF8F5]/95 backdrop-blur-md text-maroon-950 border border-brass/40 text-[10px] font-semibold flex items-center gap-1 shadow-xs pointer-events-none">
-                      <Sparkles className="w-3 h-3 text-brass-dark" />
-                      <span>Drape Visualization · Swipe for actual weave</span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setActiveMediaTab('video');
+                          setIsZoomed(false);
+                        }}
+                        className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all ${
+                          activeMediaTab === 'video'
+                            ? 'bg-maroon-900 text-white shadow-xs'
+                            : 'text-obsidian-slate hover:text-obsidian'
+                        }`}
+                      >
+                        <Play className="w-3.5 h-3.5 fill-current text-brass" />
+                        <span>Drape in Motion</span>
+                      </button>
                     </div>
                   )}
 
-                  {selectedProduct.images.length > 1 && (
-                    <>
+                  {/* Main Display: Video Player or Photo Loupe */}
+                  {activeMediaTab === 'video' && selectedProduct.videoUrl ? (
+                    <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden bg-black shadow-inner flex items-center justify-center group">
+                      <video
+                        src={selectedProduct.videoUrl}
+                        autoPlay
+                        loop
+                        muted={isVideoMuted}
+                        playsInline
+                        className="w-full h-full object-cover"
+                      />
+
+                      <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-maroon-950/90 text-brass-light border border-brass/40 text-[10px] font-semibold tracking-wider uppercase backdrop-blur-md pointer-events-none flex items-center gap-1.5 shadow-md">
+                        <Sparkles className="w-3 h-3 text-brass" />
+                        <span>Live Atelier Drape Flow</span>
+                      </div>
+
                       <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          prevImage();
-                        }}
-                        className="absolute left-2.5 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/45 hover:bg-black/75 text-white backdrop-blur-sm transition-all"
-                        aria-label="Previous photo"
+                        type="button"
+                        onClick={() => setIsVideoMuted(!isVideoMuted)}
+                        className="absolute bottom-3 right-3 p-2 rounded-full bg-black/60 hover:bg-black/85 text-white backdrop-blur-md shadow-md transition-all active:scale-95"
+                        title={isVideoMuted ? 'Unmute video' : 'Mute video'}
                       >
-                        <ChevronLeft className="w-4 h-4" />
+                        {isVideoMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
                       </button>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          nextImage();
+                    </div>
+                  ) : (
+                    <div
+                      className={`relative aspect-[3/4] w-full rounded-xl overflow-hidden bg-white shadow-inner group ${
+                        isZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'
+                      }`}
+                      onClick={() => setIsZoomed((z) => !z)}
+                      onMouseMove={handleImageMouseMove}
+                      onMouseLeave={() => {
+                        if (isZoomed) setZoomOrigin({ x: 50, y: 35 });
+                      }}
+                      title="Click to toggle 240% weave loupe; move pointer to inspect silk zari and fabric texture"
+                    >
+                      <img
+                        src={selectedProduct.images[activeImageIndex] || selectedProduct.images[0]}
+                        alt={selectedProduct.title}
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = selectedProduct.images[0];
                         }}
-                        className="absolute right-2.5 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/45 hover:bg-black/75 text-white backdrop-blur-sm transition-all"
-                        aria-label="Next photo"
-                      >
-                        <ChevronRight className="w-4 h-4" />
-                      </button>
-                    </>
+                        style={{
+                          transformOrigin: `${zoomOrigin.x}% ${zoomOrigin.y}%`,
+                        }}
+                        className={`w-full h-full object-cover object-top transition-transform duration-200 ease-out ${
+                          isZoomed ? 'scale-[2.4]' : 'group-hover:scale-[1.03]'
+                        }`}
+                      />
+
+                      {/* Loupe Overlay Indicators */}
+                      {isZoomed ? (
+                        <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-maroon-950/90 text-brass-light border border-brass/50 text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-lg pointer-events-none flex items-center gap-1.5">
+                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                          <span>240% Ultra-HD Fabric Inspector</span>
+                        </div>
+                      ) : (
+                        <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-maroon-950/75 backdrop-blur-md text-white text-[10px] font-medium flex items-center gap-1.5 pointer-events-none">
+                          <ZoomIn className="w-3 h-3 text-brass-light" />
+                          <span>Click to Inspect Weave</span>
+                        </div>
+                      )}
+
+                      {selectedProduct.imageRoles?.[activeImageIndex] === 'ai-drape' && (
+                        <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-[#FAF8F5]/95 backdrop-blur-md text-maroon-950 border border-brass/40 text-[10px] font-semibold flex items-center gap-1 shadow-xs pointer-events-none">
+                          <Sparkles className="w-3 h-3 text-brass-dark" />
+                          <span>AI Studio Drape · Swipe for Weave Details</span>
+                        </div>
+                      )}
+
+                      {selectedProduct.images.length > 1 && (
+                        <>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              prevImage();
+                            }}
+                            className="absolute left-2.5 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/45 hover:bg-black/75 text-white backdrop-blur-sm transition-all"
+                            aria-label="Previous photo"
+                          >
+                            <ChevronLeft className="w-4 h-4" />
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              nextImage();
+                            }}
+                            className="absolute right-2.5 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/45 hover:bg-black/75 text-white backdrop-blur-sm transition-all"
+                            aria-label="Next photo"
+                          >
+                            <ChevronRight className="w-4 h-4" />
+                          </button>
+                        </>
+                      )}
+
+                      {/* Badges */}
+                      <div className="absolute top-3 left-3 flex flex-col gap-1.5 pointer-events-none">
+                        {selectedProduct.isFeatured && (
+                          <div className="px-2.5 py-1 rounded-full bg-maroon-950/90 border border-brass/40 text-brass-light text-[10px] font-semibold tracking-wider uppercase backdrop-blur-md flex items-center gap-1">
+                            <Sparkles className="w-3 h-3 text-brass" />
+                            <span>Featured Piece</span>
+                          </div>
+                        )}
+                        {selectedProduct.subCategory && (
+                          <FabricBadge label={selectedProduct.subCategory} variant="maroon" />
+                        )}
+                      </div>
+                    </div>
                   )}
 
-                  {/* Badges */}
-                  <div className="absolute top-3 left-3 flex flex-col gap-1.5 pointer-events-none">
-                    {selectedProduct.isFeatured && (
-                      <div className="px-2.5 py-1 rounded-full bg-maroon-950/90 border border-brass/40 text-brass-light text-[10px] font-semibold tracking-wider uppercase backdrop-blur-md flex items-center gap-1">
-                        <Sparkles className="w-3 h-3 text-brass" />
-                        <span>Featured Piece</span>
-                      </div>
-                    )}
-                    {selectedProduct.subCategory && (
-                      <FabricBadge label={selectedProduct.subCategory} variant="maroon" />
-                    )}
-                  </div>
+                  {/* Thumbnail Row */}
+                  {selectedProduct.images.length > 1 && activeMediaTab === 'photos' && (
+                    <div className="flex items-center gap-2 mt-3 overflow-x-auto no-scrollbar py-1">
+                      {selectedProduct.images.map((img, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => {
+                            setActiveImageIndex(idx);
+                            setIsZoomed(false);
+                          }}
+                          className={`relative w-16 h-20 rounded-lg overflow-hidden shrink-0 border-2 transition-all ${
+                            activeImageIndex === idx
+                              ? 'border-maroon-900 scale-105 shadow-md'
+                              : 'border-transparent opacity-65 hover:opacity-100'
+                          }`}
+                        >
+                          <img
+                            src={img}
+                            alt={`Thumbnail ${idx + 1}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
-
-                {/* Thumbnail Row */}
-                {selectedProduct.images.length > 1 && (
-                  <div className="flex items-center gap-2 mt-3 overflow-x-auto no-scrollbar py-1">
-                    {selectedProduct.images.map((img, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setActiveImageIndex(idx)}
-                        className={`relative w-16 h-20 rounded-lg overflow-hidden shrink-0 border-2 transition-all ${
-                          activeImageIndex === idx
-                            ? 'border-maroon-900 scale-105 shadow-md'
-                            : 'border-transparent opacity-65 hover:opacity-100'
-                        }`}
-                      >
-                        <img
-                          src={img}
-                          alt={`Thumbnail ${idx + 1}`}
-                          className="w-full h-full object-cover"
-                        />
-                      </button>
-                    ))}
-                  </div>
-                )}
 
                 {/* Tailoring Assurance Box */}
                 <div className="mt-4 p-3 rounded-xl bg-maroon-50 border border-maroon-200/70 text-[11px] text-obsidian-slate space-y-1">
@@ -441,9 +546,16 @@ export const ProductModal: React.FC = () => {
                       <span className="text-[10px] uppercase tracking-[0.14em] text-obsidian-slate block">
                         Boutique Price
                       </span>
-                      <span className="text-2xl sm:text-[28px] font-semibold text-maroon-950 font-sans tabular-nums">
-                        {formatCurrencyINR(selectedProduct.price)}
-                      </span>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-2xl sm:text-[28px] font-semibold text-maroon-950 font-sans tabular-nums">
+                          {formatPrice(selectedProduct.price)}
+                        </span>
+                        {currentCurrency !== 'INR' && (
+                          <span className="text-xs text-obsidian-muted tabular-nums">
+                            ≈ ₹{selectedProduct.price.toLocaleString('en-IN')}
+                          </span>
+                        )}
+                      </div>
                     </div>
 
                     {!isAvailable ? (
@@ -583,7 +695,7 @@ export const ProductModal: React.FC = () => {
                     <ShoppingBag className="w-4 h-4 text-brass-light" />
                     <span>
                       {isAvailable
-                        ? `Add to Bag • ${formatCurrencyINR(selectedProduct.price + (tailoring.additionalCost || 0))}`
+                        ? `Add to Bag • ${formatPrice(selectedProduct.price + (tailoring.additionalCost || 0))}`
                         : 'Sold Out'}
                     </span>
                   </button>
@@ -662,7 +774,7 @@ export const ProductModal: React.FC = () => {
                           {rel.title}
                         </p>
                         <p className="text-[11px] font-semibold text-maroon-950 tabular-nums mt-0.5">
-                          {formatCurrencyINR(rel.price)}
+                          {formatPrice(rel.price)}
                         </p>
                       </div>
                     </button>

@@ -17,6 +17,8 @@ export type CourierPartner =
   | 'Delhivery'
   | 'Professional Couriers'
   | 'Kerala Express'
+  | 'DHL Express'
+  | 'Aramex Worldwide'
   | 'Boutique Handover'
   | 'Other';
 

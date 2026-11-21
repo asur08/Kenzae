@@ -10,6 +10,17 @@ export type ProductImageRole =
   | 'pallu-detail'
   | 'ai-drape';
 
+export type AiDrapePose =
+  | 'hero-front'
+  | 'walking-profile'
+  | 'pallu-craft'
+  | 'seated-heritage';
+
+export type ModelArchetype =
+  | 'kerala-heritage'
+  | 'modern-minimalist'
+  | 'royal-festive';
+
 export interface KenzaeProduct {
   id: string;
   sku: string;
@@ -23,6 +34,8 @@ export interface KenzaeProduct {
   color?: string;
   images: string[];
   imageRoles?: ProductImageRole[];
+  videoUrl?: string;
+  videoThumbnailUrl?: string;
   in_stock: boolean;
   stockQuantity?: number;
   isFeatured?: boolean;

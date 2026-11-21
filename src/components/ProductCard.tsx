@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Heart, Eye, ShoppingBag } from 'lucide-react';
+import { Heart, Play, ShoppingBag, Eye } from 'lucide-react';
 import { KenzaeProduct } from '../types/catalog';
-import { formatCurrencyINR } from '../utils/formatters';
 import { useCatalog } from '../context/CatalogContext';
+import { useCurrency } from '../context/CurrencyContext';
+import { trackAddToWishlist, trackViewItem } from '../services/telemetryService';
 
 interface ProductCardProps {
   product: KenzaeProduct;
@@ -10,6 +11,7 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { isWishlisted, toggleWishlist, setSelectedProduct } = useCatalog();
+  const { currentCurrency, formatPrice } = useCurrency();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
@@ -21,10 +23,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   const handleWishlistToggle = (e: React.MouseEvent) => {
     e.stopPropagation();
+    if (!isSaved) {
+      trackAddToWishlist(product);
+    }
     toggleWishlist(product);
   };
 
   const handleCardClick = () => {
+    trackViewItem(product, currentCurrency);
     setSelectedProduct(product);
   };
 
@@ -100,6 +106,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           />
         )}
 
+        {/* Top-Left Video Drape Indicator */}
+        {product.videoUrl && (
+          <div className="absolute top-3 left-3 pointer-events-none">
+            <span className="px-2 py-0.5 rounded-full text-[9px] font-semibold tracking-wider uppercase backdrop-blur-md bg-black/60 text-white flex items-center gap-1 shadow-xs">
+              <Play className="w-2.5 h-2.5 fill-current" />
+              <span>Drape Video</span>
+            </span>
+          </div>
+        )}
+
         {/* Top-Right Minimal Wishlist Control */}
         <button
           onClick={handleWishlistToggle}
@@ -148,9 +164,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <span className="text-[10px] uppercase tracking-[0.14em] text-obsidian-muted">
               Boutique Price
             </span>
-            <span className="text-base font-semibold text-maroon-950 tabular-nums font-sans">
-              {formatCurrencyINR(product.price)}
-            </span>
+            <div className="flex flex-col items-end">
+              <span className="text-base font-semibold text-maroon-950 tabular-nums font-sans">
+                {formatPrice(product.price)}
+              </span>
+              {currentCurrency !== 'INR' && (
+                <span className="text-[10px] text-obsidian-muted tabular-nums">
+                  ≈ ₹{product.price.toLocaleString('en-IN')}
+                </span>
+              )}
+            </div>
           </div>
 
           <div className="flex items-center gap-2">

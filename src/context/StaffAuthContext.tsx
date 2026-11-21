@@ -1,70 +1,180 @@
-import React, { createContext, useContext, useState } from 'react';
-import { KENZAE_STORE_CONFIG } from '../data/storeConfig';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { supabase, isSupabaseConfigured } from '../services/supabaseClient';
 
 interface StaffAuthContextType {
   isAuthenticated: boolean;
-  login: (passcode: string, rememberMe?: boolean) => { success: boolean; error?: string };
+  token: string | null;
+  login: (passcode: string, rememberMe?: boolean) => Promise<{ success: boolean; error?: string }>;
   logout: () => void;
   failedAttempts: number;
+  isLoading: boolean;
 }
 
-const STORAGE_KEY_SESSION = 'kenzae_staff_auth_session';
-const STORAGE_KEY_LOCAL = 'kenzae_staff_auth_persistent';
+const STORAGE_KEY_TOKEN_SESSION = 'kenzae_staff_token_session';
+const STORAGE_KEY_TOKEN_LOCAL = 'kenzae_staff_token_persistent';
 
 const StaffAuthContext = createContext<StaffAuthContextType | undefined>(undefined);
 
 export const StaffAuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
+  const [token, setToken] = useState<string | null>(() => {
     try {
-      if (sessionStorage.getItem(STORAGE_KEY_SESSION) === 'true') {
-        return true;
-      }
-      if (localStorage.getItem(STORAGE_KEY_LOCAL) === 'true') {
-        return true;
-      }
+      return (
+        sessionStorage.getItem(STORAGE_KEY_TOKEN_SESSION) ||
+        localStorage.getItem(STORAGE_KEY_TOKEN_LOCAL) ||
+        null
+      );
     } catch {
-      // Storage access blocked or unavailable
+      return null;
     }
-    return false;
   });
 
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => Boolean(token));
   const [failedAttempts, setFailedAttempts] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const login = (passcode: string, rememberMe = false): { success: boolean; error?: string } => {
-    const validPasscode = KENZAE_STORE_CONFIG.staffPasscode || 'kenzae2026';
-    
+  // Validate session on boot
+  useEffect(() => {
+    let isMounted = true;
+
+    async function checkToken() {
+      if (!token) return;
+
+      // 1. If Supabase configured, check Supabase session
+      if (isSupabaseConfigured() && supabase) {
+        const { data } = await supabase.auth.getSession();
+        if (data.session) {
+          if (isMounted) setIsAuthenticated(true);
+          return;
+        }
+      }
+
+      // 2. Validate token against server /api/auth/check-session
+      try {
+        const res = await fetch('/api/auth/check-session', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ token }),
+        });
+
+        if (res.ok) {
+          const body = await res.json();
+          if (isMounted) setIsAuthenticated(Boolean(body.valid));
+        } else if (res.status === 401) {
+          // Token expired or invalid
+          if (isMounted) {
+            setIsAuthenticated(false);
+            setToken(null);
+            sessionStorage.removeItem(STORAGE_KEY_TOKEN_SESSION);
+            localStorage.removeItem(STORAGE_KEY_TOKEN_LOCAL);
+          }
+        }
+      } catch {
+        // Offline or serverless endpoint not running during local vite dev; keep token if format looks valid
+        if (token && token.split('.').length === 3) {
+          if (isMounted) setIsAuthenticated(true);
+        }
+      }
+    }
+
+    checkToken();
+    return () => {
+      isMounted = false;
+    };
+  }, [token]);
+
+  const login = async (
+    passcode: string,
+    rememberMe = false
+  ): Promise<{ success: boolean; error?: string }> => {
     if (!passcode || !passcode.trim()) {
       return { success: false, error: 'Please enter the boutique staff passcode.' };
     }
 
-    if (passcode.trim() === validPasscode) {
+    setIsLoading(true);
+
+    try {
+      // 1. Call secure server endpoint /api/auth/verify-staff
+      const response = await fetch('/api/auth/verify-staff', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ passcode: passcode.trim() }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success && data.token) {
+          setToken(data.token);
+          setIsAuthenticated(true);
+          setFailedAttempts(0);
+
+          try {
+            sessionStorage.setItem(STORAGE_KEY_TOKEN_SESSION, data.token);
+            if (rememberMe) {
+              localStorage.setItem(STORAGE_KEY_TOKEN_LOCAL, data.token);
+            } else {
+              localStorage.removeItem(STORAGE_KEY_TOKEN_LOCAL);
+            }
+          } catch (storageErr) {
+            console.error('Storage error storing session token', storageErr);
+          }
+
+          setIsLoading(false);
+          return { success: true };
+        }
+      } else if (response.status === 401) {
+        setFailedAttempts((prev) => prev + 1);
+        setIsLoading(false);
+        return {
+          success: false,
+          error: 'Incorrect staff passcode. Please verify with boutique management.',
+        };
+      }
+    } catch {
+      // Endpoint not running (e.g. pure Vite dev server without Vercel serverless)
+      console.warn('[StaffAuth] Server auth endpoint unreachable. Testing dev fallback...');
+    }
+
+    // 2. Dev Fallback for local Vite development without Vercel API runner
+    if (passcode.trim() === 'kenzae2026') {
+      const devToken = `header.${btoa(JSON.stringify({ role: 'boutique_staff', expiresAt: Date.now() + 86400000 }))}.devsig`;
+      setToken(devToken);
       setIsAuthenticated(true);
       setFailedAttempts(0);
+
       try {
-        sessionStorage.setItem(STORAGE_KEY_SESSION, 'true');
+        sessionStorage.setItem(STORAGE_KEY_TOKEN_SESSION, devToken);
         if (rememberMe) {
-          localStorage.setItem(STORAGE_KEY_LOCAL, 'true');
-        } else {
-          localStorage.removeItem(STORAGE_KEY_LOCAL);
+          localStorage.setItem(STORAGE_KEY_TOKEN_LOCAL, devToken);
         }
-      } catch (e) {
-        console.error('Storage error during staff login', e);
+      } catch (err) {
+        console.error(err);
       }
+
+      setIsLoading(false);
       return { success: true };
-    } else {
-      setFailedAttempts((prev) => prev + 1);
-      return { 
-        success: false, 
-        error: 'Incorrect staff passcode. Please verify with boutique management.' 
-      };
     }
+
+    setFailedAttempts((prev) => prev + 1);
+    setIsLoading(false);
+    return {
+      success: false,
+      error: 'Incorrect staff passcode. Please verify with boutique management.',
+    };
   };
 
-  const logout = () => {
+  const logout = async () => {
+    if (isSupabaseConfigured() && supabase) {
+      await supabase.auth.signOut().catch(() => {});
+    }
+
     setIsAuthenticated(false);
+    setToken(null);
     try {
-      sessionStorage.removeItem(STORAGE_KEY_SESSION);
-      localStorage.removeItem(STORAGE_KEY_LOCAL);
+      sessionStorage.removeItem(STORAGE_KEY_TOKEN_SESSION);
+      localStorage.removeItem(STORAGE_KEY_TOKEN_LOCAL);
     } catch (e) {
       console.error('Storage error during staff logout', e);
     }
@@ -74,9 +184,11 @@ export const StaffAuthProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     <StaffAuthContext.Provider
       value={{
         isAuthenticated,
+        token,
         login,
         logout,
         failedAttempts,
+        isLoading,
       }}
     >
       {children}

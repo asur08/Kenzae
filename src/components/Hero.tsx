@@ -2,11 +2,12 @@ import React from 'react';
 import { ArrowDown, ArrowUpRight, MessageCircle, ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useCatalog } from '../context/CatalogContext';
-import { formatCurrencyINR } from '../utils/formatters';
+import { useCurrency } from '../context/CurrencyContext';
 import { generateStoreVisitWhatsAppUrl } from '../utils/whatsapp';
 
 export const Hero: React.FC = () => {
   const { products, setSelectedProduct } = useCatalog();
+  const { formatPrice } = useCurrency();
 
   const featuredPiece =
     products.find((p) => p.isFeatured && p.in_stock) || products[0];
@@ -128,7 +129,7 @@ export const Hero: React.FC = () => {
                         Featured Piece · {featuredPiece.sku}
                       </span>
                       <span className="text-xs font-bold text-maroon-950 tabular-nums">
-                        {formatCurrencyINR(featuredPiece.price)}
+                        {formatPrice(featuredPiece.price)}
                       </span>
                     </div>
                     <div className="flex items-center justify-between gap-2 mt-1">

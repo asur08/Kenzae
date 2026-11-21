@@ -4,6 +4,15 @@ import defaultProducts from '../../data/products.json';
 import { validateCatalog, validateProduct } from '../data/catalogValidator';
 import { useDebounce } from '../hooks/useDebounce';
 import { useFilteredCatalog } from '../hooks/useFilteredCatalog';
+import {
+  fetchRemoteProducts,
+  saveRemoteProduct,
+  updateRemoteProductPrice,
+  updateRemoteProductStock,
+  decrementRemoteProductStock,
+  deleteRemoteProduct,
+  subscribeToProductRealtime,
+} from '../services/catalogService';
 
 interface CatalogContextType {
   products: KenzaeProduct[];
@@ -156,6 +165,47 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }
   }, [wishlistIds]);
 
+  // Cloud Database Sync: Load live catalog from Supabase & subscribe to realtime changes
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadRemoteCatalog() {
+      const remote = await fetchRemoteProducts();
+      if (remote && remote.length > 0 && isMounted) {
+        setProducts(remote);
+        try {
+          localStorage.setItem(STORAGE_KEY_PRODUCTS, JSON.stringify(remote));
+        } catch {
+          // Ignore
+        }
+      }
+    }
+
+    loadRemoteCatalog();
+
+    const unsubscribe = subscribeToProductRealtime((event) => {
+      if (!isMounted) return;
+      if (event.eventType === 'DELETE' && event.id) {
+        setProducts((prev) => prev.filter((p) => p.id !== event.id));
+      } else if (event.product) {
+        const updated = event.product;
+        setProducts((prev) => {
+          const exists = prev.some((p) => p.id === updated.id);
+          if (exists) {
+            return prev.map((p) => (p.id === updated.id ? updated : p));
+          } else {
+            return [updated, ...prev];
+          }
+        });
+      }
+    });
+
+    return () => {
+      isMounted = false;
+      if (unsubscribe) unsubscribe();
+    };
+  }, []);
+
   // Sync products to LocalStorage when modified
   const saveProducts = (newProducts: KenzaeProduct[]) => {
     setProducts(newProducts);
@@ -217,6 +267,7 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }
     const updated = [newProduct, ...products];
     saveProducts(updated);
+    saveRemoteProduct(newProduct).catch((err) => console.warn('[Supabase] Add product sync warning:', err));
     return { success: true };
   };
 
@@ -236,6 +287,7 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
     if (selectedProduct && selectedProduct.id === finalProduct.id) {
       setSelectedProduct(finalProduct);
     }
+    saveRemoteProduct(finalProduct).catch((err) => console.warn('[Supabase] Update product sync warning:', err));
     return { success: true };
   };
 
@@ -253,6 +305,7 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
       stockQuantity: roundedQty,
       in_stock: roundedQty > 0,
     };
+    updateRemoteProductStock(id, roundedQty).catch((err) => console.warn('[Supabase] Stock sync warning:', err));
     return updateProduct(updatedProd);
   };
 
@@ -277,6 +330,7 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
     if (selectedProduct && selectedProduct.id === id) {
       setSelectedProduct(updatedProd);
     }
+    decrementRemoteProductStock(id, deduction).catch((err) => console.warn('[Supabase] Stock decrement RPC warning:', err));
     return { success: true, remainingStock };
   };
 
@@ -288,10 +342,12 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
     if (!target) {
       return { success: false, error: 'Product not found.' };
     }
+    const rounded = Math.round(newPrice);
     const updatedProd: KenzaeProduct = {
       ...target,
-      price: Math.round(newPrice),
+      price: rounded,
     };
+    updateRemoteProductPrice(id, rounded).catch((err) => console.warn('[Supabase] Price sync warning:', err));
     return updateProduct(updatedProd);
   };
 
@@ -305,7 +361,9 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
     const updated = products.map((p) => {
       if (p.subCategory && p.subCategory.trim().toLowerCase() === trimmedOld) {
         count++;
-        return { ...p, subCategory: trimmedNew };
+        const modified = { ...p, subCategory: trimmedNew };
+        saveRemoteProduct(modified).catch(() => {});
+        return modified;
       }
       return p;
     });
@@ -321,6 +379,7 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
     if (selectedProduct && selectedProduct.id === id) {
       setSelectedProduct(null);
     }
+    deleteRemoteProduct(id).catch((err) => console.warn('[Supabase] Delete product warning:', err));
   };
 
   const resetToDefaultCatalog = () => {

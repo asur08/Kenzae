@@ -8,10 +8,15 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "node scripts/verify-catalog.js"
+    "test": "node scripts/verify-catalog.js && node scripts/verify-sprint1.js && node --experimental-strip-types scripts/verify-phase2.js",
+    "test:sprint1": "node scripts/verify-sprint1.js",
+    "test:phase2": "node --experimental-strip-types scripts/verify-phase2.js"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1175.0",
+    "@aws-sdk/s3-request-presigner": "^3.1175.0",
     "@react-pdf/renderer": "^4.9.0",
+    "@supabase/supabase-js": "^2.119.2",
     "framer-motion": "^14.1.0",
     "jspdf": "^4.2.1",
     "jspdf-autotable": "^5.0.9",
@@ -22,6 +27,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",

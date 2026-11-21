@@ -2,7 +2,7 @@ import React from 'react';
 import { X, Trash2, MessageCircle, Heart, ArrowRight } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCatalog } from '../../context/CatalogContext';
-import { formatCurrencyINR } from '../../utils/formatters';
+import { useCurrency } from '../../context/CurrencyContext';
 import { generateWishlistWhatsAppUrl } from '../../utils/whatsapp';
 
 export const WishlistDrawer: React.FC = () => {
@@ -14,6 +14,7 @@ export const WishlistDrawer: React.FC = () => {
     clearWishlist,
     setSelectedProduct,
   } = useCatalog();
+  const { currentCurrency, formatPrice } = useCurrency();
 
   React.useEffect(() => {
     if (isWishlistOpen) {
@@ -145,7 +146,7 @@ export const WishlistDrawer: React.FC = () => {
 
                         <div className="flex items-center justify-between pt-1">
                           <span className="text-sm font-semibold text-maroon-950 tabular-nums">
-                            {formatCurrencyINR(item.price)}
+                            {formatPrice(item.price)}
                           </span>
                           <span className="text-[10px] text-maroon-900 flex items-center gap-1 font-medium">
                             <span>Inspect</span>
@@ -162,11 +163,18 @@ export const WishlistDrawer: React.FC = () => {
               {wishlistProducts.length > 0 && (
                 <div className="p-4 border-t border-canvas-border bg-canvas-subtle space-y-3">
                   <div className="flex items-baseline justify-between">
-                    <span className="text-xs uppercase tracking-wider text-obsidian-slate font-medium">
-                      Estimated Value
-                    </span>
+                    <div>
+                      <span className="text-xs uppercase tracking-wider text-obsidian-slate font-medium">
+                        Estimated Value
+                      </span>
+                      {currentCurrency !== 'INR' && (
+                        <span className="block text-[10px] text-obsidian-muted">
+                          ≈ ₹{totalValue.toLocaleString('en-IN')}
+                        </span>
+                      )}
+                    </div>
                     <span className="text-xl font-bold text-maroon-950 font-sans tabular-nums">
-                      {formatCurrencyINR(totalValue)}
+                      {formatPrice(totalValue)}
                     </span>
                   </div>
 
