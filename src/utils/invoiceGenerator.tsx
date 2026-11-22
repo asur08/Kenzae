@@ -485,7 +485,7 @@ export const KenzaeTaxInvoiceDocument: React.FC<{ order: BoutiqueOrder }> = ({ o
             <Text style={styles.brandAddress}>
               Mulanthuruthy, Ernakulam District, Kerala – 682314{'\n'}
               GSTIN: 32AAACK1234F1ZX | State Code: 32 (Kerala){'\n'}
-              Concierge: +91 94470 12345 | Boutique Desk: kenzaeboutique@gmail.com
+              Concierge: +91 83300 55417 | Boutique Desk: kenzaeboutique@gmail.com
             </Text>
           </View>
 

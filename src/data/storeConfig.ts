@@ -10,8 +10,8 @@ export const KENZAE_STORE_CONFIG: StoreContactInfo = {
   googleMapsUrl: "https://share.google/m6bQuE0vYpoVkI6oL",
   // Google Maps search query fallback for directions
   googleMapsDirectionsUrl: "https://www.google.com/maps/search/?api=1&query=Kenzae+Boutique+Mulanthuruthy+Ernakulam",
-  whatsappNumber: "919447000000", // Boutique WhatsApp business line (country code 91)
-  phoneDisplay: "+91 94470 00000",
+  whatsappNumber: "918330055417", // Boutique WhatsApp business line (country code 91)
+  phoneDisplay: "+91 83300 55417",
   timings: "Mon – Sat: 10:00 AM – 7:30 PM | Sun: 1:00 PM – 6:00 PM",
   instagramHandle: "@kenzae.in",
   websiteUrl: "https://kenzae.com"
