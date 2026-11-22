@@ -63,7 +63,7 @@ export async function initiateRazorpayPayment({
   onError,
 }: InitiatePaymentParams): Promise<void> {
   const loaded = await loadRazorpayScript();
-  const activeKey = keyId || RAZORPAY_TEST_KEY;
+  const activeKey = keyId || (import.meta.env?.VITE_RAZORPAY_KEY_ID as string) || RAZORPAY_TEST_KEY;
   const isDemoKey = activeKey.includes('demo') || activeKey.startsWith('rzp_test');
 
   // Amount in Paise (e.g. ₹12,850 -> 1285000 paise)
