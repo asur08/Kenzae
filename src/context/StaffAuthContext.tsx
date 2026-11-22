@@ -131,6 +131,8 @@ export const StaffAuthProvider: React.FC<{ children: React.ReactNode }> = ({ chi
           success: false,
           error: 'Incorrect staff passcode. Please verify with boutique management.',
         };
+      } else {
+        throw new Error('API_UNAVAILABLE');
       }
     } catch {
       // Endpoint not running (e.g. pure Vite dev server without Vercel serverless)

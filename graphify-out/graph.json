@@ -8,2529 +8,2529 @@
       "file_type": "code",
       "source_file": "api/auth/check-session.ts",
       "source_location": "L1",
-      "id": "api_auth_check_session_ts",
       "community": 19,
-      "norm_label": "check-session.ts"
+      "norm_label": "check-session.ts",
+      "id": "api_auth_check_session_ts"
     },
     {
       "label": "handler()",
       "file_type": "code",
       "source_file": "api/auth/check-session.ts",
       "source_location": "L3",
-      "id": "auth_check_session_handler",
       "community": 19,
-      "norm_label": "handler()"
+      "norm_label": "handler()",
+      "id": "auth_check_session_handler"
     },
     {
       "label": "verify-staff.ts",
       "file_type": "code",
       "source_file": "api/auth/verify-staff.ts",
       "source_location": "L1",
-      "id": "api_auth_verify_staff_ts",
       "community": 19,
-      "norm_label": "verify-staff.ts"
+      "norm_label": "verify-staff.ts",
+      "id": "api_auth_verify_staff_ts"
     },
     {
       "label": "StaffLoginRequest",
       "file_type": "code",
       "source_file": "api/auth/verify-staff.ts",
       "source_location": "L3",
-      "id": "auth_verify_staff_staffloginrequest",
       "community": 19,
-      "norm_label": "staffloginrequest"
+      "norm_label": "staffloginrequest",
+      "id": "auth_verify_staff_staffloginrequest"
     },
     {
       "label": "StaffLoginResponse",
       "file_type": "code",
       "source_file": "api/auth/verify-staff.ts",
       "source_location": "L9",
-      "id": "auth_verify_staff_staffloginresponse",
       "community": 19,
-      "norm_label": "staffloginresponse"
+      "norm_label": "staffloginresponse",
+      "id": "auth_verify_staff_staffloginresponse"
     },
     {
       "label": "signToken()",
       "file_type": "code",
       "source_file": "api/auth/verify-staff.ts",
       "source_location": "L20",
-      "id": "auth_verify_staff_signtoken",
       "community": 19,
-      "norm_label": "signtoken()"
+      "norm_label": "signtoken()",
+      "id": "auth_verify_staff_signtoken"
     },
     {
       "label": "verifySignedToken()",
       "file_type": "code",
       "source_file": "api/auth/verify-staff.ts",
       "source_location": "L30",
-      "id": "auth_verify_staff_verifysignedtoken",
       "community": 19,
-      "norm_label": "verifysignedtoken()"
+      "norm_label": "verifysignedtoken()",
+      "id": "auth_verify_staff_verifysignedtoken"
     },
     {
       "label": "authenticateStaff()",
       "file_type": "code",
       "source_file": "api/auth/verify-staff.ts",
       "source_location": "L52",
-      "id": "auth_verify_staff_authenticatestaff",
       "community": 19,
-      "norm_label": "authenticatestaff()"
+      "norm_label": "authenticatestaff()",
+      "id": "auth_verify_staff_authenticatestaff"
     },
     {
       "label": "handler()",
       "file_type": "code",
       "source_file": "api/auth/verify-staff.ts",
       "source_location": "L104",
-      "id": "auth_verify_staff_handler",
       "community": 19,
-      "norm_label": "handler()"
+      "norm_label": "handler()",
+      "id": "auth_verify_staff_handler"
     },
     {
       "label": "generate-drape.ts",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L1",
-      "id": "api_generate_drape_ts",
       "community": 1,
-      "norm_label": "generate-drape.ts"
+      "norm_label": "generate-drape.ts",
+      "id": "api_generate_drape_ts"
     },
     {
       "label": "AiDrapePose",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L1",
-      "id": "api_generate_drape_aidrapepose",
       "community": 1,
-      "norm_label": "aidrapepose"
+      "norm_label": "aidrapepose",
+      "id": "api_generate_drape_aidrapepose"
     },
     {
       "label": "ModelArchetype",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L7",
-      "id": "api_generate_drape_modelarchetype",
       "community": 1,
-      "norm_label": "modelarchetype"
+      "norm_label": "modelarchetype",
+      "id": "api_generate_drape_modelarchetype"
     },
     {
       "label": "DrapeStylePreset",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L12",
-      "id": "api_generate_drape_drapestylepreset",
       "community": 1,
-      "norm_label": "drapestylepreset"
+      "norm_label": "drapestylepreset",
+      "id": "api_generate_drape_drapestylepreset"
     },
     {
       "label": "DrapeBackdropPreset",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L13",
-      "id": "api_generate_drape_drapebackdroppreset",
       "community": 1,
-      "norm_label": "drapebackdroppreset"
+      "norm_label": "drapebackdroppreset",
+      "id": "api_generate_drape_drapebackdroppreset"
     },
     {
       "label": "GenerateDrapePayload",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L15",
-      "id": "api_generate_drape_generatedrapepayload",
       "community": 1,
-      "norm_label": "generatedrapepayload"
+      "norm_label": "generatedrapepayload",
+      "id": "api_generate_drape_generatedrapepayload"
     },
     {
       "label": "GeneratedLook",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L31",
-      "id": "api_generate_drape_generatedlook",
       "community": 1,
-      "norm_label": "generatedlook"
+      "norm_label": "generatedlook",
+      "id": "api_generate_drape_generatedlook"
     },
     {
       "label": "MultiPoseDrapeResponse",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L41",
-      "id": "api_generate_drape_multiposedraperesponse",
       "community": 1,
-      "norm_label": "multiposedraperesponse"
+      "norm_label": "multiposedraperesponse",
+      "id": "api_generate_drape_multiposedraperesponse"
     },
     {
       "label": "ParsedInlineData",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L48",
-      "id": "api_generate_drape_parsedinlinedata",
       "community": 1,
-      "norm_label": "parsedinlinedata"
+      "norm_label": "parsedinlinedata",
+      "id": "api_generate_drape_parsedinlinedata"
     },
     {
       "label": "parseDataUrl()",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L53",
-      "id": "api_generate_drape_parsedataurl",
       "community": 1,
-      "norm_label": "parsedataurl()"
+      "norm_label": "parsedataurl()",
+      "id": "api_generate_drape_parsedataurl"
     },
     {
       "label": "resolveImageData()",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L59",
-      "id": "api_generate_drape_resolveimagedata",
       "community": 1,
-      "norm_label": "resolveimagedata()"
+      "norm_label": "resolveimagedata()",
+      "id": "api_generate_drape_resolveimagedata"
     },
     {
       "label": "POSE_DEFINITIONS",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L83",
-      "id": "api_generate_drape_pose_definitions",
       "community": 1,
-      "norm_label": "pose_definitions"
+      "norm_label": "pose_definitions",
+      "id": "api_generate_drape_pose_definitions"
     },
     {
       "label": "buildSinglePosePrompt()",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L122",
-      "id": "api_generate_drape_buildsingleposeprompt",
       "community": 1,
-      "norm_label": "buildsingleposeprompt()"
+      "norm_label": "buildsingleposeprompt()",
+      "id": "api_generate_drape_buildsingleposeprompt"
     },
     {
       "label": "generateSinglePose()",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L174",
-      "id": "api_generate_drape_generatesinglepose",
       "community": 1,
-      "norm_label": "generatesinglepose()"
+      "norm_label": "generatesinglepose()",
+      "id": "api_generate_drape_generatesinglepose"
     },
     {
       "label": "getEditorialLookbookMock()",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L272",
-      "id": "api_generate_drape_geteditoriallookbookmock",
       "community": 1,
-      "norm_label": "geteditoriallookbookmock()"
+      "norm_label": "geteditoriallookbookmock()",
+      "id": "api_generate_drape_geteditoriallookbookmock"
     },
     {
       "label": "processMultiPoseDrape()",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L294",
-      "id": "api_generate_drape_processmultiposedrape",
       "community": 1,
-      "norm_label": "processmultiposedrape()"
+      "norm_label": "processmultiposedrape()",
+      "id": "api_generate_drape_processmultiposedrape"
     },
     {
       "label": "handler()",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L366",
-      "id": "api_generate_drape_handler",
       "community": 1,
-      "norm_label": "handler()"
+      "norm_label": "handler()",
+      "id": "api_generate_drape_handler"
     },
     {
       "label": "og-preview.ts",
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L1",
-      "id": "api_og_preview_ts",
       "community": 1,
-      "norm_label": "og-preview.ts"
+      "norm_label": "og-preview.ts",
+      "id": "api_og_preview_ts"
     },
     {
       "label": "loadCatalogProducts()",
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L6",
-      "id": "api_og_preview_loadcatalogproducts",
       "community": 1,
-      "norm_label": "loadcatalogproducts()"
+      "norm_label": "loadcatalogproducts()",
+      "id": "api_og_preview_loadcatalogproducts"
     },
     {
       "label": "defaultProducts",
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L17",
-      "id": "api_og_preview_defaultproducts",
       "community": 1,
-      "norm_label": "defaultproducts"
+      "norm_label": "defaultproducts",
+      "id": "api_og_preview_defaultproducts"
     },
     {
       "label": "VercelServerlessRequest",
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L19",
-      "id": "api_og_preview_vercelserverlessrequest",
       "community": 1,
-      "norm_label": "vercelserverlessrequest"
+      "norm_label": "vercelserverlessrequest",
+      "id": "api_og_preview_vercelserverlessrequest"
     },
     {
       "label": "VercelServerlessResponse",
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L28",
-      "id": "api_og_preview_vercelserverlessresponse",
       "community": 1,
-      "norm_label": "vercelserverlessresponse"
+      "norm_label": "vercelserverlessresponse",
+      "id": "api_og_preview_vercelserverlessresponse"
     },
     {
       "label": "escapeHtml()",
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L34",
-      "id": "api_og_preview_escapehtml",
       "community": 1,
-      "norm_label": "escapehtml()"
+      "norm_label": "escapehtml()",
+      "id": "api_og_preview_escapehtml"
     },
     {
       "label": "formatPriceINR()",
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L43",
-      "id": "api_og_preview_formatpriceinr",
       "community": 1,
-      "norm_label": "formatpriceinr()"
+      "norm_label": "formatpriceinr()",
+      "id": "api_og_preview_formatpriceinr"
     },
     {
       "label": "resolveProductForOG()",
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L47",
-      "id": "api_og_preview_resolveproductforog",
       "community": 1,
-      "norm_label": "resolveproductforog()"
+      "norm_label": "resolveproductforog()",
+      "id": "api_og_preview_resolveproductforog"
     },
     {
       "label": "buildOpenGraphHtml()",
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L61",
-      "id": "api_og_preview_buildopengraphhtml",
       "community": 1,
-      "norm_label": "buildopengraphhtml()"
+      "norm_label": "buildopengraphhtml()",
+      "id": "api_og_preview_buildopengraphhtml"
     },
     {
       "label": "handler()",
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L114",
-      "id": "api_og_preview_handler",
       "community": 1,
-      "norm_label": "handler()"
+      "norm_label": "handler()",
+      "id": "api_og_preview_handler"
     },
     {
       "label": "upload-image.ts",
       "file_type": "code",
       "source_file": "api/upload-image.ts",
       "source_location": "L1",
-      "id": "api_upload_image_ts",
       "community": 20,
-      "norm_label": "upload-image.ts"
+      "norm_label": "upload-image.ts",
+      "id": "api_upload_image_ts"
     },
     {
       "label": "UploadImageRequest",
       "file_type": "code",
       "source_file": "api/upload-image.ts",
       "source_location": "L4",
-      "id": "api_upload_image_uploadimagerequest",
       "community": 20,
-      "norm_label": "uploadimagerequest"
+      "norm_label": "uploadimagerequest",
+      "id": "api_upload_image_uploadimagerequest"
     },
     {
       "label": "UploadImageResponse",
       "file_type": "code",
       "source_file": "api/upload-image.ts",
       "source_location": "L12",
-      "id": "api_upload_image_uploadimageresponse",
       "community": 20,
-      "norm_label": "uploadimageresponse"
+      "norm_label": "uploadimageresponse",
+      "id": "api_upload_image_uploadimageresponse"
     },
     {
       "label": "parseBase64DataUrl()",
       "file_type": "code",
       "source_file": "api/upload-image.ts",
       "source_location": "L22",
-      "id": "api_upload_image_parsebase64dataurl",
       "community": 20,
-      "norm_label": "parsebase64dataurl()"
+      "norm_label": "parsebase64dataurl()",
+      "id": "api_upload_image_parsebase64dataurl"
     },
     {
       "label": "sanitizeFileName()",
       "file_type": "code",
       "source_file": "api/upload-image.ts",
       "source_location": "L31",
-      "id": "api_upload_image_sanitizefilename",
       "community": 20,
-      "norm_label": "sanitizefilename()"
+      "norm_label": "sanitizefilename()",
+      "id": "api_upload_image_sanitizefilename"
     },
     {
       "label": "processImageUpload()",
       "file_type": "code",
       "source_file": "api/upload-image.ts",
       "source_location": "L38",
-      "id": "api_upload_image_processimageupload",
       "community": 20,
-      "norm_label": "processimageupload()"
+      "norm_label": "processimageupload()",
+      "id": "api_upload_image_processimageupload"
     },
     {
       "label": "handler()",
       "file_type": "code",
       "source_file": "api/upload-image.ts",
       "source_location": "L162",
-      "id": "api_upload_image_handler",
       "community": 20,
-      "norm_label": "handler()"
+      "norm_label": "handler()",
+      "id": "api_upload_image_handler"
     },
     {
       "label": "progress.md",
       "file_type": "document",
       "source_file": "progress.md",
       "source_location": "L1",
-      "id": "progress_md",
       "community": 12,
-      "norm_label": "progress.md"
+      "norm_label": "progress.md",
+      "id": "progress_md"
     },
     {
       "label": "Progress Log: Kenzae Boutique Digital Catalog (Mulanthuruthy)",
       "file_type": "document",
       "source_file": "progress.md",
       "source_location": "L1",
-      "id": "kenzae_progress_progress_log_kenzae_boutique_digital_catalog_mulanthuruthy",
       "community": 12,
-      "norm_label": "progress log: kenzae boutique digital catalog (mulanthuruthy)"
+      "norm_label": "progress log: kenzae boutique digital catalog (mulanthuruthy)",
+      "id": "kenzae_progress_progress_log_kenzae_boutique_digital_catalog_mulanthuruthy"
     },
     {
       "label": "Execution Timeline & Milestones",
       "file_type": "document",
       "source_file": "progress.md",
       "source_location": "L3",
-      "id": "kenzae_progress_execution_timeline_milestones",
       "community": 12,
-      "norm_label": "execution timeline & milestones"
+      "norm_label": "execution timeline & milestones",
+      "id": "kenzae_progress_execution_timeline_milestones"
     },
     {
       "label": "\ud83d\udfe2 Milestone 0: Blueprint & Project Memory (Completed)",
       "file_type": "document",
       "source_file": "progress.md",
       "source_location": "L5",
-      "id": "kenzae_progress_milestone_0_blueprint_project_memory_completed",
       "community": 12,
-      "norm_label": "\ud83d\udfe2 milestone 0: blueprint & project memory (completed)"
+      "norm_label": "\ud83d\udfe2 milestone 0: blueprint & project memory (completed)",
+      "id": "kenzae_progress_milestone_0_blueprint_project_memory_completed"
     },
     {
       "label": "\ud83d\udfe1 Milestone 1: Tooling & Environment Initialization (Completed)",
       "file_type": "document",
       "source_file": "progress.md",
       "source_location": "L16",
-      "id": "kenzae_progress_milestone_1_tooling_environment_initialization_completed",
       "community": 12,
-      "norm_label": "\ud83d\udfe1 milestone 1: tooling & environment initialization (completed)"
+      "norm_label": "\ud83d\udfe1 milestone 1: tooling & environment initialization (completed)",
+      "id": "kenzae_progress_milestone_1_tooling_environment_initialization_completed"
     },
     {
       "label": "\ud83d\udfe0 Milestone 2: Schema Implementation & Phase 2 Linkage Handshakes (Completed)",
       "file_type": "document",
       "source_file": "progress.md",
       "source_location": "L26",
-      "id": "kenzae_progress_milestone_2_schema_implementation_phase_2_linkage_handshakes_completed",
       "community": 12,
-      "norm_label": "\ud83d\udfe0 milestone 2: schema implementation & phase 2 linkage handshakes (completed)"
+      "norm_label": "\ud83d\udfe0 milestone 2: schema implementation & phase 2 linkage handshakes (completed)",
+      "id": "kenzae_progress_milestone_2_schema_implementation_phase_2_linkage_handshakes_completed"
     },
     {
       "label": "\ud83d\udd35 Milestone 3: Presentation Layer & Architectural Assembly (Completed)",
       "file_type": "document",
       "source_file": "progress.md",
       "source_location": "L44",
-      "id": "kenzae_progress_milestone_3_presentation_layer_architectural_assembly_completed",
       "community": 12,
-      "norm_label": "\ud83d\udd35 milestone 3: presentation layer & architectural assembly (completed)"
+      "norm_label": "\ud83d\udd35 milestone 3: presentation layer & architectural assembly (completed)",
+      "id": "kenzae_progress_milestone_3_presentation_layer_architectural_assembly_completed"
     },
     {
       "label": "\ud83d\udfe3 Milestone 4: Editorial Luxury Styling & Layer 3 Tools (Completed)",
       "file_type": "document",
       "source_file": "progress.md",
       "source_location": "L57",
-      "id": "kenzae_progress_milestone_4_editorial_luxury_styling_layer_3_tools_completed",
       "community": 12,
-      "norm_label": "\ud83d\udfe3 milestone 4: editorial luxury styling & layer 3 tools (completed)"
+      "norm_label": "\ud83d\udfe3 milestone 4: editorial luxury styling & layer 3 tools (completed)",
+      "id": "kenzae_progress_milestone_4_editorial_luxury_styling_layer_3_tools_completed"
     },
     {
       "label": "\ud83d\udd34 Milestone 5: Triggers, Deployment Packaging & Handover (Completed)",
       "file_type": "document",
       "source_file": "progress.md",
       "source_location": "L71",
-      "id": "kenzae_progress_milestone_5_triggers_deployment_packaging_handover_completed",
       "community": 12,
-      "norm_label": "\ud83d\udd34 milestone 5: triggers, deployment packaging & handover (completed)"
+      "norm_label": "\ud83d\udd34 milestone 5: triggers, deployment packaging & handover (completed)",
+      "id": "kenzae_progress_milestone_5_triggers_deployment_packaging_handover_completed"
     },
     {
       "label": "\ud83c\udf3f Milestone 6: Organic Boutique Aesthetics & Natural Conversational Commerce (Completed)",
       "file_type": "document",
       "source_file": "progress.md",
       "source_location": "L88",
-      "id": "kenzae_progress_milestone_6_organic_boutique_aesthetics_natural_conversational_commerce_completed",
       "community": 12,
-      "norm_label": "\ud83c\udf3f milestone 6: organic boutique aesthetics & natural conversational commerce (completed)"
+      "norm_label": "\ud83c\udf3f milestone 6: organic boutique aesthetics & natural conversational commerce (completed)",
+      "id": "kenzae_progress_milestone_6_organic_boutique_aesthetics_natural_conversational_commerce_completed"
     },
     {
       "label": "\ud83c\udf0d Milestone 7: Sprint 3 (NRI & Diaspora Globalization) (Completed)",
       "file_type": "document",
       "source_file": "progress.md",
       "source_location": "L104",
-      "id": "kenzae_progress_milestone_7_sprint_3_nri_diaspora_globalization_completed",
       "community": 12,
-      "norm_label": "\ud83c\udf0d milestone 7: sprint 3 (nri & diaspora globalization) (completed)"
+      "norm_label": "\ud83c\udf0d milestone 7: sprint 3 (nri & diaspora globalization) (completed)",
+      "id": "kenzae_progress_milestone_7_sprint_3_nri_diaspora_globalization_completed"
     },
     {
       "label": "\u26a1 Milestone 8: Phase 5 (Operations, Telemetry & Performance) (Completed)",
       "file_type": "document",
       "source_file": "progress.md",
       "source_location": "L116",
-      "id": "kenzae_progress_milestone_8_phase_5_operations_telemetry_performance_completed",
       "community": 12,
-      "norm_label": "\u26a1 milestone 8: phase 5 (operations, telemetry & performance) (completed)"
+      "norm_label": "\u26a1 milestone 8: phase 5 (operations, telemetry & performance) (completed)",
+      "id": "kenzae_progress_milestone_8_phase_5_operations_telemetry_performance_completed"
     },
     {
       "label": "sw.js",
       "file_type": "code",
       "source_file": "public/sw.js",
       "source_location": "L1",
-      "id": "public_sw_js",
       "community": 24,
-      "norm_label": "sw.js"
+      "norm_label": "sw.js",
+      "id": "public_sw_js"
     },
     {
       "label": "PRECACHE_ASSETS",
       "file_type": "code",
       "source_file": "public/sw.js",
       "source_location": "L11",
-      "id": "public_sw_precache_assets",
       "community": 24,
-      "norm_label": "precache_assets"
+      "norm_label": "precache_assets",
+      "id": "public_sw_precache_assets"
     },
     {
       "label": "url",
       "file_type": "code",
       "source_file": "public/sw.js",
       "source_location": "L42",
-      "id": "public_sw_url",
       "community": 24,
-      "norm_label": "url"
+      "norm_label": "url",
+      "id": "public_sw_url"
     },
     {
       "label": "fetchPromise",
       "file_type": "code",
       "source_file": "public/sw.js",
       "source_location": "L66",
-      "id": "public_sw_fetchpromise",
       "community": 24,
-      "norm_label": "fetchpromise"
+      "norm_label": "fetchpromise",
+      "id": "public_sw_fetchpromise"
     },
     {
       "label": "clone",
       "file_type": "code",
       "source_file": "public/sw.js",
       "source_location": "L87",
-      "id": "public_sw_clone",
       "community": 24,
-      "norm_label": "clone"
+      "norm_label": "clone",
+      "id": "public_sw_clone"
     },
     {
       "label": "test-supabase-live.mjs",
       "file_type": "code",
       "source_file": "scripts/test-supabase-live.mjs",
       "source_location": "L1",
-      "id": "scripts_test_supabase_live_mjs",
       "community": 22,
-      "norm_label": "test-supabase-live.mjs"
+      "norm_label": "test-supabase-live.mjs",
+      "id": "scripts_test_supabase_live_mjs"
     },
     {
       "label": "__filename",
       "file_type": "code",
       "source_file": "scripts/test-supabase-live.mjs",
       "source_location": "L6",
-      "id": "scripts_test_supabase_live_filename",
       "community": 22,
-      "norm_label": "__filename"
+      "norm_label": "__filename",
+      "id": "scripts_test_supabase_live_filename"
     },
     {
       "label": "__dirname",
       "file_type": "code",
       "source_file": "scripts/test-supabase-live.mjs",
       "source_location": "L7",
-      "id": "scripts_test_supabase_live_dirname",
       "community": 22,
-      "norm_label": "__dirname"
+      "norm_label": "__dirname",
+      "id": "scripts_test_supabase_live_dirname"
     },
     {
       "label": "rootDir",
       "file_type": "code",
       "source_file": "scripts/test-supabase-live.mjs",
       "source_location": "L8",
-      "id": "scripts_test_supabase_live_rootdir",
       "community": 22,
-      "norm_label": "rootdir"
+      "norm_label": "rootdir",
+      "id": "scripts_test_supabase_live_rootdir"
     },
     {
       "label": "loadEnvLocal()",
       "file_type": "code",
       "source_file": "scripts/test-supabase-live.mjs",
       "source_location": "L11",
-      "id": "scripts_test_supabase_live_loadenvlocal",
       "community": 22,
-      "norm_label": "loadenvlocal()"
+      "norm_label": "loadenvlocal()",
+      "id": "scripts_test_supabase_live_loadenvlocal"
     },
     {
       "label": "runConnectivityTest()",
       "file_type": "code",
       "source_file": "scripts/test-supabase-live.mjs",
       "source_location": "L34",
-      "id": "scripts_test_supabase_live_runconnectivitytest",
       "community": 22,
-      "norm_label": "runconnectivitytest()"
+      "norm_label": "runconnectivitytest()",
+      "id": "scripts_test_supabase_live_runconnectivitytest"
     },
     {
       "label": "verify-drape-api.js",
       "file_type": "code",
       "source_file": "scripts/verify-drape-api.js",
       "source_location": "L1",
-      "id": "scripts_verify_drape_api_js",
       "community": 1,
-      "norm_label": "verify-drape-api.js"
+      "norm_label": "verify-drape-api.js",
+      "id": "scripts_verify_drape_api_js"
     },
     {
       "label": "requiredPoses",
       "file_type": "code",
       "source_file": "scripts/verify-drape-api.js",
       "source_location": "L12",
-      "id": "scripts_verify_drape_api_requiredposes",
       "community": 1,
-      "norm_label": "requiredposes"
+      "norm_label": "requiredposes",
+      "id": "scripts_verify_drape_api_requiredposes"
     },
     {
       "label": "samplePayload",
       "file_type": "code",
       "source_file": "scripts/verify-drape-api.js",
       "source_location": "L23",
-      "id": "scripts_verify_drape_api_samplepayload",
       "community": 1,
-      "norm_label": "samplepayload"
+      "norm_label": "samplepayload",
+      "id": "scripts_verify_drape_api_samplepayload"
     },
     {
       "label": "verify-phase2.js",
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L1",
-      "id": "scripts_verify_phase2_js",
       "community": 1,
-      "norm_label": "verify-phase2.js"
+      "norm_label": "verify-phase2.js",
+      "id": "scripts_verify_phase2_js"
     },
     {
       "label": "__filename",
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L14",
-      "id": "scripts_verify_phase2_filename",
       "community": 1,
-      "norm_label": "__filename"
+      "norm_label": "__filename",
+      "id": "scripts_verify_phase2_filename"
     },
     {
       "label": "__dirname",
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L15",
-      "id": "scripts_verify_phase2_dirname",
       "community": 1,
-      "norm_label": "__dirname"
+      "norm_label": "__dirname",
+      "id": "scripts_verify_phase2_dirname"
     },
     {
       "label": "defaultProducts",
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L16",
-      "id": "scripts_verify_phase2_defaultproducts",
       "community": 1,
-      "norm_label": "defaultproducts"
+      "norm_label": "defaultproducts",
+      "id": "scripts_verify_phase2_defaultproducts"
     },
     {
       "label": "product",
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L27",
-      "id": "scripts_verify_phase2_product",
       "community": 1,
-      "norm_label": "product"
+      "norm_label": "product",
+      "id": "scripts_verify_phase2_product"
     },
     {
       "label": "html",
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L34",
-      "id": "scripts_verify_phase2_html",
       "community": 1,
-      "norm_label": "html"
+      "norm_label": "html",
+      "id": "scripts_verify_phase2_html"
     },
     {
       "label": "requiredMetaTags",
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L36",
-      "id": "scripts_verify_phase2_requiredmetatags",
       "community": 1,
-      "norm_label": "requiredmetatags"
+      "norm_label": "requiredmetatags",
+      "id": "scripts_verify_phase2_requiredmetatags"
     },
     {
       "label": "requiredPoses",
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L63",
-      "id": "scripts_verify_phase2_requiredposes",
       "community": 1,
-      "norm_label": "requiredposes"
+      "norm_label": "requiredposes",
+      "id": "scripts_verify_phase2_requiredposes"
     },
     {
       "label": "productsWithVideo",
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L99",
-      "id": "scripts_verify_phase2_productswithvideo",
       "community": 1,
-      "norm_label": "productswithvideo"
+      "norm_label": "productswithvideo",
+      "id": "scripts_verify_phase2_productswithvideo"
     },
     {
       "label": "verify-sprint1.js",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L1",
-      "id": "scripts_verify_sprint1_js",
       "community": 7,
-      "norm_label": "verify-sprint1.js"
+      "norm_label": "verify-sprint1.js",
+      "id": "scripts_verify_sprint1_js"
     },
     {
       "label": "__filename",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L13",
-      "id": "scripts_verify_sprint1_filename",
       "community": 7,
-      "norm_label": "__filename"
+      "norm_label": "__filename",
+      "id": "scripts_verify_sprint1_filename"
     },
     {
       "label": "__dirname",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L14",
-      "id": "scripts_verify_sprint1_dirname",
       "community": 7,
-      "norm_label": "__dirname"
+      "norm_label": "__dirname",
+      "id": "scripts_verify_sprint1_dirname"
     },
     {
       "label": "rootDir",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L15",
-      "id": "scripts_verify_sprint1_rootdir",
       "community": 7,
-      "norm_label": "rootdir"
+      "norm_label": "rootdir",
+      "id": "scripts_verify_sprint1_rootdir"
     },
     {
       "label": "sqlPath",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L22",
-      "id": "scripts_verify_sprint1_sqlpath",
       "community": 7,
-      "norm_label": "sqlpath"
+      "norm_label": "sqlpath",
+      "id": "scripts_verify_sprint1_sqlpath"
     },
     {
       "label": "sqlContent",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L27",
-      "id": "scripts_verify_sprint1_sqlcontent",
       "community": 7,
-      "norm_label": "sqlcontent"
+      "norm_label": "sqlcontent",
+      "id": "scripts_verify_sprint1_sqlcontent"
     },
     {
       "label": "requiredClauses",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L28",
-      "id": "scripts_verify_sprint1_requiredclauses",
       "community": 7,
-      "norm_label": "requiredclauses"
+      "norm_label": "requiredclauses",
+      "id": "scripts_verify_sprint1_requiredclauses"
     },
     {
       "label": "payload",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L53",
-      "id": "scripts_verify_sprint1_payload",
       "community": 7,
-      "norm_label": "payload"
+      "norm_label": "payload",
+      "id": "scripts_verify_sprint1_payload"
     },
     {
       "label": "header",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L59",
-      "id": "scripts_verify_sprint1_header",
       "community": 7,
-      "norm_label": "header"
+      "norm_label": "header",
+      "id": "scripts_verify_sprint1_header"
     },
     {
       "label": "body",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L60",
-      "id": "scripts_verify_sprint1_body",
       "community": 7,
-      "norm_label": "body"
+      "norm_label": "body",
+      "id": "scripts_verify_sprint1_body"
     },
     {
       "label": "signature",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L61",
-      "id": "scripts_verify_sprint1_signature",
       "community": 7,
-      "norm_label": "signature"
+      "norm_label": "signature",
+      "id": "scripts_verify_sprint1_signature"
     },
     {
       "label": "parts",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L68",
-      "id": "scripts_verify_sprint1_parts",
       "community": 7,
-      "norm_label": "parts"
+      "norm_label": "parts",
+      "id": "scripts_verify_sprint1_parts"
     },
     {
       "label": "expectedSig",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L71",
-      "id": "scripts_verify_sprint1_expectedsig",
       "community": 7,
-      "norm_label": "expectedsig"
+      "norm_label": "expectedsig",
+      "id": "scripts_verify_sprint1_expectedsig"
     },
     {
       "label": "decoded",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L78",
-      "id": "scripts_verify_sprint1_decoded",
       "community": 7,
-      "norm_label": "decoded"
+      "norm_label": "decoded",
+      "id": "scripts_verify_sprint1_decoded"
     },
     {
       "label": "match",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L90",
-      "id": "scripts_verify_sprint1_match",
       "community": 7,
-      "norm_label": "match"
+      "norm_label": "match",
+      "id": "scripts_verify_sprint1_match"
     },
     {
       "label": "buffer",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L93",
-      "id": "scripts_verify_sprint1_buffer",
       "community": 7,
-      "norm_label": "buffer"
+      "norm_label": "buffer",
+      "id": "scripts_verify_sprint1_buffer"
     },
     {
       "label": "storeConfigPath",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L103",
-      "id": "scripts_verify_sprint1_storeconfigpath",
       "community": 7,
-      "norm_label": "storeconfigpath"
+      "norm_label": "storeconfigpath",
+      "id": "scripts_verify_sprint1_storeconfigpath"
     },
     {
       "label": "storeConfigContent",
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L104",
-      "id": "scripts_verify_sprint1_storeconfigcontent",
       "community": 7,
-      "norm_label": "storeconfigcontent"
+      "norm_label": "storeconfigcontent",
+      "id": "scripts_verify_sprint1_storeconfigcontent"
     },
     {
       "label": "verify-sprint3-phase5.mjs",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L1",
-      "id": "scripts_verify_sprint3_phase5_mjs",
       "community": 6,
-      "norm_label": "verify-sprint3-phase5.mjs"
+      "norm_label": "verify-sprint3-phase5.mjs",
+      "id": "scripts_verify_sprint3_phase5_mjs"
     },
     {
       "label": "__filename",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L5",
-      "id": "scripts_verify_sprint3_phase5_filename",
       "community": 6,
-      "norm_label": "__filename"
+      "norm_label": "__filename",
+      "id": "scripts_verify_sprint3_phase5_filename"
     },
     {
       "label": "__dirname",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L6",
-      "id": "scripts_verify_sprint3_phase5_dirname",
       "community": 6,
-      "norm_label": "__dirname"
+      "norm_label": "__dirname",
+      "id": "scripts_verify_sprint3_phase5_dirname"
     },
     {
       "label": "rootDir",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L7",
-      "id": "scripts_verify_sprint3_phase5_rootdir",
       "community": 6,
-      "norm_label": "rootdir"
+      "norm_label": "rootdir",
+      "id": "scripts_verify_sprint3_phase5_rootdir"
     },
     {
       "label": "assert()",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L15",
-      "id": "scripts_verify_sprint3_phase5_assert",
       "community": 6,
-      "norm_label": "assert()"
+      "norm_label": "assert()",
+      "id": "scripts_verify_sprint3_phase5_assert"
     },
     {
       "label": "currencyServicePath",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L28",
-      "id": "scripts_verify_sprint3_phase5_currencyservicepath",
       "community": 6,
-      "norm_label": "currencyservicepath"
+      "norm_label": "currencyservicepath",
+      "id": "scripts_verify_sprint3_phase5_currencyservicepath"
     },
     {
       "label": "currencyCode",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L31",
-      "id": "scripts_verify_sprint3_phase5_currencycode",
       "community": 6,
-      "norm_label": "currencycode"
+      "norm_label": "currencycode",
+      "id": "scripts_verify_sprint3_phase5_currencycode"
     },
     {
       "label": "mockRates",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L37",
-      "id": "scripts_verify_sprint3_phase5_mockrates",
       "community": 6,
-      "norm_label": "mockrates"
+      "norm_label": "mockrates",
+      "id": "scripts_verify_sprint3_phase5_mockrates"
     },
     {
       "label": "convertedAED",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L45",
-      "id": "scripts_verify_sprint3_phase5_convertedaed",
       "community": 6,
-      "norm_label": "convertedaed"
+      "norm_label": "convertedaed",
+      "id": "scripts_verify_sprint3_phase5_convertedaed"
     },
     {
       "label": "convertedUSD",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L46",
-      "id": "scripts_verify_sprint3_phase5_convertedusd",
       "community": 6,
-      "norm_label": "convertedusd"
+      "norm_label": "convertedusd",
+      "id": "scripts_verify_sprint3_phase5_convertedusd"
     },
     {
       "label": "countriesPath",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L54",
-      "id": "scripts_verify_sprint3_phase5_countriespath",
       "community": 6,
-      "norm_label": "countriespath"
+      "norm_label": "countriespath",
+      "id": "scripts_verify_sprint3_phase5_countriespath"
     },
     {
       "label": "countriesCode",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L57",
-      "id": "scripts_verify_sprint3_phase5_countriescode",
       "community": 6,
-      "norm_label": "countriescode"
+      "norm_label": "countriescode",
+      "id": "scripts_verify_sprint3_phase5_countriescode"
     },
     {
       "label": "manifestPath",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L67",
-      "id": "scripts_verify_sprint3_phase5_manifestpath",
       "community": 6,
-      "norm_label": "manifestpath"
+      "norm_label": "manifestpath",
+      "id": "scripts_verify_sprint3_phase5_manifestpath"
     },
     {
       "label": "manifestContent",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L70",
-      "id": "scripts_verify_sprint3_phase5_manifestcontent",
       "community": 6,
-      "norm_label": "manifestcontent"
+      "norm_label": "manifestcontent",
+      "id": "scripts_verify_sprint3_phase5_manifestcontent"
     },
     {
       "label": "swPath",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L75",
-      "id": "scripts_verify_sprint3_phase5_swpath",
       "community": 6,
-      "norm_label": "swpath"
+      "norm_label": "swpath",
+      "id": "scripts_verify_sprint3_phase5_swpath"
     },
     {
       "label": "swContent",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L77",
-      "id": "scripts_verify_sprint3_phase5_swcontent",
       "community": 6,
-      "norm_label": "swcontent"
+      "norm_label": "swcontent",
+      "id": "scripts_verify_sprint3_phase5_swcontent"
     },
     {
       "label": "indexHtml",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L81",
-      "id": "scripts_verify_sprint3_phase5_indexhtml",
       "community": 6,
-      "norm_label": "indexhtml"
+      "norm_label": "indexhtml",
+      "id": "scripts_verify_sprint3_phase5_indexhtml"
     },
     {
       "label": "telemetryPath",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L90",
-      "id": "scripts_verify_sprint3_phase5_telemetrypath",
       "community": 6,
-      "norm_label": "telemetrypath"
+      "norm_label": "telemetrypath",
+      "id": "scripts_verify_sprint3_phase5_telemetrypath"
     },
     {
       "label": "telemetryCode",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L93",
-      "id": "scripts_verify_sprint3_phase5_telemetrycode",
       "community": 6,
-      "norm_label": "telemetrycode"
+      "norm_label": "telemetrycode",
+      "id": "scripts_verify_sprint3_phase5_telemetrycode"
     },
     {
       "label": "requiredEvents",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L94",
-      "id": "scripts_verify_sprint3_phase5_requiredevents",
       "community": 6,
-      "norm_label": "requiredevents"
+      "norm_label": "requiredevents",
+      "id": "scripts_verify_sprint3_phase5_requiredevents"
     },
     {
       "label": "courierPath",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L113",
-      "id": "scripts_verify_sprint3_phase5_courierpath",
       "community": 6,
-      "norm_label": "courierpath"
+      "norm_label": "courierpath",
+      "id": "scripts_verify_sprint3_phase5_courierpath"
     },
     {
       "label": "courierCode",
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L114",
-      "id": "scripts_verify_sprint3_phase5_couriercode",
       "community": 6,
-      "norm_label": "couriercode"
+      "norm_label": "couriercode",
+      "id": "scripts_verify_sprint3_phase5_couriercode"
     },
     {
       "label": "App.tsx",
       "file_type": "code",
       "source_file": "src/App.tsx",
       "source_location": "L1",
-      "id": "src_app_tsx",
       "community": 0,
-      "norm_label": "app.tsx"
+      "norm_label": "app.tsx",
+      "id": "src_app_tsx"
     },
     {
       "label": "StaffPortalPage",
       "file_type": "code",
       "source_file": "src/App.tsx",
       "source_location": "L23",
-      "id": "src_app_staffportalpage",
       "community": 0,
-      "norm_label": "staffportalpage"
+      "norm_label": "staffportalpage",
+      "id": "src_app_staffportalpage"
     },
     {
       "label": "CustomerStorefront()",
       "file_type": "code",
       "source_file": "src/App.tsx",
       "source_location": "L25",
-      "id": "src_app_customerstorefront",
       "community": 0,
-      "norm_label": "customerstorefront()"
+      "norm_label": "customerstorefront()",
+      "id": "src_app_customerstorefront"
     },
     {
       "label": "MainRouter()",
       "file_type": "code",
       "source_file": "src/App.tsx",
       "source_location": "L73",
-      "id": "src_app_mainrouter",
       "community": 0,
-      "norm_label": "mainrouter()"
+      "norm_label": "mainrouter()",
+      "id": "src_app_mainrouter"
     },
     {
       "label": "App()",
       "file_type": "code",
       "source_file": "src/App.tsx",
       "source_location": "L115",
-      "id": "src_app_app",
       "community": 0,
-      "norm_label": "app()"
+      "norm_label": "app()",
+      "id": "src_app_app"
     },
     {
       "label": "CurrencySwitcher.tsx",
       "file_type": "code",
       "source_file": "src/components/CurrencySwitcher.tsx",
       "source_location": "L1",
-      "id": "src_components_currencyswitcher_tsx",
       "community": 10,
-      "norm_label": "currencyswitcher.tsx"
+      "norm_label": "currencyswitcher.tsx",
+      "id": "src_components_currencyswitcher_tsx"
     },
     {
       "label": "CurrencySwitcherProps",
       "file_type": "code",
       "source_file": "src/components/CurrencySwitcher.tsx",
       "source_location": "L7",
-      "id": "components_currencyswitcher_currencyswitcherprops",
       "community": 10,
-      "norm_label": "currencyswitcherprops"
+      "norm_label": "currencyswitcherprops",
+      "id": "components_currencyswitcher_currencyswitcherprops"
     },
     {
       "label": "CurrencySwitcher()",
       "file_type": "code",
       "source_file": "src/components/CurrencySwitcher.tsx",
       "source_location": "L12",
-      "id": "components_currencyswitcher_currencyswitcher",
       "community": 0,
-      "norm_label": "currencyswitcher()"
+      "norm_label": "currencyswitcher()",
+      "id": "components_currencyswitcher_currencyswitcher"
     },
     {
       "label": "Hero.tsx",
       "file_type": "code",
       "source_file": "src/components/Hero.tsx",
       "source_location": "L1",
-      "id": "src_components_hero_tsx",
       "community": 0,
-      "norm_label": "hero.tsx"
+      "norm_label": "hero.tsx",
+      "id": "src_components_hero_tsx"
     },
     {
       "label": "Hero()",
       "file_type": "code",
       "source_file": "src/components/Hero.tsx",
       "source_location": "L8",
-      "id": "components_hero_hero",
       "community": 0,
-      "norm_label": "hero()"
+      "norm_label": "hero()",
+      "id": "components_hero_hero"
     },
     {
       "label": "Navbar.tsx",
       "file_type": "code",
       "source_file": "src/components/Navbar.tsx",
       "source_location": "L1",
-      "id": "src_components_navbar_tsx",
       "community": 0,
-      "norm_label": "navbar.tsx"
+      "norm_label": "navbar.tsx",
+      "id": "src_components_navbar_tsx"
     },
     {
       "label": "QUICK_CATEGORIES",
       "file_type": "code",
       "source_file": "src/components/Navbar.tsx",
       "source_location": "L11",
-      "id": "components_navbar_quick_categories",
       "community": 0,
-      "norm_label": "quick_categories"
+      "norm_label": "quick_categories",
+      "id": "components_navbar_quick_categories"
     },
     {
       "label": "Navbar()",
       "file_type": "code",
       "source_file": "src/components/Navbar.tsx",
       "source_location": "L19",
-      "id": "components_navbar_navbar",
       "community": 0,
-      "norm_label": "navbar()"
+      "norm_label": "navbar()",
+      "id": "components_navbar_navbar"
     },
     {
       "label": "ProductCard.tsx",
       "file_type": "code",
       "source_file": "src/components/ProductCard.tsx",
       "source_location": "L1",
-      "id": "src_components_productcard_tsx",
       "community": 2,
-      "norm_label": "productcard.tsx"
+      "norm_label": "productcard.tsx",
+      "id": "src_components_productcard_tsx"
     },
     {
       "label": "ProductCardProps",
       "file_type": "code",
       "source_file": "src/components/ProductCard.tsx",
       "source_location": "L8",
-      "id": "components_productcard_productcardprops",
       "community": 2,
-      "norm_label": "productcardprops"
+      "norm_label": "productcardprops",
+      "id": "components_productcard_productcardprops"
     },
     {
       "label": "ProductCard()",
       "file_type": "code",
       "source_file": "src/components/ProductCard.tsx",
       "source_location": "L12",
-      "id": "components_productcard_productcard",
       "community": 0,
-      "norm_label": "productcard()"
+      "norm_label": "productcard()",
+      "id": "components_productcard_productcard"
     },
     {
       "label": "ProductModal.tsx",
       "file_type": "code",
       "source_file": "src/components/ProductModal.tsx",
       "source_location": "L1",
-      "id": "src_components_productmodal_tsx",
       "community": 0,
-      "norm_label": "productmodal.tsx"
+      "norm_label": "productmodal.tsx",
+      "id": "src_components_productmodal_tsx"
     },
     {
       "label": "ProductModal()",
       "file_type": "code",
       "source_file": "src/components/ProductModal.tsx",
       "source_location": "L33",
-      "id": "components_productmodal_productmodal",
       "community": 0,
-      "norm_label": "productmodal()"
+      "norm_label": "productmodal()",
+      "id": "components_productmodal_productmodal"
     },
     {
       "label": "CartDrawer.tsx",
       "file_type": "code",
       "source_file": "src/components/cart/CartDrawer.tsx",
       "source_location": "L1",
-      "id": "src_components_cart_cartdrawer_tsx",
       "community": 0,
-      "norm_label": "cartdrawer.tsx"
+      "norm_label": "cartdrawer.tsx",
+      "id": "src_components_cart_cartdrawer_tsx"
     },
     {
       "label": "CartDrawerProps",
       "file_type": "code",
       "source_file": "src/components/cart/CartDrawer.tsx",
       "source_location": "L19",
-      "id": "cart_cartdrawer_cartdrawerprops",
       "community": 0,
-      "norm_label": "cartdrawerprops"
+      "norm_label": "cartdrawerprops",
+      "id": "cart_cartdrawer_cartdrawerprops"
     },
     {
       "label": "CartDrawer()",
       "file_type": "code",
       "source_file": "src/components/cart/CartDrawer.tsx",
       "source_location": "L23",
-      "id": "cart_cartdrawer_cartdrawer",
       "community": 0,
-      "norm_label": "cartdrawer()"
+      "norm_label": "cartdrawer()",
+      "id": "cart_cartdrawer_cartdrawer"
     },
     {
       "label": "MobileCheckoutModal.tsx",
       "file_type": "code",
       "source_file": "src/components/cart/MobileCheckoutModal.tsx",
       "source_location": "L1",
-      "id": "src_components_cart_mobilecheckoutmodal_tsx",
       "community": 2,
-      "norm_label": "mobilecheckoutmodal.tsx"
+      "norm_label": "mobilecheckoutmodal.tsx",
+      "id": "src_components_cart_mobilecheckoutmodal_tsx"
     },
     {
       "label": "MobileCheckoutModalProps",
       "file_type": "code",
       "source_file": "src/components/cart/MobileCheckoutModal.tsx",
       "source_location": "L25",
-      "id": "cart_mobilecheckoutmodal_mobilecheckoutmodalprops",
       "community": 2,
-      "norm_label": "mobilecheckoutmodalprops"
+      "norm_label": "mobilecheckoutmodalprops",
+      "id": "cart_mobilecheckoutmodal_mobilecheckoutmodalprops"
     },
     {
       "label": "MobileCheckoutModal()",
       "file_type": "code",
       "source_file": "src/components/cart/MobileCheckoutModal.tsx",
       "source_location": "L30",
-      "id": "cart_mobilecheckoutmodal_mobilecheckoutmodal",
       "community": 0,
-      "norm_label": "mobilecheckoutmodal()"
+      "norm_label": "mobilecheckoutmodal()",
+      "id": "cart_mobilecheckoutmodal_mobilecheckoutmodal"
     },
     {
       "label": "WishlistDrawer.tsx",
       "file_type": "code",
       "source_file": "src/components/catalog/WishlistDrawer.tsx",
       "source_location": "L1",
-      "id": "src_components_catalog_wishlistdrawer_tsx",
       "community": 0,
-      "norm_label": "wishlistdrawer.tsx"
+      "norm_label": "wishlistdrawer.tsx",
+      "id": "src_components_catalog_wishlistdrawer_tsx"
     },
     {
       "label": "WishlistDrawer()",
       "file_type": "code",
       "source_file": "src/components/catalog/WishlistDrawer.tsx",
       "source_location": "L8",
-      "id": "catalog_wishlistdrawer_wishlistdrawer",
       "community": 0,
-      "norm_label": "wishlistdrawer()"
+      "norm_label": "wishlistdrawer()",
+      "id": "catalog_wishlistdrawer_wishlistdrawer"
     },
     {
       "label": "ImageUploadStudio.tsx",
       "file_type": "code",
       "source_file": "src/components/staff/ImageUploadStudio.tsx",
       "source_location": "L1",
-      "id": "src_components_staff_imageuploadstudio_tsx",
       "community": 4,
-      "norm_label": "imageuploadstudio.tsx"
+      "norm_label": "imageuploadstudio.tsx",
+      "id": "src_components_staff_imageuploadstudio_tsx"
     },
     {
       "label": "ImageUploadStudioProps",
       "file_type": "code",
       "source_file": "src/components/staff/ImageUploadStudio.tsx",
       "source_location": "L28",
-      "id": "staff_imageuploadstudio_imageuploadstudioprops",
       "community": 4,
-      "norm_label": "imageuploadstudioprops"
+      "norm_label": "imageuploadstudioprops",
+      "id": "staff_imageuploadstudio_imageuploadstudioprops"
     },
     {
       "label": "ROLE_LABELS",
       "file_type": "code",
       "source_file": "src/components/staff/ImageUploadStudio.tsx",
       "source_location": "L41",
-      "id": "staff_imageuploadstudio_role_labels",
       "community": 4,
-      "norm_label": "role_labels"
+      "norm_label": "role_labels",
+      "id": "staff_imageuploadstudio_role_labels"
     },
     {
       "label": "ARCHETYPE_LABELS",
       "file_type": "code",
       "source_file": "src/components/staff/ImageUploadStudio.tsx",
       "source_location": "L48",
-      "id": "staff_imageuploadstudio_archetype_labels",
       "community": 4,
-      "norm_label": "archetype_labels"
+      "norm_label": "archetype_labels",
+      "id": "staff_imageuploadstudio_archetype_labels"
     },
     {
       "label": "ImageUploadStudio()",
       "file_type": "code",
       "source_file": "src/components/staff/ImageUploadStudio.tsx",
       "source_location": "L63",
-      "id": "staff_imageuploadstudio_imageuploadstudio",
       "community": 4,
-      "norm_label": "imageuploadstudio()"
+      "norm_label": "imageuploadstudio()",
+      "id": "staff_imageuploadstudio_imageuploadstudio"
     },
     {
       "label": "StaffLoginPage.tsx",
       "file_type": "code",
       "source_file": "src/components/staff/StaffLoginPage.tsx",
       "source_location": "L1",
-      "id": "src_components_staff_staffloginpage_tsx",
       "community": 13,
-      "norm_label": "staffloginpage.tsx"
+      "norm_label": "staffloginpage.tsx",
+      "id": "src_components_staff_staffloginpage_tsx"
     },
     {
       "label": "StaffLoginPageProps",
       "file_type": "code",
       "source_file": "src/components/staff/StaffLoginPage.tsx",
       "source_location": "L6",
-      "id": "staff_staffloginpage_staffloginpageprops",
       "community": 13,
-      "norm_label": "staffloginpageprops"
+      "norm_label": "staffloginpageprops",
+      "id": "staff_staffloginpage_staffloginpageprops"
     },
     {
       "label": "StaffLoginPage()",
       "file_type": "code",
       "source_file": "src/components/staff/StaffLoginPage.tsx",
       "source_location": "L10",
-      "id": "staff_staffloginpage_staffloginpage",
       "community": 13,
-      "norm_label": "staffloginpage()"
+      "norm_label": "staffloginpage()",
+      "id": "staff_staffloginpage_staffloginpage"
     },
     {
       "label": "CartContext.tsx",
       "file_type": "code",
       "source_file": "src/context/CartContext.tsx",
       "source_location": "L1",
-      "id": "src_context_cartcontext_tsx",
       "community": 2,
-      "norm_label": "cartcontext.tsx"
+      "norm_label": "cartcontext.tsx",
+      "id": "src_context_cartcontext_tsx"
     },
     {
       "label": "CartContextType",
       "file_type": "code",
       "source_file": "src/context/CartContext.tsx",
       "source_location": "L6",
-      "id": "context_cartcontext_cartcontexttype",
       "community": 2,
-      "norm_label": "cartcontexttype"
+      "norm_label": "cartcontexttype",
+      "id": "context_cartcontext_cartcontexttype"
     },
     {
       "label": "defaultAddress",
       "file_type": "code",
       "source_file": "src/context/CartContext.tsx",
       "source_location": "L26",
-      "id": "context_cartcontext_defaultaddress",
       "community": 2,
-      "norm_label": "defaultaddress"
+      "norm_label": "defaultaddress",
+      "id": "context_cartcontext_defaultaddress"
     },
     {
       "label": "CartContext",
       "file_type": "code",
       "source_file": "src/context/CartContext.tsx",
       "source_location": "L39",
-      "id": "context_cartcontext_cartcontext",
       "community": 2,
-      "norm_label": "cartcontext"
+      "norm_label": "cartcontext",
+      "id": "context_cartcontext_cartcontext"
     },
     {
       "label": "generateItemKey()",
       "file_type": "code",
       "source_file": "src/context/CartContext.tsx",
       "source_location": "L41",
-      "id": "context_cartcontext_generateitemkey",
       "community": 2,
-      "norm_label": "generateitemkey()"
+      "norm_label": "generateitemkey()",
+      "id": "context_cartcontext_generateitemkey"
     },
     {
       "label": "isPincodeInKerala()",
       "file_type": "code",
       "source_file": "src/context/CartContext.tsx",
       "source_location": "L52",
-      "id": "context_cartcontext_ispincodeinkerala",
       "community": 2,
-      "norm_label": "ispincodeinkerala()"
+      "norm_label": "ispincodeinkerala()",
+      "id": "context_cartcontext_ispincodeinkerala"
     },
     {
       "label": "CartProvider()",
       "file_type": "code",
       "source_file": "src/context/CartContext.tsx",
       "source_location": "L59",
-      "id": "context_cartcontext_cartprovider",
       "community": 2,
-      "norm_label": "cartprovider()"
+      "norm_label": "cartprovider()",
+      "id": "context_cartcontext_cartprovider"
     },
     {
       "label": "useCart()",
       "file_type": "code",
       "source_file": "src/context/CartContext.tsx",
       "source_location": "L243",
-      "id": "context_cartcontext_usecart",
       "community": 0,
-      "norm_label": "usecart()"
+      "norm_label": "usecart()",
+      "id": "context_cartcontext_usecart"
     },
     {
       "label": "CatalogContext.tsx",
       "file_type": "code",
       "source_file": "src/context/CatalogContext.tsx",
       "source_location": "L1",
-      "id": "src_context_catalogcontext_tsx",
       "community": 5,
-      "norm_label": "catalogcontext.tsx"
+      "norm_label": "catalogcontext.tsx",
+      "id": "src_context_catalogcontext_tsx"
     },
     {
       "label": "CatalogContextType",
       "file_type": "code",
       "source_file": "src/context/CatalogContext.tsx",
       "source_location": "L17",
-      "id": "context_catalogcontext_catalogcontexttype",
       "community": 5,
-      "norm_label": "catalogcontexttype"
+      "norm_label": "catalogcontexttype",
+      "id": "context_catalogcontext_catalogcontexttype"
     },
     {
       "label": "initialFilterState",
       "file_type": "code",
       "source_file": "src/context/CatalogContext.tsx",
       "source_location": "L62",
-      "id": "context_catalogcontext_initialfilterstate",
       "community": 5,
-      "norm_label": "initialfilterstate"
+      "norm_label": "initialfilterstate",
+      "id": "context_catalogcontext_initialfilterstate"
     },
     {
       "label": "CatalogContext",
       "file_type": "code",
       "source_file": "src/context/CatalogContext.tsx",
       "source_location": "L71",
-      "id": "context_catalogcontext_catalogcontext",
       "community": 5,
-      "norm_label": "catalogcontext"
+      "norm_label": "catalogcontext",
+      "id": "context_catalogcontext_catalogcontext"
     },
     {
       "label": "CatalogProvider()",
       "file_type": "code",
       "source_file": "src/context/CatalogContext.tsx",
       "source_location": "L73",
-      "id": "context_catalogcontext_catalogprovider",
       "community": 5,
-      "norm_label": "catalogprovider()"
+      "norm_label": "catalogprovider()",
+      "id": "context_catalogcontext_catalogprovider"
     },
     {
       "label": "useCatalog()",
       "file_type": "code",
       "source_file": "src/context/CatalogContext.tsx",
       "source_location": "L452",
-      "id": "context_catalogcontext_usecatalog",
       "community": 0,
-      "norm_label": "usecatalog()"
+      "norm_label": "usecatalog()",
+      "id": "context_catalogcontext_usecatalog"
     },
     {
       "label": "CurrencyContext.tsx",
       "file_type": "code",
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L1",
-      "id": "src_context_currencycontext_tsx",
       "community": 10,
-      "norm_label": "currencycontext.tsx"
+      "norm_label": "currencycontext.tsx",
+      "id": "src_context_currencycontext_tsx"
     },
     {
       "label": "CurrencyContextType",
       "file_type": "code",
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L11",
-      "id": "context_currencycontext_currencycontexttype",
       "community": 10,
-      "norm_label": "currencycontexttype"
+      "norm_label": "currencycontexttype",
+      "id": "context_currencycontext_currencycontexttype"
     },
     {
       "label": "CurrencyContext",
       "file_type": "code",
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L22",
-      "id": "context_currencycontext_currencycontext",
       "community": 10,
-      "norm_label": "currencycontext"
+      "norm_label": "currencycontext",
+      "id": "context_currencycontext_currencycontext"
     },
     {
       "label": "CurrencyProvider()",
       "file_type": "code",
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L24",
-      "id": "context_currencycontext_currencyprovider",
       "community": 0,
-      "norm_label": "currencyprovider()"
+      "norm_label": "currencyprovider()",
+      "id": "context_currencycontext_currencyprovider"
     },
     {
       "label": "useCurrency()",
       "file_type": "code",
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L91",
-      "id": "context_currencycontext_usecurrency",
       "community": 0,
-      "norm_label": "usecurrency()"
+      "norm_label": "usecurrency()",
+      "id": "context_currencycontext_usecurrency"
     },
     {
       "label": "OrdersContext.tsx",
       "file_type": "code",
       "source_file": "src/context/OrdersContext.tsx",
       "source_location": "L1",
-      "id": "src_context_orderscontext_tsx",
       "community": 3,
-      "norm_label": "orderscontext.tsx"
+      "norm_label": "orderscontext.tsx",
+      "id": "src_context_orderscontext_tsx"
     },
     {
       "label": "OrdersContextType",
       "file_type": "code",
       "source_file": "src/context/OrdersContext.tsx",
       "source_location": "L21",
-      "id": "context_orderscontext_orderscontexttype",
       "community": 3,
-      "norm_label": "orderscontexttype"
+      "norm_label": "orderscontexttype",
+      "id": "context_orderscontext_orderscontexttype"
     },
     {
       "label": "computeTaxBreakdown()",
       "file_type": "code",
       "source_file": "src/context/OrdersContext.tsx",
       "source_location": "L44",
-      "id": "context_orderscontext_computetaxbreakdown",
       "community": 3,
-      "norm_label": "computetaxbreakdown()"
+      "norm_label": "computetaxbreakdown()",
+      "id": "context_orderscontext_computetaxbreakdown"
     },
     {
       "label": "isPincodeKerala()",
       "file_type": "code",
       "source_file": "src/context/OrdersContext.tsx",
       "source_location": "L77",
-      "id": "context_orderscontext_ispincodekerala",
       "community": 3,
-      "norm_label": "ispincodekerala()"
+      "norm_label": "ispincodekerala()",
+      "id": "context_orderscontext_ispincodekerala"
     },
     {
       "label": "SAMPLE_ORDERS",
       "file_type": "code",
       "source_file": "src/context/OrdersContext.tsx",
       "source_location": "L84",
-      "id": "context_orderscontext_sample_orders",
       "community": 3,
-      "norm_label": "sample_orders"
+      "norm_label": "sample_orders",
+      "id": "context_orderscontext_sample_orders"
     },
     {
       "label": "OrdersContext",
       "file_type": "code",
       "source_file": "src/context/OrdersContext.tsx",
       "source_location": "L223",
-      "id": "context_orderscontext_orderscontext",
       "community": 3,
-      "norm_label": "orderscontext"
+      "norm_label": "orderscontext",
+      "id": "context_orderscontext_orderscontext"
     },
     {
       "label": "OrdersProvider()",
       "file_type": "code",
       "source_file": "src/context/OrdersContext.tsx",
       "source_location": "L225",
-      "id": "context_orderscontext_ordersprovider",
       "community": 0,
-      "norm_label": "ordersprovider()"
+      "norm_label": "ordersprovider()",
+      "id": "context_orderscontext_ordersprovider"
     },
     {
       "label": "useOrders()",
       "file_type": "code",
       "source_file": "src/context/OrdersContext.tsx",
       "source_location": "L428",
-      "id": "context_orderscontext_useorders",
       "community": 3,
-      "norm_label": "useorders()"
+      "norm_label": "useorders()",
+      "id": "context_orderscontext_useorders"
     },
     {
       "label": "StaffAuthContext.tsx",
       "file_type": "code",
       "source_file": "src/context/StaffAuthContext.tsx",
       "source_location": "L1",
-      "id": "src_context_staffauthcontext_tsx",
       "community": 13,
-      "norm_label": "staffauthcontext.tsx"
+      "norm_label": "staffauthcontext.tsx",
+      "id": "src_context_staffauthcontext_tsx"
     },
     {
       "label": "StaffAuthContextType",
       "file_type": "code",
       "source_file": "src/context/StaffAuthContext.tsx",
       "source_location": "L4",
-      "id": "context_staffauthcontext_staffauthcontexttype",
       "community": 13,
-      "norm_label": "staffauthcontexttype"
+      "norm_label": "staffauthcontexttype",
+      "id": "context_staffauthcontext_staffauthcontexttype"
     },
     {
       "label": "StaffAuthContext",
       "file_type": "code",
       "source_file": "src/context/StaffAuthContext.tsx",
       "source_location": "L16",
-      "id": "context_staffauthcontext_staffauthcontext",
       "community": 13,
-      "norm_label": "staffauthcontext"
+      "norm_label": "staffauthcontext",
+      "id": "context_staffauthcontext_staffauthcontext"
     },
     {
       "label": "StaffAuthProvider()",
       "file_type": "code",
       "source_file": "src/context/StaffAuthContext.tsx",
       "source_location": "L18",
-      "id": "context_staffauthcontext_staffauthprovider",
       "community": 13,
-      "norm_label": "staffauthprovider()"
+      "norm_label": "staffauthprovider()",
+      "id": "context_staffauthcontext_staffauthprovider"
     },
     {
       "label": "useStaffAuth()",
       "file_type": "code",
       "source_file": "src/context/StaffAuthContext.tsx",
       "source_location": "L199",
-      "id": "context_staffauthcontext_usestaffauth",
       "community": 13,
-      "norm_label": "usestaffauth()"
+      "norm_label": "usestaffauth()",
+      "id": "context_staffauthcontext_usestaffauth"
     },
     {
       "label": "countries.ts",
       "file_type": "code",
       "source_file": "src/data/countries.ts",
       "source_location": "L1",
-      "id": "src_data_countries_ts",
       "community": 2,
-      "norm_label": "countries.ts"
+      "norm_label": "countries.ts",
+      "id": "src_data_countries_ts"
     },
     {
       "label": "CountryProfile",
       "file_type": "code",
       "source_file": "src/data/countries.ts",
       "source_location": "L1",
-      "id": "data_countries_countryprofile",
       "community": 2,
-      "norm_label": "countryprofile"
+      "norm_label": "countryprofile",
+      "id": "data_countries_countryprofile"
     },
     {
       "label": "SUPPORTED_COUNTRIES",
       "file_type": "code",
       "source_file": "src/data/countries.ts",
       "source_location": "L16",
-      "id": "data_countries_supported_countries",
       "community": 2,
-      "norm_label": "supported_countries"
+      "norm_label": "supported_countries",
+      "id": "data_countries_supported_countries"
     },
     {
       "label": "storeConfig.ts",
       "file_type": "code",
       "source_file": "src/data/storeConfig.ts",
       "source_location": "L1",
-      "id": "src_data_storeconfig_ts",
       "community": 0,
-      "norm_label": "storeconfig.ts"
+      "norm_label": "storeconfig.ts",
+      "id": "src_data_storeconfig_ts"
     },
     {
       "label": "KENZAE_STORE_CONFIG",
       "file_type": "code",
       "source_file": "src/data/storeConfig.ts",
       "source_location": "L3",
-      "id": "data_storeconfig_kenzae_store_config",
       "community": 0,
-      "norm_label": "kenzae_store_config"
+      "norm_label": "kenzae_store_config",
+      "id": "data_storeconfig_kenzae_store_config"
     },
     {
       "label": "main.tsx",
       "file_type": "code",
       "source_file": "src/main.tsx",
       "source_location": "L1",
-      "id": "src_main_tsx",
       "community": 0,
-      "norm_label": "main.tsx"
+      "norm_label": "main.tsx",
+      "id": "src_main_tsx"
     },
     {
       "label": "catalogService.ts",
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L1",
-      "id": "src_services_catalogservice_ts",
       "community": 5,
-      "norm_label": "catalogservice.ts"
+      "norm_label": "catalogservice.ts",
+      "id": "src_services_catalogservice_ts"
     },
     {
       "label": "CatalogServiceResponse",
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L4",
-      "id": "services_catalogservice_catalogserviceresponse",
       "community": 5,
-      "norm_label": "catalogserviceresponse"
+      "norm_label": "catalogserviceresponse",
+      "id": "services_catalogservice_catalogserviceresponse"
     },
     {
       "label": "fetchRemoteProducts()",
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L15",
-      "id": "services_catalogservice_fetchremoteproducts",
       "community": 5,
-      "norm_label": "fetchremoteproducts()"
+      "norm_label": "fetchremoteproducts()",
+      "id": "services_catalogservice_fetchremoteproducts"
     },
     {
       "label": "saveRemoteProduct()",
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L46",
-      "id": "services_catalogservice_saveremoteproduct",
       "community": 5,
-      "norm_label": "saveremoteproduct()"
+      "norm_label": "saveremoteproduct()",
+      "id": "services_catalogservice_saveremoteproduct"
     },
     {
       "label": "updateRemoteProductPrice()",
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L80",
-      "id": "services_catalogservice_updateremoteproductprice",
       "community": 5,
-      "norm_label": "updateremoteproductprice()"
+      "norm_label": "updateremoteproductprice()",
+      "id": "services_catalogservice_updateremoteproductprice"
     },
     {
       "label": "updateRemoteProductStock()",
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L111",
-      "id": "services_catalogservice_updateremoteproductstock",
       "community": 5,
-      "norm_label": "updateremoteproductstock()"
+      "norm_label": "updateremoteproductstock()",
+      "id": "services_catalogservice_updateremoteproductstock"
     },
     {
       "label": "decrementRemoteProductStock()",
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L144",
-      "id": "services_catalogservice_decrementremoteproductstock",
       "community": 5,
-      "norm_label": "decrementremoteproductstock()"
+      "norm_label": "decrementremoteproductstock()",
+      "id": "services_catalogservice_decrementremoteproductstock"
     },
     {
       "label": "deleteRemoteProduct()",
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L179",
-      "id": "services_catalogservice_deleteremoteproduct",
       "community": 5,
-      "norm_label": "deleteremoteproduct()"
+      "norm_label": "deleteremoteproduct()",
+      "id": "services_catalogservice_deleteremoteproduct"
     },
     {
       "label": "subscribeToProductRealtime()",
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L202",
-      "id": "services_catalogservice_subscribetoproductrealtime",
       "community": 5,
-      "norm_label": "subscribetoproductrealtime()"
+      "norm_label": "subscribetoproductrealtime()",
+      "id": "services_catalogservice_subscribetoproductrealtime"
     },
     {
       "label": "currencyService.ts",
       "file_type": "code",
       "source_file": "src/services/currencyService.ts",
       "source_location": "L1",
-      "id": "src_services_currencyservice_ts",
       "community": 10,
-      "norm_label": "currencyservice.ts"
+      "norm_label": "currencyservice.ts",
+      "id": "src_services_currencyservice_ts"
     },
     {
       "label": "CurrencyCode",
       "file_type": "code",
       "source_file": "src/services/currencyService.ts",
       "source_location": "L6",
-      "id": "services_currencyservice_currencycode",
       "community": 10,
-      "norm_label": "currencycode"
+      "norm_label": "currencycode",
+      "id": "services_currencyservice_currencycode"
     },
     {
       "label": "CurrencyConfig",
       "file_type": "code",
       "source_file": "src/services/currencyService.ts",
       "source_location": "L8",
-      "id": "services_currencyservice_currencyconfig",
       "community": 10,
-      "norm_label": "currencyconfig"
+      "norm_label": "currencyconfig",
+      "id": "services_currencyservice_currencyconfig"
     },
     {
       "label": "SUPPORTED_CURRENCIES",
       "file_type": "code",
       "source_file": "src/services/currencyService.ts",
       "source_location": "L18",
-      "id": "services_currencyservice_supported_currencies",
       "community": 10,
-      "norm_label": "supported_currencies"
+      "norm_label": "supported_currencies",
+      "id": "services_currencyservice_supported_currencies"
     },
     {
       "label": "runtimeRates",
       "file_type": "code",
       "source_file": "src/services/currencyService.ts",
       "source_location": "L97",
-      "id": "services_currencyservice_runtimerates",
       "community": 10,
-      "norm_label": "runtimerates"
+      "norm_label": "runtimerates",
+      "id": "services_currencyservice_runtimerates"
     },
     {
       "label": "refreshExchangeRates()",
       "file_type": "code",
       "source_file": "src/services/currencyService.ts",
       "source_location": "L108",
-      "id": "services_currencyservice_refreshexchangerates",
       "community": 10,
-      "norm_label": "refreshexchangerates()"
+      "norm_label": "refreshexchangerates()",
+      "id": "services_currencyservice_refreshexchangerates"
     },
     {
       "label": "convertINRTo()",
       "file_type": "code",
       "source_file": "src/services/currencyService.ts",
       "source_location": "L152",
-      "id": "services_currencyservice_convertinrto",
       "community": 10,
-      "norm_label": "convertinrto()"
+      "norm_label": "convertinrto()",
+      "id": "services_currencyservice_convertinrto"
     },
     {
       "label": "formatLocalizedPrice()",
       "file_type": "code",
       "source_file": "src/services/currencyService.ts",
       "source_location": "L164",
-      "id": "services_currencyservice_formatlocalizedprice",
       "community": 10,
-      "norm_label": "formatlocalizedprice()"
+      "norm_label": "formatlocalizedprice()",
+      "id": "services_currencyservice_formatlocalizedprice"
     },
     {
       "label": "imageStorage.ts",
       "file_type": "code",
       "source_file": "src/services/imageStorage.ts",
       "source_location": "L1",
-      "id": "src_services_imagestorage_ts",
       "community": 4,
-      "norm_label": "imagestorage.ts"
+      "norm_label": "imagestorage.ts",
+      "id": "src_services_imagestorage_ts"
     },
     {
       "label": "UploadResult",
       "file_type": "code",
       "source_file": "src/services/imageStorage.ts",
       "source_location": "L5",
-      "id": "services_imagestorage_uploadresult",
       "community": 4,
-      "norm_label": "uploadresult"
+      "norm_label": "uploadresult",
+      "id": "services_imagestorage_uploadresult"
     },
     {
       "label": "uploadCatalogImage()",
       "file_type": "code",
       "source_file": "src/services/imageStorage.ts",
       "source_location": "L17",
-      "id": "services_imagestorage_uploadcatalogimage",
       "community": 4,
-      "norm_label": "uploadcatalogimage()"
+      "norm_label": "uploadcatalogimage()",
+      "id": "services_imagestorage_uploadcatalogimage"
     },
     {
       "label": "ordersService.ts",
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L1",
-      "id": "src_services_ordersservice_ts",
       "community": 3,
-      "norm_label": "ordersservice.ts"
+      "norm_label": "ordersservice.ts",
+      "id": "src_services_ordersservice_ts"
     },
     {
       "label": "mapDbRowToOrder()",
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L4",
-      "id": "services_ordersservice_mapdbrowtoorder",
       "community": 3,
-      "norm_label": "mapdbrowtoorder()"
+      "norm_label": "mapdbrowtoorder()",
+      "id": "services_ordersservice_mapdbrowtoorder"
     },
     {
       "label": "mapOrderToDbRow()",
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L30",
-      "id": "services_ordersservice_mapordertodbrow",
       "community": 3,
-      "norm_label": "mapordertodbrow()"
+      "norm_label": "mapordertodbrow()",
+      "id": "services_ordersservice_mapordertodbrow"
     },
     {
       "label": "fetchRemoteOrders()",
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L57",
-      "id": "services_ordersservice_fetchremoteorders",
       "community": 3,
-      "norm_label": "fetchremoteorders()"
+      "norm_label": "fetchremoteorders()",
+      "id": "services_ordersservice_fetchremoteorders"
     },
     {
       "label": "saveRemoteOrder()",
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L84",
-      "id": "services_ordersservice_saveremoteorder",
       "community": 3,
-      "norm_label": "saveremoteorder()"
+      "norm_label": "saveremoteorder()",
+      "id": "services_ordersservice_saveremoteorder"
     },
     {
       "label": "updateRemoteOrderStatus()",
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L113",
-      "id": "services_ordersservice_updateremoteorderstatus",
       "community": 3,
-      "norm_label": "updateremoteorderstatus()"
+      "norm_label": "updateremoteorderstatus()",
+      "id": "services_ordersservice_updateremoteorderstatus"
     },
     {
       "label": "updateRemotePaymentStatus()",
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L137",
-      "id": "services_ordersservice_updateremotepaymentstatus",
       "community": 3,
-      "norm_label": "updateremotepaymentstatus()"
+      "norm_label": "updateremotepaymentstatus()",
+      "id": "services_ordersservice_updateremotepaymentstatus"
     },
     {
       "label": "dispatchRemoteOrder()",
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L161",
-      "id": "services_ordersservice_dispatchremoteorder",
       "community": 3,
-      "norm_label": "dispatchremoteorder()"
+      "norm_label": "dispatchremoteorder()",
+      "id": "services_ordersservice_dispatchremoteorder"
     },
     {
       "label": "subscribeToOrdersRealtime()",
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L196",
-      "id": "services_ordersservice_subscribetoordersrealtime",
       "community": 3,
-      "norm_label": "subscribetoordersrealtime()"
+      "norm_label": "subscribetoordersrealtime()",
+      "id": "services_ordersservice_subscribetoordersrealtime"
     },
     {
       "label": "supabaseClient.ts",
       "file_type": "code",
       "source_file": "src/services/supabaseClient.ts",
       "source_location": "L1",
-      "id": "src_services_supabaseclient_ts",
       "community": 5,
-      "norm_label": "supabaseclient.ts"
+      "norm_label": "supabaseclient.ts",
+      "id": "src_services_supabaseclient_ts"
     },
     {
       "label": "DatabaseProductRow",
       "file_type": "code",
       "source_file": "src/services/supabaseClient.ts",
       "source_location": "L5",
-      "id": "services_supabaseclient_databaseproductrow",
       "community": 5,
-      "norm_label": "databaseproductrow"
+      "norm_label": "databaseproductrow",
+      "id": "services_supabaseclient_databaseproductrow"
     },
     {
       "label": "DatabaseOrderRow",
       "file_type": "code",
       "source_file": "src/services/supabaseClient.ts",
       "source_location": "L28",
-      "id": "services_supabaseclient_databaseorderrow",
       "community": 5,
-      "norm_label": "databaseorderrow"
+      "norm_label": "databaseorderrow",
+      "id": "services_supabaseclient_databaseorderrow"
     },
     {
       "label": "isSupabaseConfigured()",
       "file_type": "code",
       "source_file": "src/services/supabaseClient.ts",
       "source_location": "L56",
-      "id": "services_supabaseclient_issupabaseconfigured",
       "community": 5,
-      "norm_label": "issupabaseconfigured()"
+      "norm_label": "issupabaseconfigured()",
+      "id": "services_supabaseclient_issupabaseconfigured"
     },
     {
       "label": "mapDbRowToProduct()",
       "file_type": "code",
       "source_file": "src/services/supabaseClient.ts",
       "source_location": "L77",
-      "id": "services_supabaseclient_mapdbrowtoproduct",
       "community": 5,
-      "norm_label": "mapdbrowtoproduct()"
+      "norm_label": "mapdbrowtoproduct()",
+      "id": "services_supabaseclient_mapdbrowtoproduct"
     },
     {
       "label": "mapProductToDbRow()",
       "file_type": "code",
       "source_file": "src/services/supabaseClient.ts",
       "source_location": "L103",
-      "id": "services_supabaseclient_mapproducttodbrow",
       "community": 5,
-      "norm_label": "mapproducttodbrow()"
+      "norm_label": "mapproducttodbrow()",
+      "id": "services_supabaseclient_mapproducttodbrow"
     },
     {
       "label": "telemetryService.ts",
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L1",
-      "id": "src_services_telemetryservice_ts",
       "community": 2,
-      "norm_label": "telemetryservice.ts"
+      "norm_label": "telemetryservice.ts",
+      "id": "src_services_telemetryservice_ts"
     },
     {
       "label": "Window",
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L13",
-      "id": "services_telemetryservice_window",
       "community": 2,
-      "norm_label": "window"
+      "norm_label": "window",
+      "id": "services_telemetryservice_window"
     },
     {
       "label": "TelemetryEventName",
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L20",
-      "id": "services_telemetryservice_telemetryeventname",
       "community": 2,
-      "norm_label": "telemetryeventname"
+      "norm_label": "telemetryeventname",
+      "id": "services_telemetryservice_telemetryeventname"
     },
     {
       "label": "TelemetryPayload",
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L30",
-      "id": "services_telemetryservice_telemetrypayload",
       "community": 2,
-      "norm_label": "telemetrypayload"
+      "norm_label": "telemetrypayload",
+      "id": "services_telemetryservice_telemetrypayload"
     },
     {
       "label": "telemetryLog",
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L38",
-      "id": "services_telemetryservice_telemetrylog",
       "community": 2,
-      "norm_label": "telemetrylog"
+      "norm_label": "telemetrylog",
+      "id": "services_telemetryservice_telemetrylog"
     },
     {
       "label": "recordEvent()",
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L40",
-      "id": "services_telemetryservice_recordevent",
       "community": 2,
-      "norm_label": "recordevent()"
+      "norm_label": "recordevent()",
+      "id": "services_telemetryservice_recordevent"
     },
     {
       "label": "trackViewItemList()",
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L90",
-      "id": "services_telemetryservice_trackviewitemlist",
       "community": 2,
-      "norm_label": "trackviewitemlist()"
+      "norm_label": "trackviewitemlist()",
+      "id": "services_telemetryservice_trackviewitemlist"
     },
     {
       "label": "trackViewItem()",
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L100",
-      "id": "services_telemetryservice_trackviewitem",
       "community": 2,
-      "norm_label": "trackviewitem()"
+      "norm_label": "trackviewitem()",
+      "id": "services_telemetryservice_trackviewitem"
     },
     {
       "label": "trackAddToWishlist()",
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L119",
-      "id": "services_telemetryservice_trackaddtowishlist",
       "community": 2,
-      "norm_label": "trackaddtowishlist()"
+      "norm_label": "trackaddtowishlist()",
+      "id": "services_telemetryservice_trackaddtowishlist"
     },
     {
       "label": "trackAddToCart()",
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L137",
-      "id": "services_telemetryservice_trackaddtocart",
       "community": 2,
-      "norm_label": "trackaddtocart()"
+      "norm_label": "trackaddtocart()",
+      "id": "services_telemetryservice_trackaddtocart"
     },
     {
       "label": "trackBeginCheckout()",
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L157",
-      "id": "services_telemetryservice_trackbegincheckout",
       "community": 2,
-      "norm_label": "trackbegincheckout()"
+      "norm_label": "trackbegincheckout()",
+      "id": "services_telemetryservice_trackbegincheckout"
     },
     {
       "label": "trackWhatsAppInquiry()",
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L179",
-      "id": "services_telemetryservice_trackwhatsappinquiry",
       "community": 2,
-      "norm_label": "trackwhatsappinquiry()"
+      "norm_label": "trackwhatsappinquiry()",
+      "id": "services_telemetryservice_trackwhatsappinquiry"
     },
     {
       "label": "trackPurchase()",
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L194",
-      "id": "services_telemetryservice_trackpurchase",
       "community": 2,
-      "norm_label": "trackpurchase()"
+      "norm_label": "trackpurchase()",
+      "id": "services_telemetryservice_trackpurchase"
     },
     {
       "label": "cart.ts",
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L1",
-      "id": "src_types_cart_ts",
       "community": 2,
-      "norm_label": "cart.ts"
+      "norm_label": "cart.ts",
+      "id": "src_types_cart_ts"
     },
     {
       "label": "SareeFinishingOption",
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L1",
-      "id": "types_cart_sareefinishingoption",
       "community": 2,
-      "norm_label": "sareefinishingoption"
+      "norm_label": "sareefinishingoption",
+      "id": "types_cart_sareefinishingoption"
     },
     {
       "label": "GarmentSizeOption",
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L2",
-      "id": "types_cart_garmentsizeoption",
       "community": 2,
-      "norm_label": "garmentsizeoption"
+      "norm_label": "garmentsizeoption",
+      "id": "types_cart_garmentsizeoption"
     },
     {
       "label": "CustomBlouseMeasurements",
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L4",
-      "id": "types_cart_customblousemeasurements",
       "community": 2,
-      "norm_label": "customblousemeasurements"
+      "norm_label": "customblousemeasurements",
+      "id": "types_cart_customblousemeasurements"
     },
     {
       "label": "TailoringSelection",
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L14",
-      "id": "types_cart_tailoringselection",
       "community": 0,
-      "norm_label": "tailoringselection"
+      "norm_label": "tailoringselection",
+      "id": "types_cart_tailoringselection"
     },
     {
       "label": "CartItem",
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L22",
-      "id": "types_cart_cartitem",
       "community": 3,
-      "norm_label": "cartitem"
+      "norm_label": "cartitem",
+      "id": "types_cart_cartitem"
     },
     {
       "label": "ShippingTier",
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L36",
-      "id": "types_cart_shippingtier",
       "community": 2,
-      "norm_label": "shippingtier"
+      "norm_label": "shippingtier",
+      "id": "types_cart_shippingtier"
     },
     {
       "label": "ShippingAddress",
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L38",
-      "id": "types_cart_shippingaddress",
       "community": 2,
-      "norm_label": "shippingaddress"
+      "norm_label": "shippingaddress",
+      "id": "types_cart_shippingaddress"
     },
     {
       "label": "CartTotals",
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L51",
-      "id": "types_cart_carttotals",
       "community": 2,
-      "norm_label": "carttotals"
+      "norm_label": "carttotals",
+      "id": "types_cart_carttotals"
     },
     {
       "label": "catalog.ts",
       "file_type": "code",
       "source_file": "src/types/catalog.ts",
       "source_location": "L1",
-      "id": "src_types_catalog_ts",
       "community": 4,
-      "norm_label": "catalog.ts"
+      "norm_label": "catalog.ts",
+      "id": "src_types_catalog_ts"
     },
     {
       "label": "ProductCategory",
       "file_type": "code",
       "source_file": "src/types/catalog.ts",
       "source_location": "L1",
-      "id": "types_catalog_productcategory",
       "community": 4,
-      "norm_label": "productcategory"
+      "norm_label": "productcategory",
+      "id": "types_catalog_productcategory"
     },
     {
       "label": "ProductImageRole",
       "file_type": "code",
       "source_file": "src/types/catalog.ts",
       "source_location": "L7",
-      "id": "types_catalog_productimagerole",
       "community": 4,
-      "norm_label": "productimagerole"
+      "norm_label": "productimagerole",
+      "id": "types_catalog_productimagerole"
     },
     {
       "label": "AiDrapePose",
       "file_type": "code",
       "source_file": "src/types/catalog.ts",
       "source_location": "L13",
-      "id": "types_catalog_aidrapepose",
       "community": 4,
-      "norm_label": "aidrapepose"
+      "norm_label": "aidrapepose",
+      "id": "types_catalog_aidrapepose"
     },
     {
       "label": "ModelArchetype",
       "file_type": "code",
       "source_file": "src/types/catalog.ts",
       "source_location": "L19",
-      "id": "types_catalog_modelarchetype",
       "community": 4,
-      "norm_label": "modelarchetype"
+      "norm_label": "modelarchetype",
+      "id": "types_catalog_modelarchetype"
     },
     {
       "label": "KenzaeProduct",
       "file_type": "code",
       "source_file": "src/types/catalog.ts",
       "source_location": "L24",
-      "id": "types_catalog_kenzaeproduct",
       "community": 2,
-      "norm_label": "kenzaeproduct"
+      "norm_label": "kenzaeproduct",
+      "id": "types_catalog_kenzaeproduct"
     },
     {
       "label": "CatalogFilterState",
       "file_type": "code",
       "source_file": "src/types/catalog.ts",
       "source_location": "L45",
-      "id": "types_catalog_catalogfilterstate",
       "community": 5,
-      "norm_label": "catalogfilterstate"
+      "norm_label": "catalogfilterstate",
+      "id": "types_catalog_catalogfilterstate"
     },
     {
       "label": "StoreContactInfo",
       "file_type": "code",
       "source_file": "src/types/catalog.ts",
       "source_location": "L54",
-      "id": "types_catalog_storecontactinfo",
       "community": 0,
-      "norm_label": "storecontactinfo"
+      "norm_label": "storecontactinfo",
+      "id": "types_catalog_storecontactinfo"
     },
     {
       "label": "drape.ts",
       "file_type": "code",
       "source_file": "src/types/drape.ts",
       "source_location": "L1",
-      "id": "src_types_drape_ts",
       "community": 4,
-      "norm_label": "drape.ts"
+      "norm_label": "drape.ts",
+      "id": "src_types_drape_ts"
     },
     {
       "label": "GeneratedLook",
       "file_type": "code",
       "source_file": "src/types/drape.ts",
       "source_location": "L3",
-      "id": "types_drape_generatedlook",
       "community": 4,
-      "norm_label": "generatedlook"
+      "norm_label": "generatedlook",
+      "id": "types_drape_generatedlook"
     },
     {
       "label": "MultiPoseDrapeResponse",
       "file_type": "code",
       "source_file": "src/types/drape.ts",
       "source_location": "L13",
-      "id": "types_drape_multiposedraperesponse",
       "community": 4,
-      "norm_label": "multiposedraperesponse"
+      "norm_label": "multiposedraperesponse",
+      "id": "types_drape_multiposedraperesponse"
     },
     {
       "label": "orders.ts",
       "file_type": "code",
       "source_file": "src/types/orders.ts",
       "source_location": "L1",
-      "id": "src_types_orders_ts",
       "community": 3,
-      "norm_label": "orders.ts"
+      "norm_label": "orders.ts",
+      "id": "src_types_orders_ts"
     },
     {
       "label": "PaymentMethod",
       "file_type": "code",
       "source_file": "src/types/orders.ts",
       "source_location": "L3",
-      "id": "types_orders_paymentmethod",
       "community": 3,
-      "norm_label": "paymentmethod"
+      "norm_label": "paymentmethod",
+      "id": "types_orders_paymentmethod"
     },
     {
       "label": "PaymentStatus",
       "file_type": "code",
       "source_file": "src/types/orders.ts",
       "source_location": "L4",
-      "id": "types_orders_paymentstatus",
       "community": 3,
-      "norm_label": "paymentstatus"
+      "norm_label": "paymentstatus",
+      "id": "types_orders_paymentstatus"
     },
     {
       "label": "FulfillmentStatus",
       "file_type": "code",
       "source_file": "src/types/orders.ts",
       "source_location": "L6",
-      "id": "types_orders_fulfillmentstatus",
       "community": 3,
-      "norm_label": "fulfillmentstatus"
+      "norm_label": "fulfillmentstatus",
+      "id": "types_orders_fulfillmentstatus"
     },
     {
       "label": "CourierPartner",
       "file_type": "code",
       "source_file": "src/types/orders.ts",
       "source_location": "L14",
-      "id": "types_orders_courierpartner",
       "community": 3,
-      "norm_label": "courierpartner"
+      "norm_label": "courierpartner",
+      "id": "types_orders_courierpartner"
     },
     {
       "label": "TaxBreakdown",
       "file_type": "code",
       "source_file": "src/types/orders.ts",
       "source_location": "L25",
-      "id": "types_orders_taxbreakdown",
       "community": 3,
-      "norm_label": "taxbreakdown"
+      "norm_label": "taxbreakdown",
+      "id": "types_orders_taxbreakdown"
     },
     {
       "label": "BoutiqueOrder",
       "file_type": "code",
       "source_file": "src/types/orders.ts",
       "source_location": "L37",
-      "id": "types_orders_boutiqueorder",
       "community": 3,
-      "norm_label": "boutiqueorder"
+      "norm_label": "boutiqueorder",
+      "id": "types_orders_boutiqueorder"
     },
     {
       "label": "courierTracking.ts",
       "file_type": "code",
       "source_file": "src/utils/courierTracking.ts",
       "source_location": "L1",
-      "id": "src_utils_couriertracking_ts",
       "community": 3,
-      "norm_label": "couriertracking.ts"
+      "norm_label": "couriertracking.ts",
+      "id": "src_utils_couriertracking_ts"
     },
     {
       "label": "getCleanPhoneNumber()",
       "file_type": "code",
       "source_file": "src/utils/courierTracking.ts",
       "source_location": "L5",
-      "id": "utils_couriertracking_getcleanphonenumber",
       "community": 3,
-      "norm_label": "getcleanphonenumber()"
+      "norm_label": "getcleanphonenumber()",
+      "id": "utils_couriertracking_getcleanphonenumber"
     },
     {
       "label": "generateTrackingUrl()",
       "file_type": "code",
       "source_file": "src/utils/courierTracking.ts",
       "source_location": "L15",
-      "id": "utils_couriertracking_generatetrackingurl",
       "community": 3,
-      "norm_label": "generatetrackingurl()"
+      "norm_label": "generatetrackingurl()",
+      "id": "utils_couriertracking_generatetrackingurl"
     },
     {
       "label": "generateDispatchWhatsAppUrl()",
       "file_type": "code",
       "source_file": "src/utils/courierTracking.ts",
       "source_location": "L40",
-      "id": "utils_couriertracking_generatedispatchwhatsappurl",
       "community": 3,
-      "norm_label": "generatedispatchwhatsappurl()"
+      "norm_label": "generatedispatchwhatsappurl()",
+      "id": "utils_couriertracking_generatedispatchwhatsappurl"
     },
     {
       "label": "generateBoutiqueOwnerOrderAlertWhatsAppUrl()",
       "file_type": "code",
       "source_file": "src/utils/courierTracking.ts",
       "source_location": "L79",
-      "id": "utils_couriertracking_generateboutiqueownerorderalertwhatsappurl",
       "community": 3,
-      "norm_label": "generateboutiqueownerorderalertwhatsappurl()"
+      "norm_label": "generateboutiqueownerorderalertwhatsappurl()",
+      "id": "utils_couriertracking_generateboutiqueownerorderalertwhatsappurl"
     },
     {
       "label": "task_plan.md",
       "file_type": "document",
       "source_file": "task_plan.md",
       "source_location": "L1",
-      "id": "task_plan_md",
       "community": 16,
-      "norm_label": "task_plan.md"
+      "norm_label": "task_plan.md",
+      "id": "task_plan_md"
     },
     {
       "label": "Task Plan: Kenzae Boutique Digital Catalog (Mulanthuruthy)",
       "file_type": "document",
       "source_file": "task_plan.md",
       "source_location": "L1",
-      "id": "kenzae_task_plan_task_plan_kenzae_boutique_digital_catalog_mulanthuruthy",
       "community": 16,
-      "norm_label": "task plan: kenzae boutique digital catalog (mulanthuruthy)"
+      "norm_label": "task plan: kenzae boutique digital catalog (mulanthuruthy)",
+      "id": "kenzae_task_plan_task_plan_kenzae_boutique_digital_catalog_mulanthuruthy"
     },
     {
       "label": "\ud83d\udfe2 Phase 0: Blueprint & Memory Initialization",
       "file_type": "document",
       "source_file": "task_plan.md",
       "source_location": "L9",
-      "id": "kenzae_task_plan_phase_0_blueprint_memory_initialization",
       "community": 16,
-      "norm_label": "\ud83d\udfe2 phase 0: blueprint & memory initialization"
+      "norm_label": "\ud83d\udfe2 phase 0: blueprint & memory initialization",
+      "id": "kenzae_task_plan_phase_0_blueprint_memory_initialization"
     },
     {
       "label": "\ud83d\udfe1 Phase 1: Foundation & Project Tooling Setup (Blueprint)",
       "file_type": "document",
       "source_file": "task_plan.md",
       "source_location": "L18",
-      "id": "kenzae_task_plan_phase_1_foundation_project_tooling_setup_blueprint",
       "community": 16,
-      "norm_label": "\ud83d\udfe1 phase 1: foundation & project tooling setup (blueprint)"
+      "norm_label": "\ud83d\udfe1 phase 1: foundation & project tooling setup (blueprint)",
+      "id": "kenzae_task_plan_phase_1_foundation_project_tooling_setup_blueprint"
     },
     {
       "label": "\ud83d\udfe0 Phase 2: Data Schema, Catalog Source of Truth & Integrations (Link)",
       "file_type": "document",
       "source_file": "task_plan.md",
       "source_location": "L31",
-      "id": "kenzae_task_plan_phase_2_data_schema_catalog_source_of_truth_integrations_link",
       "community": 16,
-      "norm_label": "\ud83d\udfe0 phase 2: data schema, catalog source of truth & integrations (link)"
+      "norm_label": "\ud83d\udfe0 phase 2: data schema, catalog source of truth & integrations (link)",
+      "id": "kenzae_task_plan_phase_2_data_schema_catalog_source_of_truth_integrations_link"
     },
     {
       "label": "\ud83d\udd35 Phase 3: Core Application Architecture (Architect)",
       "file_type": "document",
       "source_file": "task_plan.md",
       "source_location": "L45",
-      "id": "kenzae_task_plan_phase_3_core_application_architecture_architect",
       "community": 16,
-      "norm_label": "\ud83d\udd35 phase 3: core application architecture (architect)"
+      "norm_label": "\ud83d\udd35 phase 3: core application architecture (architect)",
+      "id": "kenzae_task_plan_phase_3_core_application_architecture_architect"
     },
     {
       "label": "\ud83d\udfe3 Phase 4: Editorial Styling & Mobile-First Polish (Stylize)",
       "file_type": "document",
       "source_file": "task_plan.md",
       "source_location": "L62",
-      "id": "kenzae_task_plan_phase_4_editorial_styling_mobile_first_polish_stylize",
       "community": 16,
-      "norm_label": "\ud83d\udfe3 phase 4: editorial styling & mobile-first polish (stylize)"
+      "norm_label": "\ud83d\udfe3 phase 4: editorial styling & mobile-first polish (stylize)",
+      "id": "kenzae_task_plan_phase_4_editorial_styling_mobile_first_polish_stylize"
     },
     {
       "label": "\ud83d\udd34 Phase 5: Triggers, Touchpoints & Customer Workflows (Trigger)",
       "file_type": "document",
       "source_file": "task_plan.md",
       "source_location": "L71",
-      "id": "kenzae_task_plan_phase_5_triggers_touchpoints_customer_workflows_trigger",
       "community": 16,
-      "norm_label": "\ud83d\udd34 phase 5: triggers, touchpoints & customer workflows (trigger)"
+      "norm_label": "\ud83d\udd34 phase 5: triggers, touchpoints & customer workflows (trigger)",
+      "id": "kenzae_task_plan_phase_5_triggers_touchpoints_customer_workflows_trigger"
     },
     {
       "label": "\u26aa Phase 6: Verification, Testing & Production Build (Deliver)",
       "file_type": "document",
       "source_file": "task_plan.md",
       "source_location": "L80",
-      "id": "kenzae_task_plan_phase_6_verification_testing_production_build_deliver",
       "community": 16,
-      "norm_label": "\u26aa phase 6: verification, testing & production build (deliver)"
+      "norm_label": "\u26aa phase 6: verification, testing & production build (deliver)",
+      "id": "kenzae_task_plan_phase_6_verification_testing_production_build_deliver"
     },
     {
       "label": "\ud83c\udf0d Sprint 3: NRI & Diaspora Globalization (High Basket Value)",
       "file_type": "document",
       "source_file": "task_plan.md",
       "source_location": "L90",
-      "id": "kenzae_task_plan_sprint_3_nri_diaspora_globalization_high_basket_value",
       "community": 16,
-      "norm_label": "\ud83c\udf0d sprint 3: nri & diaspora globalization (high basket value)"
+      "norm_label": "\ud83c\udf0d sprint 3: nri & diaspora globalization (high basket value)",
+      "id": "kenzae_task_plan_sprint_3_nri_diaspora_globalization_high_basket_value"
     },
     {
       "label": "\u26a1 Phase 5 (Operations, Telemetry & Performance - Scaling Milestone)",
       "file_type": "document",
       "source_file": "task_plan.md",
       "source_location": "L99",
-      "id": "kenzae_task_plan_phase_5_operations_telemetry_performance_scaling_milestone",
       "community": 16,
-      "norm_label": "\u26a1 phase 5 (operations, telemetry & performance - scaling milestone)"
+      "norm_label": "\u26a1 phase 5 (operations, telemetry & performance - scaling milestone)",
+      "id": "kenzae_task_plan_phase_5_operations_telemetry_performance_scaling_milestone"
     },
     {
       "label": "tailwind.config.js",
@@ -5160,9 +5160,9 @@
       "source_file": "progress.md",
       "source_location": "L104",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "kenzae_progress_execution_timeline_milestones",
-      "target": "kenzae_progress_milestone_7_sprint_3_nri_diaspora_globalization_completed",
-      "confidence_score": 1.0
+      "target": "kenzae_progress_milestone_7_sprint_3_nri_diaspora_globalization_completed"
     },
     {
       "relation": "contains",
@@ -5170,9 +5170,9 @@
       "source_file": "progress.md",
       "source_location": "L116",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "kenzae_progress_execution_timeline_milestones",
-      "target": "kenzae_progress_milestone_8_phase_5_operations_telemetry_performance_completed",
-      "confidence_score": 1.0
+      "target": "kenzae_progress_milestone_8_phase_5_operations_telemetry_performance_completed"
     },
     {
       "relation": "contains",
@@ -5180,9 +5180,9 @@
       "source_file": "public/sw.js",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "public_sw_js",
-      "target": "public_sw_precache_assets",
-      "confidence_score": 1.0
+      "target": "public_sw_precache_assets"
     },
     {
       "relation": "contains",
@@ -5190,9 +5190,9 @@
       "source_file": "public/sw.js",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "public_sw_js",
-      "target": "public_sw_url",
-      "confidence_score": 1.0
+      "target": "public_sw_url"
     },
     {
       "relation": "contains",
@@ -5200,9 +5200,9 @@
       "source_file": "public/sw.js",
       "source_location": "L66",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "public_sw_js",
-      "target": "public_sw_fetchpromise",
-      "confidence_score": 1.0
+      "target": "public_sw_fetchpromise"
     },
     {
       "relation": "contains",
@@ -5210,9 +5210,9 @@
       "source_file": "public/sw.js",
       "source_location": "L87",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "public_sw_js",
-      "target": "public_sw_clone",
-      "confidence_score": 1.0
+      "target": "public_sw_clone"
     },
     {
       "relation": "contains",
@@ -5220,9 +5220,9 @@
       "source_file": "scripts/test-supabase-live.mjs",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_supabase_live_mjs",
-      "target": "scripts_test_supabase_live_filename",
-      "confidence_score": 1.0
+      "target": "scripts_test_supabase_live_filename"
     },
     {
       "relation": "contains",
@@ -5230,9 +5230,9 @@
       "source_file": "scripts/test-supabase-live.mjs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_supabase_live_mjs",
-      "target": "scripts_test_supabase_live_dirname",
-      "confidence_score": 1.0
+      "target": "scripts_test_supabase_live_dirname"
     },
     {
       "relation": "contains",
@@ -5240,9 +5240,9 @@
       "source_file": "scripts/test-supabase-live.mjs",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_supabase_live_mjs",
-      "target": "scripts_test_supabase_live_rootdir",
-      "confidence_score": 1.0
+      "target": "scripts_test_supabase_live_rootdir"
     },
     {
       "relation": "contains",
@@ -5250,9 +5250,9 @@
       "source_file": "scripts/test-supabase-live.mjs",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_supabase_live_mjs",
-      "target": "scripts_test_supabase_live_loadenvlocal",
-      "confidence_score": 1.0
+      "target": "scripts_test_supabase_live_loadenvlocal"
     },
     {
       "relation": "contains",
@@ -5260,9 +5260,9 @@
       "source_file": "scripts/test-supabase-live.mjs",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_supabase_live_mjs",
-      "target": "scripts_test_supabase_live_runconnectivitytest",
-      "confidence_score": 1.0
+      "target": "scripts_test_supabase_live_runconnectivitytest"
     },
     {
       "relation": "calls",
@@ -5271,9 +5271,9 @@
       "source_file": "scripts/test-supabase-live.mjs",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_supabase_live_runconnectivitytest",
-      "target": "scripts_test_supabase_live_loadenvlocal",
-      "confidence_score": 1.0
+      "target": "scripts_test_supabase_live_loadenvlocal"
     },
     {
       "relation": "contains",
@@ -5551,9 +5551,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_filename",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_filename"
     },
     {
       "relation": "contains",
@@ -5561,9 +5561,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_dirname",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_dirname"
     },
     {
       "relation": "contains",
@@ -5571,9 +5571,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_rootdir",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_rootdir"
     },
     {
       "relation": "contains",
@@ -5581,9 +5581,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_assert",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_assert"
     },
     {
       "relation": "contains",
@@ -5591,9 +5591,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_currencyservicepath",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_currencyservicepath"
     },
     {
       "relation": "contains",
@@ -5601,9 +5601,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_currencycode",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_currencycode"
     },
     {
       "relation": "contains",
@@ -5611,9 +5611,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_mockrates",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_mockrates"
     },
     {
       "relation": "contains",
@@ -5621,9 +5621,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_convertedaed",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_convertedaed"
     },
     {
       "relation": "contains",
@@ -5631,9 +5631,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_convertedusd",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_convertedusd"
     },
     {
       "relation": "contains",
@@ -5641,9 +5641,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_countriespath",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_countriespath"
     },
     {
       "relation": "contains",
@@ -5651,9 +5651,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_countriescode",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_countriescode"
     },
     {
       "relation": "contains",
@@ -5661,9 +5661,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L67",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_manifestpath",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_manifestpath"
     },
     {
       "relation": "contains",
@@ -5671,9 +5671,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L70",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_manifestcontent",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_manifestcontent"
     },
     {
       "relation": "contains",
@@ -5681,9 +5681,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L75",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_swpath",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_swpath"
     },
     {
       "relation": "contains",
@@ -5691,9 +5691,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L77",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_swcontent",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_swcontent"
     },
     {
       "relation": "contains",
@@ -5701,9 +5701,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L81",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_indexhtml",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_indexhtml"
     },
     {
       "relation": "contains",
@@ -5711,9 +5711,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L90",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_telemetrypath",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_telemetrypath"
     },
     {
       "relation": "contains",
@@ -5721,9 +5721,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L93",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_telemetrycode",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_telemetrycode"
     },
     {
       "relation": "contains",
@@ -5731,9 +5731,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_requiredevents",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_requiredevents"
     },
     {
       "relation": "contains",
@@ -5741,9 +5741,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L113",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_courierpath",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_courierpath"
     },
     {
       "relation": "contains",
@@ -5751,9 +5751,9 @@
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L114",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_verify_sprint3_phase5_mjs",
-      "target": "scripts_verify_sprint3_phase5_couriercode",
-      "confidence_score": 1.0
+      "target": "scripts_verify_sprint3_phase5_couriercode"
     },
     {
       "relation": "imports_from",
@@ -5762,9 +5762,9 @@
       "source_file": "src/App.tsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_tsx",
-      "target": "src_context_currencycontext_tsx",
-      "confidence_score": 1.0
+      "target": "src_context_currencycontext_tsx"
     },
     {
       "relation": "imports",
@@ -5773,9 +5773,9 @@
       "source_file": "src/App.tsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_tsx",
-      "target": "context_currencycontext_currencyprovider",
-      "confidence_score": 1.0
+      "target": "context_currencycontext_currencyprovider"
     },
     {
       "relation": "imports_from",
@@ -6253,9 +6253,9 @@
       "source_file": "src/components/CurrencySwitcher.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_currencyswitcher_tsx",
-      "target": "src_context_currencycontext_tsx",
-      "confidence_score": 1.0
+      "target": "src_context_currencycontext_tsx"
     },
     {
       "relation": "imports",
@@ -6264,9 +6264,9 @@
       "source_file": "src/components/CurrencySwitcher.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_currencyswitcher_tsx",
-      "target": "context_currencycontext_usecurrency",
-      "confidence_score": 1.0
+      "target": "context_currencycontext_usecurrency"
     },
     {
       "relation": "imports_from",
@@ -6275,9 +6275,9 @@
       "source_file": "src/components/CurrencySwitcher.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_currencyswitcher_tsx",
-      "target": "src_services_currencyservice_ts",
-      "confidence_score": 1.0
+      "target": "src_services_currencyservice_ts"
     },
     {
       "relation": "imports",
@@ -6286,9 +6286,9 @@
       "source_file": "src/components/CurrencySwitcher.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_currencyswitcher_tsx",
-      "target": "services_currencyservice_currencycode",
-      "confidence_score": 1.0
+      "target": "services_currencyservice_currencycode"
     },
     {
       "relation": "contains",
@@ -6296,9 +6296,9 @@
       "source_file": "src/components/CurrencySwitcher.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_currencyswitcher_tsx",
-      "target": "components_currencyswitcher_currencyswitcherprops",
-      "confidence_score": 1.0
+      "target": "components_currencyswitcher_currencyswitcherprops"
     },
     {
       "relation": "contains",
@@ -6306,9 +6306,9 @@
       "source_file": "src/components/CurrencySwitcher.tsx",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_currencyswitcher_tsx",
-      "target": "components_currencyswitcher_currencyswitcher",
-      "confidence_score": 1.0
+      "target": "components_currencyswitcher_currencyswitcher"
     },
     {
       "relation": "imports_from",
@@ -6317,9 +6317,9 @@
       "source_file": "src/components/Navbar.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_navbar_tsx",
-      "target": "src_components_currencyswitcher_tsx",
-      "confidence_score": 1.0
+      "target": "src_components_currencyswitcher_tsx"
     },
     {
       "relation": "imports",
@@ -6328,9 +6328,9 @@
       "source_file": "src/components/Navbar.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_navbar_tsx",
-      "target": "components_currencyswitcher_currencyswitcher",
-      "confidence_score": 1.0
+      "target": "components_currencyswitcher_currencyswitcher"
     },
     {
       "relation": "calls",
@@ -6372,9 +6372,9 @@
       "source_file": "src/components/Hero.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_hero_tsx",
-      "target": "src_context_currencycontext_tsx",
-      "confidence_score": 1.0
+      "target": "src_context_currencycontext_tsx"
     },
     {
       "relation": "imports",
@@ -6383,9 +6383,9 @@
       "source_file": "src/components/Hero.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_hero_tsx",
-      "target": "context_currencycontext_usecurrency",
-      "confidence_score": 1.0
+      "target": "context_currencycontext_usecurrency"
     },
     {
       "relation": "imports",
@@ -6677,9 +6677,9 @@
       "source_file": "src/components/ProductCard.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_productcard_tsx",
-      "target": "src_context_currencycontext_tsx",
-      "confidence_score": 1.0
+      "target": "src_context_currencycontext_tsx"
     },
     {
       "relation": "imports",
@@ -6688,9 +6688,9 @@
       "source_file": "src/components/ProductCard.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_productcard_tsx",
-      "target": "context_currencycontext_usecurrency",
-      "confidence_score": 1.0
+      "target": "context_currencycontext_usecurrency"
     },
     {
       "relation": "imports_from",
@@ -6699,9 +6699,9 @@
       "source_file": "src/components/ProductCard.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_productcard_tsx",
-      "target": "src_services_telemetryservice_ts",
-      "confidence_score": 1.0
+      "target": "src_services_telemetryservice_ts"
     },
     {
       "relation": "imports",
@@ -6710,9 +6710,9 @@
       "source_file": "src/components/ProductCard.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_productcard_tsx",
-      "target": "services_telemetryservice_trackaddtowishlist",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_trackaddtowishlist"
     },
     {
       "relation": "imports",
@@ -6721,9 +6721,9 @@
       "source_file": "src/components/ProductCard.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_productcard_tsx",
-      "target": "services_telemetryservice_trackviewitem",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_trackviewitem"
     },
     {
       "relation": "contains",
@@ -6873,9 +6873,9 @@
       "source_file": "src/components/ProductModal.tsx",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_productmodal_tsx",
-      "target": "src_context_currencycontext_tsx",
-      "confidence_score": 1.0
+      "target": "src_context_currencycontext_tsx"
     },
     {
       "relation": "imports",
@@ -6884,9 +6884,9 @@
       "source_file": "src/components/ProductModal.tsx",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_productmodal_tsx",
-      "target": "context_currencycontext_usecurrency",
-      "confidence_score": 1.0
+      "target": "context_currencycontext_usecurrency"
     },
     {
       "relation": "imports_from",
@@ -6983,9 +6983,9 @@
       "source_file": "src/components/ProductModal.tsx",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_productmodal_tsx",
-      "target": "src_services_telemetryservice_ts",
-      "confidence_score": 1.0
+      "target": "src_services_telemetryservice_ts"
     },
     {
       "relation": "imports",
@@ -6994,9 +6994,9 @@
       "source_file": "src/components/ProductModal.tsx",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_productmodal_tsx",
-      "target": "services_telemetryservice_trackaddtocart",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_trackaddtocart"
     },
     {
       "relation": "imports",
@@ -7005,9 +7005,9 @@
       "source_file": "src/components/ProductModal.tsx",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_productmodal_tsx",
-      "target": "services_telemetryservice_trackwhatsappinquiry",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_trackwhatsappinquiry"
     },
     {
       "relation": "contains",
@@ -7136,9 +7136,9 @@
       "source_file": "src/components/cart/CartDrawer.tsx",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_cart_cartdrawer_tsx",
-      "target": "src_context_currencycontext_tsx",
-      "confidence_score": 1.0
+      "target": "src_context_currencycontext_tsx"
     },
     {
       "relation": "imports",
@@ -7147,9 +7147,9 @@
       "source_file": "src/components/cart/CartDrawer.tsx",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_cart_cartdrawer_tsx",
-      "target": "context_currencycontext_usecurrency",
-      "confidence_score": 1.0
+      "target": "context_currencycontext_usecurrency"
     },
     {
       "relation": "imports",
@@ -7299,9 +7299,9 @@
       "source_file": "src/components/cart/MobileCheckoutModal.tsx",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_cart_mobilecheckoutmodal_tsx",
-      "target": "src_context_currencycontext_tsx",
-      "confidence_score": 1.0
+      "target": "src_context_currencycontext_tsx"
     },
     {
       "relation": "imports",
@@ -7310,9 +7310,9 @@
       "source_file": "src/components/cart/MobileCheckoutModal.tsx",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_cart_mobilecheckoutmodal_tsx",
-      "target": "context_currencycontext_usecurrency",
-      "confidence_score": 1.0
+      "target": "context_currencycontext_usecurrency"
     },
     {
       "relation": "imports",
@@ -7376,9 +7376,9 @@
       "source_file": "src/components/cart/MobileCheckoutModal.tsx",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_cart_mobilecheckoutmodal_tsx",
-      "target": "src_data_countries_ts",
-      "confidence_score": 1.0
+      "target": "src_data_countries_ts"
     },
     {
       "relation": "imports",
@@ -7387,9 +7387,9 @@
       "source_file": "src/components/cart/MobileCheckoutModal.tsx",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_cart_mobilecheckoutmodal_tsx",
-      "target": "data_countries_supported_countries",
-      "confidence_score": 1.0
+      "target": "data_countries_supported_countries"
     },
     {
       "relation": "imports",
@@ -7398,9 +7398,9 @@
       "source_file": "src/components/cart/MobileCheckoutModal.tsx",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_cart_mobilecheckoutmodal_tsx",
-      "target": "data_countries_countryprofile",
-      "confidence_score": 1.0
+      "target": "data_countries_countryprofile"
     },
     {
       "relation": "imports_from",
@@ -7409,9 +7409,9 @@
       "source_file": "src/components/cart/MobileCheckoutModal.tsx",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_cart_mobilecheckoutmodal_tsx",
-      "target": "src_services_telemetryservice_ts",
-      "confidence_score": 1.0
+      "target": "src_services_telemetryservice_ts"
     },
     {
       "relation": "imports",
@@ -7420,9 +7420,9 @@
       "source_file": "src/components/cart/MobileCheckoutModal.tsx",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_cart_mobilecheckoutmodal_tsx",
-      "target": "services_telemetryservice_trackbegincheckout",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_trackbegincheckout"
     },
     {
       "relation": "imports",
@@ -7431,9 +7431,9 @@
       "source_file": "src/components/cart/MobileCheckoutModal.tsx",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_cart_mobilecheckoutmodal_tsx",
-      "target": "services_telemetryservice_trackpurchase",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_trackpurchase"
     },
     {
       "relation": "contains",
@@ -7572,9 +7572,9 @@
       "source_file": "src/components/catalog/WishlistDrawer.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_catalog_wishlistdrawer_tsx",
-      "target": "src_context_currencycontext_tsx",
-      "confidence_score": 1.0
+      "target": "src_context_currencycontext_tsx"
     },
     {
       "relation": "imports",
@@ -7583,9 +7583,9 @@
       "source_file": "src/components/catalog/WishlistDrawer.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_catalog_wishlistdrawer_tsx",
-      "target": "context_currencycontext_usecurrency",
-      "confidence_score": 1.0
+      "target": "context_currencycontext_usecurrency"
     },
     {
       "relation": "imports",
@@ -8126,9 +8126,9 @@
       "source_file": "src/context/CartContext.tsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_context_cartcontext_tsx",
-      "target": "types_cart_shippingtier",
-      "confidence_score": 1.0
+      "target": "types_cart_shippingtier"
     },
     {
       "relation": "imports_from",
@@ -8137,9 +8137,9 @@
       "source_file": "src/context/CartContext.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_context_cartcontext_tsx",
-      "target": "src_data_countries_ts",
-      "confidence_score": 1.0
+      "target": "src_data_countries_ts"
     },
     {
       "relation": "contains",
@@ -8752,9 +8752,9 @@
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_context_currencycontext_tsx",
-      "target": "src_services_currencyservice_ts",
-      "confidence_score": 1.0
+      "target": "src_services_currencyservice_ts"
     },
     {
       "relation": "imports",
@@ -8763,9 +8763,9 @@
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_context_currencycontext_tsx",
-      "target": "services_currencyservice_currencycode",
-      "confidence_score": 1.0
+      "target": "services_currencyservice_currencycode"
     },
     {
       "relation": "imports",
@@ -8774,9 +8774,9 @@
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_context_currencycontext_tsx",
-      "target": "services_currencyservice_currencyconfig",
-      "confidence_score": 1.0
+      "target": "services_currencyservice_currencyconfig"
     },
     {
       "relation": "imports",
@@ -8785,9 +8785,9 @@
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_context_currencycontext_tsx",
-      "target": "services_currencyservice_supported_currencies",
-      "confidence_score": 1.0
+      "target": "services_currencyservice_supported_currencies"
     },
     {
       "relation": "imports",
@@ -8796,9 +8796,9 @@
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_context_currencycontext_tsx",
-      "target": "services_currencyservice_formatlocalizedprice",
-      "confidence_score": 1.0
+      "target": "services_currencyservice_formatlocalizedprice"
     },
     {
       "relation": "imports",
@@ -8807,9 +8807,9 @@
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_context_currencycontext_tsx",
-      "target": "services_currencyservice_convertinrto",
-      "confidence_score": 1.0
+      "target": "services_currencyservice_convertinrto"
     },
     {
       "relation": "imports",
@@ -8818,9 +8818,9 @@
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_context_currencycontext_tsx",
-      "target": "services_currencyservice_refreshexchangerates",
-      "confidence_score": 1.0
+      "target": "services_currencyservice_refreshexchangerates"
     },
     {
       "relation": "contains",
@@ -8828,9 +8828,9 @@
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_context_currencycontext_tsx",
-      "target": "context_currencycontext_currencycontexttype",
-      "confidence_score": 1.0
+      "target": "context_currencycontext_currencycontexttype"
     },
     {
       "relation": "contains",
@@ -8838,9 +8838,9 @@
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_context_currencycontext_tsx",
-      "target": "context_currencycontext_currencycontext",
-      "confidence_score": 1.0
+      "target": "context_currencycontext_currencycontext"
     },
     {
       "relation": "contains",
@@ -8848,9 +8848,9 @@
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_context_currencycontext_tsx",
-      "target": "context_currencycontext_currencyprovider",
-      "confidence_score": 1.0
+      "target": "context_currencycontext_currencyprovider"
     },
     {
       "relation": "contains",
@@ -8858,9 +8858,9 @@
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L91",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_context_currencycontext_tsx",
-      "target": "context_currencycontext_usecurrency",
-      "confidence_score": 1.0
+      "target": "context_currencycontext_usecurrency"
     },
     {
       "relation": "imports_from",
@@ -9396,9 +9396,9 @@
       "source_file": "src/data/countries.ts",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_data_countries_ts",
-      "target": "data_countries_countryprofile",
-      "confidence_score": 1.0
+      "target": "data_countries_countryprofile"
     },
     {
       "relation": "contains",
@@ -9406,9 +9406,9 @@
       "source_file": "src/data/countries.ts",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_data_countries_ts",
-      "target": "data_countries_supported_countries",
-      "confidence_score": 1.0
+      "target": "data_countries_supported_countries"
     },
     {
       "relation": "imports_from",
@@ -9814,9 +9814,9 @@
       "source_file": "src/services/currencyService.ts",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_currencyservice_ts",
-      "target": "services_currencyservice_currencycode",
-      "confidence_score": 1.0
+      "target": "services_currencyservice_currencycode"
     },
     {
       "relation": "contains",
@@ -9824,9 +9824,9 @@
       "source_file": "src/services/currencyService.ts",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_currencyservice_ts",
-      "target": "services_currencyservice_currencyconfig",
-      "confidence_score": 1.0
+      "target": "services_currencyservice_currencyconfig"
     },
     {
       "relation": "contains",
@@ -9834,9 +9834,9 @@
       "source_file": "src/services/currencyService.ts",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_currencyservice_ts",
-      "target": "services_currencyservice_supported_currencies",
-      "confidence_score": 1.0
+      "target": "services_currencyservice_supported_currencies"
     },
     {
       "relation": "contains",
@@ -9844,9 +9844,9 @@
       "source_file": "src/services/currencyService.ts",
       "source_location": "L97",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_currencyservice_ts",
-      "target": "services_currencyservice_runtimerates",
-      "confidence_score": 1.0
+      "target": "services_currencyservice_runtimerates"
     },
     {
       "relation": "contains",
@@ -9854,9 +9854,9 @@
       "source_file": "src/services/currencyService.ts",
       "source_location": "L108",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_currencyservice_ts",
-      "target": "services_currencyservice_refreshexchangerates",
-      "confidence_score": 1.0
+      "target": "services_currencyservice_refreshexchangerates"
     },
     {
       "relation": "contains",
@@ -9864,9 +9864,9 @@
       "source_file": "src/services/currencyService.ts",
       "source_location": "L152",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_currencyservice_ts",
-      "target": "services_currencyservice_convertinrto",
-      "confidence_score": 1.0
+      "target": "services_currencyservice_convertinrto"
     },
     {
       "relation": "contains",
@@ -9874,9 +9874,9 @@
       "source_file": "src/services/currencyService.ts",
       "source_location": "L164",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_currencyservice_ts",
-      "target": "services_currencyservice_formatlocalizedprice",
-      "confidence_score": 1.0
+      "target": "services_currencyservice_formatlocalizedprice"
     },
     {
       "relation": "imports_from",
@@ -9885,9 +9885,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "src_services_currencyservice_ts",
-      "confidence_score": 1.0
+      "target": "src_services_currencyservice_ts"
     },
     {
       "relation": "imports",
@@ -9896,9 +9896,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "services_currencyservice_currencycode",
-      "confidence_score": 1.0
+      "target": "services_currencyservice_currencycode"
     },
     {
       "relation": "calls",
@@ -9907,9 +9907,9 @@
       "source_file": "src/services/currencyService.ts",
       "source_location": "L179",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_currencyservice_formatlocalizedprice",
-      "target": "services_currencyservice_convertinrto",
-      "confidence_score": 1.0
+      "target": "services_currencyservice_convertinrto"
     },
     {
       "relation": "imports_from",
@@ -10365,9 +10365,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "src_types_catalog_ts",
-      "confidence_score": 1.0
+      "target": "src_types_catalog_ts"
     },
     {
       "relation": "imports",
@@ -10376,9 +10376,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "types_catalog_kenzaeproduct",
-      "confidence_score": 1.0
+      "target": "types_catalog_kenzaeproduct"
     },
     {
       "relation": "imports_from",
@@ -10387,9 +10387,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "src_types_cart_ts",
-      "confidence_score": 1.0
+      "target": "src_types_cart_ts"
     },
     {
       "relation": "imports",
@@ -10398,9 +10398,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "types_cart_cartitem",
-      "confidence_score": 1.0
+      "target": "types_cart_cartitem"
     },
     {
       "relation": "imports",
@@ -10409,9 +10409,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "types_cart_carttotals",
-      "confidence_score": 1.0
+      "target": "types_cart_carttotals"
     },
     {
       "relation": "imports_from",
@@ -10420,9 +10420,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "src_types_orders_ts",
-      "confidence_score": 1.0
+      "target": "src_types_orders_ts"
     },
     {
       "relation": "imports",
@@ -10431,9 +10431,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "types_orders_boutiqueorder",
-      "confidence_score": 1.0
+      "target": "types_orders_boutiqueorder"
     },
     {
       "relation": "contains",
@@ -10441,9 +10441,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "services_telemetryservice_window",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_window"
     },
     {
       "relation": "contains",
@@ -10451,9 +10451,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "services_telemetryservice_telemetryeventname",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_telemetryeventname"
     },
     {
       "relation": "contains",
@@ -10461,9 +10461,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "services_telemetryservice_telemetrypayload",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_telemetrypayload"
     },
     {
       "relation": "contains",
@@ -10471,9 +10471,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "services_telemetryservice_telemetrylog",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_telemetrylog"
     },
     {
       "relation": "contains",
@@ -10481,9 +10481,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "services_telemetryservice_recordevent",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_recordevent"
     },
     {
       "relation": "contains",
@@ -10491,9 +10491,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L90",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "services_telemetryservice_trackviewitemlist",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_trackviewitemlist"
     },
     {
       "relation": "contains",
@@ -10501,9 +10501,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L100",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "services_telemetryservice_trackviewitem",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_trackviewitem"
     },
     {
       "relation": "contains",
@@ -10511,9 +10511,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L119",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "services_telemetryservice_trackaddtowishlist",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_trackaddtowishlist"
     },
     {
       "relation": "contains",
@@ -10521,9 +10521,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L137",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "services_telemetryservice_trackaddtocart",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_trackaddtocart"
     },
     {
       "relation": "contains",
@@ -10531,9 +10531,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L157",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "services_telemetryservice_trackbegincheckout",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_trackbegincheckout"
     },
     {
       "relation": "contains",
@@ -10541,9 +10541,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L179",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "services_telemetryservice_trackwhatsappinquiry",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_trackwhatsappinquiry"
     },
     {
       "relation": "contains",
@@ -10551,9 +10551,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L194",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_services_telemetryservice_ts",
-      "target": "services_telemetryservice_trackpurchase",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_trackpurchase"
     },
     {
       "relation": "calls",
@@ -10562,9 +10562,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L91",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_telemetryservice_trackviewitemlist",
-      "target": "services_telemetryservice_recordevent",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_recordevent"
     },
     {
       "relation": "calls",
@@ -10573,9 +10573,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L101",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_telemetryservice_trackviewitem",
-      "target": "services_telemetryservice_recordevent",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_recordevent"
     },
     {
       "relation": "calls",
@@ -10584,9 +10584,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L120",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_telemetryservice_trackaddtowishlist",
-      "target": "services_telemetryservice_recordevent",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_recordevent"
     },
     {
       "relation": "calls",
@@ -10595,9 +10595,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L138",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_telemetryservice_trackaddtocart",
-      "target": "services_telemetryservice_recordevent",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_recordevent"
     },
     {
       "relation": "calls",
@@ -10606,9 +10606,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L162",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_telemetryservice_trackbegincheckout",
-      "target": "services_telemetryservice_recordevent",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_recordevent"
     },
     {
       "relation": "calls",
@@ -10617,9 +10617,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L183",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_telemetryservice_trackwhatsappinquiry",
-      "target": "services_telemetryservice_recordevent",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_recordevent"
     },
     {
       "relation": "calls",
@@ -10628,9 +10628,9 @@
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L195",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_telemetryservice_trackpurchase",
-      "target": "services_telemetryservice_recordevent",
-      "confidence_score": 1.0
+      "target": "services_telemetryservice_recordevent"
     },
     {
       "relation": "contains",
@@ -10688,9 +10688,9 @@
       "source_file": "src/types/cart.ts",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_types_cart_ts",
-      "target": "types_cart_shippingtier",
-      "confidence_score": 1.0
+      "target": "types_cart_shippingtier"
     },
     {
       "relation": "contains",
@@ -11692,9 +11692,9 @@
       "source_file": "task_plan.md",
       "source_location": "L90",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "kenzae_task_plan_task_plan_kenzae_boutique_digital_catalog_mulanthuruthy",
-      "target": "kenzae_task_plan_sprint_3_nri_diaspora_globalization_high_basket_value",
-      "confidence_score": 1.0
+      "target": "kenzae_task_plan_sprint_3_nri_diaspora_globalization_high_basket_value"
     },
     {
       "relation": "contains",
@@ -11702,9 +11702,9 @@
       "source_file": "task_plan.md",
       "source_location": "L99",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "kenzae_task_plan_task_plan_kenzae_boutique_digital_catalog_mulanthuruthy",
-      "target": "kenzae_task_plan_phase_5_operations_telemetry_performance_scaling_milestone",
-      "confidence_score": 1.0
+      "target": "kenzae_task_plan_phase_5_operations_telemetry_performance_scaling_milestone"
     },
     {
       "relation": "contains",
@@ -13979,5 +13979,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "06313965443b73a077e3063ae107b69a37055743"
+  "built_at_commit": "dfd10417a09d75e3bf39234fdb8e805d40d036bb"
 }

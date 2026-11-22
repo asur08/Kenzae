@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "node scripts/verify-catalog.js && node scripts/verify-sprint1.js && node --experimental-strip-types scripts/verify-phase2.js",
+    "test": "node scripts/verify-catalog.js && node scripts/verify-sprint1.js && node --experimental-strip-types scripts/verify-phase2.js && node scripts/verify-drape-api.js && node scripts/verify-sprint3-phase5.mjs",
     "test:sprint1": "node scripts/verify-sprint1.js",
     "test:phase2": "node --experimental-strip-types scripts/verify-phase2.js"
   },

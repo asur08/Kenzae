@@ -50,7 +50,9 @@ export function verifySignedToken(token: string, secret: string): { valid: boole
 }
 
 export async function authenticateStaff(
-  body: StaffLoginRequest
+  body: StaffLoginRequest,
+  customSecret?: string,
+  customPasscode?: string
 ): Promise<{ status: number; body: StaffLoginResponse }> {
   const passcode = (body?.passcode || '').trim();
 
@@ -61,9 +63,12 @@ export async function authenticateStaff(
     };
   }
 
+  const validPasscode = customPasscode || process.env.STAFF_PASSCODE || 'kenzae2026';
+  const secret = customSecret || process.env.STAFF_JWT_SECRET || 'kenzae-boutique-secret-key-mulanthuruthy-2026';
+
   // Timing-safe comparison to prevent side-channel timing attacks
   const inputBuffer = Buffer.from(passcode);
-  const targetBuffer = Buffer.from(VALID_PASSCODE);
+  const targetBuffer = Buffer.from(validPasscode);
 
   const isValid =
     inputBuffer.length === targetBuffer.length &&
@@ -87,7 +92,7 @@ export async function authenticateStaff(
       issuedAt: Date.now(),
       expiresAt,
     },
-    JWT_SECRET
+    secret
   );
 
   return {

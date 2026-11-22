@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
@@ -32,7 +32,7 @@ jobs:
         run: npx tsc --noEmit
 
   catalog-validate:
-    name: Validate Product Catalog
+    name: Validate Product Catalog & Verification Suites
     runs-on: ubuntu-latest
 
     steps:
@@ -47,22 +47,22 @@ jobs:
       - name: Validate catalog data schema
         run: python3 tools/validate_catalog_data.py
 
-      - name: Setup Node.js (for JS catalog verifier)
+      - name: Setup Node.js (for verification suites)
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Run catalog verifier
-        run: node scripts/verify-catalog.js
+      - name: Run verification test suite
+        run: npm test
 
   build-check:
     name: Build Check
     runs-on: ubuntu-latest
-    needs: [lint-typecheck]
+    needs: [lint-typecheck, catalog-validate]
 
     steps:
       - name: Checkout code
@@ -71,7 +71,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies

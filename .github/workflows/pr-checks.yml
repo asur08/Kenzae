@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
@@ -35,7 +35,7 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| File | Size |" >> $GITHUB_STEP_SUMMARY
           echo "|------|------|" >> $GITHUB_STEP_SUMMARY
-          find dist/assets -type f -name "*.js" -o -name "*.css" | sort | while read file; do
+          find dist/assets -type f \( -name "*.js" -o -name "*.css" \) | sort | while read file; do
             size=$(du -sh "$file" | cut -f1)
             basename=$(basename "$file")
             echo "| \`$basename\` | $size |" >> $GITHUB_STEP_SUMMARY
@@ -91,6 +91,7 @@ jobs:
     if: github.event.action == 'opened'
     permissions:
       pull-requests: write
+      issues: write
 
     steps:
       - name: Checkout code

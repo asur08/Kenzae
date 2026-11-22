@@ -21,7 +21,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
@@ -63,8 +63,8 @@ jobs:
           # Check for common secret patterns (not in .env.example or .gitignore)
           FOUND=0
           for pattern in "WHATSAPP_TOKEN" "ghp_" "sk-" "AIza" "-----BEGIN RSA"; do
-            if git diff HEAD~1..HEAD 2>/dev/null | grep -qE "$pattern" || \
-               grep -rE "$pattern" src/ data/ scripts/ 2>/dev/null | grep -v ".example" | grep -qv "//"; then
+            if git diff HEAD~1..HEAD 2>/dev/null | grep -qE -e "$pattern" || \
+               grep -rE -e "$pattern" src/ data/ scripts/ 2>/dev/null | grep -v ".example" | grep -qv "//"; then
               echo "⚠️  Potential secret pattern found: $pattern"
               FOUND=1
             fi
