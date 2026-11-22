@@ -30,7 +30,7 @@ interface MobileCheckoutModalProps {
 export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen, onClose }) => {
   const { cartItems, totals, shippingAddress, setShippingAddress, clearCart } = useCart();
   const { createOrder } = useOrders();
-  const { products, updateProductStock } = useCatalog();
+  const { recordPurchase } = useCatalog();
   const { currentCurrency, formatPrice } = useCurrency();
 
   const [form, setForm] = useState(shippingAddress);
@@ -131,14 +131,9 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
         // 2. Track purchase telemetry
         trackPurchase(newOrder, currentCurrency);
 
-        // 3. Atomically deduct purchased quantities from catalog inventory
+        // 3. Atomically deduct purchased quantities from catalog inventory via RPC
         cartItems.forEach((cartItem) => {
-          const match = products.find((p) => p.id === cartItem.productId);
-          if (match) {
-            const currentQty = match.stockQuantity ?? (match.in_stock ? 1 : 0);
-            const remaining = Math.max(0, currentQty - cartItem.quantity);
-            updateProductStock(cartItem.productId, remaining);
-          }
+          recordPurchase(cartItem.productId, cartItem.quantity);
         });
 
         // 4. Clear Bag

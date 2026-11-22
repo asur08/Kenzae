@@ -14,7 +14,7 @@ export default async function handler(
   const token = headerToken || req.body?.token;
 
   if (!token) {
-    res.status(401).json({ success: false, valid: false, error: 'NO_TOKEN_PROVIDED' });
+    res.status(200).json({ success: true, valid: false, error: 'NO_TOKEN_PROVIDED' });
     return;
   }
 
@@ -22,7 +22,7 @@ export default async function handler(
   const verification = verifySignedToken(token, secret);
 
   if (!verification.valid) {
-    res.status(401).json({ success: false, valid: false, error: 'INVALID_OR_EXPIRED_TOKEN' });
+    res.status(200).json({ success: true, valid: false, error: 'INVALID_OR_EXPIRED_TOKEN' });
     return;
   }
 

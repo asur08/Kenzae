@@ -39,6 +39,12 @@ export const StaffAuthProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     async function checkToken() {
       if (!token) return;
 
+      const isStaffRoute =
+        typeof window !== 'undefined' &&
+        (window.location.pathname.startsWith('/staff') || window.location.hash.includes('staff'));
+
+      if (!isStaffRoute) return;
+
       // 1. If Supabase configured, check Supabase session
       if (isSupabaseConfigured() && supabase) {
         const { data } = await supabase.auth.getSession();
@@ -61,7 +67,16 @@ export const StaffAuthProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 
         if (res.ok) {
           const body = await res.json();
-          if (isMounted) setIsAuthenticated(Boolean(body.valid));
+          if (isMounted) {
+            if (body.valid) {
+              setIsAuthenticated(true);
+            } else {
+              setIsAuthenticated(false);
+              setToken(null);
+              sessionStorage.removeItem(STORAGE_KEY_TOKEN_SESSION);
+              localStorage.removeItem(STORAGE_KEY_TOKEN_LOCAL);
+            }
+          }
         } else if (res.status === 401) {
           // Token expired or invalid
           if (isMounted) {

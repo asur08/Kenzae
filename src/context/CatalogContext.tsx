@@ -42,7 +42,7 @@ interface CatalogContextType {
   isManagerOpen: boolean;
   setIsManagerOpen: (isOpen: boolean) => void;
   addProduct: (product: KenzaeProduct) => { success: boolean; error?: string };
-  updateProduct: (product: KenzaeProduct) => { success: boolean; error?: string };
+  updateProduct: (product: KenzaeProduct, syncRemote?: boolean) => { success: boolean; error?: string };
   updateProductPrice: (id: string, newPrice: number) => { success: boolean; error?: string };
   updateProductStock: (id: string, newStock: number) => { success: boolean; error?: string };
   recordPurchase: (id: string, count?: number) => { success: boolean; remainingStock: number; error?: string };
@@ -271,7 +271,7 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
     return { success: true };
   };
 
-  const updateProduct = (updatedProduct: KenzaeProduct) => {
+  const updateProduct = (updatedProduct: KenzaeProduct, syncRemote: boolean = true) => {
     const val = validateProduct(updatedProduct);
     if (!val.isValid) {
       return { success: false, error: val.error };
@@ -287,7 +287,9 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
     if (selectedProduct && selectedProduct.id === finalProduct.id) {
       setSelectedProduct(finalProduct);
     }
-    saveRemoteProduct(finalProduct).catch((err) => console.warn('[Supabase] Update product sync warning:', err));
+    if (syncRemote) {
+      saveRemoteProduct(finalProduct).catch((err) => console.warn('[Supabase] Update product sync warning:', err));
+    }
     return { success: true };
   };
 
@@ -306,7 +308,7 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
       in_stock: roundedQty > 0,
     };
     updateRemoteProductStock(id, roundedQty).catch((err) => console.warn('[Supabase] Stock sync warning:', err));
-    return updateProduct(updatedProd);
+    return updateProduct(updatedProd, false);
   };
 
   const recordPurchase = (id: string, count = 1) => {
@@ -348,7 +350,7 @@ export const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ child
       price: rounded,
     };
     updateRemoteProductPrice(id, rounded).catch((err) => console.warn('[Supabase] Price sync warning:', err));
-    return updateProduct(updatedProd);
+    return updateProduct(updatedProd, false);
   };
 
   const renameTag = (oldTag: string, newTag: string) => {

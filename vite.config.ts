@@ -113,9 +113,9 @@ function kenzaeDevApiMiddleware(mode: string): Plugin {
             const token = headerToken || bodyToken;
 
             if (!token) {
-              res.statusCode = 401;
+              res.statusCode = 200;
               res.setHeader('Content-Type', 'application/json');
-              res.end(JSON.stringify({ success: false, valid: false, error: 'NO_TOKEN_PROVIDED' }));
+              res.end(JSON.stringify({ success: true, valid: false, error: 'NO_TOKEN_PROVIDED' }));
               return;
             }
 
@@ -126,9 +126,9 @@ function kenzaeDevApiMiddleware(mode: string): Plugin {
             const verification = verifySignedToken(token, secret);
 
             if (!verification.valid) {
-              res.statusCode = 401;
+              res.statusCode = 200;
               res.setHeader('Content-Type', 'application/json');
-              res.end(JSON.stringify({ success: false, valid: false, error: 'INVALID_OR_EXPIRED_TOKEN' }));
+              res.end(JSON.stringify({ success: true, valid: false, error: 'INVALID_OR_EXPIRED_TOKEN' }));
               return;
             }
 
