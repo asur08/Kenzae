@@ -4,8 +4,8 @@
     "hash": "b667169f8ca82f721d0b590a98584516"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/vite.config.ts": {
-    "mtime": 1794496165.783383,
-    "hash": "8d50d4a1a68648669fb8410542fc0379"
+    "mtime": 1795251162.8078535,
+    "hash": "15861f905a2333d3b726cbea27cd1898"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/postcss.config.js": {
     "mtime": 1791857004.2236037,
@@ -80,8 +80,8 @@
     "hash": "4fff3df1fcdd262530ceafb1ade3f0db"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/api/auth/verify-staff.ts": {
-    "mtime": 1795242656.7930584,
-    "hash": "3714b7b7ffa9e0905db00d604c1157c0"
+    "mtime": 1795251152.8324404,
+    "hash": "6088dcf411766726ccf459e0628b83ef"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/App.tsx": {
     "mtime": 1795248810.6278377,
@@ -112,8 +112,8 @@
     "hash": "6c021cd2c214ff6b4d14badaa6d9712c"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/context/StaffAuthContext.tsx": {
-    "mtime": 1795242701.2098346,
-    "hash": "11b2b80f79de473628f7c7f36236dcce"
+    "mtime": 1795250815.171225,
+    "hash": "304cdaa0879da2ea69766b5473156bce"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/context/CartContext.tsx": {
     "mtime": 1795248796.4739156,
@@ -156,8 +156,8 @@
     "hash": "1d9efdfcf2a992978f353910b88cbd5f"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/utils/razorpay.ts": {
-    "mtime": 1794969631.6881068,
-    "hash": "4867c2d1843cb4597d7b20a5859c9177"
+    "mtime": 1795350732.492331,
+    "hash": "8457e29f904fc2093092898883a63081"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/utils/imageProcessor.ts": {
     "mtime": 1794496005.4959302,
@@ -308,8 +308,8 @@
     "hash": "1d0136b4b88276cf74fed3ff4acdcc7f"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/index.html": {
-    "mtime": 1795249009.4791193,
-    "hash": "d19ce163bf8357636b0a3d4e97b1f8df"
+    "mtime": 1795250778.154544,
+    "hash": "a29f9330664dd8555b49d64ce8d1e3b8"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/progress.md": {
     "mtime": 1795249583.2028487,

@@ -1,16 +1,16 @@
-# Graph Report - Kenzae  (2026-11-21)
+# Graph Report - Kenzae  (2026-11-22)
 
 ## Corpus Check
-- 85 files · ~53,761 words
+- 85 files · ~54,217 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 482 nodes · 912 edges · 32 communities
+- 482 nodes · 915 edges · 29 communities
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `dfd10417`
+- Built from commit: `d9adc117`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -38,9 +38,6 @@
 - [[_COMMUNITY_Community 20|Community 20]]
 - [[_COMMUNITY_Community 21|Community 21]]
 - [[_COMMUNITY_Community 22|Community 22]]
-- [[_COMMUNITY_Community 23|Community 23]]
-- [[_COMMUNITY_Community 24|Community 24]]
-- [[_COMMUNITY_Community 25|Community 25]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `useCatalog()` - 29 edges
@@ -57,72 +54,72 @@
 ## Surprising Connections (you probably didn't know these)
 - `generateBoutiqueOwnerOrderAlertWhatsAppUrl()` --calls--> `formatCurrencyINR()`  [EXTRACTED]
   src/utils/courierTracking.ts → src/utils/formatters.ts
+- `StaffPortalPage()` --calls--> `useStaffAuth()`  [EXTRACTED]
+  src/components/staff/StaffPortalPage.tsx → src/context/StaffAuthContext.tsx
 - `CustomerStorefront()` --calls--> `useCatalog()`  [EXTRACTED]
   src/App.tsx → src/context/CatalogContext.tsx
+- `CurrencySwitcher()` --calls--> `useCurrency()`  [EXTRACTED]
+  src/components/CurrencySwitcher.tsx → src/context/CurrencyContext.tsx
 - `MobileCheckoutModal()` --calls--> `useOrders()`  [EXTRACTED]
   src/components/cart/MobileCheckoutModal.tsx → src/context/OrdersContext.tsx
-- `CollectionShowcase()` --calls--> `useCatalog()`  [EXTRACTED]
-  src/components/CollectionShowcase.tsx → src/context/CatalogContext.tsx
-- `StaffDashboard()` --calls--> `useCatalog()`  [EXTRACTED]
-  src/components/staff/StaffDashboard.tsx → src/context/CatalogContext.tsx
 
-## Communities (32 total, 0 thin omitted)
+## Communities (29 total, 0 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.08
-Nodes (43): CartDrawer(), CartDrawerProps, MobileCheckoutModal(), STANDARD_SIZES, TailoringSelector(), TailoringSelectorProps, CATEGORIES, FilterBar() (+35 more)
+Cohesion: 0.09
+Nodes (40): CartDrawer(), CartDrawerProps, MobileCheckoutModal(), TailoringSelector(), CATEGORIES, FilterBar(), PRICE_QUICK_CHIPS, ALL_CATEGORIES (+32 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.07
-Nodes (34): AiDrapePose, buildSinglePosePrompt(), DrapeBackdropPreset, DrapeStylePreset, GeneratedLook, GenerateDrapePayload, generateSinglePose(), getEditorialLookbookMock() (+26 more)
+Cohesion: 0.09
+Nodes (36): OrdersContext, OrdersContextType, SAMPLE_ORDERS, useOrders(), dispatchRemoteOrder(), fetchRemoteOrders(), mapOrderToDbRow(), saveRemoteOrder() (+28 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.08
-Nodes (32): MobileCheckoutModalProps, ProductCardProps, CartContext, CartContextType, CartProvider(), defaultAddress, CountryProfile, SUPPORTED_COUNTRIES (+24 more)
+Cohesion: 0.09
+Nodes (35): StaffAuthContext, StaffAuthContextType, useStaffAuth(), KENZAE_STORE_CONFIG, uploadCatalogImage(), UploadResult, ARCHETYPE_LABELS, ImageUploadStudio() (+27 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.1
-Nodes (30): OrdersContext, OrdersContextType, SAMPLE_ORDERS, useOrders(), dispatchRemoteOrder(), fetchRemoteOrders(), mapOrderToDbRow(), saveRemoteOrder() (+22 more)
+Cohesion: 0.08
+Nodes (33): AiDrapePose, buildSinglePosePrompt(), DrapeBackdropPreset, DrapeStylePreset, GeneratedLook, generateSinglePose(), getEditorialLookbookMock(), handler() (+25 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.12
-Nodes (25): COLLECTION_CARDS, CollectionCardMeta, CollectionShowcase(), uploadCatalogImage(), UploadResult, ARCHETYPE_LABELS, ImageUploadStudio(), ImageUploadStudioProps (+17 more)
+Cohesion: 0.1
+Nodes (28): MobileCheckoutModalProps, CurrencySwitcher(), CurrencySwitcherProps, ProductCardProps, CurrencyContext, CurrencyContextType, CurrencyProvider(), CountryProfile (+20 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.12
-Nodes (25): CatalogContext, CatalogContextType, CatalogProvider(), initialFilterState, VALID_CATEGORIES, validateCatalog(), validateProduct(), ValidationResult (+17 more)
+Nodes (26): CatalogContext, CatalogContextType, CatalogProvider(), initialFilterState, VALID_CATEGORIES, validateCatalog(), validateProduct(), ValidationResult (+18 more)
 
 ### Community 6 - "Community 6"
+Cohesion: 0.11
+Nodes (17): STANDARD_SIZES, TailoringSelectorProps, CartContext, CartContextType, CartProvider(), defaultAddress, CartTotals, CustomBlouseMeasurements (+9 more)
+
+### Community 7 - "Community 7"
 Cohesion: 0.09
 Nodes (20): convertedAED, convertedUSD, countriesCode, countriesPath, courierCode, courierPath, currencyCode, currencyServicePath (+12 more)
 
-### Community 7 - "Community 7"
+### Community 8 - "Community 8"
+Cohesion: 0.16
+Nodes (14): GenerateDrapePayload, handler(), parseBase64DataUrl(), processImageUpload(), sanitizeFileName(), UploadImageRequest, UploadImageResponse, handler() (+6 more)
+
+### Community 9 - "Community 9"
 Cohesion: 0.11
 Nodes (17): body, buffer, decoded, __dirname, expectedSig, __filename, header, match (+9 more)
 
-### Community 8 - "Community 8"
+### Community 10 - "Community 10"
 Cohesion: 0.12
 Nodes (15): 🗂️ Catalog Management, code:bash (# Install dependencies), code:block2 (Kenzae/), code:block3 (KZ-SR-XXX   → Saris), code:bash (python3 tools/validate_catalog_data.py), 🤝 Contributing, 🚀 Getting Started, Kenzae Designer Boutique 🛍️ (+7 more)
 
-### Community 9 - "Community 9"
+### Community 11 - "Community 11"
 Cohesion: 0.13
 Nodes (14): 1. Executive Summary & Brand Identity, 2. A.N.T. 3-Layer Architectural Principles, 3. Strict Data Schema Specification, 4. WhatsApp Business Integration Protocol, 5. UI/UX Design System & Editorial Rules, 6. Boutique Owner Store Maintenance SOP (No Developer Required), code:json ({), code:text (https://wa.me/{WHATSAPP_NUMBER}?text={ENCODED_MESSAGE}) (+6 more)
 
-### Community 10 - "Community 10"
-Cohesion: 0.27
-Nodes (10): CurrencySwitcherProps, CurrencyContext, CurrencyContextType, convertINRTo(), CurrencyCode, CurrencyConfig, formatLocalizedPrice(), refreshExchangeRates() (+2 more)
-
-### Community 11 - "Community 11"
+### Community 12 - "Community 12"
 Cohesion: 0.15
 Nodes (12): 1. Objective & Scope, 2. Pipeline Sequence Diagram, 3. Detailed Stage Specifications, 4. Empty-State Protocol, code:block1 (raw_products (/data/products.json)), SOP: Deterministic Catalog Filtering & Query Pipeline, Stage 1: Category Filter, Stage 2: Price Range Filter (+4 more)
 
-### Community 12 - "Community 12"
+### Community 13 - "Community 13"
 Cohesion: 0.17
 Nodes (11): Execution Timeline & Milestones, 🟢 Milestone 0: Blueprint & Project Memory (Completed), 🟡 Milestone 1: Tooling & Environment Initialization (Completed), 🟠 Milestone 2: Schema Implementation & Phase 2 Linkage Handshakes (Completed), 🔵 Milestone 3: Presentation Layer & Architectural Assembly (Completed), 🟣 Milestone 4: Editorial Luxury Styling & Layer 3 Tools (Completed), 🔴 Milestone 5: Triggers, Deployment Packaging & Handover (Completed), 🌿 Milestone 6: Organic Boutique Aesthetics & Natural Conversational Commerce (Completed) (+3 more)
-
-### Community 13 - "Community 13"
-Cohesion: 0.27
-Nodes (9): StaffAuthContext, StaffAuthContextType, StaffAuthProvider(), useStaffAuth(), StaffDashboard(), StaffLoginPage(), StaffLoginPageProps, StaffPortalPage() (+1 more)
 
 ### Community 14 - "Community 14"
 Cohesion: 0.17
@@ -142,54 +139,42 @@ Nodes (10): catalog, catalogPath, categoryCounts, __dirname, __filename, rawData
 
 ### Community 18 - "Community 18"
 Cohesion: 0.29
-Nodes (8): COLORS, formatPdfCurrency(), formatPdfNumber(), generateGSTTaxInvoicePDF(), InvoiceGeneratorOptions, KenzaeTaxInvoiceDocument(), styles, convertAmountToWords()
-
-### Community 19 - "Community 19"
-Cohesion: 0.33
-Nodes (7): handler(), authenticateStaff(), handler(), signToken(), StaffLoginRequest, StaffLoginResponse, verifySignedToken()
-
-### Community 20 - "Community 20"
-Cohesion: 0.43
-Nodes (6): handler(), parseBase64DataUrl(), processImageUpload(), sanitizeFileName(), UploadImageRequest, UploadImageResponse
-
-### Community 21 - "Community 21"
-Cohesion: 0.29
 Nodes (6): 1. Objective & Deep Linking Logic, 2. URL State Synchronization Contract, 3. Social Sharing & Clipboard Handshake, Lifecycle Flow, Parameter Definition, SOP: Deep Linking & URL State Synchronization
 
-### Community 22 - "Community 22"
+### Community 19 - "Community 19"
 Cohesion: 0.4
 Nodes (5): __dirname, __filename, loadEnvLocal(), rootDir, runConnectivityTest()
 
-### Community 23 - "Community 23"
+### Community 20 - "Community 20"
 Cohesion: 0.53
 Nodes (5): clean_phone_number(), generate_whatsapp_inquiry_url(), Normalize phone number to international format without +, spaces, or dashes., Constructs compliant WhatsApp click-to-chat deep link., run_tests()
 
-### Community 24 - "Community 24"
+### Community 21 - "Community 21"
 Cohesion: 0.4
 Nodes (4): clone, fetchPromise, PRECACHE_ASSETS, url
 
-### Community 25 - "Community 25"
+### Community 22 - "Community 22"
 Cohesion: 0.7
 Nodes (4): audit_palette(), contrast_ratio(), hex_to_rgb(), relative_luminance()
 
 ## Knowledge Gaps
-- **200 isolated node(s):** `StaffLoginRequest`, `StaffLoginResponse`, `AiDrapePose`, `ModelArchetype`, `DrapeStylePreset` (+195 more)
+- **199 isolated node(s):** `Window`, `RazorpayPaymentSuccessResponse`, `InitiatePaymentParams`, `StaffLoginRequest`, `StaffLoginResponse` (+194 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `KenzaeProduct` connect `Community 2` to `Community 0`, `Community 1`, `Community 3`, `Community 4`, `Community 5`?**
-  _High betweenness centrality (0.038) - this node is a cross-community bridge._
-- **Why does `formatCurrencyINR()` connect `Community 0` to `Community 2`, `Community 3`, `Community 13`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **Why does `useCatalog()` connect `Community 0` to `Community 2`, `Community 3`, `Community 4`, `Community 5`, `Community 13`?**
+- **Why does `KenzaeProduct` connect `Community 5` to `Community 0`, `Community 2`, `Community 3`, `Community 4`, `Community 6`?**
+  _High betweenness centrality (0.050) - this node is a cross-community bridge._
+- **Why does `formatCurrencyINR()` connect `Community 0` to `Community 1`, `Community 2`, `Community 4`, `Community 6`?**
+  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+- **Why does `useCatalog()` connect `Community 0` to `Community 2`, `Community 4`, `Community 5`?**
   _High betweenness centrality (0.012) - this node is a cross-community bridge._
-- **What connects `StaffLoginRequest`, `StaffLoginResponse`, `AiDrapePose` to the rest of the system?**
-  _200 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `Window`, `RazorpayPaymentSuccessResponse`, `InitiatePaymentParams` to the rest of the system?**
+  _199 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.07 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
-  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09 - nodes in this community are weakly interconnected._
