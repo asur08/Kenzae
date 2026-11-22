@@ -46,7 +46,7 @@ export const Footer: React.FC = () => {
               Celebrating India's finest handloom traditions. Kenzae curates bespoke Banarasi silks, Kasavu organza, artisanal salwar suits, and unstitched dress materials for celebrations, weddings, and everyday grace.
             </p>
             
-            <div className="pt-2 flex items-center gap-3">
+            <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 onClick={handleWhatsAppConsult}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-maroon-900 hover:bg-maroon-850 text-brass-light text-xs font-semibold tracking-wider uppercase border border-brass/30 transition-all"
@@ -54,6 +54,15 @@ export const Footer: React.FC = () => {
                 <MessageCircle className="w-3.5 h-3.5 text-whatsapp" />
                 <span>WhatsApp Boutique</span>
               </button>
+              <a
+                href="https://instagram.com/kenzae.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/5 hover:bg-white/10 text-brass-light text-xs font-medium tracking-wide border border-brass/20 transition-all"
+              >
+                <span>{KENZAE_STORE_CONFIG.instagramHandle}</span>
+                <ExternalLink className="w-3 h-3 text-brass" />
+              </a>
             </div>
           </div>
 
