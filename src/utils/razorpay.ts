@@ -191,7 +191,7 @@ export async function initiateRazorpayPayment({
       currency: orderData.currency || 'INR',
       name: 'Kenzae Designer Boutique',
       description: `Order for ${itemsSummary.slice(0, 80)}...`,
-      image: '/vite.svg',
+      image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=120&h=120&q=80',
       order_id: razorpayOrderId,
       prefill: {
         name: customer.fullName,

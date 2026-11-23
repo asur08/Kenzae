@@ -44,6 +44,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
   };
 
   const handleProceedCheckout = () => {
+    setIsCartOpen(false);
     if (onOpenCheckout) {
       onOpenCheckout();
     }
