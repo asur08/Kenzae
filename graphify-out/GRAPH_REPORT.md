@@ -1,16 +1,16 @@
-# Graph Report - Kenzae  (2026-11-22)
+# Graph Report - Kenzae  (2026-11-23)
 
 ## Corpus Check
-- 85 files · ~54,257 words
+- 89 files · ~56,774 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 482 nodes · 898 edges · 31 communities
+- 512 nodes · 944 edges · 32 communities (30 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `15218273`
+- Built from commit: `691db296`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -40,6 +40,8 @@
 - [[_COMMUNITY_Community 22|Community 22]]
 - [[_COMMUNITY_Community 23|Community 23]]
 - [[_COMMUNITY_Community 24|Community 24]]
+- [[_COMMUNITY_Community 25|Community 25]]
+- [[_COMMUNITY_Community 26|Community 26]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `useCatalog()` - 29 edges
@@ -65,43 +67,43 @@
 - `CustomerStorefront()` --calls--> `useCatalog()`  [EXTRACTED]
   src/App.tsx → src/context/CatalogContext.tsx
 
-## Communities (31 total, 0 thin omitted)
+## Communities (32 total, 2 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.09
-Nodes (40): CartDrawer(), CartDrawerProps, MobileCheckoutModal(), TailoringSelector(), CATEGORIES, FilterBar(), PRICE_QUICK_CHIPS, ALL_CATEGORIES (+32 more)
+Nodes (37): CartDrawer(), CartDrawerProps, MobileCheckoutModal(), TailoringSelector(), CATEGORIES, FilterBar(), PRICE_QUICK_CHIPS, ALL_CATEGORIES (+29 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.11
-Nodes (30): OrdersContext, OrdersContextType, OrdersProvider(), SAMPLE_ORDERS, useOrders(), dispatchRemoteOrder(), fetchRemoteOrders(), mapOrderToDbRow() (+22 more)
+Cohesion: 0.07
+Nodes (34): AiDrapePose, buildSinglePosePrompt(), DrapeBackdropPreset, DrapeStylePreset, GeneratedLook, GenerateDrapePayload, generateSinglePose(), getEditorialLookbookMock() (+26 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.08
-Nodes (33): AiDrapePose, buildSinglePosePrompt(), DrapeBackdropPreset, DrapeStylePreset, GeneratedLook, generateSinglePose(), getEditorialLookbookMock(), handler() (+25 more)
+Cohesion: 0.12
+Nodes (29): OrdersContext, OrdersContextType, OrdersProvider(), SAMPLE_ORDERS, useOrders(), dispatchRemoteOrder(), fetchRemoteOrders(), mapOrderToDbRow() (+21 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.12
-Nodes (27): COLLECTION_CARDS, CollectionCardMeta, uploadCatalogImage(), UploadResult, ARCHETYPE_LABELS, ImageUploadStudio(), ImageUploadStudioProps, ROLE_LABELS (+19 more)
+Cohesion: 0.08
+Nodes (30): CreateOrderRequest, CreateOrderResponse, createRazorpayOrder(), handler(), handler(), parseBase64DataUrl(), processImageUpload(), sanitizeFileName() (+22 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.11
-Nodes (26): MobileCheckoutModalProps, CurrencySwitcherProps, CurrencyContext, CurrencyContextType, CurrencyProvider(), CountryProfile, SUPPORTED_COUNTRIES, convertINRTo() (+18 more)
+Cohesion: 0.12
+Nodes (28): COLLECTION_CARDS, CollectionCardMeta, uploadCatalogImage(), UploadResult, ARCHETYPE_LABELS, ImageUploadStudio(), ImageUploadStudioProps, ROLE_LABELS (+20 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.13
-Nodes (25): CatalogContext, CatalogContextType, CatalogProvider(), initialFilterState, VALID_CATEGORIES, validateCatalog(), validateProduct(), ValidationResult (+17 more)
+Cohesion: 0.1
+Nodes (27): ProductCardProps, ProductGridProps, CatalogContext, CatalogContextType, CatalogProvider(), initialFilterState, VALID_CATEGORIES, validateCatalog() (+19 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.11
-Nodes (17): STANDARD_SIZES, TailoringSelectorProps, CartContext, CartContextType, CartProvider(), defaultAddress, CartTotals, CustomBlouseMeasurements (+9 more)
+Nodes (26): MobileCheckoutModalProps, CurrencySwitcherProps, CurrencyContext, CurrencyContextType, CurrencyProvider(), CountryProfile, SUPPORTED_COUNTRIES, convertINRTo() (+18 more)
 
 ### Community 7 - "Community 7"
-Cohesion: 0.09
-Nodes (20): convertedAED, convertedUSD, countriesCode, countriesPath, courierCode, courierPath, currencyCode, currencyServicePath (+12 more)
+Cohesion: 0.11
+Nodes (21): STANDARD_SIZES, TailoringSelectorProps, CartContext, CartContextType, CartProvider(), defaultAddress, CartTotals, CustomBlouseMeasurements (+13 more)
 
 ### Community 8 - "Community 8"
-Cohesion: 0.16
-Nodes (14): GenerateDrapePayload, handler(), parseBase64DataUrl(), processImageUpload(), sanitizeFileName(), UploadImageRequest, UploadImageResponse, handler() (+6 more)
+Cohesion: 0.09
+Nodes (20): convertedAED, convertedUSD, countriesCode, countriesPath, courierCode, courierPath, currencyCode, currencyServicePath (+12 more)
 
 ### Community 9 - "Community 9"
 Cohesion: 0.11
@@ -168,23 +170,24 @@ Cohesion: 0.7
 Nodes (4): audit_palette(), contrast_ratio(), hex_to_rgb(), relative_luminance()
 
 ## Knowledge Gaps
-- **199 isolated node(s):** `MobileCheckoutModalProps`, `CatalogContextType`, `initialFilterState`, `CatalogContext`, `StaffAuthContextType` (+194 more)
+- **213 isolated node(s):** `CreateOrderResponse`, `VerifyPaymentResponse`, `address`, `authenticSig`, `__dirname` (+208 more)
   These have ≤1 connection - possible missing edges or undocumented components.
+- **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `KenzaeProduct` connect `Community 5` to `Community 0`, `Community 2`, `Community 3`, `Community 4`, `Community 6`?**
-  _High betweenness centrality (0.053) - this node is a cross-community bridge._
-- **Why does `BoutiqueOrder` connect `Community 1` to `Community 19`, `Community 4`, `Community 5`?**
-  _High betweenness centrality (0.023) - this node is a cross-community bridge._
-- **Why does `formatCurrencyINR()` connect `Community 0` to `Community 1`, `Community 3`, `Community 4`, `Community 6`, `Community 13`?**
-  _High betweenness centrality (0.016) - this node is a cross-community bridge._
-- **What connects `MobileCheckoutModalProps`, `CatalogContextType`, `initialFilterState` to the rest of the system?**
-  _199 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `KenzaeProduct` connect `Community 5` to `Community 0`, `Community 1`, `Community 4`, `Community 6`, `Community 7`?**
+  _High betweenness centrality (0.063) - this node is a cross-community bridge._
+- **Why does `BoutiqueOrder` connect `Community 2` to `Community 19`, `Community 5`, `Community 6`?**
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
+- **Why does `formatCurrencyINR()` connect `Community 0` to `Community 2`, `Community 4`, `Community 5`, `Community 6`, `Community 7`, `Community 13`?**
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+- **What connects `CreateOrderResponse`, `VerifyPaymentResponse`, `address` to the rest of the system?**
+  _213 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.09 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.11 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
-  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.12 - nodes in this community are weakly interconnected._
