@@ -174,4 +174,4 @@ export const SUPPORTED_COUNTRIES: CountryProfile[] = [
   },
 ];
 
-export const INTERNATIONAL_EXPRESS_SHIPPING_INR = 2450; // DHL Express / Aramex Worldwide
+export const INTERNATIONAL_EXPRESS_SHIPPING_INR = 0; // DHL Express / Aramex Worldwide (Removed / Free for now)

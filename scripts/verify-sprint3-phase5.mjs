@@ -58,7 +58,7 @@ const countriesCode = fs.readFileSync(countriesPath, 'utf8');
 assert(countriesCode.includes('+971') && countriesCode.includes('United Arab Emirates'), 'UAE country profile with +971 configured');
 assert(countriesCode.includes('+44') && countriesCode.includes('United Kingdom'), 'UK country profile with +44 configured');
 assert(countriesCode.includes('+1') && countriesCode.includes('United States'), 'US country profile with +1 configured');
-assert(countriesCode.includes('INTERNATIONAL_EXPRESS_SHIPPING_INR = 2450'), 'International Express DHL/Aramex rate set to ₹2,450');
+assert(countriesCode.includes('INTERNATIONAL_EXPRESS_SHIPPING_INR = 0'), 'International Express DHL/Aramex rate set to ₹0 (Free for now)');
 
 // -----------------------------------------------------------------------------
 // 3. VERIFY PHASE 5: PROGRESSIVE WEB APP (PWA) & SERVICE WORKER

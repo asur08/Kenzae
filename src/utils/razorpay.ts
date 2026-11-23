@@ -8,10 +8,12 @@ declare global {
 
 export const RAZORPAY_SCRIPT_URL = 'https://checkout.razorpay.com/v1/checkout.js';
 
+export const RAZORPAY_TEST_KEY_ID = 'rzp_test_U3fv7ch1nd3HLz';
+
 /**
  * Dynamically loads the official Razorpay Checkout SDK into the document.
  */
-export function loadRazorpayScript(): Promise<boolean> {
+export function loadRazorpayScript(timeoutMs = 8000): Promise<boolean> {
   return new Promise((resolve) => {
     if (typeof window === 'undefined') {
       resolve(false);
@@ -23,20 +25,33 @@ export function loadRazorpayScript(): Promise<boolean> {
       return;
     }
 
-    const existingScript = document.querySelector(`script[src="${RAZORPAY_SCRIPT_URL}"]`);
+    const timer = setTimeout(() => {
+      resolve(Boolean(window.Razorpay));
+    }, timeoutMs);
+
+    const onFinish = (success: boolean) => {
+      clearTimeout(timer);
+      resolve(success);
+    };
+
+    const existingScript = document.querySelector<HTMLScriptElement>(`script[src="${RAZORPAY_SCRIPT_URL}"]`);
     if (existingScript) {
-      existingScript.addEventListener('load', () => resolve(true));
-      existingScript.addEventListener('error', () => resolve(false));
+      if (window.Razorpay) {
+        onFinish(true);
+        return;
+      }
+      existingScript.addEventListener('load', () => onFinish(true), { once: true });
+      existingScript.addEventListener('error', () => onFinish(false), { once: true });
       return;
     }
 
     const script = document.createElement('script');
     script.src = RAZORPAY_SCRIPT_URL;
     script.async = true;
-    script.onload = () => resolve(true);
+    script.onload = () => onFinish(true);
     script.onerror = () => {
       console.warn('Failed to load official Razorpay SDK script from CDN.');
-      resolve(false);
+      onFinish(false);
     };
     document.body.appendChild(script);
   });
@@ -146,7 +161,7 @@ export async function initiateRazorpayPayment({
   onDismiss,
   onError,
 }: InitiatePaymentParams): Promise<void> {
-  const activeKey = keyId || (import.meta.env?.VITE_RAZORPAY_KEY_ID as string) || '';
+  const activeKey = keyId || (import.meta.env?.VITE_RAZORPAY_KEY_ID as string) || RAZORPAY_TEST_KEY_ID;
 
   if (!activeKey) {
     const err = { description: 'Razorpay Key ID is not configured. Set VITE_RAZORPAY_KEY_ID in .env' };
