@@ -4,8 +4,8 @@
     "hash": "b667169f8ca82f721d0b590a98584516"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/vite.config.ts": {
-    "mtime": 1795251162.8078535,
-    "hash": "15861f905a2333d3b726cbea27cd1898"
+    "mtime": 1795357302.4750912,
+    "hash": "878f44bd753d3d678157073d0dcb2b07"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/postcss.config.js": {
     "mtime": 1791857004.2236037,
@@ -76,8 +76,8 @@
     "hash": "cd23b2c289271b4c97ff7579a756daf7"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/api/auth/check-session.ts": {
-    "mtime": 1795242664.8461096,
-    "hash": "4fff3df1fcdd262530ceafb1ade3f0db"
+    "mtime": 1795357287.2502358,
+    "hash": "3509cc6d3c07107f3cf9d694b1c43d18"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/api/auth/verify-staff.ts": {
     "mtime": 1795251152.8324404,
@@ -112,8 +112,8 @@
     "hash": "6c021cd2c214ff6b4d14badaa6d9712c"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/context/StaffAuthContext.tsx": {
-    "mtime": 1795250815.171225,
-    "hash": "304cdaa0879da2ea69766b5473156bce"
+    "mtime": 1795357319.6251833,
+    "hash": "9c8ec16603ded67a7a780e8328566776"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/context/CartContext.tsx": {
     "mtime": 1795248796.4739156,
@@ -128,8 +128,8 @@
     "hash": "0ba4a6c2828620f9b172d84f3726895d"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/context/CatalogContext.tsx": {
-    "mtime": 1795242809.1175435,
-    "hash": "41a54c44d004d72e202edee8c40220f8"
+    "mtime": 1795357835.0136094,
+    "hash": "0b9d72620111492be9a8df064128369a"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/utils/invoiceGenerator.tsx": {
     "mtime": 1795352525.657952,
@@ -224,8 +224,8 @@
     "hash": "c42fd1f1a7ea13cfc329ead1d3742c2c"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/cart/MobileCheckoutModal.tsx": {
-    "mtime": 1795249485.7640176,
-    "hash": "0241dda4a8c03cc950f709342492bf1a"
+    "mtime": 1795357845.8443809,
+    "hash": "b8c9b765c5ff90ec474cbf1d34abec3f"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/cart/CartDrawer.tsx": {
     "mtime": 1795249476.77195,

@@ -146,7 +146,7 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
       },
       onError: (err) => {
         setIsProcessing(false);
-        setPaymentError(err?.description || 'Payment authorization was cancelled or failed. Please retry.');
+        setPaymentError(err?.description || err?.message || 'Payment authorization was cancelled or failed. Please retry.');
       },
     });
   };
