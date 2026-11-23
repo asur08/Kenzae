@@ -1,16 +1,16 @@
 # Graph Report - Kenzae  (2026-11-23)
 
 ## Corpus Check
-- 89 files · ~56,774 words
+- 89 files · ~56,789 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 512 nodes · 944 edges · 32 communities (30 shown, 2 thin omitted)
+- 512 nodes · 942 edges · 32 communities (30 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `691db296`
+- Built from commit: `707b32e5`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -170,7 +170,7 @@ Cohesion: 0.7
 Nodes (4): audit_palette(), contrast_ratio(), hex_to_rgb(), relative_luminance()
 
 ## Knowledge Gaps
-- **213 isolated node(s):** `CreateOrderResponse`, `VerifyPaymentResponse`, `address`, `authenticSig`, `__dirname` (+208 more)
+- **213 isolated node(s):** `__dirname`, `envPath`, `envContent`, `trimmed`, `[k, ...v]` (+208 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -183,7 +183,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **Why does `formatCurrencyINR()` connect `Community 0` to `Community 2`, `Community 4`, `Community 5`, `Community 6`, `Community 7`, `Community 13`?**
   _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **What connects `CreateOrderResponse`, `VerifyPaymentResponse`, `address` to the rest of the system?**
+- **What connects `__dirname`, `envPath`, `envContent` to the rest of the system?**
   _213 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.09 - nodes in this community are weakly interconnected._
