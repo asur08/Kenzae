@@ -6,7 +6,7 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
 
 concurrency:
-  group: pr-${{ github.event.pull_request.number }}
+  group: pr-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -29,6 +29,8 @@ jobs:
         run: npm ci
 
       - name: Build and check bundle size
+        env:
+          VITE_RAZORPAY_KEY_ID: ${{ secrets.VITE_RAZORPAY_KEY_ID || 'rzp_test_U3fv7ch1nd3HLz' }}
         run: |
           npm run build
           echo "## 📦 Bundle Size Report" >> $GITHUB_STEP_SUMMARY
@@ -62,7 +64,8 @@ jobs:
         run: python3 tools/validate_catalog_data.py
 
       - name: Check catalog JSON is valid
-        run: python3 -c "import json; data=json.load(open('data/products.json')); print(f'✅ Catalog valid: {len(data)} products loaded')"
+        run: |
+          python3 -c "import json; data=json.load(open('data/products.json')); print(f'✅ Catalog valid: {len(data)} products loaded')"
 
   accessibility-audit:
     name: Accessibility Audit

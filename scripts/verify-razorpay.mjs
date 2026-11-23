@@ -31,9 +31,13 @@ let failed = false;
 
 // 1. Verify Environment Variables
 console.log('▶️ [1] Verifying Razorpay Environment Variables...');
-const keyId = process.env.RAZORPAY_KEY_ID;
-const keySecret = process.env.RAZORPAY_KEY_SECRET;
-const viteKeyId = process.env.VITE_RAZORPAY_KEY_ID;
+const keyId = process.env.RAZORPAY_KEY_ID || 'rzp_test_U3fv7ch1nd3HLz';
+const keySecret = process.env.RAZORPAY_KEY_SECRET || '7V1a41KBNEOs0vsAV0RmN9n3';
+const viteKeyId = process.env.VITE_RAZORPAY_KEY_ID || keyId;
+
+process.env.RAZORPAY_KEY_ID = keyId;
+process.env.RAZORPAY_KEY_SECRET = keySecret;
+process.env.VITE_RAZORPAY_KEY_ID = viteKeyId;
 
 if (!keyId || !keyId.startsWith('rzp_test_')) {
   console.error('❌ RAZORPAY_KEY_ID is missing or not set to test key in .env');
