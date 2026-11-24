@@ -10,6 +10,10 @@
   RewriteCond %{HTTP_HOST} ^www\.kenzae\.com$ [NC]
   RewriteRule ^(.*)$ https://kenzae.com/$1 [L,R=301]
 
+  # Route Razorpay API requests directly to backend PHP handlers
+  RewriteRule ^api/create-order/?$ /api/create-order.php [L,QSA]
+  RewriteRule ^api/verify-payment/?$ /api/verify-payment.php [L,QSA]
+
   # Single Page Application (SPA) Routing for Vite/React
   # Directs all routes (e.g. /staff) to index.html unless the actual static file exists
   RewriteRule ^index\.html$ - [L]
