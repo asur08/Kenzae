@@ -6,10 +6,15 @@ import './index.css';
 // Progressive Web App (PWA) Offline Shell Registration
 if ('serviceWorker' in navigator) {
   if (import.meta.env.PROD) {
+    // Proactively evict deprecated cache version v1 from client devices
+    if ('caches' in window) {
+      caches.delete('kenzae-app-shell-v1');
+    }
     window.addEventListener('load', () => {
       navigator.serviceWorker
         .register('/sw.js')
         .then((registration) => {
+          registration.update();
           console.debug('[PWA] ServiceWorker registered successfully:', registration.scope);
         })
         .catch((error) => {
