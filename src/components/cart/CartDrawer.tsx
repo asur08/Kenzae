@@ -28,12 +28,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
     removeFromCart,
     updateQuantity,
     totals,
-    shippingAddress,
     setShippingAddress,
   } = useCart();
   const { currentCurrency, formatPrice } = useCurrency();
 
-  const [pincodeInput, setPincodeInput] = useState(shippingAddress.pincode);
+  const [pincodeInput, setPincodeInput] = useState('');
 
   const handlePincodeSubmit = (e: React.FormEvent) => {
     e.preventDefault();

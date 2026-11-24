@@ -26,6 +26,7 @@ export interface GenerateDrapePayload {
   modelArchetype?: ModelArchetype;
   customStylingNote?: string;
   pose?: AiDrapePose | 'all';
+  variationSeed?: number;
 }
 
 export interface GeneratedLook {
@@ -165,6 +166,7 @@ function buildSinglePosePrompt(
     payload.color ? `- Color Palette: ${payload.color}.` : '',
     payload.fabricDetails ? `- Fabric & Texture: ${payload.fabricDetails}.` : '',
     payload.customStylingNote ? `- Stylist Note: ${payload.customStylingNote}.` : '',
+    payload.variationSeed ? `- Variation Directive: Create a fresh artistic variation with subtle variation in model posture, head angle, and drape movement.` : '',
     `- Natural realistic fabric folds, zero text overlays, zero watermarks, zero split collage screens.`,
   ]
     .filter(Boolean)
@@ -267,26 +269,48 @@ async function generateSinglePose(
 }
 
 /**
- * Editorial Lookbook Mock for Local Dev & Testing when GEMINI_API_KEY is not set.
+ * Editorial Lookbook Variations Pool for Local Dev & Testing when GEMINI_API_KEY is not set.
+ * Supports multiple high-fashion looks per pose so re-shooting generates fresh variations.
  */
-function getEditorialLookbookMock(): GeneratedLook[] {
-  const editorialImages = [
-    'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=80',
-    'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1000&q=80',
-    'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1000&q=80',
-    'https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?auto=format&fit=crop&w=1000&q=80',
-  ];
+const EDITORIAL_VARIATION_POOLS: Record<AiDrapePose, string[]> = {
+  'hero-front': [
+    'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85',
+    'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=1200&q=85',
+    'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85',
+  ],
+  'walking-profile': [
+    'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85',
+    'https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&w=1200&q=85',
+    'https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?auto=format&fit=crop&w=1200&q=85',
+  ],
+  'pallu-craft': [
+    'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85',
+    'https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?auto=format&fit=crop&w=1200&q=85',
+    'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85',
+  ],
+  'seated-heritage': [
+    'https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?auto=format&fit=crop&w=1200&q=85',
+    'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85',
+    'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=1200&q=85',
+  ],
+};
 
+function getEditorialLookbookMock(seed = 0): GeneratedLook[] {
   const poses: AiDrapePose[] = ['hero-front', 'walking-profile', 'pallu-craft', 'seated-heritage'];
 
-  return poses.map((poseId, idx) => ({
-    poseId,
-    title: POSE_DEFINITIONS[poseId].title,
-    description: POSE_DEFINITIONS[poseId].description,
-    role: POSE_DEFINITIONS[poseId].role,
-    imageDataUrl: editorialImages[idx % editorialImages.length],
-    status: 'success',
-  }));
+  return poses.map((poseId) => {
+    const pool = EDITORIAL_VARIATION_POOLS[poseId];
+    const imageIndex = Math.abs(seed) % pool.length;
+
+    return {
+      poseId,
+      title: POSE_DEFINITIONS[poseId].title,
+      description: POSE_DEFINITIONS[poseId].description,
+      role: POSE_DEFINITIONS[poseId].role,
+      imageDataUrl: pool[imageIndex] || pool[0],
+      status: 'success',
+    };
+  });
 }
 
 export const generateSariModelDrape = processMultiPoseDrape;
@@ -318,7 +342,8 @@ export async function processMultiPoseDrape(
 
   // 3. If API Key is missing, return high-fidelity editorial mock lookbook with warning
   if (!apiKey || !apiKey.trim()) {
-    const mockLooks = getEditorialLookbookMock();
+    const seed = payload.variationSeed ?? Math.floor(Math.random() * 10);
+    const mockLooks = getEditorialLookbookMock(seed);
     const filtered =
       payload.pose && payload.pose !== 'all'
         ? mockLooks.filter((l) => l.poseId === payload.pose)

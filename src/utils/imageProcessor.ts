@@ -117,3 +117,38 @@ export function downloadDataUrlAsFile(dataUrl: string, filename: string): void {
   a.click();
   a.remove();
 }
+
+/**
+ * Downloads an image (data URL or remote HTTPS URL) to the user's device.
+ * For remote URLs, fetches as Blob to guarantee standard browser download for social media sharing.
+ */
+export async function downloadImageFile(urlOrDataUrl: string, filename: string): Promise<void> {
+  if (urlOrDataUrl.startsWith('data:')) {
+    downloadDataUrlAsFile(urlOrDataUrl, filename);
+    return;
+  }
+
+  try {
+    const res = await fetch(urlOrDataUrl, { mode: 'cors' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const blob = await res.blob();
+    const objectUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = objectUrl;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(objectUrl), 2000);
+  } catch (err) {
+    console.warn('Cross-origin direct download failed, falling back to direct anchor:', err);
+    const a = document.createElement('a');
+    a.href = urlOrDataUrl;
+    a.download = filename;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+}

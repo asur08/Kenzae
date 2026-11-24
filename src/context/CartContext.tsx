@@ -66,16 +66,18 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   });
 
-  const [shippingAddress, setShippingAddress] = useState<ShippingAddress>(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY_ADDRESS);
-      return stored ? JSON.parse(stored) : defaultAddress;
-    } catch {
-      return defaultAddress;
-    }
-  });
+  const [shippingAddress, setShippingAddress] = useState<ShippingAddress>(defaultAddress);
 
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  // Clear any legacy saved personal recipient data from localStorage
+  useEffect(() => {
+    try {
+      localStorage.removeItem(STORAGE_KEY_ADDRESS);
+    } catch {
+      // Ignore storage errors
+    }
+  }, []);
 
   // Sync cart to localStorage
   useEffect(() => {
@@ -85,15 +87,6 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       // Ignore storage errors
     }
   }, [cartItems]);
-
-  // Sync address to localStorage
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY_ADDRESS, JSON.stringify(shippingAddress));
-    } catch {
-      // Ignore storage errors
-    }
-  }, [shippingAddress]);
 
   const addToCart = (product: KenzaeProduct, tailoring: TailoringSelection, quantity = 1) => {
     const itemKey = generateItemKey(product.id, tailoring);

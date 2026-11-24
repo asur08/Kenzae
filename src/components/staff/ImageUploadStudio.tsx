@@ -21,7 +21,7 @@ import {
   AiDrapePose,
   ModelArchetype,
 } from '../../types/catalog';
-import { downloadDataUrlAsFile } from '../../utils/imageProcessor';
+import { downloadDataUrlAsFile, downloadImageFile } from '../../utils/imageProcessor';
 import { uploadCatalogImage } from '../../services/imageStorage';
 import { GeneratedLook, MultiPoseDrapeResponse } from '../../types/drape';
 
@@ -277,6 +277,7 @@ export const ImageUploadStudio: React.FC<ImageUploadStudioProps> = ({
           modelArchetype,
           customStylingNote: customStylingNote.trim() || undefined,
           pose: poseId,
+          variationSeed: Date.now(),
         }),
       });
 
@@ -291,6 +292,22 @@ export const ImageUploadStudio: React.FC<ImageUploadStudioProps> = ({
       setDrapeError(err instanceof Error ? err.message : 'Failed to regenerate single look.');
     } finally {
       setRegeneratingPoseId(null);
+    }
+  };
+
+  // Download individual look for boutique social media campaigns
+  const handleDownloadLook = async (look: GeneratedLook) => {
+    if (!look.imageDataUrl) return;
+    const skuClean = (productMeta.sku || 'couture').toLowerCase().replace(/[^a-z0-9_-]/g, '-');
+    const filename = `kenzae_${skuClean}_${look.poseId}.png`;
+    await downloadImageFile(look.imageDataUrl, filename);
+  };
+
+  // Download all generated looks for social media pack
+  const handleDownloadAllSocials = async () => {
+    const successfulLooks = lookbook.filter((l) => l.status === 'success' && l.imageDataUrl);
+    for (const look of successfulLooks) {
+      await handleDownloadLook(look);
     }
   };
 
@@ -697,6 +714,16 @@ export const ImageUploadStudio: React.FC<ImageUploadStudioProps> = ({
               <div className="flex items-center gap-2">
                 <button
                   type="button"
+                  onClick={handleDownloadAllSocials}
+                  className="px-3 py-2 rounded-lg bg-brass-light/40 hover:bg-brass-light/70 text-maroon-950 text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer border border-brass/40"
+                  title="Download all generated looks for Kenzae Instagram & Facebook"
+                >
+                  <Download className="w-3.5 h-3.5 text-maroon-900" />
+                  <span>Download All for Socials</span>
+                </button>
+
+                <button
+                  type="button"
                   onClick={handleApplyLookbook}
                   disabled={selectedPoseIds.size === 0 || isCompressing}
                   className="px-4 py-2 rounded-lg bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm"
@@ -797,16 +824,28 @@ export const ImageUploadStudio: React.FC<ImageUploadStudioProps> = ({
                           {ROLE_LABELS[look.role]}
                         </span>
 
-                        <button
-                          type="button"
-                          disabled={isRegenerating || isGeneratingAll}
-                          onClick={() => handleRegeneratePose(look.poseId)}
-                          className="text-[10px] font-semibold text-maroon-900 hover:text-maroon-950 flex items-center gap-1 hover:underline disabled:opacity-40"
-                          title="Regenerate this specific angle"
-                        >
-                          <RefreshCw className={`w-3 h-3 ${isRegenerating ? 'animate-spin' : ''}`} />
-                          <span>Re-shoot</span>
-                        </button>
+                        <div className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={() => handleDownloadLook(look)}
+                            className="text-[10px] font-semibold text-emerald-800 hover:text-emerald-900 flex items-center gap-1 hover:underline cursor-pointer"
+                            title="Download this look for Kenzae socials"
+                          >
+                            <Download className="w-3 h-3" />
+                            <span>Download</span>
+                          </button>
+
+                          <button
+                            type="button"
+                            disabled={isRegenerating || isGeneratingAll}
+                            onClick={() => handleRegeneratePose(look.poseId)}
+                            className="text-[10px] font-semibold text-maroon-900 hover:text-maroon-950 flex items-center gap-1 hover:underline disabled:opacity-40 cursor-pointer"
+                            title="Regenerate this specific angle with fresh variation"
+                          >
+                            <RefreshCw className={`w-3 h-3 ${isRegenerating ? 'animate-spin' : ''}`} />
+                            <span>Re-shoot</span>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -823,17 +862,40 @@ export const ImageUploadStudio: React.FC<ImageUploadStudioProps> = ({
           onClick={() => setPreviewZoomImage(null)}
           className="fixed inset-0 z-50 bg-black/85 flex items-center justify-center p-4 backdrop-blur-xs cursor-zoom-out"
         >
-          <div className="relative max-w-3xl max-h-[90vh] bg-transparent">
-            <button
-              onClick={() => setPreviewZoomImage(null)}
-              className="absolute -top-10 right-0 text-white hover:text-brass-light p-1"
-            >
-              <X className="w-6 h-6" />
-            </button>
+          <div
+            className="relative max-w-3xl max-h-[90vh] bg-transparent flex flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="w-full flex items-center justify-between pb-2 text-white">
+              <span className="text-xs font-serif text-brass-light tracking-wide">
+                Kenzae Editorial High-Resolution Preview
+              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const skuClean = (productMeta.sku || 'couture').toLowerCase().replace(/[^a-z0-9_-]/g, '-');
+                    downloadImageFile(previewZoomImage, `kenzae_${skuClean}_zoom.png`);
+                  }}
+                  className="flex items-center gap-1.5 px-3 py-1 bg-white/20 hover:bg-white/30 rounded-lg text-xs font-semibold text-white transition-colors cursor-pointer"
+                  title="Download image for Kenzae socials"
+                >
+                  <Download className="w-3.5 h-3.5 text-brass-light" />
+                  <span>Download for Socials</span>
+                </button>
+                <button
+                  onClick={() => setPreviewZoomImage(null)}
+                  className="text-white hover:text-brass-light p-1 cursor-pointer"
+                  title="Close preview"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
             <img
               src={previewZoomImage}
               alt="High-resolution photoshoot preview"
-              className="max-h-[85vh] w-auto rounded-lg object-contain shadow-2xl border border-white/20"
+              className="max-h-[82vh] w-auto rounded-lg object-contain shadow-2xl border border-white/20"
             />
           </div>
         </div>

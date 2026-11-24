@@ -9,6 +9,8 @@ import {
   Loader2,
   Globe,
   Plane,
+  AlertTriangle,
+  MessageCircle,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../../context/CartContext';
@@ -21,6 +23,7 @@ import { generateGSTTaxInvoicePDF } from '../../utils/invoiceGenerator';
 import { BoutiqueOrder } from '../../types/orders';
 import { SUPPORTED_COUNTRIES, CountryProfile } from '../../data/countries';
 import { trackBeginCheckout, trackPurchase } from '../../services/telemetryService';
+import { generateCartOrderWhatsAppUrl } from '../../utils/whatsapp';
 
 interface MobileCheckoutModalProps {
   isOpen: boolean;
@@ -45,10 +48,15 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
   const [paymentError, setPaymentError] = useState<string | null>(null);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
-  // Track begin checkout event on open
+  // Track begin checkout event on open & reset state
   useEffect(() => {
-    if (isOpen && cartItems.length > 0) {
-      trackBeginCheckout(cartItems, totals, currentCurrency);
+    if (isOpen) {
+      setForm(shippingAddress);
+      setErrors({});
+      setPaymentError(null);
+      if (cartItems.length > 0) {
+        trackBeginCheckout(cartItems, totals, currentCurrency);
+      }
     }
   }, [isOpen]);
 
@@ -289,8 +297,31 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
             ) : (
               <form onSubmit={handleRazorpayPayment} className="space-y-4">
                 {paymentError && (
-                  <div className="p-3 bg-red-50 text-red-900 border border-red-200 rounded-xl text-xs flex items-center gap-2">
-                    <span className="font-bold">Error:</span> {paymentError}
+                  <div className="p-4 bg-amber-50 text-maroon-950 border border-amber-300/80 rounded-xl text-xs space-y-3 shadow-xs">
+                    <div className="flex items-start gap-2.5">
+                      <AlertTriangle className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+                      <div className="space-y-1">
+                        <span className="font-bold block text-maroon-900">
+                          {paymentError.toLowerCase().includes('auth') || paymentError.toLowerCase().includes('credential')
+                            ? 'Payment Gateway Notice'
+                            : 'Payment Notice'}
+                        </span>
+                        <p className="text-[11px] text-obsidian-slate leading-relaxed">
+                          {paymentError.toLowerCase().includes('auth') || paymentError.toLowerCase().includes('credential')
+                            ? 'Our payment gateway is currently synchronizing with the banking network. You can reserve this bespoke creation instantly via WhatsApp with our boutique team.'
+                            : paymentError}
+                        </p>
+                      </div>
+                    </div>
+                    <a
+                      href={generateCartOrderWhatsAppUrl(cartItems, totals, form)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-2.5 px-3 rounded-lg bg-emerald-800 hover:bg-emerald-900 text-white font-semibold text-[11px] uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-xs"
+                    >
+                      <MessageCircle className="w-3.5 h-3.5" />
+                      <span>Reserve &amp; Complete Order via WhatsApp</span>
+                    </a>
                   </div>
                 )}
 
@@ -520,12 +551,12 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                   {isProcessing ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin text-brass" />
-                      <span>Connecting to Razorpay Secure Gateway...</span>
+                      <span>Connecting to Secure Payment Gateway...</span>
                     </>
                   ) : (
                     <>
                       <Lock className="w-4 h-4 text-brass" />
-                      <span>Pay {formatPrice(totals.grandTotal)} via Razorpay</span>
+                      <span>Proceed to Payment • {formatPrice(totals.grandTotal)}</span>
                     </>
                   )}
                 </button>
