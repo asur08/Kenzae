@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d0e8de83`
+- Built from commit: `c435f1c6`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -70,52 +70,52 @@
 ## Communities (33 total, 2 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.08
-Nodes (43): CartDrawer(), CartDrawerProps, MobileCheckoutModal(), MobileCheckoutModalProps, TailoringSelector(), CATEGORIES, FilterBar(), PRICE_QUICK_CHIPS (+35 more)
+Cohesion: 0.09
+Nodes (38): CartDrawer(), CartDrawerProps, MobileCheckoutModal(), TailoringSelector(), CATEGORIES, FilterBar(), PRICE_QUICK_CHIPS, ALL_CATEGORIES (+30 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.07
-Nodes (35): AiDrapePose, buildSinglePosePrompt(), DrapeBackdropPreset, DrapeStylePreset, EDITORIAL_VARIATION_POOLS, GeneratedLook, GenerateDrapePayload, generateSinglePose() (+27 more)
+Nodes (35): MobileCheckoutModalProps, STANDARD_SIZES, TailoringSelectorProps, CartContext, CartContextType, CartProvider(), defaultAddress, CountryProfile (+27 more)
 
 ### Community 2 - "Community 2"
+Cohesion: 0.07
+Nodes (35): AiDrapePose, buildSinglePosePrompt(), DrapeBackdropPreset, DrapeStylePreset, EDITORIAL_VARIATION_POOLS, GeneratedLook, GenerateDrapePayload, generateSinglePose() (+27 more)
+
+### Community 3 - "Community 3"
 Cohesion: 0.11
 Nodes (30): OrdersContext, OrdersContextType, OrdersProvider(), SAMPLE_ORDERS, useOrders(), dispatchRemoteOrder(), fetchRemoteOrders(), mapOrderToDbRow() (+22 more)
 
-### Community 3 - "Community 3"
+### Community 4 - "Community 4"
 Cohesion: 0.09
 Nodes (30): CreateOrderRequest, CreateOrderResponse, createRazorpayOrder(), handler(), handler(), parseBase64DataUrl(), processImageUpload(), sanitizeFileName() (+22 more)
 
-### Community 4 - "Community 4"
-Cohesion: 0.13
-Nodes (26): uploadCatalogImage(), UploadResult, ARCHETYPE_LABELS, ImageUploadStudio(), ImageUploadStudioProps, ROLE_LABELS, CATEGORIES, ProductEditModal() (+18 more)
-
 ### Community 5 - "Community 5"
+Cohesion: 0.12
+Nodes (29): COLLECTION_CARDS, CollectionCardMeta, uploadCatalogImage(), UploadResult, ARCHETYPE_LABELS, ImageUploadStudio(), ImageUploadStudioProps, ROLE_LABELS (+21 more)
+
+### Community 6 - "Community 6"
 Cohesion: 0.13
 Nodes (25): CatalogContext, CatalogContextType, CatalogProvider(), initialFilterState, VALID_CATEGORIES, validateCatalog(), validateProduct(), ValidationResult (+17 more)
 
-### Community 6 - "Community 6"
-Cohesion: 0.12
-Nodes (24): CurrencySwitcherProps, ProductCardProps, CurrencyContext, CurrencyContextType, CurrencyProvider(), convertINRTo(), CurrencyCode, CurrencyConfig (+16 more)
-
 ### Community 7 - "Community 7"
-Cohesion: 0.11
-Nodes (20): STANDARD_SIZES, TailoringSelectorProps, CartContext, CartContextType, CartProvider(), defaultAddress, CartTotals, CustomBlouseMeasurements (+12 more)
-
-### Community 8 - "Community 8"
 Cohesion: 0.09
 Nodes (20): convertedAED, convertedUSD, countriesCode, countriesPath, courierCode, courierPath, currencyCode, currencyServicePath (+12 more)
 
-### Community 9 - "Community 9"
+### Community 8 - "Community 8"
 Cohesion: 0.11
 Nodes (17): body, buffer, decoded, __dirname, expectedSig, __filename, header, match (+9 more)
 
-### Community 10 - "Community 10"
+### Community 9 - "Community 9"
 Cohesion: 0.12
 Nodes (15): 🗂️ Catalog Management, code:bash (# Install dependencies), code:block2 (Kenzae/), code:block3 (KZ-SR-XXX   → Saris), code:bash (python3 tools/validate_catalog_data.py), 🤝 Contributing, 🚀 Getting Started, Kenzae Designer Boutique 🛍️ (+7 more)
 
-### Community 11 - "Community 11"
+### Community 10 - "Community 10"
 Cohesion: 0.13
 Nodes (14): 1. Executive Summary & Brand Identity, 2. A.N.T. 3-Layer Architectural Principles, 3. Strict Data Schema Specification, 4. WhatsApp Business Integration Protocol, 5. UI/UX Design System & Editorial Rules, 6. Boutique Owner Store Maintenance SOP (No Developer Required), code:json ({), code:text (https://wa.me/{WHATSAPP_NUMBER}?text={ENCODED_MESSAGE}) (+6 more)
+
+### Community 11 - "Community 11"
+Cohesion: 0.24
+Nodes (11): CurrencySwitcherProps, CurrencyContext, CurrencyContextType, CurrencyProvider(), convertINRTo(), CurrencyCode, CurrencyConfig, formatLocalizedPrice() (+3 more)
 
 ### Community 12 - "Community 12"
 Cohesion: 0.15
@@ -170,24 +170,24 @@ Cohesion: 0.7
 Nodes (4): audit_palette(), contrast_ratio(), hex_to_rgb(), relative_luminance()
 
 ## Knowledge Gaps
-- **204 isolated node(s):** `CollectionCardMeta`, `COLLECTION_CARDS`, `CurrencySwitcherProps`, `QUICK_CATEGORIES`, `ProductCardProps` (+199 more)
+- **204 isolated node(s):** `CreateOrderApiResponse`, `VerifyPaymentApiResponse`, `CollectionCardMeta`, `COLLECTION_CARDS`, `CurrencySwitcherProps` (+199 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `KenzaeProduct` connect `Community 5` to `Community 0`, `Community 1`, `Community 4`, `Community 6`, `Community 7`?**
+- **Why does `KenzaeProduct` connect `Community 6` to `Community 0`, `Community 1`, `Community 2`, `Community 5`?**
   _High betweenness centrality (0.063) - this node is a cross-community bridge._
-- **Why does `BoutiqueOrder` connect `Community 2` to `Community 0`, `Community 19`, `Community 5`, `Community 6`?**
+- **Why does `BoutiqueOrder` connect `Community 3` to `Community 1`, `Community 19`, `Community 6`?**
   _High betweenness centrality (0.022) - this node is a cross-community bridge._
-- **Why does `formatCurrencyINR()` connect `Community 0` to `Community 2`, `Community 4`, `Community 6`, `Community 7`, `Community 14`?**
+- **Why does `formatCurrencyINR()` connect `Community 0` to `Community 1`, `Community 3`, `Community 5`, `Community 14`?**
   _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **What connects `CollectionCardMeta`, `COLLECTION_CARDS`, `CurrencySwitcherProps` to the rest of the system?**
+- **What connects `CreateOrderApiResponse`, `VerifyPaymentApiResponse`, `CollectionCardMeta` to the rest of the system?**
   _204 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.07 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
-  _Cohesion score 0.11 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07 - nodes in this community are weakly interconnected._

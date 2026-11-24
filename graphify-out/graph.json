@@ -4,326 +4,506 @@
   "graph": {},
   "nodes": [
     {
+      "label": "verify-razorpay.mjs",
+      "file_type": "code",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L1",
+      "id": "scripts_verify_razorpay_mjs",
+      "community": 4,
+      "norm_label": "verify-razorpay.mjs"
+    },
+    {
+      "label": "__dirname",
+      "file_type": "code",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L12",
+      "id": "scripts_verify_razorpay_dirname",
+      "community": 4,
+      "norm_label": "__dirname"
+    },
+    {
+      "label": "envPath",
+      "file_type": "code",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L13",
+      "id": "scripts_verify_razorpay_envpath",
+      "community": 4,
+      "norm_label": "envpath"
+    },
+    {
+      "label": "envContent",
+      "file_type": "code",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L15",
+      "id": "scripts_verify_razorpay_envcontent",
+      "community": 4,
+      "norm_label": "envcontent"
+    },
+    {
+      "label": "trimmed",
+      "file_type": "code",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L17",
+      "id": "scripts_verify_razorpay_trimmed",
+      "community": 4,
+      "norm_label": "trimmed"
+    },
+    {
+      "label": "[k, ...v]",
+      "file_type": "code",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L19",
+      "id": "scripts_verify_razorpay_k_v",
+      "community": 4,
+      "norm_label": "[k, ...v]"
+    },
+    {
+      "label": "validSignature",
+      "file_type": "code",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L134",
+      "id": "scripts_verify_razorpay_validsignature",
+      "community": 4,
+      "norm_label": "validsignature"
+    },
+    {
+      "label": "validVerifyResult",
+      "file_type": "code",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L140",
+      "id": "scripts_verify_razorpay_validverifyresult",
+      "community": 4,
+      "norm_label": "validverifyresult"
+    },
+    {
+      "label": "mismatchResult",
+      "file_type": "code",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L155",
+      "id": "scripts_verify_razorpay_mismatchresult",
+      "community": 4,
+      "norm_label": "mismatchresult"
+    },
+    {
+      "label": "missingParamsResult",
+      "file_type": "code",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L169",
+      "id": "scripts_verify_razorpay_missingparamsresult",
+      "community": 4,
+      "norm_label": "missingparamsresult"
+    },
+    {
+      "label": "razorpay.ts",
+      "file_type": "code",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L1",
+      "id": "src_utils_razorpay_ts",
+      "community": 1,
+      "norm_label": "razorpay.ts"
+    },
+    {
+      "label": "Window",
+      "file_type": "code",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L4",
+      "id": "utils_razorpay_window",
+      "community": 1,
+      "norm_label": "window"
+    },
+    {
+      "label": "loadRazorpayScript()",
+      "file_type": "code",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L16",
+      "id": "utils_razorpay_loadrazorpayscript",
+      "community": 1,
+      "norm_label": "loadrazorpayscript()"
+    },
+    {
+      "label": "RazorpayPaymentSuccessResponse",
+      "file_type": "code",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L60",
+      "id": "utils_razorpay_razorpaypaymentsuccessresponse",
+      "community": 1,
+      "norm_label": "razorpaypaymentsuccessresponse"
+    },
+    {
+      "label": "InitiatePaymentParams",
+      "file_type": "code",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L66",
+      "id": "utils_razorpay_initiatepaymentparams",
+      "community": 1,
+      "norm_label": "initiatepaymentparams"
+    },
+    {
+      "label": "CreateOrderApiResponse",
+      "file_type": "code",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L76",
+      "id": "utils_razorpay_createorderapiresponse",
+      "community": 1,
+      "norm_label": "createorderapiresponse"
+    },
+    {
+      "label": "VerifyPaymentApiResponse",
+      "file_type": "code",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L88",
+      "id": "utils_razorpay_verifypaymentapiresponse",
+      "community": 1,
+      "norm_label": "verifypaymentapiresponse"
+    },
+    {
+      "label": "createOrderOnServer()",
+      "file_type": "code",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L100",
+      "id": "utils_razorpay_createorderonserver",
+      "community": 1,
+      "norm_label": "createorderonserver()"
+    },
+    {
+      "label": "verifyPaymentOnServer()",
+      "file_type": "code",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L126",
+      "id": "utils_razorpay_verifypaymentonserver",
+      "community": 1,
+      "norm_label": "verifypaymentonserver()"
+    },
+    {
+      "label": "initiateRazorpayPayment()",
+      "file_type": "code",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L155",
+      "id": "utils_razorpay_initiaterazorpaypayment",
+      "community": 1,
+      "norm_label": "initiaterazorpaypayment()"
+    },
+    {
       "label": "AtelierStory.tsx",
       "file_type": "code",
       "source_file": "src/components/AtelierStory.tsx",
       "source_location": "L1",
-      "id": "src_components_atelierstory_tsx",
       "community": 0,
-      "norm_label": "atelierstory.tsx"
+      "norm_label": "atelierstory.tsx",
+      "id": "src_components_atelierstory_tsx"
     },
     {
       "label": "AtelierStory()",
       "file_type": "code",
       "source_file": "src/components/AtelierStory.tsx",
       "source_location": "L5",
-      "id": "components_atelierstory_atelierstory",
       "community": 0,
-      "norm_label": "atelierstory()"
+      "norm_label": "atelierstory()",
+      "id": "components_atelierstory_atelierstory"
     },
     {
       "label": "CollectionShowcase.tsx",
       "file_type": "code",
       "source_file": "src/components/CollectionShowcase.tsx",
       "source_location": "L1",
-      "id": "src_components_collectionshowcase_tsx",
-      "community": 0,
-      "norm_label": "collectionshowcase.tsx"
+      "community": 5,
+      "norm_label": "collectionshowcase.tsx",
+      "id": "src_components_collectionshowcase_tsx"
     },
     {
       "label": "CollectionCardMeta",
       "file_type": "code",
       "source_file": "src/components/CollectionShowcase.tsx",
       "source_location": "L6",
-      "id": "components_collectionshowcase_collectioncardmeta",
-      "community": 0,
-      "norm_label": "collectioncardmeta"
+      "community": 5,
+      "norm_label": "collectioncardmeta",
+      "id": "components_collectionshowcase_collectioncardmeta"
     },
     {
       "label": "COLLECTION_CARDS",
       "file_type": "code",
       "source_file": "src/components/CollectionShowcase.tsx",
       "source_location": "L12",
-      "id": "components_collectionshowcase_collection_cards",
-      "community": 0,
-      "norm_label": "collection_cards"
+      "community": 5,
+      "norm_label": "collection_cards",
+      "id": "components_collectionshowcase_collection_cards"
     },
     {
       "label": "CollectionShowcase()",
       "file_type": "code",
       "source_file": "src/components/CollectionShowcase.tsx",
       "source_location": "L35",
-      "id": "components_collectionshowcase_collectionshowcase",
       "community": 0,
-      "norm_label": "collectionshowcase()"
+      "norm_label": "collectionshowcase()",
+      "id": "components_collectionshowcase_collectionshowcase"
     },
     {
       "label": "CurrencySwitcher.tsx",
       "file_type": "code",
       "source_file": "src/components/CurrencySwitcher.tsx",
       "source_location": "L1",
-      "id": "src_components_currencyswitcher_tsx",
-      "community": 6,
-      "norm_label": "currencyswitcher.tsx"
+      "community": 11,
+      "norm_label": "currencyswitcher.tsx",
+      "id": "src_components_currencyswitcher_tsx"
     },
     {
       "label": "CurrencySwitcherProps",
       "file_type": "code",
       "source_file": "src/components/CurrencySwitcher.tsx",
       "source_location": "L7",
-      "id": "components_currencyswitcher_currencyswitcherprops",
-      "community": 6,
-      "norm_label": "currencyswitcherprops"
+      "community": 11,
+      "norm_label": "currencyswitcherprops",
+      "id": "components_currencyswitcher_currencyswitcherprops"
     },
     {
       "label": "CurrencySwitcher()",
       "file_type": "code",
       "source_file": "src/components/CurrencySwitcher.tsx",
       "source_location": "L12",
-      "id": "components_currencyswitcher_currencyswitcher",
       "community": 0,
-      "norm_label": "currencyswitcher()"
+      "norm_label": "currencyswitcher()",
+      "id": "components_currencyswitcher_currencyswitcher"
     },
     {
       "label": "Footer.tsx",
       "file_type": "code",
       "source_file": "src/components/Footer.tsx",
       "source_location": "L1",
-      "id": "src_components_footer_tsx",
       "community": 0,
-      "norm_label": "footer.tsx"
+      "norm_label": "footer.tsx",
+      "id": "src_components_footer_tsx"
     },
     {
       "label": "Footer()",
       "file_type": "code",
       "source_file": "src/components/Footer.tsx",
       "source_location": "L8",
-      "id": "components_footer_footer",
       "community": 0,
-      "norm_label": "footer()"
+      "norm_label": "footer()",
+      "id": "components_footer_footer"
     },
     {
       "label": "Hero.tsx",
       "file_type": "code",
       "source_file": "src/components/Hero.tsx",
       "source_location": "L1",
-      "id": "src_components_hero_tsx",
       "community": 0,
-      "norm_label": "hero.tsx"
+      "norm_label": "hero.tsx",
+      "id": "src_components_hero_tsx"
     },
     {
       "label": "Hero()",
       "file_type": "code",
       "source_file": "src/components/Hero.tsx",
       "source_location": "L8",
-      "id": "components_hero_hero",
       "community": 0,
-      "norm_label": "hero()"
+      "norm_label": "hero()",
+      "id": "components_hero_hero"
     },
     {
       "label": "Navbar.tsx",
       "file_type": "code",
       "source_file": "src/components/Navbar.tsx",
       "source_location": "L1",
-      "id": "src_components_navbar_tsx",
       "community": 0,
-      "norm_label": "navbar.tsx"
+      "norm_label": "navbar.tsx",
+      "id": "src_components_navbar_tsx"
     },
     {
       "label": "QUICK_CATEGORIES",
       "file_type": "code",
       "source_file": "src/components/Navbar.tsx",
       "source_location": "L11",
-      "id": "components_navbar_quick_categories",
       "community": 0,
-      "norm_label": "quick_categories"
+      "norm_label": "quick_categories",
+      "id": "components_navbar_quick_categories"
     },
     {
       "label": "Navbar()",
       "file_type": "code",
       "source_file": "src/components/Navbar.tsx",
       "source_location": "L19",
-      "id": "components_navbar_navbar",
       "community": 0,
-      "norm_label": "navbar()"
+      "norm_label": "navbar()",
+      "id": "components_navbar_navbar"
     },
     {
       "label": "ProductCard.tsx",
       "file_type": "code",
       "source_file": "src/components/ProductCard.tsx",
       "source_location": "L1",
-      "id": "src_components_productcard_tsx",
-      "community": 6,
-      "norm_label": "productcard.tsx"
+      "community": 0,
+      "norm_label": "productcard.tsx",
+      "id": "src_components_productcard_tsx"
     },
     {
       "label": "ProductCardProps",
       "file_type": "code",
       "source_file": "src/components/ProductCard.tsx",
       "source_location": "L8",
-      "id": "components_productcard_productcardprops",
-      "community": 6,
-      "norm_label": "productcardprops"
+      "community": 0,
+      "norm_label": "productcardprops",
+      "id": "components_productcard_productcardprops"
     },
     {
       "label": "ProductCard()",
       "file_type": "code",
       "source_file": "src/components/ProductCard.tsx",
       "source_location": "L12",
-      "id": "components_productcard_productcard",
       "community": 0,
-      "norm_label": "productcard()"
+      "norm_label": "productcard()",
+      "id": "components_productcard_productcard"
     },
     {
       "label": "ProductModal.tsx",
       "file_type": "code",
       "source_file": "src/components/ProductModal.tsx",
       "source_location": "L1",
-      "id": "src_components_productmodal_tsx",
       "community": 0,
-      "norm_label": "productmodal.tsx"
+      "norm_label": "productmodal.tsx",
+      "id": "src_components_productmodal_tsx"
     },
     {
       "label": "ProductModal()",
       "file_type": "code",
       "source_file": "src/components/ProductModal.tsx",
       "source_location": "L33",
-      "id": "components_productmodal_productmodal",
       "community": 0,
-      "norm_label": "productmodal()"
+      "norm_label": "productmodal()",
+      "id": "components_productmodal_productmodal"
     },
     {
       "label": "StoreLocator.tsx",
       "file_type": "code",
       "source_file": "src/components/StoreLocator.tsx",
       "source_location": "L1",
-      "id": "src_components_storelocator_tsx",
       "community": 0,
-      "norm_label": "storelocator.tsx"
+      "norm_label": "storelocator.tsx",
+      "id": "src_components_storelocator_tsx"
     },
     {
       "label": "StoreLocator()",
       "file_type": "code",
       "source_file": "src/components/StoreLocator.tsx",
       "source_location": "L6",
-      "id": "components_storelocator_storelocator",
       "community": 0,
-      "norm_label": "storelocator()"
+      "norm_label": "storelocator()",
+      "id": "components_storelocator_storelocator"
     },
     {
       "label": "CartDrawer.tsx",
       "file_type": "code",
       "source_file": "src/components/cart/CartDrawer.tsx",
       "source_location": "L1",
-      "id": "src_components_cart_cartdrawer_tsx",
       "community": 0,
-      "norm_label": "cartdrawer.tsx"
+      "norm_label": "cartdrawer.tsx",
+      "id": "src_components_cart_cartdrawer_tsx"
     },
     {
       "label": "CartDrawerProps",
       "file_type": "code",
       "source_file": "src/components/cart/CartDrawer.tsx",
       "source_location": "L19",
-      "id": "cart_cartdrawer_cartdrawerprops",
       "community": 0,
-      "norm_label": "cartdrawerprops"
+      "norm_label": "cartdrawerprops",
+      "id": "cart_cartdrawer_cartdrawerprops"
     },
     {
       "label": "CartDrawer()",
       "file_type": "code",
       "source_file": "src/components/cart/CartDrawer.tsx",
       "source_location": "L23",
-      "id": "cart_cartdrawer_cartdrawer",
       "community": 0,
-      "norm_label": "cartdrawer()"
+      "norm_label": "cartdrawer()",
+      "id": "cart_cartdrawer_cartdrawer"
     },
     {
       "label": "FilterBar.tsx",
       "file_type": "code",
       "source_file": "src/components/catalog/FilterBar.tsx",
       "source_location": "L1",
-      "id": "src_components_catalog_filterbar_tsx",
       "community": 0,
-      "norm_label": "filterbar.tsx"
+      "norm_label": "filterbar.tsx",
+      "id": "src_components_catalog_filterbar_tsx"
     },
     {
       "label": "CATEGORIES",
       "file_type": "code",
       "source_file": "src/components/catalog/FilterBar.tsx",
       "source_location": "L7",
-      "id": "catalog_filterbar_categories",
       "community": 0,
-      "norm_label": "categories"
+      "norm_label": "categories",
+      "id": "catalog_filterbar_categories"
     },
     {
       "label": "PRICE_QUICK_CHIPS",
       "file_type": "code",
       "source_file": "src/components/catalog/FilterBar.tsx",
       "source_location": "L15",
-      "id": "catalog_filterbar_price_quick_chips",
       "community": 0,
-      "norm_label": "price_quick_chips"
+      "norm_label": "price_quick_chips",
+      "id": "catalog_filterbar_price_quick_chips"
     },
     {
       "label": "FilterBar()",
       "file_type": "code",
       "source_file": "src/components/catalog/FilterBar.tsx",
       "source_location": "L22",
-      "id": "catalog_filterbar_filterbar",
       "community": 0,
-      "norm_label": "filterbar()"
+      "norm_label": "filterbar()",
+      "id": "catalog_filterbar_filterbar"
     },
     {
       "label": "WishlistDrawer.tsx",
       "file_type": "code",
       "source_file": "src/components/catalog/WishlistDrawer.tsx",
       "source_location": "L1",
-      "id": "src_components_catalog_wishlistdrawer_tsx",
       "community": 0,
-      "norm_label": "wishlistdrawer.tsx"
+      "norm_label": "wishlistdrawer.tsx",
+      "id": "src_components_catalog_wishlistdrawer_tsx"
     },
     {
       "label": "WishlistDrawer()",
       "file_type": "code",
       "source_file": "src/components/catalog/WishlistDrawer.tsx",
       "source_location": "L8",
-      "id": "catalog_wishlistdrawer_wishlistdrawer",
       "community": 0,
-      "norm_label": "wishlistdrawer()"
+      "norm_label": "wishlistdrawer()",
+      "id": "catalog_wishlistdrawer_wishlistdrawer"
     },
     {
       "label": "MobileBottomBar.tsx",
       "file_type": "code",
       "source_file": "src/components/mobile/MobileBottomBar.tsx",
       "source_location": "L1",
-      "id": "src_components_mobile_mobilebottombar_tsx",
       "community": 0,
-      "norm_label": "mobilebottombar.tsx"
+      "norm_label": "mobilebottombar.tsx",
+      "id": "src_components_mobile_mobilebottombar_tsx"
     },
     {
       "label": "MobileBottomBar()",
       "file_type": "code",
       "source_file": "src/components/mobile/MobileBottomBar.tsx",
       "source_location": "L7",
-      "id": "mobile_mobilebottombar_mobilebottombar",
       "community": 0,
-      "norm_label": "mobilebottombar()"
+      "norm_label": "mobilebottombar()",
+      "id": "mobile_mobilebottombar_mobilebottombar"
     },
     {
       "label": "tailwind.config.js",
       "file_type": "code",
       "source_file": "tailwind.config.js",
       "source_location": "L1",
-      "id": "tailwind_config_js",
       "community": 30,
-      "norm_label": "tailwind.config.js"
+      "norm_label": "tailwind.config.js",
+      "id": "tailwind_config_js"
     },
     {
       "label": "generate-drape.ts",
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L1",
-      "community": 1,
+      "community": 2,
       "norm_label": "generate-drape.ts",
       "id": "api_generate_drape_ts"
     },
@@ -332,7 +512,7 @@
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L1",
-      "community": 1,
+      "community": 2,
       "norm_label": "aidrapepose",
       "id": "api_generate_drape_aidrapepose"
     },
@@ -341,7 +521,7 @@
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L7",
-      "community": 1,
+      "community": 2,
       "norm_label": "modelarchetype",
       "id": "api_generate_drape_modelarchetype"
     },
@@ -350,7 +530,7 @@
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L12",
-      "community": 1,
+      "community": 2,
       "norm_label": "drapestylepreset",
       "id": "api_generate_drape_drapestylepreset"
     },
@@ -359,7 +539,7 @@
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L13",
-      "community": 1,
+      "community": 2,
       "norm_label": "drapebackdroppreset",
       "id": "api_generate_drape_drapebackdroppreset"
     },
@@ -368,7 +548,7 @@
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L15",
-      "community": 1,
+      "community": 2,
       "norm_label": "generatedrapepayload",
       "id": "api_generate_drape_generatedrapepayload"
     },
@@ -377,7 +557,7 @@
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L32",
-      "community": 1,
+      "community": 2,
       "norm_label": "generatedlook",
       "id": "api_generate_drape_generatedlook"
     },
@@ -386,7 +566,7 @@
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L42",
-      "community": 1,
+      "community": 2,
       "norm_label": "multiposedraperesponse",
       "id": "api_generate_drape_multiposedraperesponse"
     },
@@ -395,7 +575,7 @@
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L49",
-      "community": 1,
+      "community": 2,
       "norm_label": "parsedinlinedata",
       "id": "api_generate_drape_parsedinlinedata"
     },
@@ -404,7 +584,7 @@
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L54",
-      "community": 1,
+      "community": 2,
       "norm_label": "parsedataurl()",
       "id": "api_generate_drape_parsedataurl"
     },
@@ -413,7 +593,7 @@
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L60",
-      "community": 1,
+      "community": 2,
       "norm_label": "resolveimagedata()",
       "id": "api_generate_drape_resolveimagedata"
     },
@@ -422,7 +602,7 @@
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L84",
-      "community": 1,
+      "community": 2,
       "norm_label": "pose_definitions",
       "id": "api_generate_drape_pose_definitions"
     },
@@ -431,7 +611,7 @@
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L123",
-      "community": 1,
+      "community": 2,
       "norm_label": "buildsingleposeprompt()",
       "id": "api_generate_drape_buildsingleposeprompt"
     },
@@ -440,7 +620,7 @@
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L176",
-      "community": 1,
+      "community": 2,
       "norm_label": "generatesinglepose()",
       "id": "api_generate_drape_generatesinglepose"
     },
@@ -449,7 +629,7 @@
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L275",
-      "community": 1,
+      "community": 2,
       "norm_label": "editorial_variation_pools",
       "id": "api_generate_drape_editorial_variation_pools"
     },
@@ -458,7 +638,7 @@
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L298",
-      "community": 1,
+      "community": 2,
       "norm_label": "geteditoriallookbookmock()",
       "id": "api_generate_drape_geteditoriallookbookmock"
     },
@@ -467,7 +647,7 @@
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L318",
-      "community": 1,
+      "community": 2,
       "norm_label": "processmultiposedrape()",
       "id": "api_generate_drape_processmultiposedrape"
     },
@@ -476,106 +656,16 @@
       "file_type": "code",
       "source_file": "api/generate-drape.ts",
       "source_location": "L391",
-      "community": 1,
+      "community": 2,
       "norm_label": "handler()",
       "id": "api_generate_drape_handler"
-    },
-    {
-      "label": "verify-razorpay.mjs",
-      "file_type": "code",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L1",
-      "community": 3,
-      "norm_label": "verify-razorpay.mjs",
-      "id": "scripts_verify_razorpay_mjs"
-    },
-    {
-      "label": "__dirname",
-      "file_type": "code",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L12",
-      "community": 3,
-      "norm_label": "__dirname",
-      "id": "scripts_verify_razorpay_dirname"
-    },
-    {
-      "label": "envPath",
-      "file_type": "code",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L13",
-      "community": 3,
-      "norm_label": "envpath",
-      "id": "scripts_verify_razorpay_envpath"
-    },
-    {
-      "label": "envContent",
-      "file_type": "code",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L15",
-      "community": 3,
-      "norm_label": "envcontent",
-      "id": "scripts_verify_razorpay_envcontent"
-    },
-    {
-      "label": "trimmed",
-      "file_type": "code",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L17",
-      "community": 3,
-      "norm_label": "trimmed",
-      "id": "scripts_verify_razorpay_trimmed"
-    },
-    {
-      "label": "[k, ...v]",
-      "file_type": "code",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L19",
-      "community": 3,
-      "norm_label": "[k, ...v]",
-      "id": "scripts_verify_razorpay_k_v"
-    },
-    {
-      "label": "validSignature",
-      "file_type": "code",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L134",
-      "community": 3,
-      "norm_label": "validsignature",
-      "id": "scripts_verify_razorpay_validsignature"
-    },
-    {
-      "label": "validVerifyResult",
-      "file_type": "code",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L140",
-      "community": 3,
-      "norm_label": "validverifyresult",
-      "id": "scripts_verify_razorpay_validverifyresult"
-    },
-    {
-      "label": "mismatchResult",
-      "file_type": "code",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L155",
-      "community": 3,
-      "norm_label": "mismatchresult",
-      "id": "scripts_verify_razorpay_mismatchresult"
-    },
-    {
-      "label": "missingParamsResult",
-      "file_type": "code",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L169",
-      "community": 3,
-      "norm_label": "missingparamsresult",
-      "id": "scripts_verify_razorpay_missingparamsresult"
     },
     {
       "label": "MobileCheckoutModal.tsx",
       "file_type": "code",
       "source_file": "src/components/cart/MobileCheckoutModal.tsx",
       "source_location": "L1",
-      "community": 0,
+      "community": 1,
       "norm_label": "mobilecheckoutmodal.tsx",
       "id": "src_components_cart_mobilecheckoutmodal_tsx"
     },
@@ -584,7 +674,7 @@
       "file_type": "code",
       "source_file": "src/components/cart/MobileCheckoutModal.tsx",
       "source_location": "L28",
-      "community": 0,
+      "community": 1,
       "norm_label": "mobilecheckoutmodalprops",
       "id": "cart_mobilecheckoutmodal_mobilecheckoutmodalprops"
     },
@@ -602,7 +692,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/ImageUploadStudio.tsx",
       "source_location": "L1",
-      "community": 4,
+      "community": 5,
       "norm_label": "imageuploadstudio.tsx",
       "id": "src_components_staff_imageuploadstudio_tsx"
     },
@@ -611,7 +701,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/ImageUploadStudio.tsx",
       "source_location": "L28",
-      "community": 4,
+      "community": 5,
       "norm_label": "imageuploadstudioprops",
       "id": "staff_imageuploadstudio_imageuploadstudioprops"
     },
@@ -620,7 +710,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/ImageUploadStudio.tsx",
       "source_location": "L41",
-      "community": 4,
+      "community": 5,
       "norm_label": "role_labels",
       "id": "staff_imageuploadstudio_role_labels"
     },
@@ -629,7 +719,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/ImageUploadStudio.tsx",
       "source_location": "L48",
-      "community": 4,
+      "community": 5,
       "norm_label": "archetype_labels",
       "id": "staff_imageuploadstudio_archetype_labels"
     },
@@ -638,7 +728,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/ImageUploadStudio.tsx",
       "source_location": "L63",
-      "community": 4,
+      "community": 5,
       "norm_label": "imageuploadstudio()",
       "id": "staff_imageuploadstudio_imageuploadstudio"
     },
@@ -647,7 +737,7 @@
       "file_type": "code",
       "source_file": "src/context/CartContext.tsx",
       "source_location": "L1",
-      "community": 7,
+      "community": 1,
       "norm_label": "cartcontext.tsx",
       "id": "src_context_cartcontext_tsx"
     },
@@ -656,7 +746,7 @@
       "file_type": "code",
       "source_file": "src/context/CartContext.tsx",
       "source_location": "L6",
-      "community": 7,
+      "community": 1,
       "norm_label": "cartcontexttype",
       "id": "context_cartcontext_cartcontexttype"
     },
@@ -665,7 +755,7 @@
       "file_type": "code",
       "source_file": "src/context/CartContext.tsx",
       "source_location": "L26",
-      "community": 7,
+      "community": 1,
       "norm_label": "defaultaddress",
       "id": "context_cartcontext_defaultaddress"
     },
@@ -674,7 +764,7 @@
       "file_type": "code",
       "source_file": "src/context/CartContext.tsx",
       "source_location": "L39",
-      "community": 7,
+      "community": 1,
       "norm_label": "cartcontext",
       "id": "context_cartcontext_cartcontext"
     },
@@ -683,7 +773,7 @@
       "file_type": "code",
       "source_file": "src/context/CartContext.tsx",
       "source_location": "L41",
-      "community": 7,
+      "community": 1,
       "norm_label": "generateitemkey()",
       "id": "context_cartcontext_generateitemkey"
     },
@@ -692,7 +782,7 @@
       "file_type": "code",
       "source_file": "src/context/CartContext.tsx",
       "source_location": "L52",
-      "community": 7,
+      "community": 1,
       "norm_label": "ispincodeinkerala()",
       "id": "context_cartcontext_ispincodeinkerala"
     },
@@ -701,7 +791,7 @@
       "file_type": "code",
       "source_file": "src/context/CartContext.tsx",
       "source_location": "L59",
-      "community": 7,
+      "community": 1,
       "norm_label": "cartprovider()",
       "id": "context_cartcontext_cartprovider"
     },
@@ -719,7 +809,7 @@
       "file_type": "code",
       "source_file": "src/utils/imageProcessor.ts",
       "source_location": "L1",
-      "community": 4,
+      "community": 5,
       "norm_label": "imageprocessor.ts",
       "id": "src_utils_imageprocessor_ts"
     },
@@ -728,7 +818,7 @@
       "file_type": "code",
       "source_file": "src/utils/imageProcessor.ts",
       "source_location": "L1",
-      "community": 4,
+      "community": 5,
       "norm_label": "processedimageresult",
       "id": "utils_imageprocessor_processedimageresult"
     },
@@ -737,7 +827,7 @@
       "file_type": "code",
       "source_file": "src/utils/imageProcessor.ts",
       "source_location": "L9",
-      "community": 4,
+      "community": 5,
       "norm_label": "estimatedataurlbytes()",
       "id": "utils_imageprocessor_estimatedataurlbytes"
     },
@@ -746,7 +836,7 @@
       "file_type": "code",
       "source_file": "src/utils/imageProcessor.ts",
       "source_location": "L16",
-      "community": 4,
+      "community": 5,
       "norm_label": "formatbytesize()",
       "id": "utils_imageprocessor_formatbytesize"
     },
@@ -755,7 +845,7 @@
       "file_type": "code",
       "source_file": "src/utils/imageProcessor.ts",
       "source_location": "L24",
-      "community": 4,
+      "community": 5,
       "norm_label": "loadimageelement()",
       "id": "utils_imageprocessor_loadimageelement"
     },
@@ -764,7 +854,7 @@
       "file_type": "code",
       "source_file": "src/utils/imageProcessor.ts",
       "source_location": "L34",
-      "community": 4,
+      "community": 5,
       "norm_label": "encodecanvastooptimizedurl()",
       "id": "utils_imageprocessor_encodecanvastooptimizedurl"
     },
@@ -773,7 +863,7 @@
       "file_type": "code",
       "source_file": "src/utils/imageProcessor.ts",
       "source_location": "L77",
-      "community": 4,
+      "community": 5,
       "norm_label": "compressimagetowebp()",
       "id": "utils_imageprocessor_compressimagetowebp"
     },
@@ -782,7 +872,7 @@
       "file_type": "code",
       "source_file": "src/utils/imageProcessor.ts",
       "source_location": "L99",
-      "community": 4,
+      "community": 5,
       "norm_label": "compressdataurltowebp()",
       "id": "utils_imageprocessor_compressdataurltowebp"
     },
@@ -791,7 +881,7 @@
       "file_type": "code",
       "source_file": "src/utils/imageProcessor.ts",
       "source_location": "L112",
-      "community": 4,
+      "community": 5,
       "norm_label": "downloaddataurlasfile()",
       "id": "utils_imageprocessor_downloaddataurlasfile"
     },
@@ -800,7 +890,7 @@
       "file_type": "code",
       "source_file": "src/utils/imageProcessor.ts",
       "source_location": "L125",
-      "community": 4,
+      "community": 5,
       "norm_label": "downloadimagefile()",
       "id": "utils_imageprocessor_downloadimagefile"
     },
@@ -818,7 +908,7 @@
       "file_type": "code",
       "source_file": "verify-razorpay.mjs",
       "source_location": "L1",
-      "community": 3,
+      "community": 4,
       "norm_label": "verify-razorpay.mjs",
       "id": "verify_razorpay_mjs"
     },
@@ -827,7 +917,7 @@
       "file_type": "code",
       "source_file": "api/create-order.ts",
       "source_location": "L1",
-      "community": 3,
+      "community": 4,
       "norm_label": "create-order.ts",
       "id": "api_create_order_ts"
     },
@@ -836,7 +926,7 @@
       "file_type": "code",
       "source_file": "api/create-order.ts",
       "source_location": "L3",
-      "community": 3,
+      "community": 4,
       "norm_label": "createorderrequest",
       "id": "api_create_order_createorderrequest"
     },
@@ -845,7 +935,7 @@
       "file_type": "code",
       "source_file": "api/create-order.ts",
       "source_location": "L10",
-      "community": 3,
+      "community": 4,
       "norm_label": "createorderresponse",
       "id": "api_create_order_createorderresponse"
     },
@@ -854,7 +944,7 @@
       "file_type": "code",
       "source_file": "api/create-order.ts",
       "source_location": "L26",
-      "community": 3,
+      "community": 4,
       "norm_label": "createrazorpayorder()",
       "id": "api_create_order_createrazorpayorder"
     },
@@ -863,7 +953,7 @@
       "file_type": "code",
       "source_file": "api/create-order.ts",
       "source_location": "L122",
-      "community": 3,
+      "community": 4,
       "norm_label": "handler()",
       "id": "api_create_order_handler"
     },
@@ -872,7 +962,7 @@
       "file_type": "code",
       "source_file": "api/verify-payment.ts",
       "source_location": "L1",
-      "community": 3,
+      "community": 4,
       "norm_label": "verify-payment.ts",
       "id": "api_verify_payment_ts"
     },
@@ -881,7 +971,7 @@
       "file_type": "code",
       "source_file": "api/verify-payment.ts",
       "source_location": "L3",
-      "community": 3,
+      "community": 4,
       "norm_label": "verifypaymentrequest",
       "id": "api_verify_payment_verifypaymentrequest"
     },
@@ -890,7 +980,7 @@
       "file_type": "code",
       "source_file": "api/verify-payment.ts",
       "source_location": "L12",
-      "community": 3,
+      "community": 4,
       "norm_label": "verifypaymentresponse",
       "id": "api_verify_payment_verifypaymentresponse"
     },
@@ -899,7 +989,7 @@
       "file_type": "code",
       "source_file": "api/verify-payment.ts",
       "source_location": "L26",
-      "community": 3,
+      "community": 4,
       "norm_label": "verifypaymentsignature()",
       "id": "api_verify_payment_verifypaymentsignature"
     },
@@ -908,7 +998,7 @@
       "file_type": "code",
       "source_file": "api/verify-payment.ts",
       "source_location": "L111",
-      "community": 3,
+      "community": 4,
       "norm_label": "handler()",
       "id": "api_verify_payment_handler"
     },
@@ -938,96 +1028,6 @@
       "community": 25,
       "norm_label": "authenticsig",
       "id": "scripts_test_vite_api_server_authenticsig"
-    },
-    {
-      "label": "razorpay.ts",
-      "file_type": "code",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L1",
-      "community": 7,
-      "norm_label": "razorpay.ts",
-      "id": "src_utils_razorpay_ts"
-    },
-    {
-      "label": "Window",
-      "file_type": "code",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L4",
-      "community": 7,
-      "norm_label": "window",
-      "id": "utils_razorpay_window"
-    },
-    {
-      "label": "loadRazorpayScript()",
-      "file_type": "code",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L14",
-      "community": 7,
-      "norm_label": "loadrazorpayscript()",
-      "id": "utils_razorpay_loadrazorpayscript"
-    },
-    {
-      "label": "RazorpayPaymentSuccessResponse",
-      "file_type": "code",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L45",
-      "community": 7,
-      "norm_label": "razorpaypaymentsuccessresponse",
-      "id": "utils_razorpay_razorpaypaymentsuccessresponse"
-    },
-    {
-      "label": "InitiatePaymentParams",
-      "file_type": "code",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L51",
-      "community": 7,
-      "norm_label": "initiatepaymentparams",
-      "id": "utils_razorpay_initiatepaymentparams"
-    },
-    {
-      "label": "CreateOrderApiResponse",
-      "file_type": "code",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L61",
-      "community": 7,
-      "norm_label": "createorderapiresponse",
-      "id": "utils_razorpay_createorderapiresponse"
-    },
-    {
-      "label": "VerifyPaymentApiResponse",
-      "file_type": "code",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L73",
-      "community": 7,
-      "norm_label": "verifypaymentapiresponse",
-      "id": "utils_razorpay_verifypaymentapiresponse"
-    },
-    {
-      "label": "createOrderOnServer()",
-      "file_type": "code",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L85",
-      "community": 7,
-      "norm_label": "createorderonserver()",
-      "id": "utils_razorpay_createorderonserver"
-    },
-    {
-      "label": "verifyPaymentOnServer()",
-      "file_type": "code",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L111",
-      "community": 7,
-      "norm_label": "verifypaymentonserver()",
-      "id": "utils_razorpay_verifypaymentonserver"
-    },
-    {
-      "label": "initiateRazorpayPayment()",
-      "file_type": "code",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L140",
-      "community": 7,
-      "norm_label": "initiaterazorpaypayment()",
-      "id": "utils_razorpay_initiaterazorpaypayment"
     },
     {
       "label": "vite-env.d.ts",
@@ -1061,7 +1061,7 @@
       "file_type": "code",
       "source_file": "vite.config.ts",
       "source_location": "L1",
-      "community": 3,
+      "community": 4,
       "norm_label": "vite.config.ts",
       "id": "vite_config_ts"
     },
@@ -1070,7 +1070,7 @@
       "file_type": "code",
       "source_file": "vite.config.ts",
       "source_location": "L9",
-      "community": 3,
+      "community": 4,
       "norm_label": "kenzaedevapimiddleware()",
       "id": "kenzae_vite_config_kenzaedevapimiddleware"
     },
@@ -1079,7 +1079,7 @@
       "file_type": "code",
       "source_file": "api/auth/check-session.ts",
       "source_location": "L1",
-      "community": 3,
+      "community": 4,
       "norm_label": "check-session.ts",
       "id": "api_auth_check_session_ts"
     },
@@ -1088,7 +1088,7 @@
       "file_type": "code",
       "source_file": "api/auth/check-session.ts",
       "source_location": "L3",
-      "community": 3,
+      "community": 4,
       "norm_label": "handler()",
       "id": "auth_check_session_handler"
     },
@@ -1097,7 +1097,7 @@
       "file_type": "code",
       "source_file": "src/context/CatalogContext.tsx",
       "source_location": "L1",
-      "community": 5,
+      "community": 6,
       "norm_label": "catalogcontext.tsx",
       "id": "src_context_catalogcontext_tsx"
     },
@@ -1106,7 +1106,7 @@
       "file_type": "code",
       "source_file": "src/context/CatalogContext.tsx",
       "source_location": "L17",
-      "community": 5,
+      "community": 6,
       "norm_label": "catalogcontexttype",
       "id": "context_catalogcontext_catalogcontexttype"
     },
@@ -1115,7 +1115,7 @@
       "file_type": "code",
       "source_file": "src/context/CatalogContext.tsx",
       "source_location": "L62",
-      "community": 5,
+      "community": 6,
       "norm_label": "initialfilterstate",
       "id": "context_catalogcontext_initialfilterstate"
     },
@@ -1124,7 +1124,7 @@
       "file_type": "code",
       "source_file": "src/context/CatalogContext.tsx",
       "source_location": "L71",
-      "community": 5,
+      "community": 6,
       "norm_label": "catalogcontext",
       "id": "context_catalogcontext_catalogcontext"
     },
@@ -1133,7 +1133,7 @@
       "file_type": "code",
       "source_file": "src/context/CatalogContext.tsx",
       "source_location": "L73",
-      "community": 5,
+      "community": 6,
       "norm_label": "catalogprovider()",
       "id": "context_catalogcontext_catalogprovider"
     },
@@ -1295,7 +1295,7 @@
       "file_type": "code",
       "source_file": "razorpay.ts",
       "source_location": "L1",
-      "community": 7,
+      "community": 1,
       "norm_label": "razorpay.ts",
       "id": "razorpay_ts"
     },
@@ -1304,7 +1304,7 @@
       "file_type": "code",
       "source_file": "api/auth/verify-staff.ts",
       "source_location": "L1",
-      "community": 3,
+      "community": 4,
       "norm_label": "verify-staff.ts",
       "id": "api_auth_verify_staff_ts"
     },
@@ -1313,7 +1313,7 @@
       "file_type": "code",
       "source_file": "api/auth/verify-staff.ts",
       "source_location": "L3",
-      "community": 3,
+      "community": 4,
       "norm_label": "staffloginrequest",
       "id": "auth_verify_staff_staffloginrequest"
     },
@@ -1322,7 +1322,7 @@
       "file_type": "code",
       "source_file": "api/auth/verify-staff.ts",
       "source_location": "L9",
-      "community": 3,
+      "community": 4,
       "norm_label": "staffloginresponse",
       "id": "auth_verify_staff_staffloginresponse"
     },
@@ -1331,7 +1331,7 @@
       "file_type": "code",
       "source_file": "api/auth/verify-staff.ts",
       "source_location": "L20",
-      "community": 3,
+      "community": 4,
       "norm_label": "signtoken()",
       "id": "auth_verify_staff_signtoken"
     },
@@ -1340,7 +1340,7 @@
       "file_type": "code",
       "source_file": "api/auth/verify-staff.ts",
       "source_location": "L30",
-      "community": 3,
+      "community": 4,
       "norm_label": "verifysignedtoken()",
       "id": "auth_verify_staff_verifysignedtoken"
     },
@@ -1349,7 +1349,7 @@
       "file_type": "code",
       "source_file": "api/auth/verify-staff.ts",
       "source_location": "L52",
-      "community": 3,
+      "community": 4,
       "norm_label": "authenticatestaff()",
       "id": "auth_verify_staff_authenticatestaff"
     },
@@ -1358,7 +1358,7 @@
       "file_type": "code",
       "source_file": "api/auth/verify-staff.ts",
       "source_location": "L109",
-      "community": 3,
+      "community": 4,
       "norm_label": "handler()",
       "id": "auth_verify_staff_handler"
     },
@@ -1367,7 +1367,7 @@
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L1",
-      "community": 1,
+      "community": 2,
       "norm_label": "og-preview.ts",
       "id": "api_og_preview_ts"
     },
@@ -1376,7 +1376,7 @@
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L6",
-      "community": 1,
+      "community": 2,
       "norm_label": "loadcatalogproducts()",
       "id": "api_og_preview_loadcatalogproducts"
     },
@@ -1385,7 +1385,7 @@
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L17",
-      "community": 1,
+      "community": 2,
       "norm_label": "defaultproducts",
       "id": "api_og_preview_defaultproducts"
     },
@@ -1394,7 +1394,7 @@
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L19",
-      "community": 1,
+      "community": 2,
       "norm_label": "vercelserverlessrequest",
       "id": "api_og_preview_vercelserverlessrequest"
     },
@@ -1403,7 +1403,7 @@
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L28",
-      "community": 1,
+      "community": 2,
       "norm_label": "vercelserverlessresponse",
       "id": "api_og_preview_vercelserverlessresponse"
     },
@@ -1412,7 +1412,7 @@
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L34",
-      "community": 1,
+      "community": 2,
       "norm_label": "escapehtml()",
       "id": "api_og_preview_escapehtml"
     },
@@ -1421,7 +1421,7 @@
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L43",
-      "community": 1,
+      "community": 2,
       "norm_label": "formatpriceinr()",
       "id": "api_og_preview_formatpriceinr"
     },
@@ -1430,7 +1430,7 @@
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L47",
-      "community": 1,
+      "community": 2,
       "norm_label": "resolveproductforog()",
       "id": "api_og_preview_resolveproductforog"
     },
@@ -1439,7 +1439,7 @@
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L61",
-      "community": 1,
+      "community": 2,
       "norm_label": "buildopengraphhtml()",
       "id": "api_og_preview_buildopengraphhtml"
     },
@@ -1448,7 +1448,7 @@
       "file_type": "code",
       "source_file": "api/og-preview.ts",
       "source_location": "L114",
-      "community": 1,
+      "community": 2,
       "norm_label": "handler()",
       "id": "api_og_preview_handler"
     },
@@ -1457,7 +1457,7 @@
       "file_type": "code",
       "source_file": "api/upload-image.ts",
       "source_location": "L1",
-      "community": 3,
+      "community": 4,
       "norm_label": "upload-image.ts",
       "id": "api_upload_image_ts"
     },
@@ -1466,7 +1466,7 @@
       "file_type": "code",
       "source_file": "api/upload-image.ts",
       "source_location": "L4",
-      "community": 3,
+      "community": 4,
       "norm_label": "uploadimagerequest",
       "id": "api_upload_image_uploadimagerequest"
     },
@@ -1475,7 +1475,7 @@
       "file_type": "code",
       "source_file": "api/upload-image.ts",
       "source_location": "L12",
-      "community": 3,
+      "community": 4,
       "norm_label": "uploadimageresponse",
       "id": "api_upload_image_uploadimageresponse"
     },
@@ -1484,7 +1484,7 @@
       "file_type": "code",
       "source_file": "api/upload-image.ts",
       "source_location": "L22",
-      "community": 3,
+      "community": 4,
       "norm_label": "parsebase64dataurl()",
       "id": "api_upload_image_parsebase64dataurl"
     },
@@ -1493,7 +1493,7 @@
       "file_type": "code",
       "source_file": "api/upload-image.ts",
       "source_location": "L31",
-      "community": 3,
+      "community": 4,
       "norm_label": "sanitizefilename()",
       "id": "api_upload_image_sanitizefilename"
     },
@@ -1502,7 +1502,7 @@
       "file_type": "code",
       "source_file": "api/upload-image.ts",
       "source_location": "L38",
-      "community": 3,
+      "community": 4,
       "norm_label": "processimageupload()",
       "id": "api_upload_image_processimageupload"
     },
@@ -1511,7 +1511,7 @@
       "file_type": "code",
       "source_file": "api/upload-image.ts",
       "source_location": "L162",
-      "community": 3,
+      "community": 4,
       "norm_label": "handler()",
       "id": "api_upload_image_handler"
     },
@@ -1727,7 +1727,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-drape-api.js",
       "source_location": "L1",
-      "community": 1,
+      "community": 2,
       "norm_label": "verify-drape-api.js",
       "id": "scripts_verify_drape_api_js"
     },
@@ -1736,7 +1736,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-drape-api.js",
       "source_location": "L12",
-      "community": 1,
+      "community": 2,
       "norm_label": "requiredposes",
       "id": "scripts_verify_drape_api_requiredposes"
     },
@@ -1745,7 +1745,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-drape-api.js",
       "source_location": "L23",
-      "community": 1,
+      "community": 2,
       "norm_label": "samplepayload",
       "id": "scripts_verify_drape_api_samplepayload"
     },
@@ -1754,7 +1754,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L1",
-      "community": 1,
+      "community": 2,
       "norm_label": "verify-phase2.js",
       "id": "scripts_verify_phase2_js"
     },
@@ -1763,7 +1763,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L14",
-      "community": 1,
+      "community": 2,
       "norm_label": "__filename",
       "id": "scripts_verify_phase2_filename"
     },
@@ -1772,7 +1772,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L15",
-      "community": 1,
+      "community": 2,
       "norm_label": "__dirname",
       "id": "scripts_verify_phase2_dirname"
     },
@@ -1781,7 +1781,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L16",
-      "community": 1,
+      "community": 2,
       "norm_label": "defaultproducts",
       "id": "scripts_verify_phase2_defaultproducts"
     },
@@ -1790,7 +1790,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L27",
-      "community": 1,
+      "community": 2,
       "norm_label": "product",
       "id": "scripts_verify_phase2_product"
     },
@@ -1799,7 +1799,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L34",
-      "community": 1,
+      "community": 2,
       "norm_label": "html",
       "id": "scripts_verify_phase2_html"
     },
@@ -1808,7 +1808,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L36",
-      "community": 1,
+      "community": 2,
       "norm_label": "requiredmetatags",
       "id": "scripts_verify_phase2_requiredmetatags"
     },
@@ -1817,7 +1817,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L63",
-      "community": 1,
+      "community": 2,
       "norm_label": "requiredposes",
       "id": "scripts_verify_phase2_requiredposes"
     },
@@ -1826,7 +1826,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-phase2.js",
       "source_location": "L99",
-      "community": 1,
+      "community": 2,
       "norm_label": "productswithvideo",
       "id": "scripts_verify_phase2_productswithvideo"
     },
@@ -1835,7 +1835,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L1",
-      "community": 9,
+      "community": 8,
       "norm_label": "verify-sprint1.js",
       "id": "scripts_verify_sprint1_js"
     },
@@ -1844,7 +1844,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L13",
-      "community": 9,
+      "community": 8,
       "norm_label": "__filename",
       "id": "scripts_verify_sprint1_filename"
     },
@@ -1853,7 +1853,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L14",
-      "community": 9,
+      "community": 8,
       "norm_label": "__dirname",
       "id": "scripts_verify_sprint1_dirname"
     },
@@ -1862,7 +1862,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L15",
-      "community": 9,
+      "community": 8,
       "norm_label": "rootdir",
       "id": "scripts_verify_sprint1_rootdir"
     },
@@ -1871,7 +1871,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L22",
-      "community": 9,
+      "community": 8,
       "norm_label": "sqlpath",
       "id": "scripts_verify_sprint1_sqlpath"
     },
@@ -1880,7 +1880,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L27",
-      "community": 9,
+      "community": 8,
       "norm_label": "sqlcontent",
       "id": "scripts_verify_sprint1_sqlcontent"
     },
@@ -1889,7 +1889,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L28",
-      "community": 9,
+      "community": 8,
       "norm_label": "requiredclauses",
       "id": "scripts_verify_sprint1_requiredclauses"
     },
@@ -1898,7 +1898,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L53",
-      "community": 9,
+      "community": 8,
       "norm_label": "payload",
       "id": "scripts_verify_sprint1_payload"
     },
@@ -1907,7 +1907,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L59",
-      "community": 9,
+      "community": 8,
       "norm_label": "header",
       "id": "scripts_verify_sprint1_header"
     },
@@ -1916,7 +1916,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L60",
-      "community": 9,
+      "community": 8,
       "norm_label": "body",
       "id": "scripts_verify_sprint1_body"
     },
@@ -1925,7 +1925,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L61",
-      "community": 9,
+      "community": 8,
       "norm_label": "signature",
       "id": "scripts_verify_sprint1_signature"
     },
@@ -1934,7 +1934,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L68",
-      "community": 9,
+      "community": 8,
       "norm_label": "parts",
       "id": "scripts_verify_sprint1_parts"
     },
@@ -1943,7 +1943,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L71",
-      "community": 9,
+      "community": 8,
       "norm_label": "expectedsig",
       "id": "scripts_verify_sprint1_expectedsig"
     },
@@ -1952,7 +1952,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L78",
-      "community": 9,
+      "community": 8,
       "norm_label": "decoded",
       "id": "scripts_verify_sprint1_decoded"
     },
@@ -1961,7 +1961,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L90",
-      "community": 9,
+      "community": 8,
       "norm_label": "match",
       "id": "scripts_verify_sprint1_match"
     },
@@ -1970,7 +1970,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L93",
-      "community": 9,
+      "community": 8,
       "norm_label": "buffer",
       "id": "scripts_verify_sprint1_buffer"
     },
@@ -1979,7 +1979,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L103",
-      "community": 9,
+      "community": 8,
       "norm_label": "storeconfigpath",
       "id": "scripts_verify_sprint1_storeconfigpath"
     },
@@ -1988,7 +1988,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint1.js",
       "source_location": "L104",
-      "community": 9,
+      "community": 8,
       "norm_label": "storeconfigcontent",
       "id": "scripts_verify_sprint1_storeconfigcontent"
     },
@@ -1997,7 +1997,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L1",
-      "community": 8,
+      "community": 7,
       "norm_label": "verify-sprint3-phase5.mjs",
       "id": "scripts_verify_sprint3_phase5_mjs"
     },
@@ -2006,7 +2006,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L5",
-      "community": 8,
+      "community": 7,
       "norm_label": "__filename",
       "id": "scripts_verify_sprint3_phase5_filename"
     },
@@ -2015,7 +2015,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L6",
-      "community": 8,
+      "community": 7,
       "norm_label": "__dirname",
       "id": "scripts_verify_sprint3_phase5_dirname"
     },
@@ -2024,7 +2024,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L7",
-      "community": 8,
+      "community": 7,
       "norm_label": "rootdir",
       "id": "scripts_verify_sprint3_phase5_rootdir"
     },
@@ -2033,7 +2033,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L15",
-      "community": 8,
+      "community": 7,
       "norm_label": "assert()",
       "id": "scripts_verify_sprint3_phase5_assert"
     },
@@ -2042,7 +2042,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L28",
-      "community": 8,
+      "community": 7,
       "norm_label": "currencyservicepath",
       "id": "scripts_verify_sprint3_phase5_currencyservicepath"
     },
@@ -2051,7 +2051,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L31",
-      "community": 8,
+      "community": 7,
       "norm_label": "currencycode",
       "id": "scripts_verify_sprint3_phase5_currencycode"
     },
@@ -2060,7 +2060,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L37",
-      "community": 8,
+      "community": 7,
       "norm_label": "mockrates",
       "id": "scripts_verify_sprint3_phase5_mockrates"
     },
@@ -2069,7 +2069,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L45",
-      "community": 8,
+      "community": 7,
       "norm_label": "convertedaed",
       "id": "scripts_verify_sprint3_phase5_convertedaed"
     },
@@ -2078,7 +2078,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L46",
-      "community": 8,
+      "community": 7,
       "norm_label": "convertedusd",
       "id": "scripts_verify_sprint3_phase5_convertedusd"
     },
@@ -2087,7 +2087,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L54",
-      "community": 8,
+      "community": 7,
       "norm_label": "countriespath",
       "id": "scripts_verify_sprint3_phase5_countriespath"
     },
@@ -2096,7 +2096,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L57",
-      "community": 8,
+      "community": 7,
       "norm_label": "countriescode",
       "id": "scripts_verify_sprint3_phase5_countriescode"
     },
@@ -2105,7 +2105,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L67",
-      "community": 8,
+      "community": 7,
       "norm_label": "manifestpath",
       "id": "scripts_verify_sprint3_phase5_manifestpath"
     },
@@ -2114,7 +2114,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L70",
-      "community": 8,
+      "community": 7,
       "norm_label": "manifestcontent",
       "id": "scripts_verify_sprint3_phase5_manifestcontent"
     },
@@ -2123,7 +2123,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L75",
-      "community": 8,
+      "community": 7,
       "norm_label": "swpath",
       "id": "scripts_verify_sprint3_phase5_swpath"
     },
@@ -2132,7 +2132,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L77",
-      "community": 8,
+      "community": 7,
       "norm_label": "swcontent",
       "id": "scripts_verify_sprint3_phase5_swcontent"
     },
@@ -2141,7 +2141,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L81",
-      "community": 8,
+      "community": 7,
       "norm_label": "indexhtml",
       "id": "scripts_verify_sprint3_phase5_indexhtml"
     },
@@ -2150,7 +2150,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L90",
-      "community": 8,
+      "community": 7,
       "norm_label": "telemetrypath",
       "id": "scripts_verify_sprint3_phase5_telemetrypath"
     },
@@ -2159,7 +2159,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L93",
-      "community": 8,
+      "community": 7,
       "norm_label": "telemetrycode",
       "id": "scripts_verify_sprint3_phase5_telemetrycode"
     },
@@ -2168,7 +2168,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L94",
-      "community": 8,
+      "community": 7,
       "norm_label": "requiredevents",
       "id": "scripts_verify_sprint3_phase5_requiredevents"
     },
@@ -2177,7 +2177,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L113",
-      "community": 8,
+      "community": 7,
       "norm_label": "courierpath",
       "id": "scripts_verify_sprint3_phase5_courierpath"
     },
@@ -2186,7 +2186,7 @@
       "file_type": "code",
       "source_file": "scripts/verify-sprint3-phase5.mjs",
       "source_location": "L114",
-      "community": 8,
+      "community": 7,
       "norm_label": "couriercode",
       "id": "scripts_verify_sprint3_phase5_couriercode"
     },
@@ -2267,7 +2267,7 @@
       "file_type": "code",
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L1",
-      "community": 6,
+      "community": 11,
       "norm_label": "currencycontext.tsx",
       "id": "src_context_currencycontext_tsx"
     },
@@ -2276,7 +2276,7 @@
       "file_type": "code",
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L11",
-      "community": 6,
+      "community": 11,
       "norm_label": "currencycontexttype",
       "id": "context_currencycontext_currencycontexttype"
     },
@@ -2285,7 +2285,7 @@
       "file_type": "code",
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L22",
-      "community": 6,
+      "community": 11,
       "norm_label": "currencycontext",
       "id": "context_currencycontext_currencycontext"
     },
@@ -2294,7 +2294,7 @@
       "file_type": "code",
       "source_file": "src/context/CurrencyContext.tsx",
       "source_location": "L24",
-      "community": 6,
+      "community": 11,
       "norm_label": "currencyprovider()",
       "id": "context_currencycontext_currencyprovider"
     },
@@ -2312,7 +2312,7 @@
       "file_type": "code",
       "source_file": "src/context/OrdersContext.tsx",
       "source_location": "L1",
-      "community": 2,
+      "community": 3,
       "norm_label": "orderscontext.tsx",
       "id": "src_context_orderscontext_tsx"
     },
@@ -2321,7 +2321,7 @@
       "file_type": "code",
       "source_file": "src/context/OrdersContext.tsx",
       "source_location": "L21",
-      "community": 2,
+      "community": 3,
       "norm_label": "orderscontexttype",
       "id": "context_orderscontext_orderscontexttype"
     },
@@ -2330,7 +2330,7 @@
       "file_type": "code",
       "source_file": "src/context/OrdersContext.tsx",
       "source_location": "L44",
-      "community": 2,
+      "community": 3,
       "norm_label": "computetaxbreakdown()",
       "id": "context_orderscontext_computetaxbreakdown"
     },
@@ -2339,7 +2339,7 @@
       "file_type": "code",
       "source_file": "src/context/OrdersContext.tsx",
       "source_location": "L77",
-      "community": 2,
+      "community": 3,
       "norm_label": "ispincodekerala()",
       "id": "context_orderscontext_ispincodekerala"
     },
@@ -2348,7 +2348,7 @@
       "file_type": "code",
       "source_file": "src/context/OrdersContext.tsx",
       "source_location": "L84",
-      "community": 2,
+      "community": 3,
       "norm_label": "sample_orders",
       "id": "context_orderscontext_sample_orders"
     },
@@ -2357,7 +2357,7 @@
       "file_type": "code",
       "source_file": "src/context/OrdersContext.tsx",
       "source_location": "L223",
-      "community": 2,
+      "community": 3,
       "norm_label": "orderscontext",
       "id": "context_orderscontext_orderscontext"
     },
@@ -2366,7 +2366,7 @@
       "file_type": "code",
       "source_file": "src/context/OrdersContext.tsx",
       "source_location": "L225",
-      "community": 2,
+      "community": 3,
       "norm_label": "ordersprovider()",
       "id": "context_orderscontext_ordersprovider"
     },
@@ -2375,7 +2375,7 @@
       "file_type": "code",
       "source_file": "src/context/OrdersContext.tsx",
       "source_location": "L428",
-      "community": 2,
+      "community": 3,
       "norm_label": "useorders()",
       "id": "context_orderscontext_useorders"
     },
@@ -2384,7 +2384,7 @@
       "file_type": "code",
       "source_file": "src/data/countries.ts",
       "source_location": "L1",
-      "community": 0,
+      "community": 1,
       "norm_label": "countries.ts",
       "id": "src_data_countries_ts"
     },
@@ -2393,7 +2393,7 @@
       "file_type": "code",
       "source_file": "src/data/countries.ts",
       "source_location": "L1",
-      "community": 0,
+      "community": 1,
       "norm_label": "countryprofile",
       "id": "data_countries_countryprofile"
     },
@@ -2402,7 +2402,7 @@
       "file_type": "code",
       "source_file": "src/data/countries.ts",
       "source_location": "L16",
-      "community": 0,
+      "community": 1,
       "norm_label": "supported_countries",
       "id": "data_countries_supported_countries"
     },
@@ -2411,7 +2411,7 @@
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L1",
-      "community": 5,
+      "community": 6,
       "norm_label": "catalogservice.ts",
       "id": "src_services_catalogservice_ts"
     },
@@ -2420,7 +2420,7 @@
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L4",
-      "community": 5,
+      "community": 6,
       "norm_label": "catalogserviceresponse",
       "id": "services_catalogservice_catalogserviceresponse"
     },
@@ -2429,7 +2429,7 @@
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L15",
-      "community": 5,
+      "community": 6,
       "norm_label": "fetchremoteproducts()",
       "id": "services_catalogservice_fetchremoteproducts"
     },
@@ -2438,7 +2438,7 @@
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L46",
-      "community": 5,
+      "community": 6,
       "norm_label": "saveremoteproduct()",
       "id": "services_catalogservice_saveremoteproduct"
     },
@@ -2447,7 +2447,7 @@
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L80",
-      "community": 5,
+      "community": 6,
       "norm_label": "updateremoteproductprice()",
       "id": "services_catalogservice_updateremoteproductprice"
     },
@@ -2456,7 +2456,7 @@
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L111",
-      "community": 5,
+      "community": 6,
       "norm_label": "updateremoteproductstock()",
       "id": "services_catalogservice_updateremoteproductstock"
     },
@@ -2465,7 +2465,7 @@
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L144",
-      "community": 5,
+      "community": 6,
       "norm_label": "decrementremoteproductstock()",
       "id": "services_catalogservice_decrementremoteproductstock"
     },
@@ -2474,7 +2474,7 @@
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L179",
-      "community": 5,
+      "community": 6,
       "norm_label": "deleteremoteproduct()",
       "id": "services_catalogservice_deleteremoteproduct"
     },
@@ -2483,7 +2483,7 @@
       "file_type": "code",
       "source_file": "src/services/catalogService.ts",
       "source_location": "L202",
-      "community": 5,
+      "community": 6,
       "norm_label": "subscribetoproductrealtime()",
       "id": "services_catalogservice_subscribetoproductrealtime"
     },
@@ -2492,7 +2492,7 @@
       "file_type": "code",
       "source_file": "src/services/currencyService.ts",
       "source_location": "L1",
-      "community": 6,
+      "community": 11,
       "norm_label": "currencyservice.ts",
       "id": "src_services_currencyservice_ts"
     },
@@ -2501,7 +2501,7 @@
       "file_type": "code",
       "source_file": "src/services/currencyService.ts",
       "source_location": "L6",
-      "community": 6,
+      "community": 11,
       "norm_label": "currencycode",
       "id": "services_currencyservice_currencycode"
     },
@@ -2510,7 +2510,7 @@
       "file_type": "code",
       "source_file": "src/services/currencyService.ts",
       "source_location": "L8",
-      "community": 6,
+      "community": 11,
       "norm_label": "currencyconfig",
       "id": "services_currencyservice_currencyconfig"
     },
@@ -2519,7 +2519,7 @@
       "file_type": "code",
       "source_file": "src/services/currencyService.ts",
       "source_location": "L18",
-      "community": 6,
+      "community": 11,
       "norm_label": "supported_currencies",
       "id": "services_currencyservice_supported_currencies"
     },
@@ -2528,7 +2528,7 @@
       "file_type": "code",
       "source_file": "src/services/currencyService.ts",
       "source_location": "L97",
-      "community": 6,
+      "community": 11,
       "norm_label": "runtimerates",
       "id": "services_currencyservice_runtimerates"
     },
@@ -2537,7 +2537,7 @@
       "file_type": "code",
       "source_file": "src/services/currencyService.ts",
       "source_location": "L108",
-      "community": 6,
+      "community": 11,
       "norm_label": "refreshexchangerates()",
       "id": "services_currencyservice_refreshexchangerates"
     },
@@ -2546,7 +2546,7 @@
       "file_type": "code",
       "source_file": "src/services/currencyService.ts",
       "source_location": "L152",
-      "community": 6,
+      "community": 11,
       "norm_label": "convertinrto()",
       "id": "services_currencyservice_convertinrto"
     },
@@ -2555,7 +2555,7 @@
       "file_type": "code",
       "source_file": "src/services/currencyService.ts",
       "source_location": "L164",
-      "community": 6,
+      "community": 11,
       "norm_label": "formatlocalizedprice()",
       "id": "services_currencyservice_formatlocalizedprice"
     },
@@ -2564,7 +2564,7 @@
       "file_type": "code",
       "source_file": "src/services/imageStorage.ts",
       "source_location": "L1",
-      "community": 4,
+      "community": 5,
       "norm_label": "imagestorage.ts",
       "id": "src_services_imagestorage_ts"
     },
@@ -2573,7 +2573,7 @@
       "file_type": "code",
       "source_file": "src/services/imageStorage.ts",
       "source_location": "L5",
-      "community": 4,
+      "community": 5,
       "norm_label": "uploadresult",
       "id": "services_imagestorage_uploadresult"
     },
@@ -2582,7 +2582,7 @@
       "file_type": "code",
       "source_file": "src/services/imageStorage.ts",
       "source_location": "L17",
-      "community": 4,
+      "community": 5,
       "norm_label": "uploadcatalogimage()",
       "id": "services_imagestorage_uploadcatalogimage"
     },
@@ -2591,7 +2591,7 @@
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L1",
-      "community": 2,
+      "community": 3,
       "norm_label": "ordersservice.ts",
       "id": "src_services_ordersservice_ts"
     },
@@ -2600,7 +2600,7 @@
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L4",
-      "community": 2,
+      "community": 3,
       "norm_label": "mapdbrowtoorder()",
       "id": "services_ordersservice_mapdbrowtoorder"
     },
@@ -2609,7 +2609,7 @@
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L30",
-      "community": 2,
+      "community": 3,
       "norm_label": "mapordertodbrow()",
       "id": "services_ordersservice_mapordertodbrow"
     },
@@ -2618,7 +2618,7 @@
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L57",
-      "community": 2,
+      "community": 3,
       "norm_label": "fetchremoteorders()",
       "id": "services_ordersservice_fetchremoteorders"
     },
@@ -2627,7 +2627,7 @@
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L84",
-      "community": 2,
+      "community": 3,
       "norm_label": "saveremoteorder()",
       "id": "services_ordersservice_saveremoteorder"
     },
@@ -2636,7 +2636,7 @@
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L113",
-      "community": 2,
+      "community": 3,
       "norm_label": "updateremoteorderstatus()",
       "id": "services_ordersservice_updateremoteorderstatus"
     },
@@ -2645,7 +2645,7 @@
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L137",
-      "community": 2,
+      "community": 3,
       "norm_label": "updateremotepaymentstatus()",
       "id": "services_ordersservice_updateremotepaymentstatus"
     },
@@ -2654,7 +2654,7 @@
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L161",
-      "community": 2,
+      "community": 3,
       "norm_label": "dispatchremoteorder()",
       "id": "services_ordersservice_dispatchremoteorder"
     },
@@ -2663,7 +2663,7 @@
       "file_type": "code",
       "source_file": "src/services/ordersService.ts",
       "source_location": "L196",
-      "community": 2,
+      "community": 3,
       "norm_label": "subscribetoordersrealtime()",
       "id": "services_ordersservice_subscribetoordersrealtime"
     },
@@ -2672,7 +2672,7 @@
       "file_type": "code",
       "source_file": "src/services/supabaseClient.ts",
       "source_location": "L1",
-      "community": 5,
+      "community": 6,
       "norm_label": "supabaseclient.ts",
       "id": "src_services_supabaseclient_ts"
     },
@@ -2681,7 +2681,7 @@
       "file_type": "code",
       "source_file": "src/services/supabaseClient.ts",
       "source_location": "L5",
-      "community": 5,
+      "community": 6,
       "norm_label": "databaseproductrow",
       "id": "services_supabaseclient_databaseproductrow"
     },
@@ -2690,7 +2690,7 @@
       "file_type": "code",
       "source_file": "src/services/supabaseClient.ts",
       "source_location": "L28",
-      "community": 2,
+      "community": 3,
       "norm_label": "databaseorderrow",
       "id": "services_supabaseclient_databaseorderrow"
     },
@@ -2699,7 +2699,7 @@
       "file_type": "code",
       "source_file": "src/services/supabaseClient.ts",
       "source_location": "L56",
-      "community": 5,
+      "community": 6,
       "norm_label": "issupabaseconfigured()",
       "id": "services_supabaseclient_issupabaseconfigured"
     },
@@ -2708,7 +2708,7 @@
       "file_type": "code",
       "source_file": "src/services/supabaseClient.ts",
       "source_location": "L77",
-      "community": 5,
+      "community": 6,
       "norm_label": "mapdbrowtoproduct()",
       "id": "services_supabaseclient_mapdbrowtoproduct"
     },
@@ -2717,7 +2717,7 @@
       "file_type": "code",
       "source_file": "src/services/supabaseClient.ts",
       "source_location": "L103",
-      "community": 5,
+      "community": 6,
       "norm_label": "mapproducttodbrow()",
       "id": "services_supabaseclient_mapproducttodbrow"
     },
@@ -2726,7 +2726,7 @@
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L1",
-      "community": 6,
+      "community": 1,
       "norm_label": "telemetryservice.ts",
       "id": "src_services_telemetryservice_ts"
     },
@@ -2735,7 +2735,7 @@
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L13",
-      "community": 6,
+      "community": 1,
       "norm_label": "window",
       "id": "services_telemetryservice_window"
     },
@@ -2744,7 +2744,7 @@
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L20",
-      "community": 6,
+      "community": 1,
       "norm_label": "telemetryeventname",
       "id": "services_telemetryservice_telemetryeventname"
     },
@@ -2753,7 +2753,7 @@
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L30",
-      "community": 6,
+      "community": 1,
       "norm_label": "telemetrypayload",
       "id": "services_telemetryservice_telemetrypayload"
     },
@@ -2762,7 +2762,7 @@
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L38",
-      "community": 6,
+      "community": 1,
       "norm_label": "telemetrylog",
       "id": "services_telemetryservice_telemetrylog"
     },
@@ -2771,7 +2771,7 @@
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L40",
-      "community": 6,
+      "community": 1,
       "norm_label": "recordevent()",
       "id": "services_telemetryservice_recordevent"
     },
@@ -2780,7 +2780,7 @@
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L90",
-      "community": 6,
+      "community": 1,
       "norm_label": "trackviewitemlist()",
       "id": "services_telemetryservice_trackviewitemlist"
     },
@@ -2789,7 +2789,7 @@
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L100",
-      "community": 6,
+      "community": 1,
       "norm_label": "trackviewitem()",
       "id": "services_telemetryservice_trackviewitem"
     },
@@ -2798,7 +2798,7 @@
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L119",
-      "community": 6,
+      "community": 1,
       "norm_label": "trackaddtowishlist()",
       "id": "services_telemetryservice_trackaddtowishlist"
     },
@@ -2807,7 +2807,7 @@
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L137",
-      "community": 6,
+      "community": 1,
       "norm_label": "trackaddtocart()",
       "id": "services_telemetryservice_trackaddtocart"
     },
@@ -2816,7 +2816,7 @@
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L157",
-      "community": 6,
+      "community": 1,
       "norm_label": "trackbegincheckout()",
       "id": "services_telemetryservice_trackbegincheckout"
     },
@@ -2825,7 +2825,7 @@
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L179",
-      "community": 6,
+      "community": 1,
       "norm_label": "trackwhatsappinquiry()",
       "id": "services_telemetryservice_trackwhatsappinquiry"
     },
@@ -2834,7 +2834,7 @@
       "file_type": "code",
       "source_file": "src/services/telemetryService.ts",
       "source_location": "L194",
-      "community": 6,
+      "community": 1,
       "norm_label": "trackpurchase()",
       "id": "services_telemetryservice_trackpurchase"
     },
@@ -2843,7 +2843,7 @@
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L1",
-      "community": 7,
+      "community": 1,
       "norm_label": "cart.ts",
       "id": "src_types_cart_ts"
     },
@@ -2852,7 +2852,7 @@
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L1",
-      "community": 7,
+      "community": 1,
       "norm_label": "sareefinishingoption",
       "id": "types_cart_sareefinishingoption"
     },
@@ -2861,7 +2861,7 @@
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L2",
-      "community": 7,
+      "community": 1,
       "norm_label": "garmentsizeoption",
       "id": "types_cart_garmentsizeoption"
     },
@@ -2870,7 +2870,7 @@
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L4",
-      "community": 7,
+      "community": 1,
       "norm_label": "customblousemeasurements",
       "id": "types_cart_customblousemeasurements"
     },
@@ -2879,7 +2879,7 @@
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L14",
-      "community": 7,
+      "community": 1,
       "norm_label": "tailoringselection",
       "id": "types_cart_tailoringselection"
     },
@@ -2888,7 +2888,7 @@
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L22",
-      "community": 2,
+      "community": 3,
       "norm_label": "cartitem",
       "id": "types_cart_cartitem"
     },
@@ -2897,7 +2897,7 @@
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L36",
-      "community": 7,
+      "community": 1,
       "norm_label": "shippingtier",
       "id": "types_cart_shippingtier"
     },
@@ -2906,7 +2906,7 @@
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L38",
-      "community": 2,
+      "community": 3,
       "norm_label": "shippingaddress",
       "id": "types_cart_shippingaddress"
     },
@@ -2915,7 +2915,7 @@
       "file_type": "code",
       "source_file": "src/types/cart.ts",
       "source_location": "L51",
-      "community": 7,
+      "community": 1,
       "norm_label": "carttotals",
       "id": "types_cart_carttotals"
     },
@@ -2924,7 +2924,7 @@
       "file_type": "code",
       "source_file": "src/types/catalog.ts",
       "source_location": "L1",
-      "community": 4,
+      "community": 5,
       "norm_label": "catalog.ts",
       "id": "src_types_catalog_ts"
     },
@@ -2933,7 +2933,7 @@
       "file_type": "code",
       "source_file": "src/types/catalog.ts",
       "source_location": "L1",
-      "community": 0,
+      "community": 5,
       "norm_label": "productcategory",
       "id": "types_catalog_productcategory"
     },
@@ -2942,7 +2942,7 @@
       "file_type": "code",
       "source_file": "src/types/catalog.ts",
       "source_location": "L7",
-      "community": 4,
+      "community": 5,
       "norm_label": "productimagerole",
       "id": "types_catalog_productimagerole"
     },
@@ -2951,7 +2951,7 @@
       "file_type": "code",
       "source_file": "src/types/catalog.ts",
       "source_location": "L13",
-      "community": 4,
+      "community": 5,
       "norm_label": "aidrapepose",
       "id": "types_catalog_aidrapepose"
     },
@@ -2960,7 +2960,7 @@
       "file_type": "code",
       "source_file": "src/types/catalog.ts",
       "source_location": "L19",
-      "community": 4,
+      "community": 5,
       "norm_label": "modelarchetype",
       "id": "types_catalog_modelarchetype"
     },
@@ -2969,7 +2969,7 @@
       "file_type": "code",
       "source_file": "src/types/catalog.ts",
       "source_location": "L24",
-      "community": 5,
+      "community": 6,
       "norm_label": "kenzaeproduct",
       "id": "types_catalog_kenzaeproduct"
     },
@@ -2978,7 +2978,7 @@
       "file_type": "code",
       "source_file": "src/types/catalog.ts",
       "source_location": "L45",
-      "community": 5,
+      "community": 6,
       "norm_label": "catalogfilterstate",
       "id": "types_catalog_catalogfilterstate"
     },
@@ -2987,7 +2987,7 @@
       "file_type": "code",
       "source_file": "src/types/catalog.ts",
       "source_location": "L54",
-      "community": 4,
+      "community": 5,
       "norm_label": "storecontactinfo",
       "id": "types_catalog_storecontactinfo"
     },
@@ -2996,7 +2996,7 @@
       "file_type": "code",
       "source_file": "src/types/drape.ts",
       "source_location": "L1",
-      "community": 4,
+      "community": 5,
       "norm_label": "drape.ts",
       "id": "src_types_drape_ts"
     },
@@ -3005,7 +3005,7 @@
       "file_type": "code",
       "source_file": "src/types/drape.ts",
       "source_location": "L3",
-      "community": 4,
+      "community": 5,
       "norm_label": "generatedlook",
       "id": "types_drape_generatedlook"
     },
@@ -3014,7 +3014,7 @@
       "file_type": "code",
       "source_file": "src/types/drape.ts",
       "source_location": "L13",
-      "community": 4,
+      "community": 5,
       "norm_label": "multiposedraperesponse",
       "id": "types_drape_multiposedraperesponse"
     },
@@ -3023,7 +3023,7 @@
       "file_type": "code",
       "source_file": "src/types/orders.ts",
       "source_location": "L1",
-      "community": 2,
+      "community": 3,
       "norm_label": "orders.ts",
       "id": "src_types_orders_ts"
     },
@@ -3032,7 +3032,7 @@
       "file_type": "code",
       "source_file": "src/types/orders.ts",
       "source_location": "L3",
-      "community": 2,
+      "community": 3,
       "norm_label": "paymentmethod",
       "id": "types_orders_paymentmethod"
     },
@@ -3041,7 +3041,7 @@
       "file_type": "code",
       "source_file": "src/types/orders.ts",
       "source_location": "L4",
-      "community": 2,
+      "community": 3,
       "norm_label": "paymentstatus",
       "id": "types_orders_paymentstatus"
     },
@@ -3050,7 +3050,7 @@
       "file_type": "code",
       "source_file": "src/types/orders.ts",
       "source_location": "L6",
-      "community": 2,
+      "community": 3,
       "norm_label": "fulfillmentstatus",
       "id": "types_orders_fulfillmentstatus"
     },
@@ -3059,7 +3059,7 @@
       "file_type": "code",
       "source_file": "src/types/orders.ts",
       "source_location": "L14",
-      "community": 2,
+      "community": 3,
       "norm_label": "courierpartner",
       "id": "types_orders_courierpartner"
     },
@@ -3068,7 +3068,7 @@
       "file_type": "code",
       "source_file": "src/types/orders.ts",
       "source_location": "L25",
-      "community": 2,
+      "community": 3,
       "norm_label": "taxbreakdown",
       "id": "types_orders_taxbreakdown"
     },
@@ -3077,7 +3077,7 @@
       "file_type": "code",
       "source_file": "src/types/orders.ts",
       "source_location": "L37",
-      "community": 2,
+      "community": 3,
       "norm_label": "boutiqueorder",
       "id": "types_orders_boutiqueorder"
     },
@@ -3086,7 +3086,7 @@
       "file_type": "code",
       "source_file": "src/utils/courierTracking.ts",
       "source_location": "L1",
-      "community": 2,
+      "community": 3,
       "norm_label": "couriertracking.ts",
       "id": "src_utils_couriertracking_ts"
     },
@@ -3095,7 +3095,7 @@
       "file_type": "code",
       "source_file": "src/utils/courierTracking.ts",
       "source_location": "L5",
-      "community": 2,
+      "community": 3,
       "norm_label": "getcleanphonenumber()",
       "id": "utils_couriertracking_getcleanphonenumber"
     },
@@ -3104,7 +3104,7 @@
       "file_type": "code",
       "source_file": "src/utils/courierTracking.ts",
       "source_location": "L15",
-      "community": 2,
+      "community": 3,
       "norm_label": "generatetrackingurl()",
       "id": "utils_couriertracking_generatetrackingurl"
     },
@@ -3113,7 +3113,7 @@
       "file_type": "code",
       "source_file": "src/utils/courierTracking.ts",
       "source_location": "L40",
-      "community": 2,
+      "community": 3,
       "norm_label": "generatedispatchwhatsappurl()",
       "id": "utils_couriertracking_generatedispatchwhatsappurl"
     },
@@ -3122,7 +3122,7 @@
       "file_type": "code",
       "source_file": "src/utils/courierTracking.ts",
       "source_location": "L79",
-      "community": 2,
+      "community": 3,
       "norm_label": "generateboutiqueownerorderalertwhatsappurl()",
       "id": "utils_couriertracking_generateboutiqueownerorderalertwhatsappurl"
     },
@@ -3491,7 +3491,7 @@
       "file_type": "code",
       "source_file": "src/utils/shippingLabelGenerator.ts",
       "source_location": "L1",
-      "community": 2,
+      "community": 3,
       "norm_label": "shippinglabelgenerator.ts",
       "id": "src_utils_shippinglabelgenerator_ts"
     },
@@ -3500,7 +3500,7 @@
       "file_type": "code",
       "source_file": "src/utils/shippingLabelGenerator.ts",
       "source_location": "L9",
-      "community": 2,
+      "community": 3,
       "norm_label": "generateshippinglabelpdf()",
       "id": "utils_shippinglabelgenerator_generateshippinglabelpdf"
     },
@@ -3689,7 +3689,7 @@
       "file_type": "code",
       "source_file": "src/components/cart/TailoringSelector.tsx",
       "source_location": "L1",
-      "community": 7,
+      "community": 1,
       "norm_label": "tailoringselector.tsx",
       "id": "src_components_cart_tailoringselector_tsx"
     },
@@ -3698,7 +3698,7 @@
       "file_type": "code",
       "source_file": "src/components/cart/TailoringSelector.tsx",
       "source_location": "L7",
-      "community": 7,
+      "community": 1,
       "norm_label": "tailoringselectorprops",
       "id": "cart_tailoringselector_tailoringselectorprops"
     },
@@ -3707,7 +3707,7 @@
       "file_type": "code",
       "source_file": "src/components/cart/TailoringSelector.tsx",
       "source_location": "L16",
-      "community": 7,
+      "community": 1,
       "norm_label": "standard_sizes",
       "id": "cart_tailoringselector_standard_sizes"
     },
@@ -3725,7 +3725,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/ProductEditModal.tsx",
       "source_location": "L1",
-      "community": 4,
+      "community": 5,
       "norm_label": "producteditmodal.tsx",
       "id": "src_components_staff_producteditmodal_tsx"
     },
@@ -3734,7 +3734,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/ProductEditModal.tsx",
       "source_location": "L6",
-      "community": 4,
+      "community": 5,
       "norm_label": "producteditmodalprops",
       "id": "staff_producteditmodal_producteditmodalprops"
     },
@@ -3743,7 +3743,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/ProductEditModal.tsx",
       "source_location": "L14",
-      "community": 4,
+      "community": 5,
       "norm_label": "categories",
       "id": "staff_producteditmodal_categories"
     },
@@ -3752,7 +3752,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/ProductEditModal.tsx",
       "source_location": "L21",
-      "community": 4,
+      "community": 5,
       "norm_label": "producteditmodal()",
       "id": "staff_producteditmodal_producteditmodal"
     },
@@ -3761,7 +3761,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/OrdersManager.tsx",
       "source_location": "L1",
-      "community": 2,
+      "community": 3,
       "norm_label": "ordersmanager.tsx",
       "id": "src_components_staff_ordersmanager_tsx"
     },
@@ -3770,7 +3770,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/OrdersManager.tsx",
       "source_location": "L25",
-      "community": 2,
+      "community": 3,
       "norm_label": "ordersmanager()",
       "id": "staff_ordersmanager_ordersmanager"
     },
@@ -3806,7 +3806,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/DispatchModal.tsx",
       "source_location": "L1",
-      "community": 2,
+      "community": 3,
       "norm_label": "dispatchmodal.tsx",
       "id": "src_components_staff_dispatchmodal_tsx"
     },
@@ -3815,7 +3815,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/DispatchModal.tsx",
       "source_location": "L7",
-      "community": 2,
+      "community": 3,
       "norm_label": "dispatchmodalprops",
       "id": "staff_dispatchmodal_dispatchmodalprops"
     },
@@ -3824,7 +3824,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/DispatchModal.tsx",
       "source_location": "L13",
-      "community": 2,
+      "community": 3,
       "norm_label": "courier_options",
       "id": "staff_dispatchmodal_courier_options"
     },
@@ -3833,7 +3833,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/DispatchModal.tsx",
       "source_location": "L23",
-      "community": 2,
+      "community": 3,
       "norm_label": "dispatchmodal()",
       "id": "staff_dispatchmodal_dispatchmodal"
     },
@@ -3842,7 +3842,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/StaffDashboard.tsx",
       "source_location": "L1",
-      "community": 4,
+      "community": 5,
       "norm_label": "staffdashboard.tsx",
       "id": "src_components_staff_staffdashboard_tsx"
     },
@@ -3851,7 +3851,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/StaffDashboard.tsx",
       "source_location": "L36",
-      "community": 4,
+      "community": 5,
       "norm_label": "staffdashboardprops",
       "id": "staff_staffdashboard_staffdashboardprops"
     },
@@ -3860,7 +3860,7 @@
       "file_type": "code",
       "source_file": "src/components/staff/StaffDashboard.tsx",
       "source_location": "L40",
-      "community": 4,
+      "community": 5,
       "norm_label": "categories",
       "id": "staff_staffdashboard_categories"
     },
@@ -3878,7 +3878,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useFilteredCatalog.ts",
       "source_location": "L1",
-      "community": 5,
+      "community": 6,
       "norm_label": "usefilteredcatalog.ts",
       "id": "src_hooks_usefilteredcatalog_ts"
     },
@@ -3887,7 +3887,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useFilteredCatalog.ts",
       "source_location": "L5",
-      "community": 5,
+      "community": 6,
       "norm_label": "textile_synonyms",
       "id": "hooks_usefilteredcatalog_textile_synonyms"
     },
@@ -3896,7 +3896,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useFilteredCatalog.ts",
       "source_location": "L19",
-      "community": 5,
+      "community": 6,
       "norm_label": "usefilteredcatalog()",
       "id": "hooks_usefilteredcatalog_usefilteredcatalog"
     },
@@ -3905,7 +3905,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useDebounce.ts",
       "source_location": "L1",
-      "community": 5,
+      "community": 6,
       "norm_label": "usedebounce.ts",
       "id": "src_hooks_usedebounce_ts"
     },
@@ -3914,7 +3914,7 @@
       "file_type": "code",
       "source_file": "src/hooks/useDebounce.ts",
       "source_location": "L7",
-      "community": 5,
+      "community": 6,
       "norm_label": "usedebounce()",
       "id": "hooks_usedebounce_usedebounce"
     },
@@ -3923,7 +3923,7 @@
       "file_type": "code",
       "source_file": "src/data/catalogValidator.ts",
       "source_location": "L1",
-      "community": 5,
+      "community": 6,
       "norm_label": "catalogvalidator.ts",
       "id": "src_data_catalogvalidator_ts"
     },
@@ -3932,7 +3932,7 @@
       "file_type": "code",
       "source_file": "src/data/catalogValidator.ts",
       "source_location": "L3",
-      "community": 5,
+      "community": 6,
       "norm_label": "valid_categories",
       "id": "data_catalogvalidator_valid_categories"
     },
@@ -3941,7 +3941,7 @@
       "file_type": "code",
       "source_file": "src/data/catalogValidator.ts",
       "source_location": "L10",
-      "community": 5,
+      "community": 6,
       "norm_label": "validationresult",
       "id": "data_catalogvalidator_validationresult"
     },
@@ -3950,7 +3950,7 @@
       "file_type": "code",
       "source_file": "src/data/catalogValidator.ts",
       "source_location": "L15",
-      "community": 5,
+      "community": 6,
       "norm_label": "validateproduct()",
       "id": "data_catalogvalidator_validateproduct"
     },
@@ -3959,7 +3959,7 @@
       "file_type": "code",
       "source_file": "src/data/catalogValidator.ts",
       "source_location": "L80",
-      "community": 5,
+      "community": 6,
       "norm_label": "validatecatalog()",
       "id": "data_catalogvalidator_validatecatalog"
     },
@@ -3968,7 +3968,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L1",
-      "community": 10,
+      "community": 9,
       "norm_label": "readme.md",
       "id": "readme_md"
     },
@@ -3977,7 +3977,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L1",
-      "community": 10,
+      "community": 9,
       "norm_label": "kenzae designer boutique \ud83d\udecd\ufe0f",
       "id": "kenzae_readme_kenzae_designer_boutique"
     },
@@ -3986,7 +3986,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L12",
-      "community": 10,
+      "community": 9,
       "norm_label": "\ud83c\udf1f overview",
       "id": "kenzae_readme_overview"
     },
@@ -3995,7 +3995,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L16",
-      "community": 10,
+      "community": 9,
       "norm_label": "\u26a1 tech stack",
       "id": "kenzae_readme_tech_stack"
     },
@@ -4004,7 +4004,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L27",
-      "community": 10,
+      "community": 9,
       "norm_label": "\ud83d\ude80 getting started",
       "id": "kenzae_readme_getting_started"
     },
@@ -4013,7 +4013,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L29",
-      "community": 10,
+      "community": 9,
       "norm_label": "code:bash (# install dependencies)",
       "id": "kenzae_readme_codeblock_1"
     },
@@ -4022,7 +4022,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L43",
-      "community": 10,
+      "community": 9,
       "norm_label": "\ud83d\udcc1 project structure",
       "id": "kenzae_readme_project_structure"
     },
@@ -4031,7 +4031,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L45",
-      "community": 10,
+      "community": 9,
       "norm_label": "code:block2 (kenzae/)",
       "id": "kenzae_readme_codeblock_2"
     },
@@ -4040,7 +4040,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L71",
-      "community": 10,
+      "community": 9,
       "norm_label": "\ud83d\uddc2\ufe0f catalog management",
       "id": "kenzae_readme_catalog_management"
     },
@@ -4049,7 +4049,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L75",
-      "community": 10,
+      "community": 9,
       "norm_label": "sku format",
       "id": "kenzae_readme_sku_format"
     },
@@ -4058,7 +4058,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L76",
-      "community": 10,
+      "community": 9,
       "norm_label": "code:block3 (kz-sr-xxx   \u2192 saris)",
       "id": "kenzae_readme_codeblock_3"
     },
@@ -4067,7 +4067,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L83",
-      "community": 10,
+      "community": 9,
       "norm_label": "validate before committing",
       "id": "kenzae_readme_validate_before_committing"
     },
@@ -4076,7 +4076,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L84",
-      "community": 10,
+      "community": 9,
       "norm_label": "code:bash (python3 tools/validate_catalog_data.py)",
       "id": "kenzae_readme_codeblock_4"
     },
@@ -4085,7 +4085,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L88",
-      "community": 10,
+      "community": 9,
       "norm_label": "\ud83d\udd10 staff portal",
       "id": "kenzae_readme_staff_portal"
     },
@@ -4094,7 +4094,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L93",
-      "community": 10,
+      "community": 9,
       "norm_label": "\ud83e\udd1d contributing",
       "id": "kenzae_readme_contributing"
     },
@@ -4103,7 +4103,7 @@
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L100",
-      "community": 10,
+      "community": 9,
       "norm_label": "\ud83d\udccd store location",
       "id": "kenzae_readme_store_location"
     },
@@ -4220,7 +4220,7 @@
       "file_type": "document",
       "source_file": "gemini.md",
       "source_location": "L1",
-      "community": 11,
+      "community": 10,
       "norm_label": "gemini.md",
       "id": "gemini_md"
     },
@@ -4229,7 +4229,7 @@
       "file_type": "document",
       "source_file": "gemini.md",
       "source_location": "L1",
-      "community": 11,
+      "community": 10,
       "norm_label": "kenzae boutique digital catalog \u2014 project constitution (`gemini.md`)",
       "id": "kenzae_gemini_kenzae_boutique_digital_catalog_project_constitution_gemini_md"
     },
@@ -4238,7 +4238,7 @@
       "file_type": "document",
       "source_file": "gemini.md",
       "source_location": "L3",
-      "community": 11,
+      "community": 10,
       "norm_label": "1. executive summary & brand identity",
       "id": "kenzae_gemini_1_executive_summary_brand_identity"
     },
@@ -4247,7 +4247,7 @@
       "file_type": "document",
       "source_file": "gemini.md",
       "source_location": "L11",
-      "community": 11,
+      "community": 10,
       "norm_label": "2. a.n.t. 3-layer architectural principles",
       "id": "kenzae_gemini_2_a_n_t_3_layer_architectural_principles"
     },
@@ -4256,7 +4256,7 @@
       "file_type": "document",
       "source_file": "gemini.md",
       "source_location": "L28",
-      "community": 11,
+      "community": 10,
       "norm_label": "3. strict data schema specification",
       "id": "kenzae_gemini_3_strict_data_schema_specification"
     },
@@ -4265,7 +4265,7 @@
       "file_type": "document",
       "source_file": "gemini.md",
       "source_location": "L30",
-      "community": 11,
+      "community": 10,
       "norm_label": "code:json ({)",
       "id": "kenzae_gemini_codeblock_1"
     },
@@ -4274,7 +4274,7 @@
       "file_type": "document",
       "source_file": "gemini.md",
       "source_location": "L119",
-      "community": 11,
+      "community": 10,
       "norm_label": "4. whatsapp business integration protocol",
       "id": "kenzae_gemini_4_whatsapp_business_integration_protocol"
     },
@@ -4283,7 +4283,7 @@
       "file_type": "document",
       "source_file": "gemini.md",
       "source_location": "L122",
-      "community": 11,
+      "community": 10,
       "norm_label": "code:text (https://wa.me/{whatsapp_number}?text={encoded_message})",
       "id": "kenzae_gemini_codeblock_2"
     },
@@ -4292,7 +4292,7 @@
       "file_type": "document",
       "source_file": "gemini.md",
       "source_location": "L126",
-      "community": 11,
+      "community": 10,
       "norm_label": "code:text (namaste kenzae boutique! \u2728)",
       "id": "kenzae_gemini_codeblock_3"
     },
@@ -4301,7 +4301,7 @@
       "file_type": "document",
       "source_file": "gemini.md",
       "source_location": "L139",
-      "community": 11,
+      "community": 10,
       "norm_label": "5. ui/ux design system & editorial rules",
       "id": "kenzae_gemini_5_ui_ux_design_system_editorial_rules"
     },
@@ -4310,7 +4310,7 @@
       "file_type": "document",
       "source_file": "gemini.md",
       "source_location": "L150",
-      "community": 11,
+      "community": 10,
       "norm_label": "6. boutique owner store maintenance sop (no developer required)",
       "id": "kenzae_gemini_6_boutique_owner_store_maintenance_sop_no_developer_required"
     },
@@ -4319,7 +4319,7 @@
       "file_type": "document",
       "source_file": "gemini.md",
       "source_location": "L154",
-      "community": 11,
+      "community": 10,
       "norm_label": "method a: via secured staff portal at `/staff` (recommended for daily store operations)",
       "id": "kenzae_gemini_method_a_via_secured_staff_portal_at_staff_recommended_for_daily_store_operations"
     },
@@ -4328,7 +4328,7 @@
       "file_type": "document",
       "source_file": "gemini.md",
       "source_location": "L178",
-      "community": 11,
+      "community": 10,
       "norm_label": "method b: directly editing `/data/products.json`",
       "id": "kenzae_gemini_method_b_directly_editing_data_products_json"
     },
@@ -4337,7 +4337,7 @@
       "file_type": "document",
       "source_file": "gemini.md",
       "source_location": "L181",
-      "community": 11,
+      "community": 10,
       "norm_label": "code:json ({)",
       "id": "kenzae_gemini_codeblock_4"
     },
@@ -4346,7 +4346,7 @@
       "file_type": "document",
       "source_file": "gemini.md",
       "source_location": "L203",
-      "community": 11,
+      "community": 10,
       "norm_label": "strict rules to prevent breakages:",
       "id": "kenzae_gemini_strict_rules_to_prevent_breakages"
     },
@@ -4644,12 +4644,420 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_verify_razorpay_mjs",
+      "target": "api_create_order_createrazorpayorder"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_verify_razorpay_mjs",
+      "target": "api_verify_payment_verifypaymentsignature"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_dirname"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_envpath"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_envcontent"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_trimmed"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_k_v"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L134",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_validsignature"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L140",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_validverifyresult"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L155",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_mismatchresult"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/verify-razorpay.mjs",
+      "source_location": "L169",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_missingparamsresult"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verify-razorpay.mjs",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_dirname"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verify-razorpay.mjs",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_envpath"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verify-razorpay.mjs",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_envcontent"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verify-razorpay.mjs",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_trimmed"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verify-razorpay.mjs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_k_v"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verify-razorpay.mjs",
+      "source_location": "L131",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_validsignature"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verify-razorpay.mjs",
+      "source_location": "L137",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_validverifyresult"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verify-razorpay.mjs",
+      "source_location": "L152",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_mismatchresult"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "verify-razorpay.mjs",
+      "source_location": "L166",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "verify_razorpay_mjs",
+      "target": "scripts_verify_razorpay_missingparamsresult"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_utils_razorpay_ts",
+      "target": "types_cart_carttotals"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_utils_razorpay_ts",
+      "target": "types_cart_shippingaddress"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_utils_razorpay_ts",
+      "target": "utils_razorpay_window"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_utils_razorpay_ts",
+      "target": "utils_razorpay_loadrazorpayscript"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_utils_razorpay_ts",
+      "target": "utils_razorpay_razorpaypaymentsuccessresponse"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_utils_razorpay_ts",
+      "target": "utils_razorpay_initiatepaymentparams"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L61",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_utils_razorpay_ts",
+      "target": "utils_razorpay_createorderapiresponse"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L73",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_utils_razorpay_ts",
+      "target": "utils_razorpay_verifypaymentapiresponse"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_utils_razorpay_ts",
+      "target": "utils_razorpay_createorderonserver"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L111",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_utils_razorpay_ts",
+      "target": "utils_razorpay_verifypaymentonserver"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L140",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_utils_razorpay_ts",
+      "target": "utils_razorpay_initiaterazorpaypayment"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/cart/MobileCheckoutModal.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_cart_mobilecheckoutmodal_tsx",
+      "target": "src_utils_razorpay_ts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "razorpay.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "razorpay_ts",
+      "target": "utils_razorpay_window"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L65",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_razorpay_initiaterazorpaypayment",
+      "target": "utils_razorpay_loadrazorpayscript"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "razorpay.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "razorpay_ts",
+      "target": "utils_razorpay_loadrazorpayscript"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "razorpay.ts",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "razorpay_ts",
+      "target": "utils_razorpay_razorpaypaymentsuccessresponse"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "razorpay.ts",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "razorpay_ts",
+      "target": "utils_razorpay_initiatepaymentparams"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/razorpay.ts",
+      "source_location": "L170",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "utils_razorpay_initiaterazorpaypayment",
+      "target": "utils_razorpay_createorderonserver"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/cart/MobileCheckoutModal.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_cart_mobilecheckoutmodal_tsx",
+      "target": "utils_razorpay_initiaterazorpaypayment"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "razorpay.ts",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "razorpay_ts",
+      "target": "utils_razorpay_initiaterazorpaypayment"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/components/AtelierStory.tsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_atelierstory_tsx",
-      "target": "utils_whatsapp_generatestorevisitwhatsappurl",
-      "confidence_score": 1.0
+      "target": "utils_whatsapp_generatestorevisitwhatsappurl"
     },
     {
       "relation": "contains",
@@ -4894,9 +5302,9 @@
       "source_file": "src/components/Footer.tsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_footer_tsx",
-      "target": "data_storeconfig_kenzae_store_config",
-      "confidence_score": 1.0
+      "target": "data_storeconfig_kenzae_store_config"
     },
     {
       "relation": "imports",
@@ -4905,9 +5313,9 @@
       "source_file": "src/components/Footer.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_footer_tsx",
-      "target": "utils_whatsapp_generatestorevisitwhatsappurl",
-      "confidence_score": 1.0
+      "target": "utils_whatsapp_generatestorevisitwhatsappurl"
     },
     {
       "relation": "imports",
@@ -4916,9 +5324,9 @@
       "source_file": "src/components/Footer.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_footer_tsx",
-      "target": "context_catalogcontext_usecatalog",
-      "confidence_score": 1.0
+      "target": "context_catalogcontext_usecatalog"
     },
     {
       "relation": "imports",
@@ -4927,9 +5335,9 @@
       "source_file": "src/components/Footer.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_footer_tsx",
-      "target": "types_catalog_productcategory",
-      "confidence_score": 1.0
+      "target": "types_catalog_productcategory"
     },
     {
       "relation": "contains",
@@ -4937,9 +5345,9 @@
       "source_file": "src/components/Footer.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_footer_tsx",
-      "target": "components_footer_footer",
-      "confidence_score": 1.0
+      "target": "components_footer_footer"
     },
     {
       "relation": "calls",
@@ -6714,208 +7122,6 @@
       "target": "api_generate_drape_processmultiposedrape"
     },
     {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_verify_razorpay_mjs",
-      "target": "api_create_order_createrazorpayorder"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_verify_razorpay_mjs",
-      "target": "api_verify_payment_verifypaymentsignature"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_dirname"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_envpath"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_envcontent"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_trimmed"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_k_v"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L134",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_validsignature"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L140",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_validverifyresult"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L155",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_mismatchresult"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/verify-razorpay.mjs",
-      "source_location": "L169",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_missingparamsresult"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "verify-razorpay.mjs",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_dirname"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "verify-razorpay.mjs",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_envpath"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "verify-razorpay.mjs",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_envcontent"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "verify-razorpay.mjs",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_trimmed"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "verify-razorpay.mjs",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_k_v"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "verify-razorpay.mjs",
-      "source_location": "L131",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_validsignature"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "verify-razorpay.mjs",
-      "source_location": "L137",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_validverifyresult"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "verify-razorpay.mjs",
-      "source_location": "L152",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_mismatchresult"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "verify-razorpay.mjs",
-      "source_location": "L166",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "verify_razorpay_mjs",
-      "target": "scripts_verify_razorpay_missingparamsresult"
-    },
-    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -6980,17 +7186,6 @@
       "confidence_score": 1.0,
       "source": "src_components_cart_mobilecheckoutmodal_tsx",
       "target": "utils_formatters_formatcurrencyinr"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/cart/MobileCheckoutModal.tsx",
-      "source_location": "L16",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_components_cart_mobilecheckoutmodal_tsx",
-      "target": "utils_razorpay_initiaterazorpaypayment"
     },
     {
       "relation": "imports",
@@ -7088,17 +7283,6 @@
       "confidence_score": 1.0,
       "source": "src_components_cart_mobilecheckoutmodal_tsx",
       "target": "cart_mobilecheckoutmodal_mobilecheckoutmodal"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/cart/MobileCheckoutModal.tsx",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_components_cart_mobilecheckoutmodal_tsx",
-      "target": "src_utils_razorpay_ts"
     },
     {
       "relation": "imports_from",
@@ -8147,190 +8331,6 @@
       "confidence_score": 1.0,
       "source": "scripts_test_vite_api_server_mjs",
       "target": "scripts_test_vite_api_server_authenticsig"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_utils_razorpay_ts",
-      "target": "types_cart_carttotals"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_utils_razorpay_ts",
-      "target": "types_cart_shippingaddress"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_utils_razorpay_ts",
-      "target": "utils_razorpay_window"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_utils_razorpay_ts",
-      "target": "utils_razorpay_loadrazorpayscript"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L45",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_utils_razorpay_ts",
-      "target": "utils_razorpay_razorpaypaymentsuccessresponse"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L51",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_utils_razorpay_ts",
-      "target": "utils_razorpay_initiatepaymentparams"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L61",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_utils_razorpay_ts",
-      "target": "utils_razorpay_createorderapiresponse"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L73",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_utils_razorpay_ts",
-      "target": "utils_razorpay_verifypaymentapiresponse"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L85",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_utils_razorpay_ts",
-      "target": "utils_razorpay_createorderonserver"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L111",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_utils_razorpay_ts",
-      "target": "utils_razorpay_verifypaymentonserver"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L140",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_utils_razorpay_ts",
-      "target": "utils_razorpay_initiaterazorpaypayment"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "razorpay.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "razorpay_ts",
-      "target": "utils_razorpay_window"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L65",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "utils_razorpay_initiaterazorpaypayment",
-      "target": "utils_razorpay_loadrazorpayscript"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "razorpay.ts",
-      "source_location": "L17",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "razorpay_ts",
-      "target": "utils_razorpay_loadrazorpayscript"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "razorpay.ts",
-      "source_location": "L36",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "razorpay_ts",
-      "target": "utils_razorpay_razorpaypaymentsuccessresponse"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "razorpay.ts",
-      "source_location": "L42",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "razorpay_ts",
-      "target": "utils_razorpay_initiatepaymentparams"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/utils/razorpay.ts",
-      "source_location": "L170",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "utils_razorpay_initiaterazorpaypayment",
-      "target": "utils_razorpay_createorderonserver"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "razorpay.ts",
-      "source_location": "L56",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "razorpay_ts",
-      "target": "utils_razorpay_initiaterazorpaypayment"
     },
     {
       "relation": "contains",
@@ -14785,5 +14785,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d0e8de835e5b86869003dabb6b4ef1704c5cd201"
+  "built_at_commit": "c435f1c66bb9041562c5d61819ab15a78d9e32b2"
 }
