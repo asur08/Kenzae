@@ -1,7 +1,7 @@
 {
   "/Users/anandsuresh/Documents/GitHub/Kenzae/tailwind.config.js": {
-    "mtime": 1794494998.8630104,
-    "hash": "b667169f8ca82f721d0b590a98584516"
+    "mtime": 1795497498.6335516,
+    "hash": "d2fa7ab6db0b5e31cb6b2ef150acbbb4"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/vite.config.ts": {
     "mtime": 1795449993.473132,
@@ -192,68 +192,68 @@
     "hash": "b57b8a08f3984b606c08e14fd94ae6eb"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/Hero.tsx": {
-    "mtime": 1795249473.4240823,
-    "hash": "a5221af41946d69ec439adeef64a648c"
+    "mtime": 1795497664.558293,
+    "hash": "ea27ca75b1d7e8dc29ec75474780e0fa"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/Navbar.tsx": {
-    "mtime": 1795248849.897755,
-    "hash": "e143596b1e549e58602924be6e2bf67a"
+    "mtime": 1795497611.611562,
+    "hash": "2288b9c15000439fde5ab7327f30af18"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/FabricBadge.tsx": {
     "mtime": 1794493986.971076,
     "hash": "14d365457a016890e3f3552a24285bd5"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/StoreLocator.tsx": {
-    "mtime": 1794494045.9332967,
-    "hash": "a63866c33e939f269b61435a27940469"
+    "mtime": 1795497895.8916478,
+    "hash": "ae2de5529f8708504873a9e20541b130"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/CollectionShowcase.tsx": {
-    "mtime": 1794495066.2119045,
-    "hash": "029c8555603646f9bf280f707d43f3de"
+    "mtime": 1795497528.873031,
+    "hash": "0609222abed4507f5b359e8e289868a1"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/ProductModal.tsx": {
-    "mtime": 1795249192.8600063,
-    "hash": "5c527eb6eb5b0eadcfa8d49d3cfcb09b"
+    "mtime": 1795497748.4068105,
+    "hash": "9faa4a8f8b8ada3c963a9d3843a6cf54"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/ProductCard.tsx": {
-    "mtime": 1795249051.5829296,
-    "hash": "bcf096ad2a51180dd4ed2bc782181866"
+    "mtime": 1795497562.419185,
+    "hash": "f35fc851a5ff489987fc071896dd6c51"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/Footer.tsx": {
-    "mtime": 1795352078.0713792,
-    "hash": "8cb27f843874caaab9d56d1c76f67961"
+    "mtime": 1795497574.3726683,
+    "hash": "44aa22321ee6a1493a11c3375cc2cc21"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/AtelierStory.tsx": {
-    "mtime": 1794495937.7360332,
-    "hash": "a4935132479e8b22e0992619b2c6fcdb"
+    "mtime": 1795497888.70909,
+    "hash": "de790a3f3104be9e4ca0694cc6c5d965"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/CurrencySwitcher.tsx": {
-    "mtime": 1795249468.3843892,
-    "hash": "327a612bb5826dc05d01feafab1271eb"
+    "mtime": 1795497626.0354464,
+    "hash": "ea785d971eb32756d8efbeee259fb1f8"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/catalog/FilterBar.tsx": {
-    "mtime": 1794495116.608994,
-    "hash": "f4624d55d99eea20c13c67231be3081a"
+    "mtime": 1795497705.2116115,
+    "hash": "d8f2db55662a73a6aa8644de1c591acb"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/catalog/FilterDrawer.tsx": {
     "mtime": 1794495118.9840968,
     "hash": "ee422d9f15a14c0a0407e475cc333dfc"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/catalog/WishlistDrawer.tsx": {
-    "mtime": 1795249490.828963,
-    "hash": "325d24fc5ae5b706b95f2f9cfe3a8a19"
+    "mtime": 1795497763.9248073,
+    "hash": "63a35e0b9f41d5f3fdd2bc5a51092828"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/mobile/MobileBottomBar.tsx": {
-    "mtime": 1794882994.8795469,
-    "hash": "c42fd1f1a7ea13cfc329ead1d3742c2c"
+    "mtime": 1795497797.6723483,
+    "hash": "056ed7b77a2ccbacdf874f9424e753a3"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/cart/MobileCheckoutModal.tsx": {
     "mtime": 1795496620.3330982,
     "hash": "7058a82fbe408a0a4518c1ae299b28df"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/cart/CartDrawer.tsx": {
-    "mtime": 1795496874.9479558,
-    "hash": "0c18a0534650fea7dc6963f0e8e7311b"
+    "mtime": 1795497777.641937,
+    "hash": "5139983a974001e1980324d9f2c4e0c6"
   },
   "/Users/anandsuresh/Documents/GitHub/Kenzae/src/components/cart/TailoringSelector.tsx": {
     "mtime": 1794882953.4549873,

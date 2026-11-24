@@ -8,7 +8,7 @@ declare global {
 
 export const RAZORPAY_SCRIPT_URL = 'https://checkout.razorpay.com/v1/checkout.js';
 
-export const RAZORPAY_TEST_KEY_ID = 'rzp_test_U3fv7ch1nd3HLz';
+export const RAZORPAY_TEST_KEY_ID = 'rzp_test_U41mOg7S2WbmRm';
 
 /**
  * Dynamically loads the official Razorpay Checkout SDK into the document.
