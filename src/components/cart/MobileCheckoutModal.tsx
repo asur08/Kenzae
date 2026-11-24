@@ -154,7 +154,12 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
       },
       onError: (err) => {
         setIsProcessing(false);
-        setPaymentError(err?.description || err?.message || 'Payment authorization was cancelled or failed. Please retry.');
+        const errorMsg =
+          err?.description ||
+          err?.message ||
+          (typeof err === 'string' ? err : 'Payment was cancelled or could not be completed. Please retry.');
+        console.error('[Razorpay Checkout Error]:', err);
+        setPaymentError(errorMsg);
       },
     });
   };
@@ -302,12 +307,14 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                       <AlertTriangle className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
                       <div className="space-y-1">
                         <span className="font-bold block text-maroon-900">
-                          {paymentError.toLowerCase().includes('auth') || paymentError.toLowerCase().includes('credential')
+                          {paymentError.toLowerCase().includes('not configured') ||
+                          paymentError.toLowerCase().includes('config_error')
                             ? 'Payment Gateway Notice'
                             : 'Payment Notice'}
                         </span>
                         <p className="text-[11px] text-obsidian-slate leading-relaxed">
-                          {paymentError.toLowerCase().includes('auth') || paymentError.toLowerCase().includes('credential')
+                          {paymentError.toLowerCase().includes('not configured') ||
+                          paymentError.toLowerCase().includes('config_error')
                             ? 'Our payment gateway is currently synchronizing with the banking network. You can reserve this bespoke creation instantly via WhatsApp with our boutique team.'
                             : paymentError}
                         </p>

@@ -264,10 +264,15 @@ export async function initiateRazorpayPayment({
 
     rzpInstance.on('payment.failed', (resp: any) => {
       if (onError) {
-        const errorDesc =
+        let errorDesc =
           resp?.error?.description ||
           resp?.error?.reason ||
           'Payment transaction was cancelled or declined by your bank/UPI provider.';
+
+        if (activeKey.startsWith('rzp_live_') && (errorDesc.toLowerCase().includes('test') || resp?.error?.code === 'BAD_REQUEST_ERROR')) {
+          errorDesc += ' Note: Dummy test card numbers are rejected by live banking networks. For testing dummy cards, please switch your keys to Razorpay Test Mode (rzp_test_...).';
+        }
+
         onError({ description: errorDesc });
       }
     });
