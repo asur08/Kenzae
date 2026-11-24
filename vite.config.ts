@@ -5,6 +5,7 @@ import { authenticateStaff, verifySignedToken } from './api/auth/verify-staff.ts
 import { processImageUpload, UploadImageRequest } from './api/upload-image.ts';
 import { createRazorpayOrder, CreateOrderRequest } from './api/create-order.ts';
 import { verifyPaymentSignature, VerifyPaymentRequest } from './api/verify-payment.ts';
+import { verifyAndProcessWebhook } from './api/razorpay-webhook.ts';
 
 function kenzaeDevApiMiddleware(mode: string): Plugin {
   const env = loadEnv(mode, process.cwd(), '');
@@ -258,6 +259,43 @@ function kenzaeDevApiMiddleware(mode: string): Plugin {
                 success: false,
                 error: 'VERIFY_SERVER_ERROR',
                 message: err instanceof Error ? err.message : 'Payment verification failed',
+              })
+            );
+          }
+        });
+      });
+
+      // 7. Razorpay: Webhook Listener (/api/razorpay-webhook)
+      server.middlewares.use('/api/razorpay-webhook', (req, res, next) => {
+        if (req.method !== 'POST') {
+          if (req.method === 'OPTIONS') {
+            res.statusCode = 204;
+            res.end();
+            return;
+          }
+          return next();
+        }
+
+        const rawHeader = req.headers['x-razorpay-signature'];
+        const signature = Array.isArray(rawHeader) ? rawHeader[0] : rawHeader;
+
+        const chunks: Buffer[] = [];
+        req.on('data', (chunk: Buffer) => chunks.push(chunk));
+        req.on('end', () => {
+          try {
+            const rawBody = Buffer.concat(chunks).toString('utf8');
+            const result = verifyAndProcessWebhook(rawBody, signature);
+            res.statusCode = result.status;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify(result.body));
+          } catch (err) {
+            res.statusCode = 500;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(
+              JSON.stringify({
+                success: false,
+                error: 'WEBHOOK_SERVER_ERROR',
+                message: err instanceof Error ? err.message : 'Webhook handling failed',
               })
             );
           }
