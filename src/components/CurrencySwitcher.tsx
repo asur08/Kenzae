@@ -37,7 +37,7 @@ export const CurrencySwitcher: React.FC<CurrencySwitcherProps> = ({
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border border-canvas-border bg-white/90 hover:bg-white text-obsidian hover:text-maroon-900 transition-all text-[11px] font-semibold tracking-wider shadow-2xs group"
+        className="flex items-center gap-1.5 px-3 py-1.5 min-h-[40px] sm:min-h-[36px] rounded-full border border-canvas-border bg-white/90 hover:bg-white text-obsidian hover:text-maroon-900 active:scale-[0.97] transition-[transform,background-color,border-color] duration-150 text-[11px] font-semibold tracking-wider shadow-2xs group"
         aria-label="Select Currency"
         aria-expanded={isOpen}
       >
@@ -55,10 +55,11 @@ export const CurrencySwitcher: React.FC<CurrencySwitcherProps> = ({
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 6, scale: 0.96 }}
+            initial={{ opacity: 0, y: 4, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 4, scale: 0.96 }}
-            transition={{ duration: 0.16, ease: 'easeOut' }}
+            transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
+            style={{ transformOrigin: 'top right' }}
             className="absolute right-0 mt-2 w-56 rounded-xl bg-[#FAF8F5] border border-canvas-border shadow-xl z-50 overflow-hidden py-1.5"
           >
             <div className="px-3 py-1.5 border-b border-canvas-border flex items-center justify-between text-[10px] uppercase tracking-widest text-obsidian-muted font-semibold">

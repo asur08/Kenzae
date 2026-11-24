@@ -54,7 +54,7 @@ export const WishlistDrawer: React.FC = () => {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 30, stiffness: 320 }}
+              transition={{ type: 'spring', damping: 32, stiffness: 300, mass: 0.85 }}
               className="w-screen max-w-md bg-canvas shadow-2xl flex flex-col border-l border-brass/30"
             >
               {/* Header */}
@@ -72,7 +72,7 @@ export const WishlistDrawer: React.FC = () => {
                 </div>
                 <button
                   onClick={() => setIsWishlistOpen(false)}
-                  className="p-2 rounded-full hover:bg-canvas-border text-obsidian transition-colors"
+                  className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-full hover:bg-canvas-border text-obsidian active:scale-[0.93] transition-[transform,background-color] duration-150"
                   aria-label="Close Wishlist"
                 >
                   <X className="w-5 h-5" />

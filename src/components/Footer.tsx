@@ -143,7 +143,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Credits & Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-canvas/60 font-light">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-canvas/75 font-light">
           <div>
             © {new Date().getFullYear()} {KENZAE_STORE_CONFIG.storeName}. All rights reserved.
           </div>
@@ -155,16 +155,15 @@ export const Footer: React.FC = () => {
                 window.history.pushState({}, '', '/staff');
                 window.dispatchEvent(new PopStateEvent('popstate'));
               }}
-              className="text-canvas/30 hover:text-canvas/70 transition-colors tracking-wider"
+              className="text-brass-light/70 hover:text-white transition-colors tracking-wider underline underline-offset-4"
               title="Kenzae Staff Portal"
             >
               Staff Access
             </a>
-            <span className="text-canvas/20">•</span>
-            <div className="flex items-center gap-1">
-              <span>Crafted with</span>
+            <span className="text-brass-light/40">•</span>
+            <div className="flex items-center gap-1.5 text-canvas/80">
+              <span>Handcrafted for Kerala Fashion &amp; Couture</span>
               <Heart className="w-3 h-3 text-brass fill-current inline" />
-              <span>for Kerala Fashion & Couture</span>
             </div>
           </div>
         </div>

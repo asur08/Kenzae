@@ -54,7 +54,7 @@ export default {
         }
       },
       fontFamily: {
-        serif: ['"Cormorant Garamond"', '"Playfair Display"', 'Cinzel', 'Georgia', 'serif'],
+        serif: ['"Cormorant Garamond"', 'Cinzel', 'Georgia', 'serif'],
         sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
       boxShadow: {

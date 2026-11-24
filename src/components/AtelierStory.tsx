@@ -1,66 +1,109 @@
 import React from 'react';
-import { ShieldCheck, Scissors, Sparkles } from 'lucide-react';
-
-const ATELIER_PILLARS = [
-  {
-    icon: ShieldCheck,
-    title: 'Authenticated Handlooms',
-    description:
-      'Every Banarasi Katan, Kasavu, and Kanjivaram piece is handpicked directly from heritage weavers with verified Silk Mark and zari provenance.',
-  },
-  {
-    icon: Scissors,
-    title: 'In-House Studio Tailoring',
-    description:
-      'Custom blouse designing, breathable mulmul lining attachment, and traditional fall-pico edging tailored to your exact measurements.',
-  },
-  {
-    icon: Sparkles,
-    title: 'Studio Drape & Weave Loupe',
-    description:
-      'Inspect how each weave drapes on a model alongside close-up flat-lay photographs with interactive fabric zoom—zero wait, crisp clarity.',
-  },
-];
+import { ShieldCheck, Scissors, Sparkles, MessageCircle } from 'lucide-react';
+import { generateStoreVisitWhatsAppUrl } from '../utils/whatsapp';
 
 export const AtelierStory: React.FC = () => {
+  const handleConsult = () => {
+    window.open(generateStoreVisitWhatsAppUrl(), '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <section
       id="atelier-story"
-      className="py-14 sm:py-16 bg-white border-t border-canvas-border"
+      className="py-16 sm:py-20 bg-white border-t border-[#EAE3D7]"
     >
-      <div className="container mx-auto px-4">
-        <div className="max-w-2xl mx-auto text-center mb-10 space-y-2">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.26em] text-brass-dark block">
-            The Kenzae Standard
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl font-normal text-maroon-950">
-            Crafted Around Your Occasion
-          </h2>
-          <p className="text-xs sm:text-sm text-obsidian-slate font-light leading-relaxed">
-            No generic carts or guesswork—every inquiry connects directly with our stylists for personal sizing, weave details, and custom finishing.
-          </p>
-        </div>
+      <div className="container mx-auto px-4 max-w-6xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          {/* Left Column: Authentic Handloom & Drape Photography Frame */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-[#EAE3D7] bg-[#FAF8F5]">
+              <img
+                src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=80"
+                alt="Master handloom weaver crafting Banarasi Katan silk with gold zari"
+                loading="lazy"
+                className="w-full h-full object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-maroon-950/80 via-transparent to-transparent" />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 max-w-5xl mx-auto">
-          {ATELIER_PILLARS.map((pillar) => {
-            const Icon = pillar.icon;
-            return (
-              <div
-                key={pillar.title}
-                className="p-6 rounded-2xl bg-[#FAF8F5] border border-canvas-border hover:border-maroon-900/20 transition-colors space-y-3"
-              >
-                <div className="w-10 h-10 rounded-full bg-maroon-900 text-brass-light flex items-center justify-center shadow-xs">
-                  <Icon className="w-4 h-4" />
-                </div>
-                <h3 className="font-serif text-xl font-medium text-obsidian">
-                  {pillar.title}
-                </h3>
-                <p className="text-xs text-obsidian-slate leading-relaxed font-light">
-                  {pillar.description}
+              {/* Architectural Label Badge */}
+              <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-[#FAF8F5]/95 backdrop-blur-md border border-brass/35">
+                <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-maroon-900 block">
+                  Atelier Heritage · Mulanthuruthy
+                </span>
+                <p className="font-serif text-sm text-obsidian mt-0.5">
+                  Hand-inspected zari warp, authentic Silk Mark certification &amp; bespoke drape tailoring.
                 </p>
               </div>
-            );
-          })}
+            </div>
+          </div>
+
+          {/* Right Column: Narrative Craftsmanship & Tailoring Standards */}
+          <div className="lg:col-span-7 space-y-6">
+            <div>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[40px] font-normal text-maroon-950 leading-[1.12]">
+                Crafted Around Your Occasion
+              </h2>
+              <p className="text-sm md:text-[15px] text-obsidian-slate font-light leading-relaxed mt-3 max-w-xl">
+                At Kenzae, couture is never mass-produced. Every sari, salwar set, and unstitched fabric is curated with verified silk provenance, bespoke fitting, and personal stylist consultation before it reaches your hands.
+              </p>
+            </div>
+
+            {/* Three Structured Craft Pillars */}
+            <div className="space-y-4 pt-2">
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE3D7]/80">
+                <div className="w-10 h-10 rounded-full bg-maroon-950 text-brass-light flex items-center justify-center shrink-0 mt-0.5">
+                  <ShieldCheck className="w-4 h-4 text-brass" />
+                </div>
+                <div>
+                  <h3 className="font-serif text-base sm:text-lg font-medium text-obsidian">
+                    Authenticated Handlooms &amp; Silk Mark Provenance
+                  </h3>
+                  <p className="text-xs text-obsidian-slate font-light leading-relaxed mt-1">
+                    Every Banarasi Katan, Kerala Kasavu, and Kanjivaram Korvai piece is acquired directly from verified artisan clusters with authentic zari testing.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE3D7]/80">
+                <div className="w-10 h-10 rounded-full bg-maroon-950 text-brass-light flex items-center justify-center shrink-0 mt-0.5">
+                  <Scissors className="w-4 h-4 text-brass" />
+                </div>
+                <div>
+                  <h3 className="font-serif text-base sm:text-lg font-medium text-obsidian">
+                    Bespoke In-House Studio Tailoring
+                  </h3>
+                  <p className="text-xs text-obsidian-slate font-light leading-relaxed mt-1">
+                    Personalized blouse styling, breathable mulmul lining attachment, and handcrafted fall-pico edging tailored to your exact measurements.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE3D7]/80">
+                <div className="w-10 h-10 rounded-full bg-maroon-950 text-brass-light flex items-center justify-center shrink-0 mt-0.5">
+                  <Sparkles className="w-4 h-4 text-brass" />
+                </div>
+                <div>
+                  <h3 className="font-serif text-base sm:text-lg font-medium text-obsidian">
+                    240% Ultra-HD Fabric Loupe &amp; Motion Drapes
+                  </h3>
+                  <p className="text-xs text-obsidian-slate font-light leading-relaxed mt-1">
+                    Inspect silk slubs, zari borders, and drape fluidity with crystal clarity—ensuring complete confidence before placing your order or boutique trial.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Concierge Call to Action */}
+            <div className="pt-2 flex flex-wrap items-center gap-3">
+              <button
+                onClick={handleConsult}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white font-semibold text-xs tracking-[0.14em] uppercase active:scale-[0.97] transition-[transform,background-color] duration-150 border border-brass/30"
+              >
+                <MessageCircle className="w-4 h-4 text-whatsapp" />
+                <span>Consult Master Draper on WhatsApp</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

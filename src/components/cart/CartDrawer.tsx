@@ -67,7 +67,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 28, stiffness: 280 }}
+            transition={{ type: 'spring', damping: 32, stiffness: 300, mass: 0.85 }}
             className="relative w-full max-w-md bg-[#FAF8F5] text-obsidian shadow-2xl flex flex-col h-full z-10 border-l border-canvas-border"
           >
             {/* Header */}
@@ -88,7 +88,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
 
               <button
                 onClick={() => setIsCartOpen(false)}
-                className="p-2 rounded-full hover:bg-canvas-subtle text-obsidian-slate hover:text-obsidian transition-colors"
+                className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-full hover:bg-canvas-subtle text-obsidian-slate hover:text-obsidian active:scale-[0.93] transition-[transform,background-color] duration-150"
                 aria-label="Close Bag"
               >
                 <X className="w-5 h-5" />

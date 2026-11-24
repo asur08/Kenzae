@@ -1,16 +1,16 @@
 # Graph Report - Kenzae  (2026-11-24)
 
 ## Corpus Check
-- 91 files · ~57,637 words
+- 91 files · ~58,196 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 512 nodes · 941 edges · 33 communities (31 shown, 2 thin omitted)
+- 515 nodes · 957 edges · 33 communities (31 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3deb678d`
+- Built from commit: `95799ccf`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -60,12 +60,12 @@
   components/Footer.tsx → src/context/CatalogContext.tsx
 - `KenzaeTaxInvoiceDocument()` --calls--> `convertAmountToWords()`  [EXTRACTED]
   utils/invoiceGenerator.tsx → src/utils/numberToWords.ts
+- `generateBoutiqueOwnerOrderAlertWhatsAppUrl()` --calls--> `formatCurrencyINR()`  [EXTRACTED]
+  src/utils/courierTracking.ts → src/utils/formatters.ts
 - `MobileCheckoutModal()` --calls--> `useOrders()`  [EXTRACTED]
   src/components/cart/MobileCheckoutModal.tsx → src/context/OrdersContext.tsx
 - `CustomerStorefront()` --calls--> `useCatalog()`  [EXTRACTED]
   src/App.tsx → src/context/CatalogContext.tsx
-- `StaffDashboard()` --calls--> `useCatalog()`  [EXTRACTED]
-  src/components/staff/StaffDashboard.tsx → src/context/CatalogContext.tsx
 
 ## Communities (33 total, 2 thin omitted)
 
@@ -74,36 +74,36 @@ Cohesion: 0.09
 Nodes (39): CartDrawer(), CartDrawerProps, MobileCheckoutModal(), CATEGORIES, FilterBar(), PRICE_QUICK_CHIPS, ALL_CATEGORIES, FilterDrawer() (+31 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.1
-Nodes (34): StaffAuthContext, StaffAuthContextType, StaffAuthProvider(), useStaffAuth(), uploadCatalogImage(), UploadResult, ARCHETYPE_LABELS, ImageUploadStudio() (+26 more)
+Cohesion: 0.08
+Nodes (31): CreateOrderRequest, CreateOrderResponse, createRazorpayOrder(), handler(), GenerateDrapePayload, handler(), parseBase64DataUrl(), processImageUpload() (+23 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.07
-Nodes (34): AiDrapePose, buildSinglePosePrompt(), DrapeBackdropPreset, DrapeStylePreset, GeneratedLook, GenerateDrapePayload, generateSinglePose(), getEditorialLookbookMock() (+26 more)
+Nodes (34): AiDrapePose, buildSinglePosePrompt(), DrapeBackdropPreset, DrapeStylePreset, EDITORIAL_VARIATION_POOLS, GeneratedLook, generateSinglePose(), getEditorialLookbookMock() (+26 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.08
-Nodes (30): CreateOrderRequest, CreateOrderResponse, createRazorpayOrder(), handler(), handler(), parseBase64DataUrl(), processImageUpload(), sanitizeFileName() (+22 more)
+Cohesion: 0.12
+Nodes (27): OrdersContext, OrdersContextType, OrdersProvider(), SAMPLE_ORDERS, useOrders(), dispatchRemoteOrder(), fetchRemoteOrders(), mapOrderToDbRow() (+19 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.11
-Nodes (28): OrdersContext, OrdersContextType, OrdersProvider(), SAMPLE_ORDERS, useOrders(), dispatchRemoteOrder(), fetchRemoteOrders(), mapOrderToDbRow() (+20 more)
+Cohesion: 0.09
+Nodes (25): STANDARD_SIZES, TailoringSelector(), TailoringSelectorProps, FabricBadge(), FabricBadgeProps, CartContext, CartContextType, CartProvider() (+17 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.1
-Nodes (27): MobileCheckoutModalProps, CurrencySwitcherProps, ProductCardProps, CurrencyContext, CurrencyContextType, CurrencyProvider(), CountryProfile, SUPPORTED_COUNTRIES (+19 more)
+Cohesion: 0.13
+Nodes (27): uploadCatalogImage(), UploadResult, ARCHETYPE_LABELS, ImageUploadStudio(), ImageUploadStudioProps, ROLE_LABELS, CATEGORIES, ProductEditModal() (+19 more)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.12
-Nodes (26): CatalogContext, CatalogContextType, CatalogProvider(), initialFilterState, VALID_CATEGORIES, validateCatalog(), validateProduct(), ValidationResult (+18 more)
+Cohesion: 0.11
+Nodes (26): MobileCheckoutModalProps, ProductCardProps, CurrencyContext, CurrencyContextType, CurrencyProvider(), CountryProfile, SUPPORTED_COUNTRIES, convertINRTo() (+18 more)
 
 ### Community 7 - "Community 7"
-Cohesion: 0.09
-Nodes (20): convertedAED, convertedUSD, countriesCode, countriesPath, courierCode, courierPath, currencyCode, currencyServicePath (+12 more)
+Cohesion: 0.12
+Nodes (25): CatalogContext, CatalogContextType, CatalogProvider(), initialFilterState, VALID_CATEGORIES, validateCatalog(), validateProduct(), ValidationResult (+17 more)
 
 ### Community 8 - "Community 8"
-Cohesion: 0.14
-Nodes (14): STANDARD_SIZES, TailoringSelector(), TailoringSelectorProps, FabricBadge(), FabricBadgeProps, CartContext, CartContextType, CartProvider() (+6 more)
+Cohesion: 0.09
+Nodes (20): convertedAED, convertedUSD, countriesCode, countriesPath, courierCode, courierPath, currencyCode, currencyServicePath (+12 more)
 
 ### Community 9 - "Community 9"
 Cohesion: 0.11
@@ -123,7 +123,7 @@ Nodes (12): 1. Objective & Scope, 2. Pipeline Sequence Diagram, 3. Detailed Stag
 
 ### Community 13 - "Community 13"
 Cohesion: 0.27
-Nodes (9): CartTotals, CreateOrderApiResponse, createOrderOnServer(), InitiatePaymentParams, initiateRazorpayPayment(), loadRazorpayScript(), RazorpayPaymentSuccessResponse, VerifyPaymentApiResponse (+1 more)
+Nodes (9): StaffAuthContext, StaffAuthContextType, StaffAuthProvider(), useStaffAuth(), StaffDashboard(), StaffLoginPage(), StaffLoginPageProps, StaffPortalPage() (+1 more)
 
 ### Community 14 - "Community 14"
 Cohesion: 0.17
@@ -170,24 +170,24 @@ Cohesion: 0.7
 Nodes (4): audit_palette(), contrast_ratio(), hex_to_rgb(), relative_luminance()
 
 ## Knowledge Gaps
-- **213 isolated node(s):** `__dirname`, `envPath`, `envContent`, `trimmed`, `[k, ...v]` (+208 more)
+- **205 isolated node(s):** `AiDrapePose`, `ModelArchetype`, `DrapeStylePreset`, `DrapeBackdropPreset`, `GeneratedLook` (+200 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `KenzaeProduct` connect `Community 6` to `Community 0`, `Community 1`, `Community 2`, `Community 5`, `Community 8`?**
+- **Why does `KenzaeProduct` connect `Community 5` to `Community 0`, `Community 2`, `Community 4`, `Community 6`, `Community 7`?**
   _High betweenness centrality (0.063) - this node is a cross-community bridge._
-- **Why does `BoutiqueOrder` connect `Community 4` to `Community 19`, `Community 5`, `Community 6`?**
+- **Why does `BoutiqueOrder` connect `Community 3` to `Community 19`, `Community 6`, `Community 7`?**
   _High betweenness centrality (0.022) - this node is a cross-community bridge._
-- **Why does `formatCurrencyINR()` connect `Community 0` to `Community 8`, `Community 1`, `Community 4`, `Community 5`?**
+- **Why does `formatCurrencyINR()` connect `Community 0` to `Community 3`, `Community 4`, `Community 5`, `Community 6`, `Community 13`?**
   _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **What connects `__dirname`, `envPath`, `envContent` to the rest of the system?**
-  _213 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `AiDrapePose`, `ModelArchetype`, `DrapeStylePreset` to the rest of the system?**
+  _205 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.09 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.1 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.07 - nodes in this community are weakly interconnected._

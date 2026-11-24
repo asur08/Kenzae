@@ -25,7 +25,7 @@ export const MobileBottomBar: React.FC = () => {
         {/* Discover */}
         <button
           onClick={handleDiscover}
-          className="flex flex-col items-center justify-center gap-1 py-1 px-3 text-obsidian-slate hover:text-maroon-900 active:scale-95 transition-transform"
+          className="flex flex-col items-center justify-center gap-1 py-1 px-3 min-h-[44px] text-obsidian-slate hover:text-maroon-900 active:scale-[0.94] transition-transform duration-120"
           aria-label="Discover Collections"
         >
           <Compass className="w-5 h-5 stroke-[1.75]" />
@@ -35,7 +35,7 @@ export const MobileBottomBar: React.FC = () => {
         {/* Shortlist / Wishlist */}
         <button
           onClick={() => setIsWishlistOpen(true)}
-          className="flex flex-col items-center justify-center gap-1 py-1 px-3 text-obsidian-slate hover:text-maroon-900 active:scale-95 transition-transform relative"
+          className="flex flex-col items-center justify-center gap-1 py-1 px-3 min-h-[44px] text-obsidian-slate hover:text-maroon-900 active:scale-[0.94] transition-transform duration-120 relative"
           aria-label="Shortlist"
         >
           <div className="relative">
@@ -52,7 +52,7 @@ export const MobileBottomBar: React.FC = () => {
         {/* Bag */}
         <button
           onClick={() => setIsCartOpen(true)}
-          className="flex flex-col items-center justify-center gap-1 py-1 px-3 text-maroon-950 active:scale-95 transition-transform relative"
+          className="flex flex-col items-center justify-center gap-1 py-1 px-3 min-h-[44px] text-maroon-950 active:scale-[0.94] transition-transform duration-120 relative"
           aria-label="Shopping Bag"
         >
           <div className="relative">
@@ -69,7 +69,7 @@ export const MobileBottomBar: React.FC = () => {
         {/* Consult / WhatsApp */}
         <button
           onClick={handleConsult}
-          className="flex flex-col items-center justify-center gap-1 py-1 px-3 text-emerald-800 hover:text-emerald-700 active:scale-95 transition-transform"
+          className="flex flex-col items-center justify-center gap-1 py-1 px-3 min-h-[44px] text-emerald-800 hover:text-emerald-700 active:scale-[0.94] transition-transform duration-120"
           aria-label="Direct Boutique Consultation"
         >
           <MessageCircle className="w-5 h-5 stroke-[1.75] text-whatsapp" />

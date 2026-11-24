@@ -67,9 +67,9 @@ export const FilterBar: React.FC = () => {
             <button
               key={cat.value}
               onClick={() => handleCategorySelect(cat.value)}
-              className={`whitespace-nowrap shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium tracking-wide transition-all select-none ${
+              className={`whitespace-nowrap shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium tracking-wide transition-[transform,background-color,border-color,color] duration-150 active:scale-[0.97] select-none ${
                 isActive
-                  ? 'bg-maroon-900 text-brass-light shadow-sm border border-maroon-900'
+                  ? 'bg-maroon-900 text-brass-light border border-maroon-900'
                   : 'bg-white hover:bg-canvas-subtle text-obsidian border border-canvas-border hover:border-maroon-900/30'
               }`}
             >
@@ -121,7 +121,7 @@ export const FilterBar: React.FC = () => {
                 <button
                   key={idx}
                   onClick={() => handlePriceChipSelect(chip)}
-                  className={`px-3 py-1.5 rounded-full text-[11px] font-medium tracking-wide tabular-nums transition-colors ${
+                  className={`px-3 py-1.5 rounded-full text-[11px] font-medium tracking-wide tabular-nums transition-[transform,background-color] duration-150 active:scale-[0.97] ${
                     isSelected
                       ? 'bg-maroon-900 text-brass-light font-semibold shadow-xs'
                       : 'bg-white hover:bg-canvas-subtle text-obsidian-slate border border-canvas-border'
@@ -157,7 +157,7 @@ export const FilterBar: React.FC = () => {
           {/* Filter Drawer Toggle */}
           <button
             onClick={() => setIsFilterDrawerOpen(true)}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-maroon-900 text-brass-light text-xs font-medium tracking-wide border border-brass/30 hover:bg-maroon-850 transition-colors shadow-xs shrink-0"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-maroon-900 text-brass-light text-xs font-medium tracking-wide border border-brass/30 hover:bg-maroon-850 active:scale-[0.97] transition-[transform,background-color] duration-150 shadow-xs shrink-0"
           >
             <SlidersHorizontal className="w-3.5 h-3.5 text-brass" />
             <span>Filters</span>
@@ -169,7 +169,7 @@ export const FilterBar: React.FC = () => {
           {isFiltered && (
             <button
               onClick={resetFilters}
-              className="text-xs text-maroon-900 hover:text-maroon-800 underline underline-offset-4 font-medium transition-colors"
+              className="text-xs text-maroon-900 hover:text-maroon-800 underline underline-offset-4 font-medium active:scale-[0.97] transition-all"
             >
               Reset
             </button>
@@ -185,7 +185,7 @@ export const FilterBar: React.FC = () => {
           </span>
           <button
             onClick={() => setFilterState((prev) => ({ ...prev, subCategory: 'All' }))}
-            className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap shrink-0 transition-colors ${
+            className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap shrink-0 transition-[transform,background-color] duration-150 active:scale-[0.97] ${
               filterState.subCategory === 'All'
                 ? 'bg-maroon-900 text-brass-light'
                 : 'bg-white hover:bg-canvas-subtle text-obsidian border border-canvas-border'
@@ -204,7 +204,7 @@ export const FilterBar: React.FC = () => {
                     subCategory: isSelected ? 'All' : sub,
                   }))
                 }
-                className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap shrink-0 transition-colors flex items-center gap-1 ${
+                className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap shrink-0 transition-[transform,background-color] duration-150 active:scale-[0.97] flex items-center gap-1 ${
                   isSelected
                     ? 'bg-maroon-900 text-brass-light'
                     : 'bg-white hover:bg-canvas-subtle text-obsidian border border-canvas-border'

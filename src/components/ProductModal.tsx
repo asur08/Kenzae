@@ -250,7 +250,7 @@ export const ProductModal: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.18 }}
           className="fixed inset-0 bg-black/70 backdrop-blur-md"
           onClick={() => setSelectedProduct(null)}
         />
@@ -258,17 +258,17 @@ export const ProductModal: React.FC = () => {
         {/* Modal Dialog */}
         <motion.div
           ref={modalRef}
-          initial={{ opacity: 0, scale: 0.97, y: 12 }}
+          initial={{ opacity: 0, scale: 0.96, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.97, y: 12 }}
-          transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          exit={{ opacity: 0, scale: 0.96, y: 8, transition: { duration: 0.16, ease: [0.32, 0, 0.67, 0] } }}
+          transition={{ duration: 0.24, ease: [0.23, 1, 0.32, 1] }}
           className="relative w-full max-w-4xl bg-canvas-surface rounded-2xl shadow-2xl overflow-hidden border border-brass/35 z-10 max-h-[92vh] flex flex-col my-auto"
         >
           {/* Floating Close Button */}
           <button
             ref={closeButtonRef}
             onClick={() => setSelectedProduct(null)}
-            className="absolute top-3.5 right-3.5 z-20 p-2.5 rounded-full bg-maroon-950/80 hover:bg-maroon-950 text-white backdrop-blur-md transition-all shadow-md active:scale-95"
+            className="absolute top-3.5 right-3.5 z-20 min-w-[44px] min-h-[44px] flex items-center justify-center p-2.5 rounded-full bg-maroon-950/80 hover:bg-maroon-950 text-white backdrop-blur-md transition-[transform,background-color] duration-150 shadow-md active:scale-[0.93]"
             aria-label="Close dialog"
           >
             <X className="w-5 h-5" />
@@ -686,7 +686,7 @@ export const ProductModal: React.FC = () => {
                   <button
                     onClick={handleAddToCart}
                     disabled={!isAvailable}
-                    className={`w-full py-3.5 px-6 rounded-full font-semibold text-xs tracking-[0.14em] uppercase transition-all shadow-luxury flex items-center justify-center gap-2 border active:scale-[0.99] ${
+                    className={`w-full py-3.5 px-6 rounded-full font-semibold text-xs tracking-[0.14em] uppercase transition-[transform,background-color] duration-150 shadow-luxury flex items-center justify-center gap-2 border active:scale-[0.97] ${
                       isAvailable
                         ? 'bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white border-brass/35 cursor-pointer'
                         : 'bg-canvas-subtle text-obsidian-muted border-canvas-border cursor-not-allowed opacity-60'

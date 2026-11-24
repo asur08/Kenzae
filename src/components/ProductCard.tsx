@@ -66,7 +66,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <article
       onClick={handleCardClick}
-      className="group relative bg-white rounded-xl overflow-hidden border border-canvas-border hover:border-maroon-900/25 shadow-luxury hover:shadow-luxury-hover transition-all duration-300 flex flex-col cursor-pointer min-w-0"
+      className="group relative bg-white rounded-xl overflow-hidden border border-[#EAE3D7] hover:border-maroon-900/40 transition-[border-color,transform] duration-200 flex flex-col cursor-pointer min-w-0"
     >
       {/* Clean 3:4 Portrait Drape Showcase */}
       <div
@@ -100,7 +100,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 setImageError(true);
               }
             }}
-            className={`w-full h-full object-cover object-top transition-all duration-700 ease-out group-hover:scale-[1.04] ${
+            className={`w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03] ${
               imageLoaded ? 'opacity-100' : 'opacity-0'
             }`}
           />
@@ -119,7 +119,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Top-Right Minimal Wishlist Control */}
         <button
           onClick={handleWishlistToggle}
-          className={`absolute top-3 right-3 p-2 rounded-full backdrop-blur-md transition-all active:scale-90 ${
+          className={`absolute top-3 right-3 p-2 rounded-full backdrop-blur-md transition-transform duration-150 active:scale-[0.92] ${
             isSaved
               ? 'bg-maroon-900 text-brass-light shadow-md scale-105'
               : 'bg-white/85 hover:bg-white text-obsidian shadow-xs opacity-95'
@@ -142,7 +142,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <span className="uppercase tracking-[0.16em] font-semibold text-brass-dark truncate">
               {product.subCategory || product.category}
             </span>
-            <span className="font-mono text-obsidian-muted shrink-0">
+            <span className="font-sans font-medium text-obsidian-slate tracking-[0.12em] tabular-nums shrink-0">
               {product.sku}
             </span>
           </div>
@@ -161,7 +161,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Pricing & Dual Actions */}
         <div className="pt-2.5 border-t border-canvas-border flex flex-col gap-2.5">
           <div className="flex items-baseline justify-between gap-2">
-            <span className="text-[10px] uppercase tracking-[0.14em] text-obsidian-muted">
+            <span className="text-[10px] uppercase tracking-[0.14em] text-obsidian-slate">
               Boutique Price
             </span>
             <div className="flex flex-col items-end">
@@ -169,7 +169,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 {formatPrice(product.price)}
               </span>
               {currentCurrency !== 'INR' && (
-                <span className="text-[10px] text-obsidian-muted tabular-nums">
+                <span className="text-[10px] text-obsidian-slate tabular-nums">
                   ≈ ₹{product.price.toLocaleString('en-IN')}
                 </span>
               )}
@@ -183,7 +183,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 handleCardClick();
               }}
               disabled={!isAvailable}
-              className={`flex-1 py-2 px-3 rounded-lg text-[11px] font-semibold tracking-[0.12em] uppercase transition-all flex items-center justify-center gap-1.5 border active:scale-[0.98] min-w-0 ${
+              className={`flex-1 py-2 px-3 rounded-lg text-[11px] font-semibold tracking-[0.12em] uppercase transition-[transform,background-color] duration-150 flex items-center justify-center gap-1.5 border active:scale-[0.97] min-w-0 ${
                 isAvailable
                   ? 'bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white border-maroon-900 shadow-xs cursor-pointer'
                   : 'bg-canvas-subtle text-obsidian-muted border-canvas-border cursor-not-allowed opacity-60'
@@ -201,7 +201,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 e.stopPropagation();
                 handleCardClick();
               }}
-              className="p-2 rounded-lg bg-canvas-subtle hover:bg-maroon-50 text-obsidian hover:text-maroon-900 border border-canvas-border transition-colors shrink-0"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-lg bg-canvas-subtle hover:bg-maroon-50 text-obsidian hover:text-maroon-900 border border-canvas-border transition-[transform,background-color] duration-150 active:scale-[0.97] shrink-0"
               title="Inspect specifications & fabric zoom"
               aria-label="Inspect piece"
             >

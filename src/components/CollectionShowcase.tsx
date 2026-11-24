@@ -50,12 +50,9 @@ export const CollectionShowcase: React.FC = () => {
   return (
     <section className="py-8 sm:py-10 bg-canvas border-b border-canvas-border">
       <div className="container mx-auto px-4">
-        <div className="flex items-end justify-between gap-4 mb-5">
+        <div className="flex items-end justify-between gap-4 mb-6">
           <div>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-brass-dark block">
-              Curated Categories
-            </span>
-            <h2 className="font-serif text-2xl sm:text-3xl font-normal text-maroon-950 mt-0.5">
+            <h2 className="font-serif text-2xl sm:text-3xl font-normal text-maroon-950">
               Browse by Silhouette
             </h2>
           </div>
@@ -65,7 +62,7 @@ export const CollectionShowcase: React.FC = () => {
               onClick={() =>
                 setFilterState((prev) => ({ ...prev, category: 'All', subCategory: 'All' }))
               }
-              className="text-xs font-medium text-maroon-900 hover:text-maroon-800 underline underline-offset-4 shrink-0"
+              className="text-xs font-medium text-maroon-900 hover:text-maroon-800 underline underline-offset-4 shrink-0 transition-colors"
             >
               Show All Pieces
             </button>
@@ -82,10 +79,10 @@ export const CollectionShowcase: React.FC = () => {
               <button
                 key={card.category}
                 onClick={() => handleSelectCollection(card.category)}
-                className={`group text-left rounded-xl overflow-hidden border transition-all duration-300 bg-white flex flex-col ${
+                className={`group text-left rounded-xl overflow-hidden border transition-all duration-200 bg-white flex flex-col active:scale-[0.98] ${
                   isSelected
-                    ? 'border-maroon-900 ring-1 ring-maroon-900 shadow-editorial'
-                    : 'border-canvas-border hover:border-brass/60 shadow-sm hover:shadow-luxury'
+                    ? 'border-maroon-900 ring-1 ring-maroon-900'
+                    : 'border-[#EAE3D7] hover:border-maroon-900/40'
                 }`}
               >
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-canvas-subtle">
@@ -94,11 +91,11 @@ export const CollectionShowcase: React.FC = () => {
                       src={coverImage}
                       alt={card.title}
                       loading="lazy"
-                      className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                      className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-maroon-950/65 via-transparent to-transparent" />
-                  <span className="absolute bottom-2 right-2.5 text-[10px] font-mono font-semibold text-white/95 bg-maroon-950/75 backdrop-blur-sm px-2 py-0.5 rounded-full tabular-nums">
+                  <span className="absolute bottom-2 right-2.5 text-[10px] font-sans font-medium text-white/95 bg-maroon-950/80 backdrop-blur-sm px-2 py-0.5 rounded-full tabular-nums tracking-wide">
                     {categoryProducts.length} {categoryProducts.length === 1 ? 'piece' : 'pieces'}
                   </span>
                 </div>

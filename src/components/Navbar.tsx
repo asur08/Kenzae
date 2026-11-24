@@ -88,7 +88,7 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center gap-4 min-w-0">
           <button
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            className="lg:hidden p-2 -ml-1 rounded-full border border-canvas-border bg-white/80 text-maroon-950 hover:bg-white transition-colors"
+            className="lg:hidden min-w-[40px] min-h-[40px] flex items-center justify-center p-2 -ml-1 rounded-full border border-canvas-border bg-white/80 text-maroon-950 hover:bg-white active:scale-[0.97] transition-[transform,background-color] duration-150"
             aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           >
             {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -97,19 +97,19 @@ export const Navbar: React.FC = () => {
           <nav className="hidden lg:flex items-center gap-6 text-[11px] font-medium tracking-[0.16em] uppercase text-obsidian-slate">
             <button
               onClick={() => scrollToSection('catalog-section')}
-              className="hover:text-maroon-900 transition-colors"
+              className="hover:text-maroon-900 active:scale-[0.98] transition-[color,transform] duration-150"
             >
               Collections
             </button>
             <button
               onClick={() => scrollToSection('atelier-story')}
-              className="hover:text-maroon-900 transition-colors"
+              className="hover:text-maroon-900 active:scale-[0.98] transition-[color,transform] duration-150"
             >
               Our Craft
             </button>
             <button
               onClick={() => scrollToSection('store-locator')}
-              className="hover:text-maroon-900 transition-colors"
+              className="hover:text-maroon-900 active:scale-[0.98] transition-[color,transform] duration-150"
             >
               Boutique
             </button>
@@ -134,7 +134,7 @@ export const Navbar: React.FC = () => {
 
           <button
             onClick={() => setIsFilterDrawerOpen(true)}
-            className="md:hidden p-2 rounded-full border border-canvas-border bg-white/80 text-maroon-950 hover:bg-white transition-colors"
+            className="md:hidden min-w-[40px] min-h-[40px] flex items-center justify-center p-2 rounded-full border border-canvas-border bg-white/80 text-maroon-950 hover:bg-white active:scale-[0.97] transition-[transform,background-color] duration-150"
             aria-label="Open Collection Filters"
           >
             <SlidersHorizontal className="w-4 h-4" />
@@ -142,7 +142,7 @@ export const Navbar: React.FC = () => {
 
           <button
             onClick={() => setIsWishlistOpen(true)}
-            className="relative p-2 sm:p-2.5 rounded-full border border-canvas-border bg-white/80 text-obsidian hover:border-maroon-900/30 hover:text-maroon-900 transition-all group"
+            className="relative min-w-[40px] min-h-[40px] sm:min-w-[42px] sm:min-h-[42px] flex items-center justify-center p-2 sm:p-2.5 rounded-full border border-canvas-border bg-white/80 text-obsidian hover:border-maroon-900/30 hover:text-maroon-900 active:scale-[0.97] transition-[transform,border-color,color] duration-150 group"
             aria-label="View Saved Shortlist"
           >
             <Heart className="w-4 h-4 transition-colors" />
@@ -155,7 +155,7 @@ export const Navbar: React.FC = () => {
 
           <button
             onClick={() => setIsCartOpen(true)}
-            className="relative p-2 sm:p-2.5 rounded-full border border-canvas-border bg-white/80 text-obsidian hover:border-maroon-900/30 hover:text-maroon-900 transition-all group"
+            className="relative min-w-[40px] min-h-[40px] sm:min-w-[42px] sm:min-h-[42px] flex items-center justify-center p-2 sm:p-2.5 rounded-full border border-canvas-border bg-white/80 text-obsidian hover:border-maroon-900/30 hover:text-maroon-900 active:scale-[0.97] transition-[transform,border-color,color] duration-150 group"
             aria-label="View Shopping Bag"
           >
             <ShoppingBag className="w-4 h-4 transition-colors" />
@@ -168,7 +168,7 @@ export const Navbar: React.FC = () => {
 
           <button
             onClick={handleWhatsAppConsult}
-            className="hidden sm:inline-flex items-center gap-2 bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white px-4 py-2 rounded-full text-[11px] font-semibold tracking-[0.14em] uppercase shadow-sm transition-all border border-brass/30"
+            className="hidden sm:inline-flex items-center gap-2 bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white px-4 py-2 min-h-[38px] rounded-full text-[11px] font-semibold tracking-[0.14em] uppercase shadow-sm active:scale-[0.97] transition-[transform,background-color] duration-150 border border-brass/30"
           >
             <MessageCircle className="w-3.5 h-3.5 text-whatsapp" />
             <span>Consult</span>

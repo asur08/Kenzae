@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Navigation, Clock, Phone, MessageCircle, ExternalLink, Sparkles } from 'lucide-react';
+import { MapPin, Navigation, Clock, Phone, MessageCircle, ExternalLink } from 'lucide-react';
 import { KENZAE_STORE_CONFIG } from '../data/storeConfig';
 import { generateStoreVisitWhatsAppUrl } from '../utils/whatsapp';
 
@@ -20,11 +20,7 @@ export const StoreLocator: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-maroon-950/10 text-maroon-900 text-xs font-semibold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-brass-dark" />
-            <span>Store Visit & Consultations</span>
-          </div>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-obsidian">
+          <h2 className="font-serif text-3xl sm:text-4xl font-normal text-obsidian">
             Experience Kenzae
           </h2>
           <p className="text-xs sm:text-sm text-obsidian-slate font-light leading-relaxed">
@@ -33,7 +29,7 @@ export const StoreLocator: React.FC = () => {
         </div>
 
         {/* Card Grid with Responsive Embedded Map */}
-        <div className="max-w-5xl mx-auto bg-white rounded-2xl border border-canvas-border overflow-hidden shadow-luxury grid grid-cols-1 lg:grid-cols-12">
+        <div className="max-w-5xl mx-auto bg-white rounded-2xl border border-[#EAE3D7] overflow-hidden grid grid-cols-1 lg:grid-cols-12">
           
           {/* Left Column: Clean Store Visit Card (lg:col-span-6) */}
           <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between space-y-6">
@@ -53,7 +49,7 @@ export const StoreLocator: React.FC = () => {
                     {KENZAE_STORE_CONFIG.district} District, {KENZAE_STORE_CONFIG.state} — {KENZAE_STORE_CONFIG.pincode}
                   </p>
                   <p className="text-[11px] text-brass-dark font-medium mt-1">
-                    Near Mulanthuruthy Railway Station & Marthoman Cathedral Hub
+                    Near Mulanthuruthy Railway Station &amp; Marthoman Cathedral Hub
                   </p>
                 </div>
               </div>
@@ -83,7 +79,7 @@ export const StoreLocator: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-obsidian">
-                    Direct Contact & Inquiries
+                    Direct Contact &amp; Inquiries
                   </h4>
                   <p className="text-xs text-obsidian-slate mt-0.5 font-medium tabular-nums">
                     {KENZAE_STORE_CONFIG.phoneDisplay}
@@ -100,7 +96,7 @@ export const StoreLocator: React.FC = () => {
             <div className="pt-4 border-t border-canvas-border flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleOpenDirections}
-                className="flex-1 py-3 px-5 rounded-full bg-maroon-950 hover:bg-maroon-900 text-brass-light hover:text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2 border border-brass/40 active:scale-95"
+                className="flex-1 py-3 px-5 rounded-full bg-maroon-950 hover:bg-maroon-900 text-brass-light hover:text-white text-xs font-bold tracking-wider uppercase transition-[transform,background-color] duration-150 flex items-center justify-center gap-2 border border-brass/40 active:scale-[0.97]"
               >
                 <Navigation className="w-4 h-4 text-brass" />
                 <span>Get Directions</span>
@@ -108,7 +104,7 @@ export const StoreLocator: React.FC = () => {
 
               <button
                 onClick={handleWhatsAppVisit}
-                className="py-3 px-5 rounded-full bg-canvas-subtle hover:bg-canvas-border text-obsidian text-xs font-semibold tracking-wider uppercase transition-colors flex items-center justify-center gap-2 border border-canvas-border"
+                className="py-3 px-5 rounded-full bg-canvas-subtle hover:bg-canvas-border text-obsidian text-xs font-semibold tracking-wider uppercase active:scale-[0.97] transition-[transform,background-color] duration-150 flex items-center justify-center gap-2 border border-canvas-border"
               >
                 <MessageCircle className="w-4 h-4 text-whatsapp" />
                 <span>Book Trial</span>
@@ -122,6 +118,7 @@ export const StoreLocator: React.FC = () => {
               title="Kenzae Store Location"
               src="https://maps.google.com/maps?q=Mulanthuruthy,Ernakulam,Kerala&t=&z=15&ie=UTF8&iwloc=&output=embed"
               className="w-full h-full min-h-[320px] border-0"
+              style={{ filter: 'grayscale(15%) contrast(102%) saturate(88%)' }}
               loading="lazy"
               allowFullScreen
             />
