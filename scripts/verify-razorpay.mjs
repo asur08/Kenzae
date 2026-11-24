@@ -39,8 +39,8 @@ process.env.RAZORPAY_KEY_ID = keyId;
 process.env.RAZORPAY_KEY_SECRET = keySecret;
 process.env.VITE_RAZORPAY_KEY_ID = viteKeyId;
 
-if (!keyId || !keyId.startsWith('rzp_test_')) {
-  console.error('❌ RAZORPAY_KEY_ID is missing or not set to test key in .env');
+if (!keyId || (!keyId.startsWith('rzp_test_') && !keyId.startsWith('rzp_live_'))) {
+  console.error('❌ RAZORPAY_KEY_ID is missing or not a valid Razorpay key format (rzp_live_ or rzp_test_) in .env');
   failed = true;
 } else {
   console.log(`✅ RAZORPAY_KEY_ID configured: ${keyId}`);

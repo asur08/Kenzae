@@ -14,6 +14,11 @@
   RewriteRule ^api/create-order/?$ /api/create-order.php [L,QSA]
   RewriteRule ^api/verify-payment/?$ /api/verify-payment.php [L,QSA]
 
+  # Forbid direct access to sensitive config files
+  <FilesMatch "^(credentials|kenzae-config)\.php$">
+    Require all denied
+  </FilesMatch>
+
   # Single Page Application (SPA) Routing for Vite/React
   # Directs all routes (e.g. /staff) to index.html unless the actual static file exists
   RewriteRule ^index\.html$ - [L]

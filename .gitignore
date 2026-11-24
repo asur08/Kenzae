@@ -32,6 +32,8 @@ dist.zip
 .env.local
 .env.production
 .env.staging
+public/api/credentials.php
+public/api/kenzae-config.php
 
 # macOS
 .DS_Store

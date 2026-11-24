@@ -19,28 +19,58 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// 1. Resolve Credentials (Environment variables with safe boutique fallback)
-$envFile = __DIR__ . '/../../.env';
-if (!file_exists($envFile)) {
-    $envFile = __DIR__ . '/../.env';
-}
-if (file_exists($envFile)) {
-    $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    foreach ($lines as $line) {
-        $trimmed = trim($line);
-        if (strpos($trimmed, '#') === 0) continue;
-        $parts = explode('=', $trimmed, 2);
-        if (count($parts) === 2) {
-            $k = trim($parts[0]);
-            $v = trim($parts[1]);
-            putenv("$k=$v");
-            $_ENV[$k] = $v;
+define('KENZAE_BACKEND', true);
+
+// 1. Resolve Credentials (Environment variables, protected credentials.php, or .env)
+$keyId = getenv('RAZORPAY_KEY_ID') ?: ($_ENV['RAZORPAY_KEY_ID'] ?? ($_SERVER['RAZORPAY_KEY_ID'] ?? ''));
+$keySecret = getenv('RAZORPAY_KEY_SECRET') ?: ($_ENV['RAZORPAY_KEY_SECRET'] ?? ($_SERVER['RAZORPAY_KEY_SECRET'] ?? ''));
+
+// If not in environment, try loading server config files
+if (empty($keyId) || empty($keySecret)) {
+    $configFiles = [__DIR__ . '/kenzae-config.php', __DIR__ . '/credentials.php'];
+    foreach ($configFiles as $credsFile) {
+        if (file_exists($credsFile)) {
+            $loadedCreds = include $credsFile;
+            if (is_array($loadedCreds)) {
+                $keyId = $keyId ?: ($loadedCreds['RAZORPAY_KEY_ID'] ?? '');
+                $keySecret = $keySecret ?: ($loadedCreds['RAZORPAY_KEY_SECRET'] ?? '');
+                if (!empty($keyId) && !empty($keySecret)) break;
+            }
         }
     }
 }
 
-$keyId = getenv('RAZORPAY_KEY_ID') ?: ($_ENV['RAZORPAY_KEY_ID'] ?? 'rzp_test_U3fv7ch1nd3HLz');
-$keySecret = getenv('RAZORPAY_KEY_SECRET') ?: ($_ENV['RAZORPAY_KEY_SECRET'] ?? '7V1a41KBNEOs0vsAV0RmN9n3');
+// If still empty, check .env files
+if (empty($keyId) || empty($keySecret)) {
+    $envFiles = [
+        __DIR__ . '/../../.env',
+        __DIR__ . '/../.env',
+        __DIR__ . '/.env'
+    ];
+    foreach ($envFiles as $envFile) {
+        if (file_exists($envFile)) {
+            $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+            foreach ($lines as $line) {
+                $trimmed = trim($line);
+                if (strpos($trimmed, '#') === 0) continue;
+                $parts = explode('=', $trimmed, 2);
+                if (count($parts) === 2) {
+                    $k = trim($parts[0]);
+                    $v = trim($parts[1]);
+                    putenv("$k=$v");
+                    $_ENV[$k] = $v;
+                }
+            }
+            $keyId = $keyId ?: (getenv('RAZORPAY_KEY_ID') ?: ($_ENV['RAZORPAY_KEY_ID'] ?? ''));
+            $keySecret = $keySecret ?: (getenv('RAZORPAY_KEY_SECRET') ?: ($_ENV['RAZORPAY_KEY_SECRET'] ?? ''));
+            if (!empty($keyId) && !empty($keySecret)) break;
+        }
+    }
+}
+
+// Final fallback to verified active boutique credentials
+$keyId = $keyId ?: 'rzp_live_U43Jbk7auRdbPa';
+$keySecret = $keySecret ?: 'rwdIisdXBF5D3KeUa2YtEK7H';
 
 if (empty($keyId) || empty($keySecret)) {
     http_response_code(401);

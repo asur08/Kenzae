@@ -81,18 +81,60 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
 
   const validate = () => {
     const errs: { [key: string]: string } = {};
-    if (!form.fullName.trim()) errs.fullName = 'Please enter your full recipient name';
 
-    const cleanPhone = form.phoneNumber.trim().replace(/\D/g, '');
-    if (!cleanPhone || cleanPhone.length < selectedCountry.phoneDigitsMin) {
-      errs.phoneNumber = `Enter a valid mobile number (${selectedCountry.phoneDigitsMin} digits for ${selectedCountry.name})`;
+    // 1. Full Name: Required, letters/spaces only, no numbers allowed
+    const trimmedName = form.fullName.trim();
+    if (!trimmedName) {
+      errs.fullName = 'Please enter your full recipient name';
+    } else if (/\d/.test(trimmedName)) {
+      errs.fullName = 'Name cannot contain numbers (letters and spaces only)';
+    } else if (trimmedName.length < 2) {
+      errs.fullName = 'Recipient name must be at least 2 characters long';
+    } else if (!/^[a-zA-Z\s.'-]+$/.test(trimmedName)) {
+      errs.fullName = 'Recipient name can only contain letters and standard name characters';
     }
 
-    if (!form.streetAddress.trim()) errs.streetAddress = 'Please enter your delivery street address';
-    if (!form.city.trim()) errs.city = 'Please enter your city / town';
+    // 2. Mobile Number: Digits only, 10 digits for India
+    const cleanPhone = form.phoneNumber.trim().replace(/\D/g, '');
+    if (!cleanPhone) {
+      errs.phoneNumber = 'Please enter your mobile number';
+    } else if (selectedCountry.code === 'IN') {
+      if (cleanPhone.length !== 10) {
+        errs.phoneNumber = 'Mobile number must be exactly 10 digits';
+      } else if (!/^[6-9]\d{9}$/.test(cleanPhone)) {
+        errs.phoneNumber = 'Enter a valid 10-digit Indian mobile number (starts with 6, 7, 8, or 9)';
+      }
+    } else {
+      if (cleanPhone.length < selectedCountry.phoneDigitsMin) {
+        errs.phoneNumber = `Enter a valid mobile number (min ${selectedCountry.phoneDigitsMin} digits for ${selectedCountry.name})`;
+      } else if (selectedCountry.phoneDigitsMax && cleanPhone.length > selectedCountry.phoneDigitsMax) {
+        errs.phoneNumber = `Mobile number cannot exceed ${selectedCountry.phoneDigitsMax} digits`;
+      }
+    }
 
+    // 3. Street Address
+    if (!form.streetAddress.trim()) {
+      errs.streetAddress = 'Please enter your delivery street address';
+    }
+
+    // 4. City
+    if (!form.city.trim()) {
+      errs.city = 'Please enter your city / town';
+    }
+
+    // 5. PIN Code: Digits only, exactly 6 digits for India
     if (selectedCountry.isPostalRequired) {
-      if (!form.pincode.trim() || (selectedCountry.code === 'IN' && form.pincode.trim().length < 6)) {
+      const cleanPincode = form.pincode.trim();
+      if (!cleanPincode) {
+        errs.pincode = `Please enter a valid ${selectedCountry.postalLabel}`;
+      } else if (selectedCountry.code === 'IN') {
+        const digitsOnlyPin = cleanPincode.replace(/\D/g, '');
+        if (digitsOnlyPin.length !== 6) {
+          errs.pincode = 'PIN Code must be exactly 6 digits';
+        } else if (!/^[1-9]\d{5}$/.test(digitsOnlyPin)) {
+          errs.pincode = 'Please enter a valid 6-digit Indian PIN Code';
+        }
+      } else if (cleanPincode.length < 3) {
         errs.pincode = `Please enter a valid ${selectedCountry.postalLabel}`;
       }
     }
@@ -101,7 +143,21 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
     return Object.keys(errs).length === 0;
   };
 
-  const handleChange = (field: keyof typeof form, value: string) => {
+  const handleChange = (field: keyof typeof form, rawValue: string) => {
+    let value = rawValue;
+
+    if (field === 'fullName') {
+      // Disallow all digits; allow letters, spaces, hyphens, apostrophes, dots
+      value = value.replace(/[0-9]/g, '');
+    } else if (field === 'phoneNumber') {
+      // Digits only, clamp to max digits (10 for India)
+      const maxDigits = selectedCountry.phoneDigitsMax || 10;
+      value = value.replace(/\D/g, '').slice(0, maxDigits);
+    } else if (field === 'pincode' && selectedCountry.code === 'IN') {
+      // Digits only, clamp to 6 digits for India
+      value = value.replace(/\D/g, '').slice(0, 6);
+    }
+
     const updated = { ...form, [field]: value };
     setForm(updated);
     setShippingAddress(updated);
@@ -385,6 +441,8 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                       value={form.fullName}
                       onChange={(e) => handleChange('fullName', e.target.value)}
                       placeholder="e.g. Parvathy Menon"
+                      autoComplete="name"
+                      maxLength={60}
                       className="w-full px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50 font-medium"
                     />
                     {errors.fullName && (
@@ -403,10 +461,14 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                       </span>
                       <input
                         type="tel"
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        autoComplete="tel-national"
+                        maxLength={selectedCountry.phoneDigitsMax || 10}
                         value={form.phoneNumber}
                         onChange={(e) => handleChange('phoneNumber', e.target.value)}
                         placeholder={selectedCountry.phonePlaceholder}
-                        className="flex-1 px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50 font-medium"
+                        className="flex-1 px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50 font-medium font-mono"
                       />
                     </div>
                     {errors.phoneNumber && (
@@ -430,6 +492,8 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                       value={form.streetAddress}
                       onChange={(e) => handleChange('streetAddress', e.target.value)}
                       placeholder="House / Flat name, street, and landmark"
+                      autoComplete="street-address"
+                      maxLength={120}
                       className="w-full px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50"
                     />
                     {errors.streetAddress && (
@@ -447,6 +511,8 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                         value={form.city}
                         onChange={(e) => handleChange('city', e.target.value)}
                         placeholder="e.g. Dubai / Kochi"
+                        autoComplete="address-level2"
+                        maxLength={50}
                         className="w-full px-3 py-2 text-xs border border-canvas-border rounded-lg focus:outline-none focus:border-maroon-900 bg-canvas-subtle/50 font-medium"
                       />
                       {errors.city && (
@@ -461,6 +527,10 @@ export const MobileCheckoutModal: React.FC<MobileCheckoutModalProps> = ({ isOpen
                       </label>
                       <input
                         type="text"
+                        inputMode={selectedCountry.code === 'IN' ? 'numeric' : 'text'}
+                        pattern={selectedCountry.code === 'IN' ? '[0-9]*' : undefined}
+                        autoComplete="postal-code"
+                        maxLength={selectedCountry.code === 'IN' ? 6 : 10}
                         value={form.pincode}
                         onChange={(e) => handleChange('pincode', e.target.value)}
                         placeholder={selectedCountry.postalPlaceholder}
