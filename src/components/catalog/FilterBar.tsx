@@ -98,14 +98,16 @@ export const FilterBar: React.FC = () => {
             onChange={(e) =>
               setFilterState((prev) => ({ ...prev, searchQuery: e.target.value }))
             }
-            placeholder="Search weaves, silk, SKU (e.g. KZ-SR-001)..."
-            className="w-full pl-10 pr-9 py-2.5 rounded-full bg-white border border-canvas-border text-xs sm:text-sm text-obsidian placeholder:text-obsidian-slate/65 focus:outline-none focus:border-maroon-850 focus:ring-1 focus:ring-maroon-850/30 transition-all shadow-xs"
+            placeholder="Search weaves, silk, SKU (e.g. KZ-SR-001)…"
+            aria-label="Search the collection"
+            className="w-full pl-10 pr-9 py-2.5 rounded-full bg-white border border-canvas-field text-sm text-obsidian placeholder:text-obsidian-slate/80 focus:outline-none focus:border-maroon-850 focus:ring-2 focus:ring-maroon-850/40 transition-[border-color,box-shadow] duration-150 shadow-xs"
           />
           {filterState.searchQuery && (
             <button
               onClick={() => setFilterState((prev) => ({ ...prev, searchQuery: '' }))}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-obsidian-slate hover:text-obsidian p-0.5"
               title="Clear search input"
+              aria-label="Clear search"
             >
               <X className="w-3.5 h-3.5" />
             </button>
@@ -134,7 +136,7 @@ export const FilterBar: React.FC = () => {
           </div>
 
           {/* Sort By Dropdown */}
-          <div className="relative flex items-center bg-white border border-canvas-border rounded-full px-3 py-1.5 shadow-xs text-xs text-obsidian">
+          <div className="relative flex items-center bg-white border border-canvas-field rounded-full px-3 py-1.5 shadow-xs text-xs text-obsidian focus-within:ring-2 focus-within:ring-maroon-850/40">
             <ArrowUpDown className="w-3.5 h-3.5 text-obsidian-slate mr-1.5 pointer-events-none shrink-0" />
             <select
               value={filterState.sortBy}
@@ -169,7 +171,7 @@ export const FilterBar: React.FC = () => {
           {isFiltered && (
             <button
               onClick={resetFilters}
-              className="text-xs text-maroon-900 hover:text-maroon-800 underline underline-offset-4 font-medium active:scale-[0.97] transition-all"
+              className="text-xs text-maroon-900 hover:text-maroon-800 underline underline-offset-4 font-medium active:scale-[0.97] transition-[color,background-color,border-color,box-shadow,opacity,transform]"
             >
               Reset
             </button>
@@ -180,7 +182,7 @@ export const FilterBar: React.FC = () => {
       {/* Weave / Subcategory Chips */}
       {availableSubCategories.length > 0 && (
         <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-0.5 w-full max-w-full">
-          <span className="text-[10px] uppercase tracking-[0.16em] text-obsidian-slate shrink-0 mr-1 font-semibold">
+          <span className="text-[10px] text-obsidian-slate shrink-0 mr-1 font-semibold">
             Weave:
           </span>
           <button
@@ -248,7 +250,7 @@ export const FilterBar: React.FC = () => {
         </div>
 
         {filterState.category !== 'All' && (
-          <span className="text-[11px] font-semibold text-maroon-900 uppercase tracking-[0.14em]">
+          <span className="text-[11px] font-semibold text-maroon-900 ">
             {filterState.category}
           </span>
         )}

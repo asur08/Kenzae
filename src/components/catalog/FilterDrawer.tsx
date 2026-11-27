@@ -77,7 +77,7 @@ export const FilterDrawer: React.FC = () => {
                 {/* Price Range */}
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-maroon-950">
+                    <span className="text-xs font-bold text-maroon-950">
                       Maximum Budget
                     </span>
                     <span className="text-sm font-semibold text-maroon-900 tabular-nums">
@@ -106,7 +106,7 @@ export const FilterDrawer: React.FC = () => {
 
                 {/* Category */}
                 <div>
-                  <span className="block text-xs font-bold uppercase tracking-wider text-maroon-950 mb-2">
+                  <span className="block text-xs font-bold text-maroon-950 mb-2">
                     Category
                   </span>
                   <div className="grid grid-cols-1 gap-1.5">
@@ -139,7 +139,7 @@ export const FilterDrawer: React.FC = () => {
                 {/* Sub-Category / Weave */}
                 {availableSubCategories.length > 0 && (
                   <div>
-                    <span className="block text-xs font-bold uppercase tracking-wider text-maroon-950 mb-2">
+                    <span className="block text-xs font-bold text-maroon-950 mb-2">
                       Fabric Weave &amp; Style
                     </span>
                     <div className="flex flex-wrap gap-1.5">
@@ -184,7 +184,7 @@ export const FilterDrawer: React.FC = () => {
                 <div className="pt-3 border-t border-canvas-border">
                   <label className="flex items-center justify-between cursor-pointer gap-3">
                     <div>
-                      <span className="text-xs font-bold uppercase tracking-wider text-maroon-950 block">
+                      <span className="text-xs font-bold text-maroon-950 block">
                         In-Stock Items Only
                       </span>
                       <span className="text-[11px] text-obsidian-muted">
@@ -210,13 +210,13 @@ export const FilterDrawer: React.FC = () => {
               <div className="p-4 border-t border-canvas-border bg-canvas-subtle flex items-center gap-3">
                 <button
                   onClick={resetFilters}
-                  className="flex-1 py-3 px-4 rounded-full border border-canvas-border bg-white text-xs font-semibold uppercase tracking-wider text-obsidian hover:bg-canvas-border transition-colors text-center"
+                  className="flex-1 py-3 px-4 rounded-full border border-canvas-border bg-white text-xs font-semibold text-obsidian hover:bg-canvas-border transition-colors text-center"
                 >
                   Reset All
                 </button>
                 <button
                   onClick={() => setIsFilterDrawerOpen(false)}
-                  className="flex-1 py-3 px-4 rounded-full bg-maroon-900 hover:bg-maroon-850 text-brass-light text-xs font-bold uppercase tracking-wider active:scale-95 transition-all text-center shadow-md"
+                  className="flex-1 py-3 px-4 rounded-full bg-maroon-900 hover:bg-maroon-850 text-brass-light text-xs font-bold active:scale-95 transition-[color,background-color,border-color,box-shadow,opacity,transform] text-center shadow-md"
                 >
                   Show Results
                 </button>

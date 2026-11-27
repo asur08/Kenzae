@@ -12,6 +12,8 @@ export default {
           surface: '#FFFFFF',     // Pure White Card Surface
           subtle: '#F5F2EB',
           border: '#EFECE6',
+          line: '#EAE3D7',        // Warm hairline (section dividers)
+          field: '#8F887E',       // Form field edge (3:1 on canvas)
         },
         obsidian: {
           DEFAULT: '#18181B',     // Deep Charcoal Obsidian (Headings)

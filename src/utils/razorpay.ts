@@ -217,7 +217,7 @@ export async function initiateRazorpayPayment({
         store: 'Mulanthuruthy Boutique',
       },
       theme: {
-        color: '#0F382A', // Kenzae Deep Regal Emerald
+        color: '#4B0E1D', // Kenzae royal maroon
       },
       handler: async (response: RazorpayPaymentSuccessResponse) => {
         try {

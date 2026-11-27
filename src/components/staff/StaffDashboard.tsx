@@ -385,7 +385,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F2EB] flex flex-col text-obsidian">
+    <div className="min-h-screen bg-canvas-subtle flex flex-col text-obsidian">
       {/* Top Staff Navigation Header */}
       <header className="sticky top-0 z-30 bg-maroon-950 text-white border-b border-brass/30 shadow-md">
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -509,7 +509,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
           <div className="flex items-center gap-2">
             <button
               onClick={() => setActiveTab('orders')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-1.5 transition-all ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-1.5 transition-[color,background-color,border-color,box-shadow,opacity,transform] ${
                 activeTab === 'orders'
                   ? 'bg-maroon-900 text-brass-light shadow-sm'
                   : 'bg-white text-obsidian hover:bg-canvas-border'
@@ -526,7 +526,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
 
             <button
               onClick={() => setActiveTab('inventory')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-[color,background-color,border-color,box-shadow,opacity,transform] ${
                 activeTab === 'inventory'
                   ? 'bg-maroon-900 text-brass-light shadow-sm'
                   : 'bg-white text-obsidian hover:bg-canvas-border'
@@ -537,7 +537,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
 
             <button
               onClick={handleStartAdd}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-1.5 transition-all ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-1.5 transition-[color,background-color,border-color,box-shadow,opacity,transform] ${
                 activeTab === 'add'
                   ? 'bg-maroon-900 text-brass-light shadow-sm'
                   : 'bg-white text-obsidian hover:bg-canvas-border'
@@ -549,7 +549,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
 
             <button
               onClick={() => setActiveTab('tags')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-1.5 transition-all ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-1.5 transition-[color,background-color,border-color,box-shadow,opacity,transform] ${
                 activeTab === 'tags'
                   ? 'bg-maroon-900 text-brass-light shadow-sm'
                   : 'bg-white text-obsidian hover:bg-canvas-border'
@@ -561,7 +561,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
 
             <button
               onClick={() => setActiveTab('backup')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-1.5 transition-all ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide flex items-center gap-1.5 transition-[color,background-color,border-color,box-shadow,opacity,transform] ${
                 activeTab === 'backup'
                   ? 'bg-maroon-900 text-brass-light shadow-sm'
                   : 'bg-white text-obsidian hover:bg-canvas-border'
@@ -771,7 +771,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                           ) : (
                             <div 
                               onClick={() => handleStartPriceEdit(p)}
-                              className="group cursor-pointer flex items-center gap-1 px-2.5 py-1 rounded-lg border border-transparent hover:border-canvas-border hover:bg-canvas-subtle transition-all"
+                              className="group cursor-pointer flex items-center gap-1 px-2.5 py-1 rounded-lg border border-transparent hover:border-canvas-border hover:bg-canvas-subtle transition-[color,background-color,border-color,box-shadow,opacity,transform]"
                               title="Click to edit price"
                             >
                               <span className="font-mono text-sm font-bold text-maroon-950">
@@ -877,7 +877,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                               `${p.sku} marked as ${nextInStock ? 'In Stock' : 'Out of Stock'}`
                             );
                           }}
-                          className={`text-[10px] px-2.5 py-1 rounded-full font-bold uppercase transition-all ${
+                          className={`text-[10px] px-2.5 py-1 rounded-full font-bold uppercase transition-[color,background-color,border-color,box-shadow,opacity,transform] ${
                             p.in_stock
                               ? 'bg-green-100 text-green-800 border border-green-300 hover:bg-green-200'
                               : 'bg-rose-100 text-rose-800 border border-rose-300 hover:bg-rose-200'
@@ -1148,7 +1148,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-white font-bold text-xs uppercase tracking-wider shadow-sm flex items-center gap-1.5 transition-all"
+                  className="px-5 py-2.5 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-white font-bold text-xs uppercase tracking-wider shadow-sm flex items-center gap-1.5 transition-[color,background-color,border-color,box-shadow,opacity,transform]"
                 >
                   <Plus className="w-3.5 h-3.5 text-brass" />
                   <span>Save Piece to Catalog</span>
@@ -1243,7 +1243,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
 
                   <button
                     type="submit"
-                    className="px-4 py-2 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all shrink-0"
+                    className="px-4 py-2 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-[color,background-color,border-color,box-shadow,opacity,transform] shrink-0"
                   >
                     Rename Tag
                   </button>
@@ -1268,7 +1268,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
               <div className="flex flex-wrap items-center gap-3">
                 <button
                   onClick={exportCatalogJSON}
-                  className="px-4 py-2.5 rounded-lg bg-brass-dark hover:bg-brass text-maroon-950 font-bold text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 transition-all"
+                  className="px-4 py-2.5 rounded-lg bg-brass-dark hover:bg-brass text-maroon-950 font-bold text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 transition-[color,background-color,border-color,box-shadow,opacity,transform]"
                 >
                   <Download className="w-4 h-4" />
                   <span>Download products.json ({products.length})</span>
@@ -1276,7 +1276,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
 
                 <button
                   onClick={handleExportStaticWebPBundle}
-                  className="px-4 py-2.5 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-brass-light font-bold text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 transition-all"
+                  className="px-4 py-2.5 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-brass-light font-bold text-xs uppercase tracking-wider shadow-sm flex items-center gap-2 transition-[color,background-color,border-color,box-shadow,opacity,transform]"
                 >
                   <Sparkles className="w-4 h-4 text-brass" />
                   <span>Export Static WebP Bundle</span>
@@ -1303,7 +1303,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onReturnToStore 
               <div className="flex justify-end">
                 <button
                   onClick={handleImportSubmit}
-                  className="px-5 py-2.5 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all"
+                  className="px-5 py-2.5 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-[color,background-color,border-color,box-shadow,opacity,transform]"
                 >
                   Validate & Import Catalog
                 </button>

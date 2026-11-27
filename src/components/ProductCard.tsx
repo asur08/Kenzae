@@ -37,27 +37,27 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const renderStockBadge = () => {
     if (!isAvailable) {
       return (
-        <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-[0.12em] uppercase backdrop-blur-md bg-[#FAF8F5]/95 text-obsidian-slate border border-canvas-border shadow-xs">
+        <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold backdrop-blur-md bg-canvas/95 text-obsidian-slate border border-canvas-border shadow-xs">
           Sold Out
         </span>
       );
     }
     if (qty === 1) {
       return (
-        <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-[0.12em] uppercase backdrop-blur-md bg-maroon-950/90 text-brass-light border border-brass/50 shadow-xs">
+        <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold backdrop-blur-md bg-maroon-950/90 text-brass-light border border-brass/50 shadow-xs">
           Only 1 Left
         </span>
       );
     }
     if (qty <= 3) {
       return (
-        <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-[0.12em] uppercase backdrop-blur-md bg-maroon-900/85 text-white border border-brass/35 shadow-xs">
+        <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold backdrop-blur-md bg-maroon-900/85 text-white border border-brass/35 shadow-xs">
           Only {qty} Left
         </span>
       );
     }
     return (
-      <span className="px-2.5 py-1 rounded-full text-[10px] font-medium tracking-[0.1em] uppercase backdrop-blur-md bg-[#FAF8F5]/90 text-maroon-950 border border-maroon-900/15 shadow-xs">
+      <span className="px-2.5 py-1 rounded-full text-[10px] font-medium backdrop-blur-md bg-canvas/90 text-maroon-950 border border-maroon-900/15 shadow-xs">
         {qty} in Atelier
       </span>
     );
@@ -66,7 +66,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <article
       onClick={handleCardClick}
-      className="group relative bg-white rounded-xl overflow-hidden border border-[#EAE3D7] hover:border-maroon-900/40 transition-[border-color,transform] duration-200 flex flex-col cursor-pointer min-w-0"
+      className="group relative bg-white rounded-xl overflow-hidden border border-canvas-line hover:border-maroon-900/40 transition-[border-color,transform] duration-200 flex flex-col cursor-pointer min-w-0"
     >
       {/* Clean 3:4 Portrait Drape Showcase */}
       <div
@@ -109,7 +109,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Top-Left Video Drape Indicator */}
         {product.videoUrl && (
           <div className="absolute top-3 left-3 pointer-events-none">
-            <span className="px-2 py-0.5 rounded-full text-[9px] font-semibold tracking-wider uppercase backdrop-blur-md bg-black/60 text-white flex items-center gap-1 shadow-xs">
+            <span className="px-2 py-0.5 rounded-full text-[9px] font-semibold backdrop-blur-md bg-black/60 text-white flex items-center gap-1 shadow-xs">
               <Play className="w-2.5 h-2.5 fill-current" />
               <span>Drape Video</span>
             </span>
@@ -139,7 +139,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div className="p-4 flex-1 flex flex-col justify-between gap-3 bg-white min-w-0">
         <div className="space-y-1 min-w-0">
           <div className="flex items-center justify-between gap-2 text-[10px]">
-            <span className="uppercase tracking-[0.16em] font-semibold text-brass-dark truncate">
+            <span className=" font-semibold text-brass-dark truncate">
               {product.subCategory || product.category}
             </span>
             <span className="font-sans font-medium text-obsidian-slate tracking-[0.12em] tabular-nums shrink-0">
@@ -161,7 +161,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Pricing & Dual Actions */}
         <div className="pt-2.5 border-t border-canvas-border flex flex-col gap-2.5">
           <div className="flex items-baseline justify-between gap-2">
-            <span className="text-[10px] uppercase tracking-[0.14em] text-obsidian-slate">
+            <span className="text-[10px] text-obsidian-slate">
               Boutique Price
             </span>
             <div className="flex flex-col items-end">
@@ -183,11 +183,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 handleCardClick();
               }}
               disabled={!isAvailable}
-              className={`flex-1 py-2 px-3 rounded-lg text-[11px] font-semibold tracking-[0.12em] uppercase transition-[transform,background-color] duration-150 flex items-center justify-center gap-1.5 border active:scale-[0.97] min-w-0 ${
-                isAvailable
-                  ? 'bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white border-maroon-900 shadow-xs cursor-pointer'
-                  : 'bg-canvas-subtle text-obsidian-muted border-canvas-border cursor-not-allowed opacity-60'
-              }`}
+              className={`flex-1 py-2 px-3 rounded-lg text-[11px] font-semibold transition-[transform,background-color] duration-150 flex items-center justify-center gap-1.5 border active:scale-[0.97] min-w-0 ${
+ isAvailable
+ ? 'bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white border-maroon-900 shadow-xs cursor-pointer'
+ : 'bg-canvas-subtle text-obsidian-muted border-canvas-border cursor-not-allowed opacity-60'
+ }`}
               title={isAvailable ? 'Select options & Add to Bag' : 'Piece is currently sold out'}
             >
               <ShoppingBag className="w-3.5 h-3.5 text-brass-light shrink-0" />

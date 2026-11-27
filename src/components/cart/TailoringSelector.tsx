@@ -57,7 +57,7 @@ export const TailoringSelector: React.FC<TailoringSelectorProps> = ({
     return (
       <div className="space-y-3 bg-canvas-subtle/70 rounded-xl p-3.5 border border-canvas-border">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-maroon-950">
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-maroon-950">
             <Scissors className="w-3.5 h-3.5 text-brass-dark" />
             <span>Finishing & Tailoring</span>
           </div>
@@ -69,7 +69,7 @@ export const TailoringSelector: React.FC<TailoringSelectorProps> = ({
           <button
             type="button"
             onClick={() => handleSareeOption('unstitched')}
-            className={`text-left p-2.5 rounded-lg border transition-all text-xs flex flex-col justify-between gap-1 active:scale-[0.99] ${
+            className={`text-left p-2.5 rounded-lg border transition-[color,background-color,border-color,box-shadow,opacity,transform] text-xs flex flex-col justify-between gap-1 active:scale-[0.99] ${
               currentOption === 'unstitched'
                 ? 'bg-white border-maroon-900 shadow-xs ring-1 ring-maroon-900/20'
                 : 'bg-white/60 hover:bg-white border-canvas-border text-obsidian-slate'
@@ -89,7 +89,7 @@ export const TailoringSelector: React.FC<TailoringSelectorProps> = ({
           <button
             type="button"
             onClick={() => handleSareeOption('fall_and_pico')}
-            className={`text-left p-2.5 rounded-lg border transition-all text-xs flex flex-col justify-between gap-1 active:scale-[0.99] relative ${
+            className={`text-left p-2.5 rounded-lg border transition-[color,background-color,border-color,box-shadow,opacity,transform] text-xs flex flex-col justify-between gap-1 active:scale-[0.99] relative ${
               currentOption === 'fall_and_pico'
                 ? 'bg-white border-maroon-900 shadow-xs ring-1 ring-maroon-900/20'
                 : 'bg-white/60 hover:bg-white border-canvas-border text-obsidian-slate'
@@ -100,7 +100,7 @@ export const TailoringSelector: React.FC<TailoringSelectorProps> = ({
               {currentOption === 'fall_and_pico' ? (
                 <Check className="w-3.5 h-3.5 text-maroon-900 shrink-0" />
               ) : (
-                <span className="text-[9px] uppercase tracking-wider text-brass-dark font-bold bg-brass/10 px-1.5 py-0.5 rounded">
+                <span className="text-[9px] text-brass-dark font-bold bg-brass/10 px-1.5 py-0.5 rounded">
                   Popular
                 </span>
               )}
@@ -117,7 +117,7 @@ export const TailoringSelector: React.FC<TailoringSelectorProps> = ({
           <button
             type="button"
             onClick={() => handleSareeOption('custom_blouse_stitching')}
-            className={`text-left p-2.5 rounded-lg border transition-all text-xs flex flex-col justify-between gap-1 active:scale-[0.99] ${
+            className={`text-left p-2.5 rounded-lg border transition-[color,background-color,border-color,box-shadow,opacity,transform] text-xs flex flex-col justify-between gap-1 active:scale-[0.99] ${
               currentOption === 'custom_blouse_stitching'
                 ? 'bg-white border-maroon-900 shadow-xs ring-1 ring-maroon-900/20'
                 : 'bg-white/60 hover:bg-white border-canvas-border text-obsidian-slate'
@@ -156,7 +156,7 @@ export const TailoringSelector: React.FC<TailoringSelectorProps> = ({
     return (
       <div className="space-y-3 bg-canvas-subtle/70 rounded-xl p-3.5 border border-canvas-border">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-maroon-950">
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-maroon-950">
             <Ruler className="w-3.5 h-3.5 text-brass-dark" />
             <span>Select Ready Size</span>
           </div>
@@ -179,7 +179,7 @@ export const TailoringSelector: React.FC<TailoringSelectorProps> = ({
                 key={size}
                 type="button"
                 onClick={() => handleSizeOption(size)}
-                className={`min-w-10 h-10 px-3 rounded-lg border text-xs font-semibold tracking-wider transition-all flex items-center justify-center active:scale-95 ${
+                className={`min-w-10 h-10 px-3 rounded-lg border text-xs font-semibold tracking-wider transition-[color,background-color,border-color,box-shadow,opacity,transform] flex items-center justify-center active:scale-95 ${
                   isSelected
                     ? 'bg-maroon-900 text-brass-light border-maroon-900 shadow-xs'
                     : 'bg-white hover:bg-maroon-50 text-obsidian border-canvas-border'
@@ -214,12 +214,12 @@ export const TailoringSelector: React.FC<TailoringSelectorProps> = ({
   if (isUnstitchedMaterial) {
     return (
       <div className="p-3 rounded-xl bg-canvas-subtle/70 border border-canvas-border text-xs text-obsidian-slate space-y-1.5">
-        <div className="flex items-center gap-1.5 font-semibold text-maroon-950 uppercase tracking-wider text-[11px]">
+        <div className="flex items-center gap-1.5 font-semibold text-maroon-950 text-[11px]">
           <Scissors className="w-3.5 h-3.5 text-brass-dark" />
           <span>Unstitched Artisanal Set</span>
         </div>
         <p className="text-[11px] leading-relaxed">
-          Includes 2.5m Kurtha Top Fabric, 2.0m Bottom/Salwar Fabric, and 2.25m Designer Handwoven Dupatta. Ready to be tailored by your bespoke tailor or at Kenzae's Mulanthuruthy atelier.
+          Includes 2.5m Kurtha Top Fabric, 2.0m Bottom/Salwar Fabric, and 2.25m Designer Handwoven Dupatta. Ready to be tailored by your bespoke tailor or at Kenzae’s Mulanthuruthy atelier.
         </p>
       </div>
     );

@@ -68,7 +68,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 32, stiffness: 300, mass: 0.85 }}
-            className="relative w-full max-w-md bg-[#FAF8F5] text-obsidian shadow-2xl flex flex-col h-full z-10 border-l border-canvas-border"
+            className="relative w-full max-w-md bg-canvas text-obsidian shadow-2xl flex flex-col h-full z-10 border-l border-canvas-border"
           >
             {/* Header */}
             <div className="px-5 py-4 border-b border-canvas-border bg-white flex items-center justify-between">
@@ -80,7 +80,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
                   <h2 className="font-serif text-lg font-medium text-maroon-950">
                     Boutique Bag
                   </h2>
-                  <span className="text-[11px] text-obsidian-muted uppercase tracking-wider">
+                  <span className="text-[11px] text-obsidian-muted ">
                     {totals.itemCount} {totals.itemCount === 1 ? 'Piece' : 'Pieces'}
                   </span>
                 </div>
@@ -111,12 +111,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
 
                 <div className="w-full h-1.5 bg-canvas-border rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-maroon-900 transition-all duration-500 rounded-full"
+                    className="h-full w-full origin-left bg-maroon-900 transition-transform duration-500 rounded-full"
                     style={{
-                      width: `${Math.min(
-                        100,
-                        (totals.subtotal / totals.freeShippingThreshold) * 100
-                      )}%`,
+                      transform: `scaleX(${Math.min(
+                        1,
+                        totals.subtotal / totals.freeShippingThreshold
+                      )})`,
                     }}
                   />
                 </div>
@@ -140,7 +140,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
                   </div>
                   <button
                     onClick={() => setIsCartOpen(false)}
-                    className="py-2.5 px-6 rounded-lg bg-maroon-900 text-brass-light text-xs font-semibold uppercase tracking-wider hover:bg-maroon-850 active:scale-95 transition-all shadow-xs"
+                    className="py-2.5 px-6 rounded-lg bg-maroon-900 text-brass-light text-xs font-semibold hover:bg-maroon-850 active:scale-95 transition-[color,background-color,border-color,box-shadow,opacity,transform] shadow-xs"
                   >
                     Explore Collections
                   </button>
@@ -252,7 +252,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
                     />
                     <button
                       type="submit"
-                      className="px-2 py-1 text-[10px] font-semibold uppercase bg-canvas-subtle hover:bg-maroon-900 hover:text-white rounded border border-canvas-border transition-colors"
+                      className="px-2 py-1 text-[10px] font-semibold bg-canvas-subtle hover:bg-maroon-900 hover:text-white rounded border border-canvas-border transition-colors"
                     >
                       Check
                     </button>
@@ -309,7 +309,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
                 <div className="space-y-2 pt-1">
                   <button
                     onClick={handleProceedCheckout}
-                    className="w-full py-3.5 px-4 rounded-xl bg-maroon-900 hover:bg-maroon-850 active:scale-[0.98] text-brass-light hover:text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all border border-maroon-900 cursor-pointer"
+                    className="w-full py-3.5 px-4 rounded-xl bg-maroon-900 hover:bg-maroon-850 active:scale-[0.98] text-brass-light hover:text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-md transition-[color,background-color,border-color,box-shadow,opacity,transform] border border-maroon-900 cursor-pointer"
                   >
                     <Lock className="w-4 h-4 text-brass" />
                     <span>Proceed to Secure Checkout • {formatPrice(totals.grandTotal)}</span>

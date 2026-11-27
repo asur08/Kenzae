@@ -21,7 +21,7 @@ export const FabricBadge: React.FC<FabricBadgeProps> = ({
 
   return (
     <span
-      className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] uppercase tracking-wider border transition-colors ${variantStyles[variant]} ${className}`}
+      className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] border transition-colors ${variantStyles[variant]} ${className}`}
     >
       {label}
     </span>

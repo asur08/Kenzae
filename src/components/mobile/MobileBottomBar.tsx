@@ -29,7 +29,7 @@ export const MobileBottomBar: React.FC = () => {
           aria-label="Discover Collections"
         >
           <Compass className="w-5 h-5 stroke-[1.75]" />
-          <span className="text-[10px] font-semibold tracking-wider uppercase">Discover</span>
+          <span className="text-[10px] font-semibold ">Discover</span>
         </button>
 
         {/* Shortlist / Wishlist */}
@@ -46,7 +46,7 @@ export const MobileBottomBar: React.FC = () => {
               </span>
             )}
           </div>
-          <span className="text-[10px] font-semibold tracking-wider uppercase">Saved</span>
+          <span className="text-[10px] font-semibold ">Saved</span>
         </button>
 
         {/* Bag */}
@@ -63,7 +63,7 @@ export const MobileBottomBar: React.FC = () => {
               </span>
             )}
           </div>
-          <span className="text-[10px] font-bold tracking-wider uppercase text-maroon-900">Bag</span>
+          <span className="text-[10px] font-bold text-maroon-900">Bag</span>
         </button>
 
         {/* Consult / WhatsApp */}
@@ -73,7 +73,7 @@ export const MobileBottomBar: React.FC = () => {
           aria-label="Direct Boutique Consultation"
         >
           <MessageCircle className="w-5 h-5 stroke-[1.75] text-whatsapp" />
-          <span className="text-[10px] font-semibold tracking-wider uppercase">Consult</span>
+          <span className="text-[10px] font-semibold ">Consult</span>
         </button>
       </div>
     </nav>

@@ -665,7 +665,7 @@ export const ImageUploadStudio: React.FC<ImageUploadStudioProps> = ({
             type="button"
             disabled={!primaryReferenceImage || isGeneratingAll}
             onClick={handleGenerateFullLookbook}
-            className="px-5 py-2.5 rounded-xl bg-maroon-900 hover:bg-maroon-850 text-brass-light font-bold text-xs uppercase tracking-wider flex items-center gap-2 shadow-md disabled:opacity-45 disabled:cursor-not-allowed transition-all active:scale-[0.99]"
+            className="px-5 py-2.5 rounded-xl bg-maroon-900 hover:bg-maroon-850 text-brass-light font-bold text-xs uppercase tracking-wider flex items-center gap-2 shadow-md disabled:opacity-45 disabled:cursor-not-allowed transition-[color,background-color,border-color,box-shadow,opacity,transform] active:scale-[0.99]"
           >
             {isGeneratingAll ? (
               <>
@@ -753,7 +753,7 @@ export const ImageUploadStudio: React.FC<ImageUploadStudioProps> = ({
                 return (
                   <div
                     key={look.poseId}
-                    className={`rounded-xl border transition-all overflow-hidden flex flex-col bg-white ${
+                    className={`rounded-xl border transition-[color,background-color,border-color,box-shadow,opacity,transform] overflow-hidden flex flex-col bg-white ${
                       isSelected
                         ? 'border-maroon-900 shadow-md ring-1 ring-maroon-900/30'
                         : 'border-canvas-border opacity-70 hover:opacity-100'

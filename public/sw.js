@@ -5,7 +5,7 @@
  * - Network-first for dynamic API routes (/api/*)
  */
 
-const CACHE_NAME_SHELL = 'kenzae-app-shell-v2';
+const CACHE_NAME_SHELL = 'kenzae-app-shell-v3';
 const CACHE_NAME_IMAGES = 'kenzae-images-cache-v1';
 
 const PRECACHE_ASSETS = [

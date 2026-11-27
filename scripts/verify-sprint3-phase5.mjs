@@ -69,7 +69,7 @@ assert(fs.existsSync(manifestPath), 'public/manifest.json exists');
 
 const manifestContent = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 assert(manifestContent.short_name === 'Kenzae', 'PWA short_name is "Kenzae"');
-assert(manifestContent.theme_color === '#0F382A', 'PWA theme_color is Regal Emerald (#0F382A)');
+assert(manifestContent.theme_color === '#340813', 'PWA theme_color is Deep Oxblood Maroon (#340813), matching index.html theme-color');
 assert(manifestContent.display === 'standalone', 'PWA display mode is standalone');
 
 const swPath = path.join(rootDir, 'public/sw.js');

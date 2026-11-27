@@ -27,7 +27,7 @@ const CustomerStorefront: React.FC = () => {
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF8F5] text-obsidian pb-16 sm:pb-0">
+    <div className="min-h-screen flex flex-col bg-canvas text-obsidian pb-16 sm:pb-0">
       {/* Sticky Header with Architectural Centered Wordmark */}
       <Navbar />
 
@@ -99,7 +99,7 @@ const MainRouter: React.FC = () => {
     return (
       <Suspense
         fallback={
-          <div className="min-h-screen bg-[#FAF8F5] flex items-center justify-center text-maroon-950 font-serif text-lg tracking-widest uppercase">
+          <div className="min-h-screen bg-canvas flex items-center justify-center text-maroon-950 font-serif text-lg tracking-widest uppercase">
             Loading Kenzae Staff Portal...
           </div>
         }

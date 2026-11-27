@@ -289,11 +289,11 @@ export const ProductModal: React.FC = () => {
                           setActiveMediaTab('photos');
                           setIsZoomed(false);
                         }}
-                        className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all ${
-                          activeMediaTab === 'photos'
-                            ? 'bg-maroon-900 text-white shadow-xs'
-                            : 'text-obsidian-slate hover:text-obsidian'
-                        }`}
+                        className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-[color,background-color,border-color,box-shadow,opacity,transform] ${
+ activeMediaTab === 'photos'
+ ? 'bg-maroon-900 text-white shadow-xs'
+ : 'text-obsidian-slate hover:text-obsidian'
+ }`}
                       >
                         <Layers className="w-3.5 h-3.5" />
                         <span>Photos ({selectedProduct.images.length})</span>
@@ -305,11 +305,11 @@ export const ProductModal: React.FC = () => {
                           setActiveMediaTab('video');
                           setIsZoomed(false);
                         }}
-                        className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all ${
-                          activeMediaTab === 'video'
-                            ? 'bg-maroon-900 text-white shadow-xs'
-                            : 'text-obsidian-slate hover:text-obsidian'
-                        }`}
+                        className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-[color,background-color,border-color,box-shadow,opacity,transform] ${
+ activeMediaTab === 'video'
+ ? 'bg-maroon-900 text-white shadow-xs'
+ : 'text-obsidian-slate hover:text-obsidian'
+ }`}
                       >
                         <Play className="w-3.5 h-3.5 fill-current text-brass" />
                         <span>Drape in Motion</span>
@@ -322,6 +322,8 @@ export const ProductModal: React.FC = () => {
                     <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden bg-black shadow-inner flex items-center justify-center group">
                       <video
                         src={selectedProduct.videoUrl}
+                        poster={selectedProduct.images[0]}
+                        preload="metadata"
                         autoPlay
                         loop
                         muted={isVideoMuted}
@@ -329,7 +331,7 @@ export const ProductModal: React.FC = () => {
                         className="w-full h-full object-cover"
                       />
 
-                      <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-maroon-950/90 text-brass-light border border-brass/40 text-[10px] font-semibold tracking-wider uppercase backdrop-blur-md pointer-events-none flex items-center gap-1.5 shadow-md">
+                      <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-maroon-950/90 text-brass-light border border-brass/40 text-[10px] font-semibold backdrop-blur-md pointer-events-none flex items-center gap-1.5 shadow-md">
                         <Sparkles className="w-3 h-3 text-brass" />
                         <span>Live Atelier Drape Flow</span>
                       </div>
@@ -337,7 +339,7 @@ export const ProductModal: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setIsVideoMuted(!isVideoMuted)}
-                        className="absolute bottom-3 right-3 p-2 rounded-full bg-black/60 hover:bg-black/85 text-white backdrop-blur-md shadow-md transition-all active:scale-95"
+                        className="absolute bottom-3 right-3 p-2 rounded-full bg-black/60 hover:bg-black/85 text-white backdrop-blur-md shadow-md transition-[color,background-color,border-color,box-shadow,opacity,transform] active:scale-95"
                         title={isVideoMuted ? 'Unmute video' : 'Mute video'}
                       >
                         {isVideoMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
@@ -371,7 +373,7 @@ export const ProductModal: React.FC = () => {
 
                       {/* Loupe Overlay Indicators */}
                       {isZoomed ? (
-                        <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-maroon-950/90 text-brass-light border border-brass/50 text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-lg pointer-events-none flex items-center gap-1.5">
+                        <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-maroon-950/90 text-brass-light border border-brass/50 text-[10px] font-bold backdrop-blur-md shadow-lg pointer-events-none flex items-center gap-1.5">
                           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
                           <span>240% Ultra-HD Fabric Inspector</span>
                         </div>
@@ -383,9 +385,9 @@ export const ProductModal: React.FC = () => {
                       )}
 
                       {selectedProduct.imageRoles?.[activeImageIndex] === 'ai-drape' && (
-                        <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-[#FAF8F5]/95 backdrop-blur-md text-maroon-950 border border-brass/40 text-[10px] font-semibold flex items-center gap-1 shadow-xs pointer-events-none">
+                        <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-canvas/95 backdrop-blur-md text-maroon-950 border border-brass/40 text-[10px] font-semibold flex items-center gap-1 shadow-xs pointer-events-none">
                           <Sparkles className="w-3 h-3 text-brass-dark" />
-                          <span>AI Studio Drape · Swipe for Weave Details</span>
+                          <span>AI studio drape. Swipe for weave details</span>
                         </div>
                       )}
 
@@ -396,7 +398,7 @@ export const ProductModal: React.FC = () => {
                               e.stopPropagation();
                               prevImage();
                             }}
-                            className="absolute left-2.5 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/45 hover:bg-black/75 text-white backdrop-blur-sm transition-all"
+                            className="absolute left-2.5 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/45 hover:bg-black/75 text-white backdrop-blur-sm transition-[color,background-color,border-color,box-shadow,opacity,transform]"
                             aria-label="Previous photo"
                           >
                             <ChevronLeft className="w-4 h-4" />
@@ -406,7 +408,7 @@ export const ProductModal: React.FC = () => {
                               e.stopPropagation();
                               nextImage();
                             }}
-                            className="absolute right-2.5 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/45 hover:bg-black/75 text-white backdrop-blur-sm transition-all"
+                            className="absolute right-2.5 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/45 hover:bg-black/75 text-white backdrop-blur-sm transition-[color,background-color,border-color,box-shadow,opacity,transform]"
                             aria-label="Next photo"
                           >
                             <ChevronRight className="w-4 h-4" />
@@ -417,7 +419,7 @@ export const ProductModal: React.FC = () => {
                       {/* Badges */}
                       <div className="absolute top-3 left-3 flex flex-col gap-1.5 pointer-events-none">
                         {selectedProduct.isFeatured && (
-                          <div className="px-2.5 py-1 rounded-full bg-maroon-950/90 border border-brass/40 text-brass-light text-[10px] font-semibold tracking-wider uppercase backdrop-blur-md flex items-center gap-1">
+                          <div className="px-2.5 py-1 rounded-full bg-maroon-950/90 border border-brass/40 text-brass-light text-[10px] font-semibold backdrop-blur-md flex items-center gap-1">
                             <Sparkles className="w-3 h-3 text-brass" />
                             <span>Featured Piece</span>
                           </div>
@@ -439,7 +441,7 @@ export const ProductModal: React.FC = () => {
                             setActiveImageIndex(idx);
                             setIsZoomed(false);
                           }}
-                          className={`relative w-16 h-20 rounded-lg overflow-hidden shrink-0 border-2 transition-all ${
+                          className={`relative w-16 h-20 rounded-lg overflow-hidden shrink-0 border-2 transition-[color,background-color,border-color,box-shadow,opacity,transform] ${
                             activeImageIndex === idx
                               ? 'border-maroon-900 scale-105 shadow-md'
                               : 'border-transparent opacity-65 hover:opacity-100'
@@ -529,7 +531,7 @@ export const ProductModal: React.FC = () => {
 
                   {/* Title */}
                   <div>
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-brass-dark block mb-1">
+                    <span className="text-[11px] font-semibold text-brass-dark block mb-1">
                       {selectedProduct.category}
                     </span>
                     <h2
@@ -543,7 +545,7 @@ export const ProductModal: React.FC = () => {
                   {/* Price & Availability Pill */}
                   <div className="flex items-center justify-between gap-3 p-3.5 rounded-xl bg-canvas-subtle border border-canvas-border">
                     <div>
-                      <span className="text-[10px] uppercase tracking-[0.14em] text-obsidian-slate block">
+                      <span className="text-[10px] text-obsidian-slate block">
                         Boutique Price
                       </span>
                       <div className="flex items-baseline gap-2">
@@ -559,19 +561,19 @@ export const ProductModal: React.FC = () => {
                     </div>
 
                     {!isAvailable ? (
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase bg-terracotta-50 text-terracotta border border-terracotta/40">
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-terracotta-50 text-terracotta border border-terracotta/40">
                         Reserved / Sold Out
                       </span>
                     ) : qty === 1 ? (
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase bg-maroon-950 text-brass-light border border-brass/50 shadow-xs">
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-maroon-950 text-brass-light border border-brass/50 shadow-xs">
                         Only 1 Piece Left
                       </span>
                     ) : qty <= 3 ? (
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase bg-maroon-100 text-maroon-900 border border-maroon-200">
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-maroon-100 text-maroon-900 border border-maroon-200">
                         Only {qty} Pieces Left
                       </span>
                     ) : (
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase bg-maroon-100 text-maroon-900 border border-maroon-200">
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-maroon-100 text-maroon-900 border border-maroon-200">
                         {qty} in Boutique
                       </span>
                     )}
@@ -580,7 +582,7 @@ export const ProductModal: React.FC = () => {
                   {/* Description */}
                   {selectedProduct.description && (
                     <div>
-                      <h4 className="text-[10px] font-bold uppercase tracking-[0.16em] text-obsidian-slate mb-1">
+                      <h4 className="text-[10px] font-bold text-obsidian-slate mb-1">
                         Curator Notes
                       </h4>
                       <p className="text-xs sm:text-[13px] text-obsidian-slate leading-relaxed font-light">
@@ -591,13 +593,13 @@ export const ProductModal: React.FC = () => {
 
                   {/* Spec Grid */}
                   <div className="p-4 rounded-xl bg-white border border-canvas-border space-y-3">
-                    <h4 className="text-[10px] font-bold uppercase tracking-[0.16em] text-maroon-950">
+                    <h4 className="text-[10px] font-bold text-maroon-950">
                       Specifications
                     </h4>
 
                     <div className="grid grid-cols-2 gap-3 text-xs">
                       <div>
-                        <span className="text-obsidian-muted block text-[10px] uppercase tracking-wider">
+                        <span className="text-obsidian-muted block text-[10px] ">
                           Fabric Material
                         </span>
                         <span className="font-medium text-obsidian">
@@ -606,7 +608,7 @@ export const ProductModal: React.FC = () => {
                       </div>
 
                       <div>
-                        <span className="text-obsidian-muted block text-[10px] uppercase tracking-wider">
+                        <span className="text-obsidian-muted block text-[10px] ">
                           Shade / Palette
                         </span>
                         <span className="font-medium text-obsidian">
@@ -615,7 +617,7 @@ export const ProductModal: React.FC = () => {
                       </div>
 
                       <div>
-                        <span className="text-obsidian-muted block text-[10px] uppercase tracking-wider">
+                        <span className="text-obsidian-muted block text-[10px] ">
                           Weave / Technique
                         </span>
                         <span className="font-medium text-obsidian">
@@ -624,14 +626,14 @@ export const ProductModal: React.FC = () => {
                       </div>
 
                       <div>
-                        <span className="text-obsidian-muted block text-[10px] uppercase tracking-wider">
+                        <span className="text-obsidian-muted block text-[10px] ">
                           Care Instructions
                         </span>
                         <span className="font-medium text-obsidian">{careInstructions}</span>
                       </div>
 
                       <div className="col-span-2 pt-2 border-t border-canvas-border/70 flex items-center justify-between">
-                        <span className="text-obsidian-muted text-[10px] uppercase tracking-wider">
+                        <span className="text-obsidian-muted text-[10px] ">
                           Boutique Availability
                         </span>
                         <span className="font-semibold text-maroon-950 tabular-nums">
@@ -643,11 +645,13 @@ export const ProductModal: React.FC = () => {
 
                       {isUnstitched && (
                         <div className="col-span-2 pt-2 border-t border-canvas-border/70">
-                          <span className="text-obsidian-muted block text-[10px] uppercase tracking-wider">
+                          <span className="text-obsidian-muted block text-[10px] ">
                             Set Contents (Lengths)
                           </span>
                           <span className="font-medium text-obsidian">
-                            Top: 2.5m · Bottom: 2.5m · Dupatta: 2.4m
+                            <span className="block">Top: 2.5 m</span>
+                            <span className="block">Bottom: 2.5 m</span>
+                            <span className="block">Dupatta: 2.4 m</span>
                           </span>
                         </div>
                       )}
@@ -666,14 +670,14 @@ export const ProductModal: React.FC = () => {
                   {/* Custom Note */}
                   {isAvailable && (
                     <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-[0.16em] text-obsidian-slate mb-1">
+                      <label className="block text-[10px] font-bold text-obsidian-slate mb-1">
                         Optional Stitching or Trial Request
                       </label>
                       <input
                         type="text"
                         value={customNote}
                         onChange={(e) => setCustomNote(e.target.value)}
-                        placeholder="e.g. Blouse stitching, lining preference, trial slot..."
+                        placeholder="e.g. Blouse stitching, lining preference, trial slot…"
                         className="w-full px-3.5 py-2 rounded-lg bg-white border border-canvas-border text-xs text-obsidian placeholder:text-obsidian-slate/60 focus:outline-none focus:border-maroon-850"
                       />
                     </div>
@@ -686,11 +690,11 @@ export const ProductModal: React.FC = () => {
                   <button
                     onClick={handleAddToCart}
                     disabled={!isAvailable}
-                    className={`w-full py-3.5 px-6 rounded-full font-semibold text-xs tracking-[0.14em] uppercase transition-[transform,background-color] duration-150 shadow-luxury flex items-center justify-center gap-2 border active:scale-[0.97] ${
-                      isAvailable
-                        ? 'bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white border-brass/35 cursor-pointer'
-                        : 'bg-canvas-subtle text-obsidian-muted border-canvas-border cursor-not-allowed opacity-60'
-                    }`}
+                    className={`w-full py-3.5 px-6 rounded-full font-semibold text-xs transition-[transform,background-color] duration-150 shadow-luxury flex items-center justify-center gap-2 border active:scale-[0.97] ${
+ isAvailable
+ ? 'bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white border-brass/35 cursor-pointer'
+ : 'bg-canvas-subtle text-obsidian-muted border-canvas-border cursor-not-allowed opacity-60'
+ }`}
                   >
                     <ShoppingBag className="w-4 h-4 text-brass-light" />
                     <span>
@@ -704,7 +708,7 @@ export const ProductModal: React.FC = () => {
                   {!isAvailable && (
                     <button
                       onClick={handleWhatsAppEnquiry}
-                      className="w-full py-3 px-4 rounded-full bg-white hover:bg-canvas-subtle text-obsidian font-semibold text-xs tracking-wider uppercase transition-colors flex items-center justify-center gap-2 border border-canvas-border"
+                      className="w-full py-3 px-4 rounded-full bg-white hover:bg-canvas-subtle text-obsidian font-semibold text-xs transition-colors flex items-center justify-center gap-2 border border-canvas-border"
                     >
                       <MessageCircle className="w-4 h-4 text-whatsapp" />
                       <span>Enquire for Made-to-Order Re-weaving</span>
@@ -729,7 +733,7 @@ export const ProductModal: React.FC = () => {
                     {selectedProduct.images.length > 1 && (
                       <button
                         onClick={nextImage}
-                        className="py-2.5 px-3 rounded-full bg-canvas-subtle hover:bg-canvas-border text-obsidian font-medium text-xs tracking-wider uppercase transition-colors flex items-center justify-center gap-1.5 border border-canvas-border truncate"
+                        className="py-2.5 px-3 rounded-full bg-canvas-subtle hover:bg-canvas-border text-obsidian font-medium text-xs transition-colors flex items-center justify-center gap-1.5 border border-canvas-border truncate"
                         title="Switch between model drape and garment weave photos"
                       >
                         <Layers className="w-3.5 h-3.5 text-brass-dark shrink-0" />
@@ -741,7 +745,7 @@ export const ProductModal: React.FC = () => {
 
                     <button
                       onClick={handleOpenDirections}
-                      className="py-2.5 px-3 rounded-full bg-canvas-subtle hover:bg-canvas-border text-obsidian font-medium text-xs tracking-wider uppercase transition-colors flex items-center justify-center gap-1.5 border border-canvas-border truncate"
+                      className="py-2.5 px-3 rounded-full bg-canvas-subtle hover:bg-canvas-border text-obsidian font-medium text-xs transition-colors flex items-center justify-center gap-1.5 border border-canvas-border truncate"
                     >
                       <MapPin className="w-3.5 h-3.5 text-brass-dark shrink-0" />
                       <span className="truncate">Store Directions</span>
@@ -753,8 +757,8 @@ export const ProductModal: React.FC = () => {
 
             {/* Related Pieces Discovery Strip */}
             {relatedPieces.length > 0 && (
-              <div className="border-t border-canvas-border bg-[#FAF8F5] p-5 sm:p-6">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-brass-dark block mb-3">
+              <div className="border-t border-canvas-border bg-canvas p-5 sm:p-6">
+                <span className="text-[10px] font-semibold text-brass-dark block mb-3">
                   More from {selectedProduct.category}
                 </span>
                 <div className="grid grid-cols-3 gap-3">
@@ -762,7 +766,7 @@ export const ProductModal: React.FC = () => {
                     <button
                       key={rel.id}
                       onClick={() => setSelectedProduct(rel)}
-                      className="group text-left bg-white rounded-xl border border-canvas-border hover:border-maroon-900/30 p-2 transition-all flex flex-col sm:flex-row items-start sm:items-center gap-2.5"
+                      className="group text-left bg-white rounded-xl border border-canvas-border hover:border-maroon-900/30 p-2 transition-[color,background-color,border-color,box-shadow,opacity,transform] flex flex-col sm:flex-row items-start sm:items-center gap-2.5"
                     >
                       <img
                         src={rel.images[0]}

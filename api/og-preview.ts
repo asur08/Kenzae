@@ -101,11 +101,11 @@ export function buildOpenGraphHtml(product: KenzaeProduct, baseUrl = 'https://ke
     window.location.replace(${JSON.stringify(canonicalUrl)});
   </script>
 </head>
-<body style="background:#FAF8F5;font-family:serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;color:#0F382A;text-align:center;">
+<body style="background:#FAF8F5;font-family:serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;color:#4B0E1D;text-align:center;">
   <div>
     <h1 style="font-size:24px;letter-spacing:0.2em;text-transform:uppercase;">KENZAE</h1>
     <p style="font-size:14px;color:#5C5852;">Taking you to ${escapeHtml(product.title)} (${escapeHtml(formattedPrice)})...</p>
-    <p><a href="${escapeHtml(canonicalUrl)}" style="color:#0F382A;font-weight:bold;">Click here if you are not redirected immediately</a></p>
+    <p><a href="${escapeHtml(canonicalUrl)}" style="color:#4B0E1D;font-weight:bold;">Click here if you are not redirected immediately</a></p>
   </div>
 </body>
 </html>`;

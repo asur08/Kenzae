@@ -94,7 +94,7 @@ export const WishlistDrawer: React.FC = () => {
                     </p>
                     <button
                       onClick={() => setIsWishlistOpen(false)}
-                      className="px-5 py-2.5 rounded-full bg-maroon-900 hover:bg-maroon-850 text-brass-light text-xs font-semibold uppercase tracking-wider shadow-sm transition-colors"
+                      className="px-5 py-2.5 rounded-full bg-maroon-900 hover:bg-maroon-850 text-brass-light text-xs font-semibold shadow-sm transition-colors"
                     >
                       Explore Collection
                     </button>
@@ -107,7 +107,7 @@ export const WishlistDrawer: React.FC = () => {
                         setSelectedProduct(item);
                         setIsWishlistOpen(false);
                       }}
-                      className="flex gap-3 p-3 bg-white rounded-xl border border-canvas-border hover:border-maroon-900/35 transition-all cursor-pointer group shadow-xs"
+                      className="flex gap-3 p-3 bg-white rounded-xl border border-canvas-border hover:border-maroon-900/35 transition-[color,background-color,border-color,box-shadow,opacity,transform] cursor-pointer group shadow-xs"
                     >
                       {/* Thumbnail */}
                       <div className="w-20 h-24 rounded-lg overflow-hidden bg-canvas-subtle shrink-0">
@@ -122,7 +122,7 @@ export const WishlistDrawer: React.FC = () => {
                       <div className="flex-1 flex flex-col justify-between py-0.5 min-w-0">
                         <div>
                           <div className="flex items-center justify-between">
-                            <span className="text-[10px] font-mono text-obsidian-muted uppercase">
+                            <span className="text-[10px] font-mono text-obsidian-muted ">
                               {item.sku}
                             </span>
                             <button
@@ -164,7 +164,7 @@ export const WishlistDrawer: React.FC = () => {
                 <div className="p-4 border-t border-canvas-border bg-canvas-subtle space-y-3">
                   <div className="flex items-baseline justify-between">
                     <div>
-                      <span className="text-xs uppercase tracking-wider text-obsidian-slate font-medium">
+                      <span className="text-xs text-obsidian-slate font-medium">
                         Estimated Value
                       </span>
                       {currentCurrency !== 'INR' && (
@@ -180,7 +180,7 @@ export const WishlistDrawer: React.FC = () => {
 
                   <button
                     onClick={handleWhatsAppInquireAll}
-                    className="w-full py-3.5 px-4 rounded-full bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white font-bold text-xs tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2 border border-brass/35 active:scale-95"
+                    className="w-full py-3.5 px-4 rounded-full bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white font-bold text-xs transition-[color,background-color,border-color,box-shadow,opacity,transform] shadow-md flex items-center justify-center gap-2 border border-brass/35 active:scale-95"
                   >
                     <MessageCircle className="w-4 h-4 text-whatsapp" />
                     <span>Inquire Entire Shortlist via WhatsApp</span>

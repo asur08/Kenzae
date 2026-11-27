@@ -323,7 +323,7 @@ export const ProductEditModal: React.FC<ProductEditModalProps> = ({
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-white text-xs font-bold uppercase tracking-wider shadow-sm flex items-center gap-1.5 transition-all"
+                className="px-5 py-2 rounded-lg bg-maroon-900 hover:bg-maroon-850 text-white text-xs font-bold uppercase tracking-wider shadow-sm flex items-center gap-1.5 transition-[color,background-color,border-color,box-shadow,opacity,transform]"
               >
                 <Check className="w-3.5 h-3.5 text-brass" />
                 <span>Save Changes</span>

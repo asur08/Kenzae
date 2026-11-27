@@ -25,7 +25,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
         </p>
         <button
           onClick={resetFilters}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-maroon-900 hover:bg-maroon-850 text-brass-light text-xs font-semibold uppercase tracking-[0.14em] shadow-sm active:scale-95 transition-all"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-maroon-900 hover:bg-maroon-850 text-brass-light text-xs font-semibold shadow-sm active:scale-95 transition-[color,background-color,border-color,box-shadow,opacity,transform]"
         >
           <RefreshCw className="w-3.5 h-3.5" />
           <span>Reset All Filters</span>

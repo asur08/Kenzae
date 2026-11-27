@@ -2,6 +2,21 @@
 @config "../tailwind.config.js";
 
 :root {
+  /* Brand surfaces & gradient stops (mirror tailwind.config.js) */
+  --color-canvas: #FAF8F5;
+  --color-canvas-subtle: #F3EFE6;
+  --color-ink: #18181B;
+  --color-maroon-950: #340813;
+  --color-maroon-900: #4B0E1D;
+  --color-maroon-850: #5E1325;
+  --color-gold-100: #F7EFE0;
+  --color-gold-200: #F3E7D3;
+  --color-gold-300: #EDE0C8;
+  --color-gold-400: #DFC394;
+  --color-gold-500: #C8A46B;
+  --color-focus: #8E243D;
+  --color-focus-on-dark: #EDE0C8;
+
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
@@ -15,14 +30,29 @@
   }
   
   body {
-    background-color: #FAF8F5;
-    color: #18181B;
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
     font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
     overflow-x: clip;
   }
 
   h1, h2, h3, .font-serif {
     font-family: 'Cormorant Garamond', Cinzel, Georgia, serif;
+  }
+
+  h1, h2 {
+    text-wrap: balance;
+  }
+
+  /* Visible keyboard focus everywhere (WCAG 2.4.7), shown instantly */
+  :where(a, button, input, select, textarea, summary, [role="button"], [tabindex]):focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+    transition: none;
+  }
+
+  :where(.bg-maroon-950, .bg-maroon-900, .maroon-gradient-bg) :where(a, button, [role="button"]):focus-visible {
+    outline-color: var(--color-focus-on-dark);
   }
 
   .tabular-nums {
@@ -41,17 +71,17 @@
   }
 
   .gold-gradient-text {
-    background: linear-gradient(135deg, #EDE0C8 0%, #F7EFE0 50%, #C8A46B 100%);
+    background: linear-gradient(135deg, var(--color-gold-300) 0%, var(--color-gold-100) 50%, var(--color-gold-500) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .gold-gradient-bg {
-    background: linear-gradient(135deg, #F3E7D3 0%, #DFC394 100%);
+    background: linear-gradient(135deg, var(--color-gold-200) 0%, var(--color-gold-400) 100%);
   }
 
   .maroon-gradient-bg {
-    background: linear-gradient(135deg, #3A0A16 0%, #5B1224 55%, #460D1B 100%);
+    background: linear-gradient(135deg, var(--color-maroon-950) 0%, var(--color-maroon-850) 55%, var(--color-maroon-900) 100%);
   }
 }
 
@@ -66,7 +96,27 @@
 }
 
 .shimmer-placeholder {
-  background: linear-gradient(90deg, #F3EFE6 25%, #FAF8F5 50%, #F3EFE6 75%);
+  background: linear-gradient(90deg, var(--color-canvas-subtle) 25%, var(--color-canvas) 50%, var(--color-canvas-subtle) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
+}
+
+/* Respect the visitor's "reduce motion" setting (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .shimmer-placeholder {
+    animation: none;
+  }
 }

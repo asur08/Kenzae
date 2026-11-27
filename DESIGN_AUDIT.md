@@ -61,3 +61,30 @@ Most of the FAILs are one style habit repeated (see "Tracked capitals" below), s
 6. **Analytics + consent:** Google Analytics/Meta pixel with a cookie notice (needed for EU/UK visitors).
 7. **Accessibility pass** to WCAG 2.1 AA (focus, contrast, motion, tap sizes above).
 8. **Reviews and real testimonials** from actual customers (never made up).
+
+## Fixes applied (27 Nov 2026)
+
+Hallmark checker: **292 FAIL → 109 FAIL** (the rest is mostly the staff-only portal and the PDF invoice, which shoppers don't see).
+
+| Was | Now |
+|---|---|
+| Logo covered on phones | Currency picker moved into the phone menu ("Show prices in"); duplicate filter button hidden on phones; header buttons are 44 px |
+| No favicon; app icons were a stock photo; theme colour was green | Kenzae "K" icon (SVG + PNG + Apple icon + maskable icon); maroon theme colour everywhere (browser bar, app, Razorpay popup) |
+| No share image | `og-image.png` (1200 x 630) on the home page for WhatsApp/Instagram/X previews |
+| 663 KB (zipped) code on first visit | 214 KB: PDF invoice tool now loads only when an invoice is made |
+| Razorpay script blocked every page load | Loaded only at checkout (it already had an on-demand loader) |
+| Hero overflowed big screens; 18-word intro; blurred blobs | Fits the screen; 10-word intro; blobs removed; sentence-case buttons; featured photo loads first |
+| No "reduce motion" support | CSS fallback + Framer Motion `reducedMotion="user"` |
+| Focus ring nearly invisible; faint field borders | Clear focus outline on every control (light on maroon); search and sort boxes have 3:1 borders |
+| ~170 ALL-CAPS tracked labels | Removed from every shopper-facing label and button; kept on the KENZAE wordmark only |
+| `transition-all` on ~50 controls; hard-coded colours | Named properties; colours moved into theme tokens |
+| Wordy "Crafted around your occasion" | Intro and cards cut to one line each |
+| Dot-joined strings, dashes, straight quotes, "..." | Line breaks / commas, curly quotes, real ellipsis |
+| Drape video blank while loading | Shows the product photo as a poster |
+
+### Still needs the owner (can't be fixed in code)
+
+1. **Real product photos** to replace the Unsplash images in `data/products.json` and `AtelierStory.tsx`.
+2. **Policy pages** (privacy, returns/refunds, shipping, terms): the owner must decide the return window, refund method, shipping times/rates and countries served. Once known, the pages can be built.
+3. **Fabric lengths don't match:** the product window says *Top 2.5 m, Bottom 2.5 m, Dupatta 2.4 m*, while the tailoring panel says *2.5 m, 2.0 m, 2.25 m* (`ProductModal.tsx`, `TailoringSelector.tsx`). Confirm the real lengths.
+4. Product photo zoom-on-hover was kept on purpose: it is normal for fashion shops.

@@ -33,7 +33,7 @@ export const StaffLoginPage: React.FC<StaffLoginPageProps> = ({ onReturnToStore 
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] flex flex-col justify-center items-center px-4 py-12">
+    <div className="min-h-screen bg-canvas flex flex-col justify-center items-center px-4 py-12">
       {/* Return link */}
       <div className="w-full max-w-md mb-6">
         <button
@@ -84,7 +84,7 @@ export const StaffLoginPage: React.FC<StaffLoginPageProps> = ({ onReturnToStore 
                   placeholder="Enter staff PIN..."
                   autoFocus
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-canvas-subtle border border-canvas-border text-obsidian text-sm focus:outline-none focus:border-maroon-850 focus:bg-white transition-all font-mono tracking-wider pr-11"
+                  className="w-full px-4 py-3 rounded-xl bg-canvas-subtle border border-canvas-border text-obsidian text-sm focus:outline-none focus:border-maroon-850 focus:bg-white transition-[color,background-color,border-color,box-shadow,opacity,transform] font-mono tracking-wider pr-11"
                 />
                 <button
                   type="button"
@@ -129,7 +129,7 @@ export const StaffLoginPage: React.FC<StaffLoginPageProps> = ({ onReturnToStore 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 px-4 rounded-xl bg-maroon-900 hover:bg-maroon-850 text-white font-semibold text-xs tracking-wider uppercase shadow-md transition-all border border-brass/40 flex items-center justify-center gap-2 active:scale-[0.99]"
+              className="w-full py-3.5 px-4 rounded-xl bg-maroon-900 hover:bg-maroon-850 text-white font-semibold text-xs tracking-wider uppercase shadow-md transition-[color,background-color,border-color,box-shadow,opacity,transform] border border-brass/40 flex items-center justify-center gap-2 active:scale-[0.99]"
             >
               <Lock className="w-4 h-4 text-brass" />
               <span>Sign In to Staff Console</span>

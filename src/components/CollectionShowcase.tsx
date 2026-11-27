@@ -79,10 +79,10 @@ export const CollectionShowcase: React.FC = () => {
               <button
                 key={card.category}
                 onClick={() => handleSelectCollection(card.category)}
-                className={`group text-left rounded-xl overflow-hidden border transition-all duration-200 bg-white flex flex-col active:scale-[0.98] ${
+                className={`group text-left rounded-xl overflow-hidden border transition-[color,background-color,border-color,box-shadow,opacity,transform] duration-200 bg-white flex flex-col active:scale-[0.98] ${
                   isSelected
                     ? 'border-maroon-900 ring-1 ring-maroon-900'
-                    : 'border-[#EAE3D7] hover:border-maroon-900/40'
+                    : 'border-canvas-line hover:border-maroon-900/40'
                 }`}
               >
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-canvas-subtle">

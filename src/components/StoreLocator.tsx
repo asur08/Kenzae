@@ -15,7 +15,7 @@ export const StoreLocator: React.FC = () => {
   };
 
   return (
-    <section id="store-locator" className="py-16 bg-[#F5F2EB] border-t border-canvas-border">
+    <section id="store-locator" className="py-16 bg-canvas-subtle border-t border-canvas-border">
       <div className="container mx-auto px-4">
         
         {/* Section Header */}
@@ -29,7 +29,7 @@ export const StoreLocator: React.FC = () => {
         </div>
 
         {/* Card Grid with Responsive Embedded Map */}
-        <div className="max-w-5xl mx-auto bg-white rounded-2xl border border-[#EAE3D7] overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+        <div className="max-w-5xl mx-auto bg-white rounded-2xl border border-canvas-line overflow-hidden grid grid-cols-1 lg:grid-cols-12">
           
           {/* Left Column: Clean Store Visit Card (lg:col-span-6) */}
           <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between space-y-6">
@@ -46,7 +46,7 @@ export const StoreLocator: React.FC = () => {
                   </h3>
                   <p className="text-xs sm:text-sm text-obsidian-slate mt-1 leading-relaxed">
                     Main Road, {KENZAE_STORE_CONFIG.locality}, <br />
-                    {KENZAE_STORE_CONFIG.district} District, {KENZAE_STORE_CONFIG.state} — {KENZAE_STORE_CONFIG.pincode}
+                    {KENZAE_STORE_CONFIG.district} District, {KENZAE_STORE_CONFIG.state} {KENZAE_STORE_CONFIG.pincode}
                   </p>
                   <p className="text-[11px] text-brass-dark font-medium mt-1">
                     Near Mulanthuruthy Railway Station &amp; Marthoman Cathedral Hub
@@ -60,7 +60,7 @@ export const StoreLocator: React.FC = () => {
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-obsidian">
+                  <h4 className="text-xs font-bold text-obsidian">
                     Boutique Hours
                   </h4>
                   <p className="text-xs text-obsidian-slate mt-0.5 font-medium">
@@ -78,7 +78,7 @@ export const StoreLocator: React.FC = () => {
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-obsidian">
+                  <h4 className="text-xs font-bold text-obsidian">
                     Direct Contact &amp; Inquiries
                   </h4>
                   <p className="text-xs text-obsidian-slate mt-0.5 font-medium tabular-nums">
@@ -96,7 +96,7 @@ export const StoreLocator: React.FC = () => {
             <div className="pt-4 border-t border-canvas-border flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleOpenDirections}
-                className="flex-1 py-3 px-5 rounded-full bg-maroon-950 hover:bg-maroon-900 text-brass-light hover:text-white text-xs font-bold tracking-wider uppercase transition-[transform,background-color] duration-150 flex items-center justify-center gap-2 border border-brass/40 active:scale-[0.97]"
+                className="flex-1 py-3 px-5 rounded-full bg-maroon-950 hover:bg-maroon-900 text-brass-light hover:text-white text-xs font-bold transition-[transform,background-color] duration-150 flex items-center justify-center gap-2 border border-brass/40 active:scale-[0.97]"
               >
                 <Navigation className="w-4 h-4 text-brass" />
                 <span>Get Directions</span>
@@ -104,7 +104,7 @@ export const StoreLocator: React.FC = () => {
 
               <button
                 onClick={handleWhatsAppVisit}
-                className="py-3 px-5 rounded-full bg-canvas-subtle hover:bg-canvas-border text-obsidian text-xs font-semibold tracking-wider uppercase active:scale-[0.97] transition-[transform,background-color] duration-150 flex items-center justify-center gap-2 border border-canvas-border"
+                className="py-3 px-5 rounded-full bg-canvas-subtle hover:bg-canvas-border text-obsidian text-xs font-semibold active:scale-[0.97] transition-[transform,background-color] duration-150 flex items-center justify-center gap-2 border border-canvas-border"
               >
                 <MessageCircle className="w-4 h-4 text-whatsapp" />
                 <span>Book Trial</span>

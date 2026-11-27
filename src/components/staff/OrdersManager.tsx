@@ -18,7 +18,6 @@ import {
 import { BoutiqueOrder, FulfillmentStatus } from '../../types/orders';
 import { useOrders } from '../../context/OrdersContext';
 import { formatCurrencyINR } from '../../utils/formatters';
-import { generateGSTTaxInvoicePDF } from '../../utils/invoiceGenerator';
 import { generateShippingLabelPDF } from '../../utils/shippingLabelGenerator';
 import { DispatchModal } from './DispatchModal';
 
@@ -81,6 +80,7 @@ export const OrdersManager: React.FC = () => {
   const handleDownloadInvoice = async (order: BoutiqueOrder) => {
     try {
       setDownloadingInvoiceId(order.id);
+      const { generateGSTTaxInvoicePDF } = await import('../../utils/invoiceGenerator');
       await generateGSTTaxInvoicePDF(order, { autoDownload: true });
     } catch (err) {
       console.error('Invoice generation failed:', err);
@@ -233,7 +233,7 @@ export const OrdersManager: React.FC = () => {
             <button
               key={tab.value}
               onClick={() => setStatusFilter(tab.value)}
-              className={`px-3 py-1.5 rounded-lg font-semibold tracking-wider uppercase text-[10px] transition-all shrink-0 ${
+              className={`px-3 py-1.5 rounded-lg font-semibold tracking-wider uppercase text-[10px] transition-[color,background-color,border-color,box-shadow,opacity,transform] shrink-0 ${
                 statusFilter === tab.value
                   ? 'bg-maroon-900 text-brass-light shadow-xs'
                   : 'bg-canvas-subtle text-obsidian-slate hover:bg-canvas-border'
@@ -271,7 +271,7 @@ export const OrdersManager: React.FC = () => {
             return (
               <div
                 key={order.id}
-                className="bg-white rounded-2xl border border-canvas-border shadow-luxury overflow-hidden flex flex-col transition-all hover:border-maroon-900/30"
+                className="bg-white rounded-2xl border border-canvas-border shadow-luxury overflow-hidden flex flex-col transition-[color,background-color,border-color,box-shadow,opacity,transform] hover:border-maroon-900/30"
               >
                 {/* Order Card Header */}
                 <div className="p-4 bg-canvas-subtle/60 border-b border-canvas-border flex flex-wrap items-center justify-between gap-3">
@@ -514,7 +514,7 @@ export const OrdersManager: React.FC = () => {
                       <button
                         onClick={() => handleDownloadInvoice(order)}
                         disabled={downloadingInvoiceId === order.id}
-                        className="py-2 px-3 rounded-lg bg-maroon-900 hover:bg-maroon-850 disabled:opacity-60 text-brass-light hover:text-white font-semibold text-[11px] uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-xs transition-all border border-maroon-900 cursor-pointer"
+                        className="py-2 px-3 rounded-lg bg-maroon-900 hover:bg-maroon-850 disabled:opacity-60 text-brass-light hover:text-white font-semibold text-[11px] uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-xs transition-[color,background-color,border-color,box-shadow,opacity,transform] border border-maroon-900 cursor-pointer"
                         title="Download GST-compliant PDF invoice"
                       >
                         <FileText className={`w-3.5 h-3.5 ${downloadingInvoiceId === order.id ? 'animate-spin' : ''}`} />
@@ -523,7 +523,7 @@ export const OrdersManager: React.FC = () => {
 
                       <button
                         onClick={() => handleDownloadShippingLabel(order)}
-                        className="py-2 px-3 rounded-lg bg-canvas-subtle hover:bg-white text-obsidian font-semibold text-[11px] uppercase tracking-wider flex items-center justify-center gap-1.5 border border-canvas-border shadow-xs transition-all"
+                        className="py-2 px-3 rounded-lg bg-canvas-subtle hover:bg-white text-obsidian font-semibold text-[11px] uppercase tracking-wider flex items-center justify-center gap-1.5 border border-canvas-border shadow-xs transition-[color,background-color,border-color,box-shadow,opacity,transform]"
                         title="Print 4x6 thermal shipping label & checklist"
                       >
                         <Tag className="w-3.5 h-3.5 text-brass-dark" />
@@ -532,7 +532,7 @@ export const OrdersManager: React.FC = () => {
 
                       <button
                         onClick={() => setSelectedOrderForDispatch(order)}
-                        className="py-2 px-3 rounded-lg bg-white hover:bg-emerald-50 text-emerald-900 font-semibold text-[11px] uppercase tracking-wider flex items-center justify-center gap-1.5 border border-emerald-300 shadow-xs transition-all"
+                        className="py-2 px-3 rounded-lg bg-white hover:bg-emerald-50 text-emerald-900 font-semibold text-[11px] uppercase tracking-wider flex items-center justify-center gap-1.5 border border-emerald-300 shadow-xs transition-[color,background-color,border-color,box-shadow,opacity,transform]"
                         title="Assign Courier AWB & trigger WhatsApp update"
                       >
                         <Truck className="w-3.5 h-3.5 text-emerald-700" />
@@ -541,7 +541,7 @@ export const OrdersManager: React.FC = () => {
 
                       <button
                         onClick={() => handleOpenCustomerWhatsApp(order)}
-                        className="py-2 px-3 rounded-lg bg-white hover:bg-emerald-50 text-obsidian font-semibold text-[11px] uppercase tracking-wider flex items-center justify-center gap-1.5 border border-canvas-border shadow-xs transition-all"
+                        className="py-2 px-3 rounded-lg bg-white hover:bg-emerald-50 text-obsidian font-semibold text-[11px] uppercase tracking-wider flex items-center justify-center gap-1.5 border border-canvas-border shadow-xs transition-[color,background-color,border-color,box-shadow,opacity,transform]"
                         title="Chat with customer on WhatsApp"
                       >
                         <MessageCircle className="w-3.5 h-3.5 text-whatsapp" />

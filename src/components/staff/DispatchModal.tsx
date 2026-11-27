@@ -111,7 +111,7 @@ export const DispatchModal: React.FC<DispatchModalProps> = ({ order, isOpen, onC
 
               <button
                 onClick={handleSendWhatsAppNotification}
-                className="w-full py-3 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-all"
+                className="w-full py-3 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-[color,background-color,border-color,box-shadow,opacity,transform]"
               >
                 <Send className="w-4 h-4" />
                 <span>Send WhatsApp Dispatch Alert</span>

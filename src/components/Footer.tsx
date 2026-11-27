@@ -39,17 +39,17 @@ export const Footer: React.FC = () => {
               </span>
               <span className="w-1.5 h-1.5 rounded-full bg-brass"></span>
             </div>
-            <p className="text-xs uppercase tracking-widest text-brass-light/80 font-medium">
+            <p className="text-xs text-brass-light/80 font-medium">
               Designer Ethnic Wear & Couture
             </p>
             <p className="text-xs text-canvas/70 leading-relaxed max-w-sm font-light">
-              Celebrating India's finest handloom traditions. Kenzae curates bespoke Banarasi silks, Kasavu organza, artisanal salwar suits, and unstitched dress materials for celebrations, weddings, and everyday grace.
+              Celebrating India’s finest handloom traditions. Kenzae curates bespoke Banarasi silks, Kasavu organza, artisanal salwar suits, and unstitched dress materials for celebrations, weddings, and everyday grace.
             </p>
             
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 onClick={handleWhatsAppConsult}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-maroon-900 hover:bg-maroon-850 text-brass-light text-xs font-semibold tracking-wider uppercase border border-brass/30 transition-all"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-maroon-900 hover:bg-maroon-850 text-brass-light text-xs font-semibold border border-brass/30 transition-[color,background-color,border-color,box-shadow,opacity,transform]"
               >
                 <MessageCircle className="w-3.5 h-3.5 text-whatsapp" />
                 <span>WhatsApp Boutique</span>
@@ -58,7 +58,7 @@ export const Footer: React.FC = () => {
                 href="https://instagram.com/kenzae.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/5 hover:bg-white/10 text-brass-light text-xs font-medium tracking-wide border border-brass/20 transition-all"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/5 hover:bg-white/10 text-brass-light text-xs font-medium tracking-wide border border-brass/20 transition-[color,background-color,border-color,box-shadow,opacity,transform]"
               >
                 <span>{KENZAE_STORE_CONFIG.instagramHandle}</span>
                 <ExternalLink className="w-3 h-3 text-brass" />
@@ -68,7 +68,7 @@ export const Footer: React.FC = () => {
 
           {/* Quick Category Navigation (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-brass-light">
+            <h4 className="font-serif text-sm font-bold text-brass-light">
               Collections
             </h4>
             <ul className="space-y-2 text-xs text-canvas/80 font-light">
@@ -109,14 +109,14 @@ export const Footer: React.FC = () => {
 
           {/* Store Location & Timings (lg:col-span-4) */}
           <div className="lg:col-span-4 space-y-3">
-            <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-brass-light">
+            <h4 className="font-serif text-sm font-bold text-brass-light">
               Boutique Location
             </h4>
             <div className="space-y-2 text-xs text-canvas/80 font-light">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-brass shrink-0 mt-0.5" />
                 <span>
-                  {KENZAE_STORE_CONFIG.storeName}, Main Road, {KENZAE_STORE_CONFIG.locality}, Ernakulam District, Kerala — {KENZAE_STORE_CONFIG.pincode}
+                  {KENZAE_STORE_CONFIG.storeName}, Main Road, {KENZAE_STORE_CONFIG.locality}, Ernakulam District, Kerala {KENZAE_STORE_CONFIG.pincode}
                 </span>
               </div>
               <div className="flex items-center gap-2">
