@@ -12,23 +12,23 @@ interface CollectionCardMeta {
 const COLLECTION_CARDS: CollectionCardMeta[] = [
   {
     category: 'Saris',
-    title: 'Handwoven Saris',
+    title: 'Handwoven saris',
     subtitle: 'Banarasi Katan, Kasavu & Kanjivaram',
   },
   {
     category: 'Churidars & Salwar Sets',
     title: 'Churidars & Anarkalis',
-    subtitle: 'Chanderi, Raw Silk & Mulmul Sets',
+    subtitle: 'Chanderi, Raw Silk & Mulmul sets',
   },
   {
     category: 'Unstitched Dress Materials',
-    title: 'Dress Materials',
-    subtitle: 'Tailored 3-Piece Artisanal Yardage',
+    title: 'Dress materials',
+    subtitle: 'Tailored 3-piece artisanal yardage',
   },
   {
     category: 'Kurthis & Ready-to-Wear',
-    title: 'Kurthis & Tunics',
-    subtitle: 'Georgette Festive & Kalamkari Wear',
+    title: 'Kurthis & tunics',
+    subtitle: 'Georgette festive & Kalamkari wear',
   },
 ];
 
@@ -48,29 +48,27 @@ export const CollectionShowcase: React.FC = () => {
   };
 
   return (
-    <section className="py-8 sm:py-10 bg-canvas border-b border-canvas-border">
-      <div className="container mx-auto px-4">
-        <div className="flex items-end justify-between gap-4 mb-6">
-          <div>
-            <h2 className="font-serif text-2xl sm:text-3xl font-normal text-maroon-950">
-              Browse by Silhouette
-            </h2>
-          </div>
+    <section className="bg-canvas border-b border-canvas-border">
+      <div className="max-w-[1600px] mx-auto">
+        <div className="px-4 sm:px-6 lg:px-8 py-6 flex items-baseline justify-between gap-4 border-b border-canvas-border">
+          <h2 className="font-serif text-[28px] sm:text-[32px] font-normal text-obsidian leading-[1.15]">
+            Browse by silhouette
+          </h2>
 
           {filterState.category !== 'All' && (
             <button
               onClick={() =>
                 setFilterState((prev) => ({ ...prev, category: 'All', subCategory: 'All' }))
               }
-              className="text-xs font-medium text-maroon-900 hover:text-maroon-800 underline underline-offset-4 shrink-0 transition-colors"
+              className="text-[13px] font-medium text-maroon-900 hover:text-maroon-800 underline underline-offset-4 shrink-0 transition-colors duration-150"
             >
-              Show All Pieces
+              Show all pieces
             </button>
           )}
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
-          {COLLECTION_CARDS.map((card) => {
+        <div className="grid grid-cols-2 lg:grid-cols-4 border-b border-canvas-border lg:border-b-0">
+          {COLLECTION_CARDS.map((card, index) => {
             const categoryProducts = products.filter((p) => p.category === card.category);
             const coverImage = categoryProducts[0]?.images[0];
             const isSelected = filterState.category === card.category;
@@ -79,42 +77,49 @@ export const CollectionShowcase: React.FC = () => {
               <button
                 key={card.category}
                 onClick={() => handleSelectCollection(card.category)}
-                className={`group text-left rounded-xl overflow-hidden border transition-all duration-200 bg-white flex flex-col active:scale-[0.98] ${
+                className={`group text-left flex flex-col transition-colors duration-150 border-canvas-border ${
+                  index % 2 === 0 ? 'border-r' : 'border-r-0 lg:border-r'
+                } ${index < 2 ? 'border-b lg:border-b-0' : ''} ${
+                  index === 3 ? 'lg:border-r-0' : ''
+                } ${
                   isSelected
-                    ? 'border-maroon-900 ring-1 ring-maroon-900'
-                    : 'border-[#EAE3D7] hover:border-maroon-900/40'
+                    ? 'bg-canvas-subtle'
+                    : 'bg-white hover:bg-canvas'
                 }`}
               >
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-canvas-subtle">
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-canvas-subtle border-b border-canvas-border">
                   {coverImage && (
                     <img
                       src={coverImage}
                       alt={card.title}
                       loading="lazy"
-                      className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
+                      className="w-full h-full object-cover object-top"
                     />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-maroon-950/65 via-transparent to-transparent" />
-                  <span className="absolute bottom-2 right-2.5 text-[10px] font-sans font-medium text-white/95 bg-maroon-950/80 backdrop-blur-sm px-2 py-0.5 rounded-full tabular-nums tracking-wide">
-                    {categoryProducts.length} {categoryProducts.length === 1 ? 'piece' : 'pieces'}
-                  </span>
                 </div>
 
-                <div className="p-3 sm:p-3.5 flex items-center justify-between gap-2 w-full">
-                  <div className="min-w-0">
-                    <h3 className="font-serif text-sm sm:text-base font-medium text-obsidian group-hover:text-maroon-900 truncate transition-colors">
-                      {card.title}
-                    </h3>
-                    <p className="text-[11px] text-obsidian-slate truncate mt-0.5 font-light">
+                <div className="p-4 sm:p-5 flex items-start justify-between gap-3 w-full">
+                  <div className="min-w-0 space-y-1">
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-serif text-[18px] sm:text-[20px] font-normal text-obsidian group-hover:text-maroon-900 truncate transition-colors duration-150">
+                        {card.title}
+                      </h3>
+                    </div>
+                    <p className="text-[13px] text-obsidian-slate truncate">
                       {card.subtitle}
                     </p>
+                    <p className="text-xs text-obsidian-muted tabular-nums pt-0.5">
+                      {categoryProducts.length} {categoryProducts.length === 1 ? 'piece' : 'pieces'}
+                    </p>
                   </div>
+
                   <ArrowRight
-                    className={`w-4 h-4 shrink-0 transition-transform ${
+                    className={`w-4 h-4 shrink-0 mt-1 transition-colors duration-150 ${
                       isSelected
-                        ? 'text-maroon-900 translate-x-0.5'
-                        : 'text-obsidian-muted group-hover:text-maroon-900 group-hover:translate-x-0.5'
+                        ? 'text-maroon-900'
+                        : 'text-obsidian-muted group-hover:text-obsidian'
                     }`}
+                    strokeWidth={1.5}
                   />
                 </div>
               </button>

@@ -4,7 +4,8 @@ import { KENZAE_STORE_CONFIG } from '../data/storeConfig';
 import { generateStoreVisitWhatsAppUrl } from '../utils/whatsapp';
 
 export const StoreLocator: React.FC = () => {
-  const directionsUrl = "https://www.google.com/maps/dir/?api=1&destination=Kenzae+Boutique+Mulanthuruthy";
+  const directionsUrl =
+    'https://www.google.com/maps/dir/?api=1&destination=Kenzae+Boutique+Mulanthuruthy';
 
   const handleOpenDirections = () => {
     window.open(directionsUrl, '_blank', 'noopener,noreferrer');
@@ -15,131 +16,114 @@ export const StoreLocator: React.FC = () => {
   };
 
   return (
-    <section id="store-locator" className="py-16 bg-[#F5F2EB] border-t border-canvas-border">
-      <div className="container mx-auto px-4">
-        
+    <section id="store-locator" className="bg-canvas border-b border-canvas-border">
+      <div className="max-w-[1600px] mx-auto">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-          <h2 className="font-serif text-3xl sm:text-4xl font-normal text-obsidian">
+        <div className="px-4 sm:px-6 lg:px-8 py-6 border-b border-canvas-border flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+          <h2 className="font-serif text-[28px] sm:text-[32px] font-normal text-obsidian leading-[1.15]">
             Experience Kenzae
           </h2>
-          <p className="text-xs sm:text-sm text-obsidian-slate font-light leading-relaxed">
-            Feel the pure silk weaves, inspect intricate embroidery, and enjoy personalized drape consultations at our boutique.
+          <p className="text-[14px] text-obsidian-slate">
+            Visit our Mulanthuruthy boutique for fabric trials and personalized drape consultations.
           </p>
         </div>
 
-        {/* Card Grid with Responsive Embedded Map */}
-        <div className="max-w-5xl mx-auto bg-white rounded-2xl border border-[#EAE3D7] overflow-hidden grid grid-cols-1 lg:grid-cols-12">
-          
-          {/* Left Column: Clean Store Visit Card (lg:col-span-6) */}
-          <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between space-y-6">
-            <div className="space-y-5">
-              
-              {/* Address Block */}
-              <div className="flex items-start gap-3.5">
-                <div className="p-2.5 rounded-full bg-maroon-950 text-brass-light shrink-0 mt-0.5 shadow-sm">
-                  <MapPin className="w-5 h-5 text-brass" />
-                </div>
-                <div>
-                  <h3 className="font-serif text-lg font-bold text-obsidian">
+        {/* 12-Column Split Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 bg-white">
+          {/* Left Column: Store Details */}
+          <div className="lg:col-span-6 p-6 sm:p-10 lg:p-12 flex flex-col justify-between gap-8">
+            <div className="space-y-6">
+              <div className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-obsidian-muted shrink-0 mt-1" strokeWidth={1.5} />
+                <div className="space-y-1">
+                  <h3 className="font-serif text-[20px] font-normal text-obsidian">
                     {KENZAE_STORE_CONFIG.storeName}
                   </h3>
-                  <p className="text-xs sm:text-sm text-obsidian-slate mt-1 leading-relaxed">
-                    Main Road, {KENZAE_STORE_CONFIG.locality}, <br />
-                    {KENZAE_STORE_CONFIG.district} District, {KENZAE_STORE_CONFIG.state} — {KENZAE_STORE_CONFIG.pincode}
+                  <p className="text-[14px] text-obsidian-slate leading-relaxed">
+                    Main Road, {KENZAE_STORE_CONFIG.locality}, {KENZAE_STORE_CONFIG.district} District,{' '}
+                    {KENZAE_STORE_CONFIG.state} — {KENZAE_STORE_CONFIG.pincode}
                   </p>
-                  <p className="text-[11px] text-brass-dark font-medium mt-1">
+                  <p className="text-[13px] text-brass-dark font-medium">
                     Near Mulanthuruthy Railway Station &amp; Marthoman Cathedral Hub
                   </p>
                 </div>
               </div>
 
-              {/* Operating Hours */}
-              <div className="flex items-start gap-3.5">
-                <div className="p-2.5 rounded-full bg-canvas-subtle text-maroon-900 shrink-0 mt-0.5">
-                  <Clock className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-obsidian">
-                    Boutique Hours
+              <div className="flex items-start gap-3">
+                <Clock className="w-4 h-4 text-obsidian-muted shrink-0 mt-1" strokeWidth={1.5} />
+                <div className="space-y-1">
+                  <h4 className="text-[14px] font-medium text-obsidian">
+                    Boutique hours
                   </h4>
-                  <p className="text-xs text-obsidian-slate mt-0.5 font-medium">
+                  <p className="text-[14px] text-obsidian-slate">
                     Monday to Saturday: 10:00 AM – 7:30 PM
                   </p>
-                  <p className="text-xs text-obsidian-muted mt-0.5">
+                  <p className="text-[13px] text-obsidian-muted">
                     Sunday: 1:00 PM – 6:00 PM (or by prior bridal appointment)
                   </p>
                 </div>
               </div>
 
-              {/* Phone & Inquiries */}
-              <div className="flex items-start gap-3.5">
-                <div className="p-2.5 rounded-full bg-canvas-subtle text-maroon-900 shrink-0 mt-0.5">
-                  <Phone className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-obsidian">
-                    Direct Contact &amp; Inquiries
+              <div className="flex items-start gap-3">
+                <Phone className="w-4 h-4 text-obsidian-muted shrink-0 mt-1" strokeWidth={1.5} />
+                <div className="space-y-1">
+                  <h4 className="text-[14px] font-medium text-obsidian">
+                    Direct contact
                   </h4>
-                  <p className="text-xs text-obsidian-slate mt-0.5 font-medium tabular-nums">
+                  <p className="text-[14px] text-obsidian-slate tabular-nums">
                     {KENZAE_STORE_CONFIG.phoneDisplay}
                   </p>
-                  <p className="text-[11px] text-obsidian-muted">
-                    We respond promptly to fabric requests and trial bookings
+                  <p className="text-[13px] text-obsidian-muted">
+                    For fabric inquiries and private trial bookings
                   </p>
                 </div>
               </div>
-
             </div>
 
-            {/* Action Buttons: Direct One-Click Get Directions Button */}
-            <div className="pt-4 border-t border-canvas-border flex flex-col sm:flex-row gap-3">
+            <div className="pt-6 border-t border-canvas-border flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleOpenDirections}
-                className="flex-1 py-3 px-5 rounded-full bg-maroon-950 hover:bg-maroon-900 text-brass-light hover:text-white text-xs font-bold tracking-wider uppercase transition-[transform,background-color] duration-150 flex items-center justify-center gap-2 border border-brass/40 active:scale-[0.97]"
+                className="flex-1 h-11 px-5 rounded-[8px] bg-maroon-900 hover:bg-maroon-850 text-white text-[14px] font-medium active:scale-[0.98] transition-[transform,background-color] duration-150 flex items-center justify-center gap-2"
               >
-                <Navigation className="w-4 h-4 text-brass" />
-                <span>Get Directions</span>
+                <Navigation className="w-4 h-4 text-white/85" strokeWidth={1.5} />
+                <span>Get directions</span>
               </button>
 
               <button
                 onClick={handleWhatsAppVisit}
-                className="py-3 px-5 rounded-full bg-canvas-subtle hover:bg-canvas-border text-obsidian text-xs font-semibold tracking-wider uppercase active:scale-[0.97] transition-[transform,background-color] duration-150 flex items-center justify-center gap-2 border border-canvas-border"
+                className="h-11 px-5 rounded-[8px] bg-white hover:bg-canvas-subtle text-obsidian text-[14px] font-medium active:scale-[0.98] transition-[transform,background-color] duration-150 flex items-center justify-center gap-2 border border-canvas-border"
               >
-                <MessageCircle className="w-4 h-4 text-whatsapp" />
-                <span>Book Trial</span>
+                <MessageCircle className="w-4 h-4 text-obsidian-muted" strokeWidth={1.5} />
+                <span>Book trial</span>
               </button>
             </div>
           </div>
 
-          {/* Right Column: Responsive Embedded Google Map (lg:col-span-6) */}
-          <div className="lg:col-span-6 min-h-[300px] lg:min-h-full relative bg-canvas-subtle border-t lg:border-t-0 lg:border-l border-canvas-border flex flex-col">
+          {/* Right Column: Embedded Map */}
+          <div className="lg:col-span-6 min-h-[320px] lg:min-h-full relative bg-canvas-subtle border-t lg:border-t-0 lg:border-l border-canvas-border flex flex-col">
             <iframe
               title="Kenzae Store Location"
               src="https://maps.google.com/maps?q=Mulanthuruthy,Ernakulam,Kerala&t=&z=15&ie=UTF8&iwloc=&output=embed"
-              className="w-full h-full min-h-[320px] border-0"
+              className="w-full flex-1 min-h-[320px] border-0"
               style={{ filter: 'grayscale(15%) contrast(102%) saturate(88%)' }}
               loading="lazy"
               allowFullScreen
             />
 
-            {/* Quick Map Link Bar */}
-            <div className="p-3 bg-white border-t border-canvas-border flex items-center justify-between text-xs text-obsidian-slate">
-              <span className="text-[11px] font-medium">Mulanthuruthy, Ernakulam, Kerala</span>
+            <div className="px-4 py-3 bg-white border-t border-canvas-border flex items-center justify-between text-[13px] text-obsidian-slate">
+              <span>Mulanthuruthy, Ernakulam, Kerala</span>
               <a
                 href={KENZAE_STORE_CONFIG.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-brass-dark hover:text-maroon-950 font-semibold"
+                className="inline-flex items-center gap-1.5 text-maroon-900 hover:text-maroon-800 font-medium"
               >
-                <span>View Full Map</span>
-                <ExternalLink className="w-3.5 h-3.5" />
+                <span>View full map</span>
+                <ExternalLink className="w-4 h-4" strokeWidth={1.5} />
               </a>
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );

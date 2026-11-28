@@ -24,120 +24,95 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative overflow-hidden maroon-gradient-bg text-canvas min-h-[calc(100svh-65px)] flex items-center py-12 md:py-16 lg:py-20 border-b border-brass/25">
-      {/* Subtle Silk Ambient Sheen */}
-      <div className="absolute -top-40 right-0 w-[28rem] h-[28rem] rounded-full bg-brass/10 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-32 -left-24 w-72 h-72 rounded-full bg-maroon-700/25 blur-3xl pointer-events-none" />
-
-      <div className="container mx-auto px-4 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Left Column: Editorial Headline & Action Hierarchy */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-            className="lg:col-span-7 flex flex-col items-start space-y-6 min-w-0"
-          >
-            {/* Editorial Title */}
-            <h1 className="font-serif text-[2.5rem] sm:text-5xl lg:text-[3.85rem] font-light leading-[1.05] tracking-[-0.015em] text-white">
-              Handpicked Weaves &amp; <br className="hidden sm:inline" />
-              <span className="italic font-normal text-brass-light">
-                Bespoke Ensembles.
-              </span>
+    <section className="bg-maroon-950 text-white border-b border-white/10">
+      <div className="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12">
+        {/* Left Column: Editorial Headline & Action Hierarchy */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="lg:col-span-7 flex flex-col justify-between p-6 sm:p-10 lg:p-16 min-w-0"
+        >
+          <div className="my-auto py-4 lg:py-8 space-y-6">
+            <h1 className="font-serif text-[40px] sm:text-[56px] lg:text-[64px] font-normal leading-[1.04] tracking-[-0.025em] text-[#FAF8F5]">
+              Handpicked weaves &amp; bespoke ensembles
             </h1>
 
-            {/* Concise Value Statement */}
-            <p className="text-canvas/85 text-sm md:text-[16px] leading-relaxed max-w-xl font-light">
-              Pure handwoven saris, sculpted Anarkali churidars, and unstitched artisanal dress materials—curated with transparent pricing and direct boutique guidance.
+            <p className="text-white/80 text-[16px] sm:text-[18px] leading-[1.6] max-w-[34rem] font-normal">
+              Pure handwoven saris, sculpted Anarkali churidars, and unstitched artisanal dress materials with transparent pricing and direct boutique guidance.
             </p>
 
-            {/* Refined Dual CTA Row */}
-            <div className="flex flex-wrap items-center gap-3 pt-1 w-full sm:w-auto">
+            <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
                 onClick={scrollToCatalog}
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#FAF8F5] hover:bg-brass-light text-maroon-950 font-semibold text-xs tracking-[0.18em] uppercase active:scale-[0.97] transition-[transform,background-color] duration-150 whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 px-6 h-12 rounded-[8px] bg-[#FAF8F5] hover:bg-white text-maroon-950 font-medium text-[14px] active:scale-[0.98] transition-[transform,background-color] duration-150 whitespace-nowrap"
               >
-                <span>Explore Collection</span>
-                <ArrowDown className="w-3.5 h-3.5" />
+                <span>Explore collection</span>
+                <ArrowDown className="w-4 h-4" strokeWidth={1.5} />
               </button>
 
               <button
                 onClick={handleWhatsAppVisit}
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-maroon-900/70 hover:bg-maroon-800/90 border border-brass/35 text-brass-light hover:text-white font-medium text-xs tracking-[0.14em] uppercase active:scale-[0.97] transition-[transform,background-color,border-color] duration-150 whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 px-6 h-12 rounded-[8px] bg-transparent hover:bg-white/10 border border-white/25 text-white font-medium text-[14px] active:scale-[0.98] transition-[transform,background-color] duration-150 whitespace-nowrap"
               >
-                <MessageCircle className="w-4 h-4 text-whatsapp" />
-                <span>Book Boutique Trial</span>
+                <MessageCircle className="w-4 h-4 text-white/85" strokeWidth={1.5} />
+                <span>Book boutique trial</span>
               </button>
             </div>
+          </div>
 
-            {/* Trust Strip */}
-            <div className="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/15 w-full max-w-xl text-[11px] md:text-xs text-canvas/80">
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-brass shrink-0" />
-                <span>Silk Mark Handlooms</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <span className="w-1 h-1 rounded-full bg-brass shrink-0" />
-                <span className="tabular-nums">Transparent INR Pricing</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <span className="w-1 h-1 rounded-full bg-brass shrink-0" />
-                <span>Custom Studio Tailoring</span>
-              </div>
+          {/* Architectural Trust Strip */}
+          <div className="pt-6 mt-6 border-t border-white/15 grid grid-cols-1 sm:grid-cols-3 gap-4 text-[13px] text-white/80">
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-brass-light shrink-0" strokeWidth={1.5} />
+              <span>Silk Mark handlooms</span>
             </div>
-          </motion.div>
+            <div className="tabular-nums">Transparent INR pricing</div>
+            <div>Custom studio tailoring</div>
+          </div>
+        </motion.div>
 
-          {/* Right Column: Live Featured Showcase Frame */}
-          {featuredPiece && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.12, ease: [0.23, 1, 0.32, 1] }}
-              className="lg:col-span-5"
+        {/* Right Column: Featured Showcase Grid Cell */}
+        {featuredPiece && (
+          <div className="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-white/10 flex flex-col">
+            <button
+              type="button"
+              onClick={() => setSelectedProduct(featuredPiece)}
+              className="group text-left flex-1 flex flex-col bg-maroon-900/40 hover:bg-maroon-900/65 transition-colors duration-150 w-full"
             >
-              <div
-                onClick={() => setSelectedProduct(featuredPiece)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    setSelectedProduct(featuredPiece);
-                  }
-                }}
-                className="group relative mx-auto max-w-sm lg:max-w-[400px] rounded-2xl overflow-hidden border border-brass/30 bg-maroon-900/50 p-2 cursor-pointer transition-[transform,border-color] duration-300 hover:border-brass/50 active:scale-[0.99]"
-              >
-                <div className="aspect-[4/5] rounded-xl overflow-hidden relative bg-maroon-950">
-                  <img
-                    src={featuredPiece.images[0]}
-                    alt={featuredPiece.title}
-                    className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-                    loading="eager"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-maroon-950/90 via-maroon-950/15 to-transparent" />
+              <div className="aspect-[4/5] w-full overflow-hidden bg-maroon-900">
+                <img
+                  src={featuredPiece.images[0]}
+                  alt={featuredPiece.title}
+                  className="w-full h-full object-cover object-top"
+                  loading="eager"
+                />
+              </div>
 
-                  {/* Bottom Floating Editorial Caption */}
-                  <div className="absolute bottom-3.5 left-3.5 right-3.5 p-3.5 rounded-xl bg-[#FAF8F5]/95 backdrop-blur-md text-obsidian border border-brass/35">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="text-[10px] tracking-[0.2em] uppercase font-semibold text-maroon-900">
-                        Featured Piece · {featuredPiece.sku}
-                      </span>
-                      <span className="text-xs font-bold text-maroon-950 tabular-nums font-sans">
-                        {formatPrice(featuredPiece.price)}
-                      </span>
-                    </div>
-                    <div className="flex items-center justify-between gap-2 mt-1">
-                      <p className="font-serif text-[15px] font-medium text-obsidian truncate">
-                        {featuredPiece.title}
-                      </p>
-                      <ArrowUpRight className="w-4 h-4 text-maroon-900 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </div>
+              <div className="p-5 sm:p-6 border-t border-white/10 flex items-center justify-between gap-4 w-full">
+                <div className="min-w-0 space-y-1">
+                  <div className="flex items-center gap-3 text-xs text-white/75 tabular-nums">
+                    <span>Featured</span>
+                    <span>{featuredPiece.sku}</span>
                   </div>
+                  <p className="font-serif text-[20px] font-normal text-[#FAF8F5] truncate leading-snug">
+                    {featuredPiece.title}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3 shrink-0">
+                  <span className="text-[15px] font-medium text-[#FAF8F5] tabular-nums">
+                    {formatPrice(featuredPiece.price)}
+                  </span>
+                  <ArrowUpRight
+                    className="w-4 h-4 text-white/75 group-hover:text-white transition-colors duration-150"
+                    strokeWidth={1.5}
+                  />
                 </div>
               </div>
-            </motion.div>
-          )}
-        </div>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -2,9 +2,9 @@
 @config "../tailwind.config.js";
 
 :root {
-  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-drawer: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @layer base {
@@ -13,7 +13,7 @@
     -webkit-tap-highlight-color: transparent;
     overflow-x: clip;
   }
-  
+
   body {
     background-color: #FAF8F5;
     color: #18181B;
@@ -22,16 +22,20 @@
   }
 
   h1, h2, h3, .font-serif {
-    font-family: 'Cormorant Garamond', Cinzel, Georgia, serif;
+    font-family: 'Cormorant Garamond', Georgia, serif;
   }
 
   .tabular-nums {
     font-variant-numeric: tabular-nums;
   }
+
+  :focus-visible {
+    outline: 2px solid #4B0E1D;
+    outline-offset: 2px;
+  }
 }
 
 @layer utilities {
-  /* Hide scrollbar for clean horizontal swipe on mobile */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
@@ -39,34 +43,4 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-
-  .gold-gradient-text {
-    background: linear-gradient(135deg, #EDE0C8 0%, #F7EFE0 50%, #C8A46B 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .gold-gradient-bg {
-    background: linear-gradient(135deg, #F3E7D3 0%, #DFC394 100%);
-  }
-
-  .maroon-gradient-bg {
-    background: linear-gradient(135deg, #3A0A16 0%, #5B1224 55%, #460D1B 100%);
-  }
-}
-
-/* Image shimmer loading effect */
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-.shimmer-placeholder {
-  background: linear-gradient(90deg, #F3EFE6 25%, #FAF8F5 50%, #F3EFE6 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
 }

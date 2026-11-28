@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, MessageCircle, Heart, ExternalLink } from 'lucide-react';
+import { MapPin, Phone, MessageCircle, ExternalLink } from 'lucide-react';
 import { KENZAE_STORE_CONFIG } from '../data/storeConfig';
 import { generateStoreVisitWhatsAppUrl } from '../utils/whatsapp';
 import { useCatalog } from '../context/CatalogContext';
@@ -25,129 +25,125 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-maroon-950 text-canvas border-t border-brass/30 pt-16 pb-12">
-      <div className="container mx-auto px-4">
-        
+    <footer className="bg-maroon-950 text-white border-t border-white/10">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10">
         {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-12 border-b border-white/10">
-          
-          {/* Brand & Story (lg:col-span-5) */}
+          {/* Brand & Story */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="font-serif text-2xl font-bold tracking-[0.25em] text-brass-light uppercase">
-                KENZAE
+            <div>
+              <span className="font-serif text-[28px] font-medium tracking-[0.04em] text-[#FAF8F5]">
+                Kenzae
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-brass"></span>
+              <p className="text-[13px] text-white/70 mt-1">
+                Designer ethnic wear &amp; couture
+              </p>
             </div>
-            <p className="text-xs uppercase tracking-widest text-brass-light/80 font-medium">
-              Designer Ethnic Wear & Couture
+            <p className="text-[14px] text-white/75 leading-relaxed max-w-sm">
+              Curating bespoke Banarasi silks, Kasavu organza, artisanal salwar suits, and unstitched dress materials in Mulanthuruthy, Kerala.
             </p>
-            <p className="text-xs text-canvas/70 leading-relaxed max-w-sm font-light">
-              Celebrating India's finest handloom traditions. Kenzae curates bespoke Banarasi silks, Kasavu organza, artisanal salwar suits, and unstitched dress materials for celebrations, weddings, and everyday grace.
-            </p>
-            
+
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 onClick={handleWhatsAppConsult}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-maroon-900 hover:bg-maroon-850 text-brass-light text-xs font-semibold tracking-wider uppercase border border-brass/30 transition-all"
+                className="inline-flex items-center gap-2 px-4 h-10 rounded-[8px] bg-[#FAF8F5] hover:bg-white text-maroon-950 text-[13px] font-medium transition-colors duration-150"
               >
-                <MessageCircle className="w-3.5 h-3.5 text-whatsapp" />
-                <span>WhatsApp Boutique</span>
+                <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
+                <span>WhatsApp boutique</span>
               </button>
               <a
                 href="https://instagram.com/kenzae.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/5 hover:bg-white/10 text-brass-light text-xs font-medium tracking-wide border border-brass/20 transition-all"
+                className="inline-flex items-center gap-1.5 px-4 h-10 rounded-[8px] bg-transparent hover:bg-white/10 text-white text-[13px] font-medium border border-white/20 transition-colors duration-150"
               >
                 <span>{KENZAE_STORE_CONFIG.instagramHandle}</span>
-                <ExternalLink className="w-3 h-3 text-brass" />
+                <ExternalLink className="w-4 h-4 text-white/75" strokeWidth={1.5} />
               </a>
             </div>
           </div>
 
-          {/* Quick Category Navigation (lg:col-span-3) */}
+          {/* Collections */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-brass-light">
+            <h4 className="font-serif text-[18px] font-normal text-[#FAF8F5]">
               Collections
             </h4>
-            <ul className="space-y-2 text-xs text-canvas/80 font-light">
+            <ul className="space-y-2.5 text-[14px] text-white/75">
               <li>
                 <button
                   onClick={() => handleCategoryClick('Saris')}
-                  className="hover:text-brass-light transition-colors"
+                  className="hover:text-white transition-colors duration-150 text-left"
                 >
-                  Pure Silk & Handwoven Saris
+                  Pure silk &amp; handwoven saris
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => handleCategoryClick('Churidars & Salwar Sets')}
-                  className="hover:text-brass-light transition-colors"
+                  className="hover:text-white transition-colors duration-150 text-left"
                 >
-                  Churidars & Anarkali Suits
+                  Churidars &amp; Anarkali suits
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => handleCategoryClick('Unstitched Dress Materials')}
-                  className="hover:text-brass-light transition-colors"
+                  className="hover:text-white transition-colors duration-150 text-left"
                 >
-                  Unstitched Dress Materials
+                  Unstitched dress materials
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => handleCategoryClick('Kurthis & Ready-to-Wear')}
-                  className="hover:text-brass-light transition-colors"
+                  className="hover:text-white transition-colors duration-150 text-left"
                 >
-                  Festive Kurthis & Tunics
+                  Festive kurthis &amp; tunics
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Store Location & Timings (lg:col-span-4) */}
+          {/* Boutique Location */}
           <div className="lg:col-span-4 space-y-3">
-            <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-brass-light">
-              Boutique Location
+            <h4 className="font-serif text-[18px] font-normal text-[#FAF8F5]">
+              Boutique location
             </h4>
-            <div className="space-y-2 text-xs text-canvas/80 font-light">
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-brass shrink-0 mt-0.5" />
+            <div className="space-y-2.5 text-[14px] text-white/75">
+              <div className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-white/60 shrink-0 mt-1" strokeWidth={1.5} />
                 <span>
                   {KENZAE_STORE_CONFIG.storeName}, Main Road, {KENZAE_STORE_CONFIG.locality}, Ernakulam District, Kerala — {KENZAE_STORE_CONFIG.pincode}
                 </span>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-brass shrink-0" />
-                <span>{KENZAE_STORE_CONFIG.phoneDisplay}</span>
+              <div className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-white/60 shrink-0" strokeWidth={1.5} />
+                <span className="tabular-nums">{KENZAE_STORE_CONFIG.phoneDisplay}</span>
               </div>
-              <p className="text-[11px] text-canvas/60 pt-1">
+              <p className="text-[13px] text-white/60 pt-0.5">
                 {KENZAE_STORE_CONFIG.timings}
               </p>
-              <div className="pt-2">
+              <div className="pt-1">
                 <a
                   href={KENZAE_STORE_CONFIG.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs text-brass-light hover:text-white underline underline-offset-4 font-medium"
+                  className="inline-flex items-center gap-1.5 text-[13px] text-white hover:text-white/80 underline underline-offset-4 font-medium"
                 >
-                  <span>Open Directions on Google Maps</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Open directions on Google Maps</span>
+                  <ExternalLink className="w-4 h-4" strokeWidth={1.5} />
                 </a>
               </div>
             </div>
           </div>
-
         </div>
 
-        {/* Bottom Credits & Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-canvas/75 font-light">
+        {/* Bottom Copyright */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-white/70">
           <div>
             © {new Date().getFullYear()} {KENZAE_STORE_CONFIG.storeName}. All rights reserved.
           </div>
-          <div className="flex items-center gap-4 text-[11px]">
+          <div className="flex items-center gap-4">
             <a
               href="/staff"
               onClick={(e) => {
@@ -155,19 +151,15 @@ export const Footer: React.FC = () => {
                 window.history.pushState({}, '', '/staff');
                 window.dispatchEvent(new PopStateEvent('popstate'));
               }}
-              className="text-brass-light/70 hover:text-white transition-colors tracking-wider underline underline-offset-4"
+              className="text-white/75 hover:text-white transition-colors duration-150 underline underline-offset-4"
               title="Kenzae Staff Portal"
             >
-              Staff Access
+              Staff access
             </a>
-            <span className="text-brass-light/40">•</span>
-            <div className="flex items-center gap-1.5 text-canvas/80">
-              <span>Handcrafted for Kerala Fashion &amp; Couture</span>
-              <Heart className="w-3 h-3 text-brass fill-current inline" />
-            </div>
+            <span className="text-white/30">·</span>
+            <span>Mulanthuruthy, Kerala</span>
           </div>
         </div>
-
       </div>
     </footer>
   );

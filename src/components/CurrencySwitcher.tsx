@@ -16,7 +16,6 @@ export const CurrencySwitcher: React.FC<CurrencySwitcherProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown on outside click
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -37,40 +36,36 @@ export const CurrencySwitcher: React.FC<CurrencySwitcherProps> = ({
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex items-center gap-1.5 px-3 py-1.5 min-h-[40px] sm:min-h-[36px] rounded-full border border-canvas-border bg-white/90 hover:bg-white text-obsidian hover:text-maroon-900 active:scale-[0.97] transition-[transform,background-color,border-color] duration-150 text-[11px] font-semibold tracking-wider shadow-2xs group"
-        aria-label="Select Currency"
+        className="flex items-center gap-1.5 px-3 h-10 sm:h-9 rounded-[8px] border border-canvas-border bg-white hover:bg-canvas-subtle text-obsidian active:scale-[0.98] transition-[transform,background-color] duration-150 text-[13px] font-medium tabular-nums"
+        aria-label="Select currency"
         aria-expanded={isOpen}
       >
-        <span className="text-sm leading-none">{currencyConfig.flag}</span>
-        <span className="font-sans font-medium text-[11px] text-maroon-950">
-          {currencyConfig.code}
-        </span>
+        <Globe className="w-4 h-4 text-obsidian-muted" strokeWidth={1.5} />
+        <span className="text-obsidian">{currencyConfig.code}</span>
         <ChevronDown
-          className={`w-3 h-3 text-obsidian-muted group-hover:text-maroon-900 transition-transform duration-200 ${
+          className={`w-4 h-4 text-obsidian-muted transition-transform duration-150 ${
             isOpen ? 'rotate-180' : ''
           }`}
+          strokeWidth={1.5}
         />
       </button>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 4, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 4, scale: 0.96 }}
-            transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 4 }}
+            transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
             style={{ transformOrigin: 'top right' }}
-            className="absolute right-0 mt-2 w-56 rounded-xl bg-[#FAF8F5] border border-canvas-border shadow-xl z-50 overflow-hidden py-1.5"
+            className="absolute right-0 mt-2 w-60 rounded-[12px] bg-white border border-canvas-border shadow-editorial z-50 overflow-hidden"
           >
-            <div className="px-3 py-1.5 border-b border-canvas-border flex items-center justify-between text-[10px] uppercase tracking-widest text-obsidian-muted font-semibold">
-              <span className="flex items-center gap-1">
-                <Globe className="w-3 h-3 text-brass" />
-                Select Currency
-              </span>
-              <span>NRI Global</span>
+            <div className="px-3 py-2 border-b border-canvas-border flex items-center justify-between text-xs text-obsidian-muted font-medium">
+              <span>Currency</span>
+              <span>Billed in INR</span>
             </div>
 
-            <div className="max-h-64 overflow-y-auto divide-y divide-canvas-border/40">
+            <div className="max-h-64 overflow-y-auto divide-y divide-canvas-border">
               {supportedCurrencies.map((curr) => {
                 const isSelected = curr.code === currentCurrency;
                 return (
@@ -78,33 +73,26 @@ export const CurrencySwitcher: React.FC<CurrencySwitcherProps> = ({
                     key={curr.code}
                     type="button"
                     onClick={() => handleSelect(curr.code)}
-                    className={`w-full px-3 py-2 text-left flex items-center justify-between text-xs transition-colors ${
+                    className={`w-full px-3 py-2.5 text-left flex items-center justify-between text-[13px] transition-colors duration-150 ${
                       isSelected
-                        ? 'bg-maroon-900/10 text-maroon-950 font-bold'
-                        : 'hover:bg-white/80 text-obsidian'
+                        ? 'bg-canvas-subtle text-maroon-950 font-medium'
+                        : 'hover:bg-canvas text-obsidian'
                     }`}
                   >
-                    <div className="flex items-center gap-2">
-                      <span className="text-base leading-none">{curr.flag}</span>
-                      <div>
-                        <div className="font-medium tracking-wide">
-                          {curr.code} <span className="text-[10px] font-normal text-obsidian-muted">({curr.symbol})</span>
-                        </div>
-                        <div className="text-[10px] text-obsidian-muted truncate max-w-[120px]">
-                          {curr.country}
-                        </div>
-                      </div>
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span className="font-medium tabular-nums w-9 shrink-0">
+                        {curr.code}
+                      </span>
+                      <span className="text-obsidian-slate truncate">
+                        {curr.country}
+                      </span>
                     </div>
-                    {isSelected && (
-                      <span className="w-1.5 h-1.5 rounded-full bg-maroon-900 shrink-0" />
-                    )}
+                    <span className="text-xs text-obsidian-muted tabular-nums shrink-0">
+                      {curr.symbol}
+                    </span>
                   </button>
                 );
               })}
-            </div>
-
-            <div className="px-3 py-1.5 bg-canvas-subtle/40 border-t border-canvas-border text-[9px] text-obsidian-muted leading-tight">
-              Rates updated live. Orders billed in INR equivalent at checkout.
             </div>
           </motion.div>
         )}

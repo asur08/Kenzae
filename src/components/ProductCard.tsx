@@ -34,31 +34,31 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     setSelectedProduct(product);
   };
 
-  const renderStockBadge = () => {
+  const renderStockStatus = () => {
     if (!isAvailable) {
       return (
-        <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-[0.12em] uppercase backdrop-blur-md bg-[#FAF8F5]/95 text-obsidian-slate border border-canvas-border shadow-xs">
-          Sold Out
+        <span className="px-2.5 py-1 rounded-[6px] text-xs font-medium bg-white text-obsidian-slate border border-canvas-border">
+          Sold out
         </span>
       );
     }
     if (qty === 1) {
       return (
-        <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-[0.12em] uppercase backdrop-blur-md bg-maroon-950/90 text-brass-light border border-brass/50 shadow-xs">
-          Only 1 Left
+        <span className="px-2.5 py-1 rounded-[6px] text-xs font-medium bg-maroon-950 text-white">
+          Only 1 left
         </span>
       );
     }
     if (qty <= 3) {
       return (
-        <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-[0.12em] uppercase backdrop-blur-md bg-maroon-900/85 text-white border border-brass/35 shadow-xs">
-          Only {qty} Left
+        <span className="px-2.5 py-1 rounded-[6px] text-xs font-medium bg-maroon-900 text-white tabular-nums">
+          Only {qty} left
         </span>
       );
     }
     return (
-      <span className="px-2.5 py-1 rounded-full text-[10px] font-medium tracking-[0.1em] uppercase backdrop-blur-md bg-[#FAF8F5]/90 text-maroon-950 border border-maroon-900/15 shadow-xs">
-        {qty} in Atelier
+      <span className="px-2.5 py-1 rounded-[6px] text-xs font-medium bg-white text-obsidian border border-canvas-border tabular-nums">
+        {qty} in atelier
       </span>
     );
   };
@@ -66,11 +66,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <article
       onClick={handleCardClick}
-      className="group relative bg-white rounded-xl overflow-hidden border border-[#EAE3D7] hover:border-maroon-900/40 transition-[border-color,transform] duration-200 flex flex-col cursor-pointer min-w-0"
+      className="group relative bg-white hover:bg-canvas transition-colors duration-150 flex flex-col cursor-pointer min-w-0 border-r border-b border-canvas-border"
     >
-      {/* Clean 3:4 Portrait Drape Showcase */}
+      {/* 3:4 Portrait Drape Showcase */}
       <div
-        className="relative aspect-[3/4] w-full overflow-hidden bg-canvas-subtle"
+        className="relative aspect-[3/4] w-full overflow-hidden bg-canvas-subtle border-b border-canvas-border"
         onMouseEnter={() => {
           if (hasMultipleImages) setCurrentImageIndex(1);
         }}
@@ -79,13 +79,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         }}
       >
         {!imageLoaded && !imageError && (
-          <div className="absolute inset-0 shimmer-placeholder" />
+          <div className="absolute inset-0 bg-canvas-subtle" />
         )}
 
         {imageError ? (
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-maroon-50 text-maroon-900/70">
-            <span className="font-serif text-lg tracking-[0.25em] uppercase">KENZAE</span>
-            <span className="text-[11px] mt-1 font-light">{product.subCategory || product.category}</span>
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-canvas-subtle text-obsidian-slate">
+            <span className="font-serif text-xl text-maroon-950">Kenzae</span>
+            <span className="text-xs mt-1">{product.subCategory || product.category}</span>
           </div>
         ) : (
           <img
@@ -100,7 +100,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 setImageError(true);
               }
             }}
-            className={`w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03] ${
+            className={`w-full h-full object-cover object-top transition-opacity duration-150 ${
               imageLoaded ? 'opacity-100' : 'opacity-0'
             }`}
           />
@@ -109,67 +109,67 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Top-Left Video Drape Indicator */}
         {product.videoUrl && (
           <div className="absolute top-3 left-3 pointer-events-none">
-            <span className="px-2 py-0.5 rounded-full text-[9px] font-semibold tracking-wider uppercase backdrop-blur-md bg-black/60 text-white flex items-center gap-1 shadow-xs">
-              <Play className="w-2.5 h-2.5 fill-current" />
-              <span>Drape Video</span>
+            <span className="px-2.5 py-1 rounded-[6px] text-xs font-medium bg-obsidian/85 text-white inline-flex items-center gap-1.5">
+              <Play className="w-3 h-3 fill-current" strokeWidth={1.5} />
+              <span>Drape video</span>
             </span>
           </div>
         )}
 
-        {/* Top-Right Minimal Wishlist Control */}
+        {/* Top-Right Wishlist Control */}
         <button
           onClick={handleWishlistToggle}
-          className={`absolute top-3 right-3 p-2 rounded-full backdrop-blur-md transition-transform duration-150 active:scale-[0.92] ${
+          className={`absolute top-3 right-3 w-9 h-9 rounded-[8px] flex items-center justify-center border transition-[transform,background-color,color,border-color] duration-150 active:scale-[0.96] ${
             isSaved
-              ? 'bg-maroon-900 text-brass-light shadow-md scale-105'
-              : 'bg-white/85 hover:bg-white text-obsidian shadow-xs opacity-95'
+              ? 'bg-maroon-900 text-white border-maroon-900'
+              : 'bg-white hover:bg-canvas-subtle text-obsidian-slate border-canvas-border'
           }`}
           aria-label={isSaved ? 'Remove from shortlist' : 'Save to shortlist'}
         >
-          <Heart className={`w-4 h-4 ${isSaved ? 'fill-current' : ''}`} />
+          <Heart className={`w-4 h-4 ${isSaved ? 'fill-current' : ''}`} strokeWidth={1.5} />
         </button>
 
-        {/* Bottom-Left Single Availability Pill */}
+        {/* Bottom-Left Availability Status */}
         <div className="absolute bottom-3 left-3 pointer-events-none">
-          {renderStockBadge()}
+          {renderStockStatus()}
         </div>
       </div>
 
       {/* Card Editorial Metadata */}
-      <div className="p-4 flex-1 flex flex-col justify-between gap-3 bg-white min-w-0">
-        <div className="space-y-1 min-w-0">
-          <div className="flex items-center justify-between gap-2 text-[10px]">
-            <span className="uppercase tracking-[0.16em] font-semibold text-brass-dark truncate">
+      <div className="p-5 flex-1 flex flex-col justify-between gap-4 min-w-0">
+        <div className="space-y-1.5 min-w-0">
+          <div className="flex items-center justify-between gap-2 text-xs">
+            <span className="font-medium text-brass-dark truncate">
               {product.subCategory || product.category}
             </span>
-            <span className="font-sans font-medium text-obsidian-slate tracking-[0.12em] tabular-nums shrink-0">
+            <span className="font-normal text-obsidian-muted tabular-nums shrink-0">
               {product.sku}
             </span>
           </div>
 
-          <h3 className="font-serif text-[17px] font-medium text-obsidian line-clamp-2 leading-[1.3] group-hover:text-maroon-900 transition-colors">
+          <h3 className="font-serif text-[20px] font-normal text-obsidian line-clamp-2 leading-[1.25] group-hover:text-maroon-900 transition-colors duration-150">
             {product.title}
           </h3>
 
           {product.color && (
-            <p className="text-[11px] text-obsidian-slate font-light truncate">
+            <p className="text-[13px] text-obsidian-slate truncate">
               {product.color}
             </p>
           )}
         </div>
 
-        {/* Pricing & Dual Actions */}
-        <div className="pt-2.5 border-t border-canvas-border flex flex-col gap-2.5">
+        {/* Pricing & Actions */}
+        <div className="pt-4 border-t border-canvas-border flex flex-col gap-3">
           <div className="flex items-baseline justify-between gap-2">
-            <span className="text-[10px] uppercase tracking-[0.14em] text-obsidian-slate">
-              Boutique Price
+            <span className="text-xs text-obsidian-muted">
+              Boutique price
             </span>
             <div className="flex flex-col items-end">
-              <span className="text-base font-semibold text-maroon-950 tabular-nums font-sans">
+              <span className="text-[16px] font-medium text-obsidian tabular-nums">
                 {formatPrice(product.price)}
               </span>
               {currentCurrency !== 'INR' && (
-                <span className="text-[10px] text-obsidian-slate tabular-nums">
+                <span className="text-xs text-obsidian-muted tabular-nums">
                   ≈ ₹{product.price.toLocaleString('en-IN')}
                 </span>
               )}
@@ -183,16 +183,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 handleCardClick();
               }}
               disabled={!isAvailable}
-              className={`flex-1 py-2 px-3 rounded-lg text-[11px] font-semibold tracking-[0.12em] uppercase transition-[transform,background-color] duration-150 flex items-center justify-center gap-1.5 border active:scale-[0.97] min-w-0 ${
+              className={`flex-1 h-10 px-3 rounded-[8px] text-[13px] font-medium transition-[transform,background-color] duration-150 flex items-center justify-center gap-2 border active:scale-[0.98] min-w-0 ${
                 isAvailable
-                  ? 'bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white border-maroon-900 shadow-xs cursor-pointer'
-                  : 'bg-canvas-subtle text-obsidian-muted border-canvas-border cursor-not-allowed opacity-60'
+                  ? 'bg-maroon-900 hover:bg-maroon-850 text-white border-maroon-900 cursor-pointer'
+                  : 'bg-canvas-subtle text-obsidian-muted border-canvas-border cursor-not-allowed'
               }`}
-              title={isAvailable ? 'Select options & Add to Bag' : 'Piece is currently sold out'}
+              title={isAvailable ? 'Select options and add to bag' : 'Piece is currently sold out'}
             >
-              <ShoppingBag className="w-3.5 h-3.5 text-brass-light shrink-0" />
+              <ShoppingBag className="w-4 h-4 shrink-0" strokeWidth={1.5} />
               <span className="truncate">
-                {isAvailable ? 'Add to Bag' : 'Sold Out'}
+                {isAvailable ? 'Add to bag' : 'Sold out'}
               </span>
             </button>
 
@@ -201,11 +201,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 e.stopPropagation();
                 handleCardClick();
               }}
-              className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-lg bg-canvas-subtle hover:bg-maroon-50 text-obsidian hover:text-maroon-900 border border-canvas-border transition-[transform,background-color] duration-150 active:scale-[0.97] shrink-0"
-              title="Inspect specifications & fabric zoom"
+              className="w-10 h-10 flex items-center justify-center rounded-[8px] bg-white hover:bg-canvas-subtle text-obsidian-slate hover:text-obsidian border border-canvas-border transition-[transform,background-color,color] duration-150 active:scale-[0.98] shrink-0"
+              title="Inspect specifications and fabric zoom"
               aria-label="Inspect piece"
             >
-              <Eye className="w-4 h-4" />
+              <Eye className="w-4 h-4" strokeWidth={1.5} />
             </button>
           </div>
         </div>

@@ -38,8 +38,8 @@ const CustomerStorefront: React.FC = () => {
       <CollectionShowcase />
 
       {/* Main Catalog Section */}
-      <main id="catalog-section" className="flex-1 py-6 sm:py-10">
-        <div className="container mx-auto px-4">
+      <main id="catalog-section" className="flex-1 bg-canvas border-b border-canvas-border">
+        <div className="max-w-[1600px] mx-auto">
           <FilterBar />
           <ProductGrid products={filteredProducts} />
         </div>

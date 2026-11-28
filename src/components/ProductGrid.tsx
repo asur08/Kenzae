@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, RefreshCw } from 'lucide-react';
+import { Search, RefreshCw } from 'lucide-react';
 import { KenzaeProduct } from '../types/catalog';
 import { ProductCard } from './ProductCard';
 import { useCatalog } from '../context/CatalogContext';
@@ -13,29 +13,29 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
 
   if (products.length === 0) {
     return (
-      <div className="py-16 sm:py-20 text-center max-w-md mx-auto space-y-4 px-4">
-        <div className="w-14 h-14 rounded-full bg-maroon-50 border border-maroon-200 mx-auto flex items-center justify-center text-maroon-900">
-          <Sparkles className="w-6 h-6 text-brass-dark" />
+      <div className="py-20 text-center max-w-md mx-auto space-y-4 px-4">
+        <div className="w-12 h-12 rounded-[10px] bg-white border border-canvas-border mx-auto flex items-center justify-center text-obsidian-muted">
+          <Search className="w-5 h-5" strokeWidth={1.5} />
         </div>
-        <h3 className="font-serif text-2xl font-medium text-maroon-950">
+        <h3 className="font-serif text-[26px] font-normal text-obsidian leading-snug">
           No matching pieces found
         </h3>
-        <p className="text-xs sm:text-sm text-obsidian-slate font-light leading-relaxed">
-          We couldn&apos;t find any ensembles matching your active criteria. Try broadening your price ceiling or clearing weave filters.
+        <p className="text-[14px] text-obsidian-slate leading-relaxed">
+          Try broadening your price range or clearing weave filters to view the full collection.
         </p>
         <button
           onClick={resetFilters}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-maroon-900 hover:bg-maroon-850 text-brass-light text-xs font-semibold uppercase tracking-[0.14em] shadow-sm active:scale-95 transition-all"
+          className="inline-flex items-center gap-2 px-5 h-10 rounded-[8px] bg-maroon-900 hover:bg-maroon-850 text-white text-[13px] font-medium active:scale-[0.98] transition-[transform,background-color] duration-150"
         >
-          <RefreshCw className="w-3.5 h-3.5" />
-          <span>Reset All Filters</span>
+          <RefreshCw className="w-4 h-4" strokeWidth={1.5} />
+          <span>Reset all filters</span>
         </button>
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6 pt-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 border-l border-canvas-border">
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}

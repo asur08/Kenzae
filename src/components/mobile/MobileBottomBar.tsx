@@ -18,62 +18,58 @@ export const MobileBottomBar: React.FC = () => {
 
   return (
     <nav
-      className="fixed bottom-0 left-0 right-0 z-40 sm:hidden bg-white/95 backdrop-blur-md border-t border-canvas-border shadow-[0_-4px_20px_rgba(0,0,0,0.06)] px-4 py-2"
-      aria-label="Mobile Navigation Bar"
+      className="fixed bottom-0 left-0 right-0 z-40 sm:hidden bg-white border-t border-canvas-border px-4 py-1.5"
+      aria-label="Mobile navigation"
     >
-      <div className="flex items-center justify-around max-w-md mx-auto">
-        {/* Discover */}
+      <div className="grid grid-cols-4 max-w-md mx-auto">
         <button
           onClick={handleDiscover}
-          className="flex flex-col items-center justify-center gap-1 py-1 px-3 min-h-[44px] text-obsidian-slate hover:text-maroon-900 active:scale-[0.94] transition-transform duration-120"
-          aria-label="Discover Collections"
+          className="flex flex-col items-center justify-center gap-1 py-1.5 min-h-[44px] text-obsidian-slate hover:text-obsidian active:scale-[0.97] transition-[transform,color] duration-150"
+          aria-label="Discover collections"
         >
-          <Compass className="w-5 h-5 stroke-[1.75]" />
-          <span className="text-[10px] font-semibold tracking-wider uppercase">Discover</span>
+          <Compass className="w-4 h-4" strokeWidth={1.5} />
+          <span className="text-xs font-normal">Discover</span>
         </button>
 
-        {/* Shortlist / Wishlist */}
         <button
           onClick={() => setIsWishlistOpen(true)}
-          className="flex flex-col items-center justify-center gap-1 py-1 px-3 min-h-[44px] text-obsidian-slate hover:text-maroon-900 active:scale-[0.94] transition-transform duration-120 relative"
+          className="flex flex-col items-center justify-center gap-1 py-1.5 min-h-[44px] text-obsidian-slate hover:text-obsidian active:scale-[0.97] transition-[transform,color] duration-150"
           aria-label="Shortlist"
         >
           <div className="relative">
-            <Heart className="w-5 h-5 stroke-[1.75]" />
+            <Heart className="w-4 h-4" strokeWidth={1.5} />
             {wishlistIds.length > 0 && (
-              <span className="absolute -top-1.5 -right-2 min-w-4 h-4 px-1 rounded-full bg-maroon-900 text-brass-light text-[9px] font-bold flex items-center justify-center">
+              <span className="absolute -top-1.5 -right-2.5 min-w-4 h-4 px-1 rounded-[4px] bg-maroon-900 text-white text-[11px] font-medium flex items-center justify-center tabular-nums">
                 {wishlistIds.length}
               </span>
             )}
           </div>
-          <span className="text-[10px] font-semibold tracking-wider uppercase">Saved</span>
+          <span className="text-xs font-normal">Saved</span>
         </button>
 
-        {/* Bag */}
         <button
           onClick={() => setIsCartOpen(true)}
-          className="flex flex-col items-center justify-center gap-1 py-1 px-3 min-h-[44px] text-maroon-950 active:scale-[0.94] transition-transform duration-120 relative"
-          aria-label="Shopping Bag"
+          className="flex flex-col items-center justify-center gap-1 py-1.5 min-h-[44px] text-maroon-950 active:scale-[0.97] transition-transform duration-150"
+          aria-label="Shopping bag"
         >
           <div className="relative">
-            <ShoppingBag className="w-5 h-5 stroke-[2] text-maroon-900" />
+            <ShoppingBag className="w-4 h-4 text-maroon-900" strokeWidth={1.5} />
             {totals.itemCount > 0 && (
-              <span className="absolute -top-1.5 -right-2 min-w-4 h-4 px-1 rounded-full bg-maroon-900 text-brass-light text-[9px] font-bold flex items-center justify-center shadow-xs">
+              <span className="absolute -top-1.5 -right-2.5 min-w-4 h-4 px-1 rounded-[4px] bg-maroon-900 text-white text-[11px] font-medium flex items-center justify-center tabular-nums">
                 {totals.itemCount}
               </span>
             )}
           </div>
-          <span className="text-[10px] font-bold tracking-wider uppercase text-maroon-900">Bag</span>
+          <span className="text-xs font-medium text-maroon-900">Bag</span>
         </button>
 
-        {/* Consult / WhatsApp */}
         <button
           onClick={handleConsult}
-          className="flex flex-col items-center justify-center gap-1 py-1 px-3 min-h-[44px] text-emerald-800 hover:text-emerald-700 active:scale-[0.94] transition-transform duration-120"
-          aria-label="Direct Boutique Consultation"
+          className="flex flex-col items-center justify-center gap-1 py-1.5 min-h-[44px] text-obsidian-slate hover:text-obsidian active:scale-[0.97] transition-[transform,color] duration-150"
+          aria-label="Direct boutique consultation"
         >
-          <MessageCircle className="w-5 h-5 stroke-[1.75] text-whatsapp" />
-          <span className="text-[10px] font-semibold tracking-wider uppercase">Consult</span>
+          <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
+          <span className="text-xs font-normal">Consult</span>
         </button>
       </div>
     </nav>

@@ -9,10 +9,10 @@ import { generateStoreVisitWhatsAppUrl } from '../utils/whatsapp';
 import { ProductCategory } from '../types/catalog';
 
 const QUICK_CATEGORIES: { label: string; value: ProductCategory | 'All' }[] = [
-  { label: 'All Collections', value: 'All' },
+  { label: 'All collections', value: 'All' },
   { label: 'Saris', value: 'Saris' },
-  { label: 'Churidars & Salwar Sets', value: 'Churidars & Salwar Sets' },
-  { label: 'Dress Materials', value: 'Unstitched Dress Materials' },
+  { label: 'Churidars & salwar sets', value: 'Churidars & Salwar Sets' },
+  { label: 'Dress materials', value: 'Unstitched Dress Materials' },
   { label: 'Kurthis', value: 'Kurthis & Ready-to-Wear' },
 ];
 
@@ -29,7 +29,7 @@ export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 12);
+    const onScroll = () => setIsScrolled(window.scrollY > 8);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -55,99 +55,79 @@ export const Navbar: React.FC = () => {
 
   return (
     <header
-      className={`sticky top-0 z-40 backdrop-blur-md transition-all duration-300 w-full ${
-        isScrolled
-          ? 'bg-[#FAF8F5]/95 border-b border-maroon-900/15 shadow-sm'
-          : 'bg-[#FAF8F5]/85 border-b border-[#EAE3D7]'
+      className={`sticky top-0 z-40 w-full border-b border-canvas-border transition-colors duration-150 ${
+        isScrolled ? 'bg-canvas' : 'bg-canvas'
       }`}
     >
-      {/* Top Couture Announcement Strip */}
-      <div className="bg-maroon-950 text-brass-light py-1.5 px-4 text-[10px] sm:text-[11px] tracking-[0.18em] uppercase font-medium">
-        <div className="container mx-auto flex items-center justify-between gap-2 min-w-0">
-          <div className="flex items-center gap-2 min-w-0 truncate">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-brass shrink-0" />
-            <span className="truncate">Handcrafted Couture &amp; Bespoke Weaves</span>
-            <span className="hidden md:inline text-brass/50">·</span>
-            <span className="hidden md:inline text-white/85">Personal Styling &amp; Trials</span>
-          </div>
-
-          <button
-            onClick={() => scrollToSection('store-locator')}
-            className="flex items-center gap-1 text-brass-light hover:text-white transition-colors shrink-0 tracking-[0.14em]"
-            title="Store Directions & Hours"
-          >
-            <MapPin className="w-3 h-3 text-brass" />
-            <span>Visit Store</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Main Architectural Navigation Row */}
-      <div className="container mx-auto px-4 py-2.5 sm:py-3 flex items-center justify-between relative min-w-0">
-        {/* Left: Mobile Menu / Desktop Navigation */}
-        <div className="flex items-center gap-4 min-w-0">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between relative min-w-0">
+        {/* Left: Mobile Menu Trigger & Desktop Links */}
+        <div className="flex items-center gap-6 min-w-0">
           <button
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            className="lg:hidden min-w-[40px] min-h-[40px] flex items-center justify-center p-2 -ml-1 rounded-full border border-canvas-border bg-white/80 text-maroon-950 hover:bg-white active:scale-[0.97] transition-[transform,background-color] duration-150"
+            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-[8px] border border-canvas-border bg-white text-obsidian hover:bg-canvas-subtle active:scale-[0.98] transition-[transform,background-color] duration-150"
             aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           >
-            {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            {isMobileMenuOpen ? (
+              <X className="w-4 h-4 text-obsidian-slate" strokeWidth={1.5} />
+            ) : (
+              <Menu className="w-4 h-4 text-obsidian-slate" strokeWidth={1.5} />
+            )}
           </button>
 
-          <nav className="hidden lg:flex items-center gap-6 text-[11px] font-medium tracking-[0.16em] uppercase text-obsidian-slate">
+          <nav
+            aria-label="Primary navigation"
+            className="hidden lg:flex items-center gap-6 text-[14px] font-normal text-obsidian-slate"
+          >
             <button
               onClick={() => scrollToSection('catalog-section')}
-              className="hover:text-maroon-900 active:scale-[0.98] transition-[color,transform] duration-150"
+              className="py-2 hover:text-obsidian transition-colors duration-150"
             >
               Collections
             </button>
             <button
               onClick={() => scrollToSection('atelier-story')}
-              className="hover:text-maroon-900 active:scale-[0.98] transition-[color,transform] duration-150"
+              className="py-2 hover:text-obsidian transition-colors duration-150"
             >
-              Our Craft
+              Craft
             </button>
             <button
               onClick={() => scrollToSection('store-locator')}
-              className="hover:text-maroon-900 active:scale-[0.98] transition-[color,transform] duration-150"
+              className="py-2 hover:text-obsidian transition-colors duration-150"
             >
               Boutique
             </button>
           </nav>
         </div>
 
-        {/* Center: Luxury Brand Wordmark */}
+        {/* Center: Architectural Wordmark */}
         <div className="absolute left-1/2 -translate-x-1/2 text-center">
-          <a href="#" className="group flex flex-col items-center leading-none">
-            <span className="font-serif text-[22px] sm:text-[26px] md:text-[30px] font-normal tracking-[0.28em] text-maroon-950 group-hover:text-maroon-800 transition-colors uppercase pl-[0.28em]">
-              KENZAE
-            </span>
-            <span className="text-[8px] sm:text-[9px] tracking-[0.38em] uppercase text-obsidian-slate font-medium mt-0.5 pl-[0.38em]">
-              Designer Boutique
+          <a href="#" className="inline-flex items-center gap-2 py-1">
+            <span className="font-serif text-[26px] sm:text-[28px] font-medium tracking-[0.04em] text-maroon-950 leading-none">
+              Kenzae
             </span>
           </a>
         </div>
 
-        {/* Right: Currency + Filter (mobile) + Shortlist + Bag + Consult Concierge */}
-        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        {/* Right: Utility Controls & Primary Consult Action */}
+        <div className="flex items-center gap-2 shrink-0">
           <CurrencySwitcher />
 
           <button
             onClick={() => setIsFilterDrawerOpen(true)}
-            className="md:hidden min-w-[40px] min-h-[40px] flex items-center justify-center p-2 rounded-full border border-canvas-border bg-white/80 text-maroon-950 hover:bg-white active:scale-[0.97] transition-[transform,background-color] duration-150"
-            aria-label="Open Collection Filters"
+            className="md:hidden w-10 h-10 flex items-center justify-center rounded-[8px] border border-canvas-border bg-white text-obsidian-slate hover:bg-canvas-subtle hover:text-obsidian active:scale-[0.98] transition-[transform,background-color,color] duration-150"
+            aria-label="Open collection filters"
           >
-            <SlidersHorizontal className="w-4 h-4" />
+            <SlidersHorizontal className="w-4 h-4" strokeWidth={1.5} />
           </button>
 
           <button
             onClick={() => setIsWishlistOpen(true)}
-            className="relative min-w-[40px] min-h-[40px] sm:min-w-[42px] sm:min-h-[42px] flex items-center justify-center p-2 sm:p-2.5 rounded-full border border-canvas-border bg-white/80 text-obsidian hover:border-maroon-900/30 hover:text-maroon-900 active:scale-[0.97] transition-[transform,border-color,color] duration-150 group"
-            aria-label="View Saved Shortlist"
+            className="relative h-10 min-w-[40px] px-2.5 flex items-center justify-center gap-1.5 rounded-[8px] border border-canvas-border bg-white text-obsidian-slate hover:bg-canvas-subtle hover:text-obsidian active:scale-[0.98] transition-[transform,background-color,color] duration-150"
+            aria-label="View saved shortlist"
           >
-            <Heart className="w-4 h-4 transition-colors" />
+            <Heart className="w-4 h-4" strokeWidth={1.5} />
             {wishlistIds.length > 0 && (
-              <span className="absolute -top-1 -right-1 bg-maroon-900 text-brass-light text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-sm tabular-nums">
+              <span className="text-xs font-medium text-maroon-950 tabular-nums">
                 {wishlistIds.length}
               </span>
             )}
@@ -155,12 +135,12 @@ export const Navbar: React.FC = () => {
 
           <button
             onClick={() => setIsCartOpen(true)}
-            className="relative min-w-[40px] min-h-[40px] sm:min-w-[42px] sm:min-h-[42px] flex items-center justify-center p-2 sm:p-2.5 rounded-full border border-canvas-border bg-white/80 text-obsidian hover:border-maroon-900/30 hover:text-maroon-900 active:scale-[0.97] transition-[transform,border-color,color] duration-150 group"
-            aria-label="View Shopping Bag"
+            className="relative h-10 min-w-[40px] px-2.5 flex items-center justify-center gap-1.5 rounded-[8px] border border-canvas-border bg-white text-obsidian-slate hover:bg-canvas-subtle hover:text-obsidian active:scale-[0.98] transition-[transform,background-color,color] duration-150"
+            aria-label="View shopping bag"
           >
-            <ShoppingBag className="w-4 h-4 transition-colors" />
+            <ShoppingBag className="w-4 h-4" strokeWidth={1.5} />
             {totals.itemCount > 0 && (
-              <span className="absolute -top-1 -right-1 bg-maroon-900 text-brass-light text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-sm tabular-nums">
+              <span className="text-xs font-medium text-maroon-950 tabular-nums">
                 {totals.itemCount}
               </span>
             )}
@@ -168,9 +148,9 @@ export const Navbar: React.FC = () => {
 
           <button
             onClick={handleWhatsAppConsult}
-            className="hidden sm:inline-flex items-center gap-2 bg-maroon-900 hover:bg-maroon-850 text-brass-light hover:text-white px-4 py-2 min-h-[38px] rounded-full text-[11px] font-semibold tracking-[0.14em] uppercase shadow-sm active:scale-[0.97] transition-[transform,background-color] duration-150 border border-brass/30"
+            className="hidden sm:inline-flex items-center gap-2 bg-maroon-900 hover:bg-maroon-850 text-white px-4 h-9 rounded-[8px] text-[13px] font-medium active:scale-[0.98] transition-[transform,background-color] duration-150"
           >
-            <MessageCircle className="w-3.5 h-3.5 text-whatsapp" />
+            <MessageCircle className="w-4 h-4 text-white/85" strokeWidth={1.5} />
             <span>Consult</span>
           </button>
         </div>
@@ -183,34 +163,34 @@ export const Navbar: React.FC = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.22, ease: 'easeOut' }}
-            className="lg:hidden overflow-hidden border-t border-canvas-border bg-[#FAF8F5]"
+            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:hidden overflow-hidden border-t border-canvas-border bg-canvas"
           >
-            <div className="container mx-auto px-4 py-4 space-y-3">
-              <div className="flex flex-wrap gap-1.5">
+            <div className="px-4 py-4 space-y-4">
+              <div className="flex flex-wrap gap-2">
                 {QUICK_CATEGORIES.map((cat) => (
                   <button
                     key={cat.value}
                     onClick={() => handleQuickCategory(cat.value)}
-                    className="px-3 py-1.5 rounded-full bg-white border border-canvas-border text-xs font-medium text-obsidian hover:border-maroon-900/40 hover:text-maroon-900 transition-colors"
+                    className="px-3 py-2 rounded-[8px] bg-white border border-canvas-border text-[13px] font-normal text-obsidian hover:bg-canvas-subtle transition-colors duration-150"
                   >
                     {cat.label}
                   </button>
                 ))}
               </div>
 
-              <div className="pt-2 border-t border-canvas-border flex items-center justify-between text-xs font-medium text-obsidian-slate">
+              <div className="pt-3 border-t border-canvas-border flex items-center justify-between text-[13px] font-normal text-obsidian-slate">
                 <button
                   onClick={() => scrollToSection('atelier-story')}
-                  className="py-1 hover:text-maroon-900"
+                  className="py-1.5 hover:text-obsidian"
                 >
-                  Our Craft &amp; Tailoring
+                  Craft &amp; tailoring
                 </button>
                 <button
                   onClick={() => scrollToSection('store-locator')}
-                  className="py-1 hover:text-maroon-900 flex items-center gap-1"
+                  className="py-1.5 hover:text-obsidian flex items-center gap-1.5"
                 >
-                  <MapPin className="w-3.5 h-3.5 text-brass-dark" />
+                  <MapPin className="w-4 h-4 text-obsidian-muted" strokeWidth={1.5} />
                   <span>Directions</span>
                 </button>
                 <button
@@ -218,9 +198,9 @@ export const Navbar: React.FC = () => {
                     setIsMobileMenuOpen(false);
                     handleWhatsAppConsult();
                   }}
-                  className="py-1 text-maroon-900 font-semibold flex items-center gap-1"
+                  className="py-1.5 text-maroon-900 font-medium flex items-center gap-1.5"
                 >
-                  <MessageCircle className="w-3.5 h-3.5 text-whatsapp" />
+                  <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
                   <span>WhatsApp</span>
                 </button>
               </div>
